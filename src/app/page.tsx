@@ -140,7 +140,7 @@ export default function HomePage() {
           </div>
 
           <p className="mt-6 text-sm text-slate-600">
-            Australia-based · Remote engagements available
+            Australia-based
           </p>
         </section>
 
