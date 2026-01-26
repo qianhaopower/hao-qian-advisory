@@ -132,7 +132,7 @@ export default function HomePage() {
           <h2 className="text-xl font-semibold">Enquiries</h2>
           <p className="mt-3 text-slate-700 leading-relaxed">
             If this resonates, you’re welcome to reach out for a short, no-pressure conversation.
-            This is simply an opportunity to explore whether the work would be useful for you at this stage.
+            This is simply an opportunity to explore whether the work would be useful for you.
           </p>
 
           <div className="mt-6">
