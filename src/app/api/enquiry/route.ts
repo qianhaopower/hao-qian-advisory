@@ -54,7 +54,7 @@ export async function POST(req: Request) {
   to: toEmail,
   subject,
   html,
-  reply_to: email, // Resend API uses reply_to in many examples/docs
+  replyTo: email, // Resend API uses reply_to in many examples/docs
 });
 
 console.log("Resend data:", data);
