@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calla & Cups — a neighbourhood café on Canterbury Road, Melbourne. Specialty coffee, all-day brunch, and pastries baked at 5am." />
+  <meta name="theme-color" content="#2e1b12" />
+  <title>Calla &amp; Cups — Canterbury, Melbourne</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css" />
+
+  <meta property="og:title" content="Calla & Cups — Canterbury, Melbourne" />
+  <meta property="og:description" content="Specialty coffee, all-day brunch, and pastries baked at 5am." />
+  <meta property="og:image" content="./images/exterior.jpg" />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+
+  <!-- ───────── HEADER / NAV ───────── -->
+  <header class="site-nav" id="siteNav">
+    <a href="#top" class="logo" aria-label="Calla and Cups, home">Calla <i>&amp; Cups</i></a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#space">The space</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+
+    <a href="#visit" class="nav-cta">Visit us →</a>
+
+    <button class="nav-toggle" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#space">The space</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="mobile-menu-cta">
+      <a href="#visit" class="btn btn-primary">Get directions →</a>
+      <a href="https://www.google.com/maps/reserve/v/dine/c/fX0VrD3nASc?source=pa&opi=79508299&hl=en-AU&gei=XYH0abfgHYqwwcsPkYTMwAU&sourceurl=https://www.google.com/maps/preview/place?authuser%3D0%26hl%3Den%26gl%3Dau%26q%3DCalla%2Band%2BCups%2BCafe%26pb%3D!1m15!1s0x0:0xdaaa79b72fec6d1!2sCalla%2Band%2BCups%2BCafe!3m12!1m3!1d12602.212889607836!2d145.1486213!3d-37.84734185!2m3!1f0.0!2f0.0!3f0.0!3m2!1i1024!2i768!4f13.1!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m3!1sXIH0afHmOqOxwcsP6N72kAI!7e81!15i10112!15m108!1m26!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m15!3b1!4b1!5b1!6b1!13b1!14b1!17b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b0!21m0!22m1!1e81!30m8!3b1!6m2!1b1!2b1!7m2!1e3!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i778" target="_blank" rel="noopener" class="btn btn-ghost">Order online</a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ───────── HERO ───────── -->
+    <section class="hero" aria-label="Welcome">
+      <picture class="hero-bg">
+        <img src="./images/dining.jpg" alt="Inside Calla & Cups: dining area with bentwood chairs, marble-topped tables, and a sunlit shopfront onto Canterbury Road" loading="eager" fetchpriority="high" />
+      </picture>
+      <div class="hero-veil" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <span class="pill"><span class="pill-dot"></span> Open now</span>
+        <h1>Mornings <i>made</i><br />in Canterbury.</h1>
+        <p class="hero-sub">A neighbourhood café for slow coffee, generous brunch, and pastries baked at 5am.</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">See the menu →</a>
+          <a href="#visit" class="btn btn-ghost">Get directions</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── MARQUEE ───────── -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-group">
+          Specialty Coffee <span class="marq-sep">✦</span>
+          All-day Brunch <span class="marq-sep">✦</span>
+          Locally Sourced <span class="marq-sep">✦</span>
+          Open 7 Days <span class="marq-sep">✦</span>
+        </span>
+        <span class="marquee-group">
+          Specialty Coffee <span class="marq-sep">✦</span>
+          All-day Brunch <span class="marq-sep">✦</span>
+          Locally Sourced <span class="marq-sep">✦</span>
+          Open 7 Days <span class="marq-sep">✦</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- ───────── ABOUT ───────── -->
+    <section class="about" id="about" aria-labelledby="about-h">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <span class="eyebrow">— Who we are</span>
+          <h2 id="about-h">Calla &amp; Cups is your <i>local</i>.</h2>
+          <p>We've been part of Canterbury since 2019 — pulling shots, plating brunch, and learning everyone's coffee order. We're not trying to be everywhere. We're trying to be the best café on this street.</p>
+          <p>Our beans come from a Melbourne roaster we've trusted for years. Our bread comes from a baker two streets away. Everything we make has a reason for being here.</p>
+
+          <ul class="stats">
+            <li><span class="stat-num">6+</span><span class="stat-label">Years open</span></li>
+            <li><span class="stat-num">4.9</span><span class="stat-label">Google ★</span></li>
+            <li><span class="stat-num">7am</span><span class="stat-label">Every day</span></li>
+          </ul>
+        </div>
+
+        <figure class="about-photo">
+          <img src="./images/smoothies.jpg" alt="Pineapple-textured smoothie glasses on a timber bench, with two wooden giraffe ornaments" loading="lazy" />
+          <figcaption>The window seat, mid-morning</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ───────── MENU ───────── -->
+    <section class="menu-section" id="menu" aria-labelledby="menu-h">
+      <div class="container">
+        <span class="eyebrow eyebrow-light">— On the menu</span>
+        <h2 id="menu-h">The Menu</h2>
+        <p class="menu-sub">Small, seasonal, made fresh every morning.</p>
+
+        <div class="tabs" role="tablist" aria-label="Menu sections">
+          <button class="tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-coffee" id="tab-coffee" data-tab="coffee">Coffee</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-brunch" id="tab-brunch" data-tab="brunch">Brunch</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-pastries" id="tab-pastries" data-tab="pastries">Pastries</button>
+        </div>
+
+        <div class="menu-panels">
+          <div class="menu-panel active" id="panel-coffee" role="tabpanel" aria-labelledby="tab-coffee" data-panel="coffee">
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Seasonal Espresso</h3>
+                <p class="item-desc">Rotating single origin</p>
+              </div>
+              <span class="item-price">$5.00</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Oat Flat White</h3>
+                <p class="item-desc">House blend, silky oat</p>
+                <span class="tag">Most ordered</span>
+              </div>
+              <span class="item-price">$6.50</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Pour Over</h3>
+                <p class="item-desc">Filter, V60</p>
+              </div>
+              <span class="item-price">$6.50</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Matcha <i>Latte</i></h3>
+                <p class="item-desc">Ceremonial grade, oat</p>
+              </div>
+              <span class="item-price">$7.00</span>
+            </article>
+          </div>
+
+          <div class="menu-panel" id="panel-brunch" role="tabpanel" aria-labelledby="tab-brunch" data-panel="brunch" hidden>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Smashed Avo</h3>
+                <p class="item-desc">Sourdough, feta, chilli, pepitas</p>
+              </div>
+              <span class="item-price">$18.00</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Soft Eggs</h3>
+                <p class="item-desc">Kimchi, sesame, chilli oil, brioche</p>
+                <span class="tag">Chef's pick</span>
+              </div>
+              <span class="item-price">$20.00</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Miso Mushrooms</h3>
+                <p class="item-desc">Brioche, cultured butter, herbs</p>
+              </div>
+              <span class="item-price">$19.00</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Granola Bowl</h3>
+                <p class="item-desc">Seasonal fruit, labne, honey</p>
+              </div>
+              <span class="item-price">$16.00</span>
+            </article>
+          </div>
+
+          <div class="menu-panel" id="panel-pastries" role="tabpanel" aria-labelledby="tab-pastries" data-panel="pastries" hidden>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Canelé</h3>
+                <p class="item-desc">Vanilla &amp; rum</p>
+                <span class="tag">Daily</span>
+              </div>
+              <span class="item-price">$5.00</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Almond Croissant</h3>
+                <p class="item-desc">Double-baked, frangipane</p>
+              </div>
+              <span class="item-price">$6.50</span>
+            </article>
+            <article class="menu-item">
+              <div>
+                <h3 class="item-name">Kouign-Amann</h3>
+                <p class="item-desc">Caramelised salted layers</p>
+              </div>
+              <span class="item-price">$6.00</span>
+            </article>
+          </div>
+        </div>
+
+        <a href="https://www.google.com/maps/reserve/v/dine/c/fX0VrD3nASc?source=pa&opi=79508299&hl=en-AU&gei=XYH0abfgHYqwwcsPkYTMwAU&sourceurl=https://www.google.com/maps/preview/place?authuser%3D0%26hl%3Den%26gl%3Dau%26q%3DCalla%2Band%2BCups%2BCafe%26pb%3D!1m15!1s0x0:0xdaaa79b72fec6d1!2sCalla%2Band%2BCups%2BCafe!3m12!1m3!1d12602.212889607836!2d145.1486213!3d-37.84734185!2m3!1f0.0!2f0.0!3f0.0!3m2!1i1024!2i768!4f13.1!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m3!1sXIH0afHmOqOxwcsP6N72kAI!7e81!15i10112!15m108!1m26!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m15!3b1!4b1!5b1!6b1!13b1!14b1!17b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b0!21m0!22m1!1e81!30m8!3b1!6m2!1b1!2b1!7m2!1e3!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i778" target="_blank" rel="noopener" class="btn btn-cream menu-order-btn">Order online →</a>
+      </div>
+    </section>
+
+    <!-- ───────── SPACE / GALLERY ───────── -->
+    <section class="space" id="space" aria-labelledby="space-h">
+      <div class="container">
+        <span class="eyebrow">— The space</span>
+        <h2 id="space-h">Cream walls, warm <i>timber</i>, soft light.</h2>
+        <p class="space-sub">A room that feels like it's been here forever. Pull up a chair, take the window seat, stay as long as you like.</p>
+
+        <div class="gallery">
+          <figure class="g-tall">
+            <img src="./images/interior.jpg" alt="Wide view of the café interior with the counter, pendant lights and banquette seating" loading="lazy" />
+            <figcaption>The room</figcaption>
+          </figure>
+          <figure>
+            <img src="./images/exterior.jpg" alt="The peach Calla and Cups Cafe shopfront with wrought-iron gate" loading="lazy" />
+            <figcaption class="cap-light">The shopfront</figcaption>
+          </figure>
+          <figure>
+            <img src="./images/smoothies.jpg" alt="Pineapple-textured smoothies on the timber window bench" loading="lazy" />
+            <figcaption>Smoothies</figcaption>
+          </figure>
+          <figure class="g-wide">
+            <img src="./images/food.jpg" alt="Brunch plates on marble: prawn pasta, salmon eggs benedict, breakfast plate" loading="lazy" />
+            <figcaption>Calla &amp; Cups · 251 Canterbury Rd</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── REVIEWS ───────── -->
+    <section class="reviews" id="reviews" aria-labelledby="reviews-h">
+      <div class="container">
+        <div class="reviews-head">
+          <h2 id="reviews-h">What the<br />locals say.</h2>
+          <div class="google-rating" aria-label="4.9 out of 5 from 182 Google reviews">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <div class="rating-num">4.9 / 5</div>
+            <div class="rating-label">182 Google reviews</div>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review">
+            <header class="review-head">
+              <span class="avatar" aria-hidden="true">S</span>
+              <div>
+                <p class="reviewer">Sophie L.</p>
+                <p class="review-meta">2 weeks ago · Google</p>
+              </div>
+              <span class="stars" aria-label="5 stars">★★★★★</span>
+            </header>
+            <p class="review-body">"My favourite spot in Canterbury. The flat whites are perfect, the staff remember my name, and the canelés are dangerously good."</p>
+          </article>
+
+          <article class="review">
+            <header class="review-head">
+              <span class="avatar" aria-hidden="true">M</span>
+              <div>
+                <p class="reviewer">Marcus T.</p>
+                <p class="review-meta">1 month ago · Google</p>
+              </div>
+              <span class="stars" aria-label="5 stars">★★★★★</span>
+            </header>
+            <p class="review-body">"Best soft eggs in Melbourne, and that's not a light claim. Quiet, warm, and the coffee is consistent every visit."</p>
+          </article>
+
+          <article class="review">
+            <header class="review-head">
+              <span class="avatar" aria-hidden="true">P</span>
+              <div>
+                <p class="reviewer">Priya K.</p>
+                <p class="review-meta">3 weeks ago · Google</p>
+              </div>
+              <span class="stars" aria-label="5 stars">★★★★★</span>
+            </header>
+            <p class="review-body">"I've made it my Thursday ritual. A canelé, a cortado, the window seat with the morning sun — perfect."</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── VISIT ───────── -->
+    <section class="visit" id="visit" aria-labelledby="visit-h">
+      <div class="container visit-grid">
+        <div class="visit-intro">
+          <span class="eyebrow">— Visit us</span>
+          <h2 id="visit-h">Hours &amp;<br />location.</h2>
+          <p class="visit-sub">We're on Canterbury Road, just up from the tram stop. No bookings for groups under six — just walk in.</p>
+
+          <div class="visit-actions">
+            <a href="#" class="btn btn-primary">Reserve a table →</a>
+            <a href="https://www.google.com/maps/reserve/v/dine/c/fX0VrD3nASc?source=pa&opi=79508299&hl=en-AU&gei=XYH0abfgHYqwwcsPkYTMwAU&sourceurl=https://www.google.com/maps/preview/place?authuser%3D0%26hl%3Den%26gl%3Dau%26q%3DCalla%2Band%2BCups%2BCafe%26pb%3D!1m15!1s0x0:0xdaaa79b72fec6d1!2sCalla%2Band%2BCups%2BCafe!3m12!1m3!1d12602.212889607836!2d145.1486213!3d-37.84734185!2m3!1f0.0!2f0.0!3f0.0!3m2!1i1024!2i768!4f13.1!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m3!1sXIH0afHmOqOxwcsP6N72kAI!7e81!15i10112!15m108!1m26!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m15!3b1!4b1!5b1!6b1!13b1!14b1!17b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b0!21m0!22m1!1e81!30m8!3b1!6m2!1b1!2b1!7m2!1e3!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i778" target="_blank" rel="noopener" class="btn btn-ghost-dark">Order online</a>
+          </div>
+        </div>
+
+        <div class="visit-cards">
+          <article class="card">
+            <header class="card-h"><span class="status-dot"></span> Open now · closes 3:30 pm</header>
+            <ul class="hours">
+              <li><span>Monday</span><span>7:00 — 3:30</span></li>
+              <li class="today"><span>Tuesday</span><span>7:00 — 3:30</span></li>
+              <li><span>Wednesday</span><span>7:00 — 3:30</span></li>
+              <li><span>Thursday</span><span>7:00 — 3:30</span></li>
+              <li><span>Friday</span><span>7:00 — 3:30</span></li>
+              <li><span>Saturday</span><span>8:00 — 3:00</span></li>
+              <li><span>Sunday</span><span>8:00 — 3:00</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <header class="card-h">— Find us</header>
+            <p class="address">Shop 4 / 251 Canterbury Rd</p>
+            <p class="address-sub">Canterbury VIC 3126 · Tram 109</p>
+
+            <div class="map">
+              <iframe
+                title="Map showing Calla & Cups, Canterbury, Melbourne"
+                src="https://www.google.com/maps?q=251+Canterbury+Rd,+Canterbury+VIC+3126&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── CTA ───────── -->
+    <section class="cta-section" aria-labelledby="cta-h">
+      <h2 id="cta-h">Visit us<br /><i>today.</i></h2>
+      <p>The espresso machine is on.<br />Pastries are out. We're ready when you are.</p>
+      <a href="https://www.google.com/maps?q=251+Canterbury+Rd,+Canterbury+VIC+3126" target="_blank" rel="noopener" class="btn btn-dark">Get directions →</a>
+    </section>
+
+  </main>
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-logo">Calla <i>&amp; Cups</i></p>
+        <p class="footer-tag">A neighbourhood café on Canterbury Road, Melbourne.</p>
+      </div>
+
+      <div>
+        <p class="footer-h">Visit</p>
+        <p>Shop 4 / 251 Canterbury Rd<br />Canterbury VIC 3126</p>
+      </div>
+
+      <div>
+        <p class="footer-h">Hours</p>
+        <p>Mon — Fri · 7:00 — 3:30<br />Sat — Sun · 8:00 — 3:00</p>
+      </div>
+
+      <div>
+        <p class="footer-h">Follow</p>
+        <ul class="socials">
+          <li>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+              <span>Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hello@callaandcups.com.au" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              <span>Email</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <span>© 2026 Calla &amp; Cups</span>
+      <span>Canterbury · Melbourne</span>
+    </div>
+  </footer>
+
+  <p class="demo-disclaimer">This is a demo website concept created by Hao Qian. Not affiliated with Calla &amp; Cups Cafe.</p>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
