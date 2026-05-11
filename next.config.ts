@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/calla-cups", destination: "/calla-cups/index.html" },
       { source: "/calla-cups/", destination: "/calla-cups/index.html" },
+      { source: "/rolfspies", destination: "/rolfspies/index.html" },
+      { source: "/rolfspies/", destination: "/rolfspies/index.html" },
     ];
   },
 };
