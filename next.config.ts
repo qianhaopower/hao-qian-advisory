@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
       { source: "/calla-cups/", destination: "/calla-cups/index.html" },
       { source: "/rolfspies", destination: "/rolfspies/index.html" },
       { source: "/rolfspies/", destination: "/rolfspies/index.html" },
+      { source: "/tianjinwei", destination: "/tianjinwei/index.html" },
+      { source: "/tianjinwei/", destination: "/tianjinwei/index.html" },
     ];
   },
 };
