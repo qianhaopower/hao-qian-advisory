@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
       { source: "/rolfspies/", destination: "/rolfspies/index.html" },
       { source: "/tianjinwei", destination: "/tianjinwei/index.html" },
       { source: "/tianjinwei/", destination: "/tianjinwei/index.html" },
+      { source: "/premiumhairstyle", destination: "/premiumhairstyle/index.html" },
+      { source: "/premiumhairstyle/", destination: "/premiumhairstyle/index.html" },
     ];
   },
 };
