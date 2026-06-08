@@ -30,6 +30,12 @@ const SITES = [
     description: "Hair salon at Burwood One Shopping Centre, Burwood East.",
     thumb: "/premiumhairstyle/images/storefront.avif",
   },
+  {
+    href: "/worldcupfighter",
+    name: "World Cup Fighter",
+    description: "A silly cartoon fight simulator — pick two teams, hit FIGHT.",
+    thumb: "/sites/wcf-thumb.svg",
+  },
 ];
 
 export default function SitesPage() {
