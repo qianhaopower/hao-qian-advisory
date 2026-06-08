@@ -1,0 +1,13 @@
+.wcf-root {
+  --background: #05070f;
+  --foreground: #f5f7ff;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.wcf-root ::selection {
+  background: rgba(244, 63, 94, 0.35);
+}
