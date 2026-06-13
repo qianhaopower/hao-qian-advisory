@@ -6,8 +6,16 @@ export default function HomePage() {
       <div className="mx-auto max-w-3xl px-5 py-12 md:py-16">
         {/* Header */}
         <header className="mb-10">
-          <div className="text-sm font-medium tracking-wide text-slate-600">
-            Hao Qian — Leadership Advisory
+          <div className="flex items-center justify-between gap-4">
+            <div className="text-sm font-medium tracking-wide text-slate-600">
+              Hao Qian — Leadership Advisory
+            </div>
+            <a
+              href="/friendsintelligence"
+              className="text-sm font-medium tracking-wide text-slate-600 underline-offset-4 hover:text-slate-900 hover:underline"
+            >
+              Friends Intelligence
+            </a>
           </div>
 
           <h1 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
