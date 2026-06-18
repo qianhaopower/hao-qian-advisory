@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
       { source: "/tianjinwei/", destination: "/tianjinwei/index.html" },
       { source: "/premiumhairstyle", destination: "/premiumhairstyle/index.html" },
       { source: "/premiumhairstyle/", destination: "/premiumhairstyle/index.html" },
+      // Static landing page. Next lands the request on /friendsintelligence/index.html,
+      // so the relative <img src="cover.jpg"> resolves to /friendsintelligence/cover.jpg.
+      { source: "/friendsintelligence", destination: "/friendsintelligence/index.html" },
+      { source: "/friendsintelligence/", destination: "/friendsintelligence/index.html" },
     ];
   },
 };
