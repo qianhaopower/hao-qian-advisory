@@ -28,7 +28,7 @@ Source of truth is Hao's own Claude Design project ("Design System Foundations R
 
 ## Roadmap state (2026-07)
 
-Phase 1 shipped (foundation, Home, About, section pages, advisory archived). Remaining: full book pages (why/contents/updates), project write-ups (Problem/Context/Design/Implementation/Lessons/Status/Future), Working Theory full-text migration home (needs Hao's LinkedIn data export for #23–47 etc.), talks as they happen, connections panel (green cross-links between works), RSS, dark pass.
+Phase 1 shipped (foundation, Home, About, section pages, advisory archived). Phase 2 shipped: all 52 Working Theory essays live on-site at `/writing/wt-<no>` — built from `content-src/working-theory-text/` by `src/lib/essays.ts` (build-time fs loader: strips title header lines, harvests trailing `hashtag#X` into topics, detects series, computes reading time). Adding a new essay = drop the .txt (URL/DATE header) + one entry in `src/content/writing.ts`. Remaining: full book pages (why/contents/updates), project write-ups (Problem/Context/Design/Implementation/Lessons/Status/Future), talks as they happen, connections panel (green cross-links between works), RSS, dark pass.
 
 ## Conventions
 
