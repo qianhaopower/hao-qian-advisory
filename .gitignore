@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw scraped page caches (curated data lives in CONTENT-INVENTORY.md)
+/content-src/working-theory-cache/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

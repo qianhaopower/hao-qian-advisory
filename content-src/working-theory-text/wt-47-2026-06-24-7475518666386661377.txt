@@ -1,0 +1,36 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7475518666386661377/
+DATE: 2026-06-24
+
+Working Theory #47 — The Most Expensive Zero
+
+I caught AI making a surprisingly human mistake today.
+
+Someone wrote:
+
+> 2400
+
+AI decided:
+
+> "2400 is just a typo for 24,000. He dropped a zero."
+
+No evidence.
+
+Just confidence.
+
+The funny part is that all the math after that was correct.
+
+The mistake wasn't the calculation.
+
+The mistake was quietly turning a guess into a fact.
+
+I've noticed this pattern a lot with AI.
+
+Bad outputs rarely come from bad reasoning.
+
+They usually come from an assumption that slipped through unchallenged.
+
+In this case, it was just one extra zero.
+
+Everything after that was perfectly logical.
+
+hashtag#AI hashtag#Leadership hashtag#SystemsThinking

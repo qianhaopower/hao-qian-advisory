@@ -1,0 +1,16 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7463552366546522112/
+DATE: 2026-05-22
+
+Working Theory #36 — Silicon Brain (Part 1: The Right Size of Problem)
+
+One of the mistakes with AI is delegating the wrong size of problem. Too small, and the leverage is tiny. Too large, and you can end up with very confident but very wrong answers. The useful zone is usually somewhere in the middle.
+
+Recently, I worked on a problem where our service had both legacy invocation paths and newer invocation paths, with many combinations in between. At first glance, it sounds simple: identify which patterns are legacy and which are not. In practice, it was messy. Some combinations were historical quirks, some were valid because of informal agreements across teams, and some only made sense with organizational context accumulated over years.
+
+If I delegated the entire problem to AI, it would happily generate a clean answer — and likely get important parts wrong because too much implicit context sat outside the logs. At the other extreme, asking AI to search one exact pattern was almost too small. It could do that instantly, but it did not meaningfully move the problem forward.
+
+What worked much better was reshaping the work into bounded chunks: grouping related patterns, applying one constraint at a time, and asking AI to investigate each slice separately. Large enough to matter, but bounded enough to verify.
+
+That increasingly feels like the skill of working with a silicon brain: not delegating everything, and not delegating trivia either, but finding the right level of problem where leverage is high and mistakes remain visible.
+
+hashtag#AI hashtag#Engineering hashtag#Leadership hashtag#SystemsThinking hashtag#Productivity

@@ -1,0 +1,40 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7463043619277414402/
+DATE: 2026-05-21
+
+Working Theory #34 — The Octopus Manager (Part 3: Judgment Over Execution)
+
+AI once seriously suggested that we charge hundreds of internal teams $10 every time their service integration failed 😄
+
+I was exploring platform cost reduction ideas. Our platform supports hundreds of downstream teams, and when integrations fail — honest mistakes, edge cases, normal engineering reality — they create additional operational cost for us.
+
+I asked AI to think through optimization ideas.
+
+One recommendation was surprisingly simple:
+
+> Charge teams $10 per failure.
+
+The logic was not even bad.
+
+Failures cost money. Financial incentives reduce bad behavior. Platform cost goes down.
+
+From a pure optimization perspective, it made sense.
+
+From an organizational perspective, it was completely insane.
+
+Because our mission as a platform team is not to transfer cost internally. It is to help the company succeed. Sometimes that means absorbing complexity, helping teams recover from mistakes, and making systems easier to use — even if it increases local cost.
+
+That moment reminded me of something: AI is often very good at optimization, but humans still need to judge what should actually be optimized.
+
+Efficiency, reliability, developer experience, trust, and business outcomes are not always aligned.
+
+The manager job is shifting.
+
+Less execution.
+
+More judgment.
+
+AI can optimize.
+
+Humans decide what matters.
+
+hashtag#AI hashtag#Leadership hashtag#EngineeringManagement hashtag#SystemsThinking hashtag#PlatformEngineering

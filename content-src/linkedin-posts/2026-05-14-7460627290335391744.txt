@@ -1,0 +1,45 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7460627290335391744/
+DATE: 2026-05-14
+
+If I could bring all of these tools on my current laptop back to my job seven or eight years ago, a full week of work might only take a few hours now.
+
+Maybe even less.
+
+---
+
+This was my desk last night while working on a personal project.
+
+Multiple windows running at the same time:
+
+coding, 
+reviewing outputs, 
+thinking through product decisions, 
+checking deployment flows.
+
+At the same time, part of my brain was casually watching a video on the other monitor about how to cook pork belly properly.
+
+---
+
+Not because I suddenly became superhuman.
+
+But because many AI tools can now independently carry a reasonably complete piece of work for a while.
+
+I no longer need to manually drive every small step continuously.
+
+More and more, my role becomes:
+
+reviewing direction, 
+making trade-offs, 
+deciding what should happen next.
+
+---
+
+What feels strange is not just the speed.
+
+It’s how normal it already feels.
+
+---
+
+The world is changing very, very fast.
+
+hashtag#AI hashtag#Engineering hashtag#Technology hashtag#Productivity

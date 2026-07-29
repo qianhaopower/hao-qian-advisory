@@ -1,0 +1,60 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7478809349595766784/
+DATE: 2026-07-03
+
+Working Theory #48 
+From Software Engineering to Knowledge Engineering
+
+Over the past week, I spent more than 30 hours working through performance calibration.
+
+I reviewed PRs, documents, self-assessments, project history, conversations, impact, risks, and all the small turning points that shaped each person’s year.
+
+But something felt different this time.
+
+I was not really “writing” calibration notes.
+
+I was engineering them.
+
+Each person had a set of stories and evidence. I would ask AI to:
+
+Merge B3 into B2. 
+Split B4. 
+Strengthen B5. 
+Weaken B6. 
+Reframe B7. 
+Move one idea into another section. 
+Remove claims that did not have enough evidence.
+
+At some point, I realised that this was no longer a writing workflow.
+
+It looked much more like software engineering.
+
+The same thing is now happening when I write a book, build a business proposal, create a website, publish a children’s book with my daughter, or organise a complex decision.
+
+The document is no longer the real object.
+
+The real object is the knowledge system underneath it:
+
+Ideas. 
+Evidence. 
+Stories. 
+Claims. 
+Relationships. 
+Context. 
+Audience. 
+Tone.
+
+The final document is only one possible view.
+
+A book, a proposal, a performance review, a LinkedIn post, a presentation, or a podcast can all be rendered from the same underlying knowledge structure.
+
+AI does not only help us write faster.
+
+It allows us to break complex ideas into smaller units, connect them, challenge them, merge them, remove weak claims, reorder the structure, and generate the right view for the right audience.
+
+Maybe this is the next evolution of knowledge work.
+
+Not just writing.
+
+Knowledge engineering.
+
+Swipe through the slides for the full idea.

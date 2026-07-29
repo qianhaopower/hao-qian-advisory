@@ -1,0 +1,42 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7466614234165104641/
+DATE: 2026-05-30
+
+Working Theory #41 — AI Playbook (Part 1: Cross-Check Agents)
+
+One mistake I increasingly notice with AI is treating one agent as if it should both build and critique at the same time.
+
+In software engineering, we rarely expect the same mindset to do everything well. Builders and testers exist for a reason.
+
+When building software, the mindset is naturally optimistic. You want the thing to work. You are trying to move forward, make progress, and prove an idea can succeed. That mindset is useful because without it, nothing gets built.
+
+Testing is different.
+
+The tester’s job is not to make the thing work. The tester is actively trying to find where it breaks. They deliberately look for edge cases, weak assumptions, hidden failure modes, and uncomfortable scenarios.
+
+Those are different mental models.
+
+Put them together too early, and blind spots appear. When building, we unconsciously ignore certain failure paths because we are emotionally and cognitively biased toward progress. When testing, we deliberately search for problems.
+
+I increasingly think agents work the same way.
+
+Instead of asking one agent to both create and critique, it works better to separate responsibilities deliberately.
+
+One agent proposes an idea.
+
+Another agent attacks it.
+
+A third checks constraints, trade-offs, or connects it to the broader system.
+
+For example:
+
+- Builder agent: “Design the rollout plan.”
+- Breaker agent: “Why would this fail?”
+- Constraint agent: “Check cost, operational risk, and dependencies.”
+
+The value is not one smart agent giving the answer.
+
+The value is different agents trying to prove different things.
+
+Because good thinking is often less about intelligence and more about productive disagreement.
+
+hashtag#AI hashtag#Leadership hashtag#SystemsThinking hashtag#Engineering hashtag#Productivity

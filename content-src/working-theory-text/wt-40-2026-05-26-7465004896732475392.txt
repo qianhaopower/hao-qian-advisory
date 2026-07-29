@@ -1,0 +1,30 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7465004896732475392/
+DATE: 2026-05-26
+
+Working Theory #40 — Reinventing Wheels Gets Easier
+
+One thing I increasingly worry about in the AI era is how easy it becomes to reinvent the wheel.
+
+In the past, reinventing something was relatively expensive. A good idea often stayed as an idea because turning it into a workflow, a tool, a dashboard, an automation, or a product required real time, coordination, and engineering effort. As a result, many local problems remained local frustrations.
+
+That constraint is changing.
+
+With AI, individuals and small teams can turn ideas into working solutions much faster. A customer pain point, a reporting bottleneck, an operational annoyance, or a repetitive workflow can quickly become a script, an internal tool, a lightweight product, or a process improvement.
+
+That sounds great — until multiple teams unknowingly solve the same problem at the same time.
+
+Imagine five teams independently building slightly different versions of the same workflow helper, customer workaround, deployment automation, or reporting tool. Each local solution may be reasonable. But organizationally, the cost compounds: duplicated effort, fragmented approaches, inconsistent experiences, and knowledge trapped inside teams.
+
+This feels like a growing leadership responsibility.
+
+Not stopping local innovation.
+
+But noticing patterns.
+
+Seeing when multiple teams are converging on the same problem, keeping information flowing, and asking:
+
+should this become a shared capability instead?
+
+The faster local teams can build, the more important platform thinking becomes.
+
+hashtag#AI hashtag#Leadership hashtag#EngineeringManagement hashtag#SystemsThinking hashtag#PlatformEngineering

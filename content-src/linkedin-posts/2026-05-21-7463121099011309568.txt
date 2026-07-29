@@ -1,0 +1,10 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7463121099011309568/
+DATE: 2026-05-21
+
+AI almost stole 3 hours of my life last night 😃 
+I was working on a small personal project when AI confidently told me I had a ~3-hour engineering problem to solve. It sounded reasonable enough that I immediately had that familiar engineering feeling of, “Well… guess my evening is gone.” For about 30 seconds, I mentally accepted my fate and prepared for the usual debugging rabbit hole.
+Then I pushed back a little.
+A few questions later, AI replied: “You’re right, and I was wrong.”
+Turns out the whole thing was based on a false assumption. No fix. No rewrite. No late-night debugging spiral. Just… not actually a real problem.
+One thing I’m slowly realising is that the value of AI is not only faster execution. Sometimes the real value is faster falsification. A few years ago, I probably would have spent half a day proving this wrong manually. Now it sometimes takes minutes to realise the thing never needed to be done in the first place.
+Also, mildly satisfying when AI apologises to you.

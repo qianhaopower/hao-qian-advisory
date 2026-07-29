@@ -1,0 +1,48 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7466615699361370112/
+DATE: 2026-05-30
+
+Working Theory #42 — AI Playbook (Part 2: Search Before Thinking)
+
+One mistake I increasingly notice with AI is starting with an opinion too early.
+
+We often open a chat and ask:
+
+> “What should we do?”
+
+But for complex problems, that is usually too early.
+
+Before asking AI to reason, I increasingly try to let it search first.
+
+If I am planning a strategy, reviewing a cost problem, thinking about next-phase priorities, or investigating a system issue, I first ask AI to gather everything remotely relevant: past conversations, documents, records, planning notes, logs, historical decisions, company strategy, previous incidents, dependencies, customer context, and anything else that may matter.
+
+The point is not to overwhelm AI with information.
+
+The point is to reconstruct the environment around the problem.
+
+Then I ask it to organize the information: by timeline, by themes, by org boundaries, by dependencies, or by cause-and-effect relationships. Only after the context becomes visible do I ask:
+
+> what patterns do you see?
+
+> what assumptions repeat?
+
+> where are the bottlenecks?
+
+> what changed over time?
+
+That is usually when surprising insights appear.
+
+Sometimes the problem itself changes.
+
+Sometimes the original question turns out to be wrong.
+
+Sometimes a pattern becomes obvious only after months of decisions, incidents, and trade-offs are placed on the same timeline.
+
+The biggest shift for me is this:
+
+Don’t start with prompting.
+
+Start with reconstruction.
+
+Because good reasoning is often downstream of good context.
+
+hashtag#AI hashtag#Leadership hashtag#SystemsThinking hashtag#Engineering hashtag#Productivity

@@ -1,0 +1,24 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7451950119828230144/
+DATE: 2026-04-20
+
+Working Theory #11 — The Idea Incubator Theory
+
+You come up with a solid idea. You can see exactly how it could reduce cost, improve reliability, or speed things up. You bring it up, explain it, maybe even outline how it could be done. And then… nothing moves. No approval, no support — it just doesn’t go anywhere.
+
+After this happens a few times, it starts to wear on you. You know the ideas are good, but they keep going nowhere.
+
+What I’ve learned over time is that most ideas don’t fail because they’re wrong. They fail because the person behind them doesn’t understand how ideas actually get adopted.
+
+The first gap is metrics. If your idea isn’t framed in terms people already use to make decisions — cost, reliability, performance, developer productivity — it’s hard for others to evaluate it. Once it’s expressed in those terms, it becomes much easier for people to see where it fits and why it matters.
+
+The second gap is treating ideas like bets instead of a pipeline. It’s tempting to put everything behind one idea you really believe in and hope it lands. But that’s not how most organisations work.
+
+A better way to think about it is as a flow you actively manage. You keep generating ideas, shaping them, communicating them, and advocating for them. Some will get traction, some won’t. You don’t control exactly which one will land.
+
+Out of ten ideas, maybe two or three actually make it through. But that’s enough to create real impact.
+
+The third gap is awareness. Every organisation has a moving centre of gravity. Sometimes the focus is cost control. Sometimes it’s stability. Sometimes it’s speed. If you’re not tuned into that, even a strong idea can feel irrelevant. But if you understand where the pressure is right now, you’ll know which ideas are more likely to get traction.
+
+Ideas don’t succeed in isolation. They succeed when they match the moment — so don’t bet on one idea. Build a pipeline and keep it moving.
+
+hashtag#WorkingTheory hashtag#Leadership hashtag#Execution hashtag#Productivity hashtag#Management hashtag#Engineering hashtag#Strategy hashtag#CareerGrowth hashtag#SystemsThinking

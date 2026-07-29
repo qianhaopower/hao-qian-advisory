@@ -1,0 +1,61 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7457763050570391552/
+DATE: 2026-05-06
+
+Working Theory #26 — Open Systems Win
+
+In the AI era, many traditional moats may become weaker.
+
+---
+
+Knowledge becomes searchable. 
+Code becomes generatable. 
+Content becomes reproducible.
+
+---
+
+Which means systems built mainly around restriction or rigid control may slowly struggle.
+
+---
+
+I think the stronger approach is different:
+
+Build systems that can participate in the new ecosystem.
+
+---
+
+Don’t spend too much energy trying to separate:
+
+human users 
+from AI agents.
+
+---
+
+Because increasingly, both will exist together.
+
+---
+
+(Disclaimer: I saw this from social media discussions, so details may evolve.)
+
+Xero partnering with Anthropic and enabling MCP-style access into its systems is an interesting example of this shift.
+
+Instead of treating AI agents as something to block, the system starts allowing trusted agents to interact with accounting workflows through structured interfaces.
+
+---
+
+That changes the question completely.
+
+Not:
+
+“How do we stop AI from interacting with our systems?”
+
+But:
+
+“How do we allow it safely and usefully?”
+
+---
+
+The future may belong less to closed systems defending boundaries,
+
+and more to systems that become part of a larger ecosystem.
+
+hashtag#WorkingTheory hashtag#AI hashtag#SystemsThinking hashtag#Technology hashtag#Leadership hashtag#Future

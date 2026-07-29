@@ -1,0 +1,28 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7464999098719424513/
+DATE: 2026-05-26
+
+Working Theory #38 — Silicon Brain (Part 3: Information Is Cheap, Attention Is Not)
+
+“There is too much detail on your proposal and it’s diluting your main point. You lost me. I can’t give you my buy-in.”
+
+Literally, that was the exact feedback my manager gave me today.
+
+It stung a little because they were right.
+
+I realized I had fallen into a very modern trap. As I use AI more and more, I increasingly assume my readers also have an unlimited ability to follow details. In my head, everyone now has agents that can retrieve context, follow links, check evidence, and dig into edge cases almost infinitely. So while writing a proposal, I unconsciously start defending every possible objection before it even arrives.
+
+I imagine every question someone might ask and answer it immediately. I add supporting evidence, historical context, trade-offs, dependencies, examples, links, and rationale. Somewhere along the way, the proposal stops being a proposal and starts becoming something closer to a database.
+
+The irony is that while information has become dramatically cheaper, attention has not.
+
+People still need a clear point before details. People still need to understand why something matters before reading evidence. Buy-in still depends on clarity more than completeness.
+
+AI may expand our ability to retrieve information, but it does not magically expand human cognitive bandwidth.
+
+That made me wonder: as leaders and builders in the AI era, are we redesigning our communication around abundance of information, while forgetting scarcity of attention?
+
+Maybe the skill is no longer explaining everything.
+
+Maybe the skill is knowing what not to explain.
+
+hashtag#AI hashtag#Leadership hashtag#Communication hashtag#Writing hashtag#SystemsThinking

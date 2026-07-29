@@ -1,0 +1,28 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7465001850090627072/
+DATE: 2026-05-26
+
+Working Theory #39 — Silicon Brain (Part 4: Leadership Leverage)
+
+One thing I increasingly wonder in the AI era is whether leadership becomes a much bigger responsibility.
+
+For most of history, human output was constrained by physical limits: how fast people could type, write, code, analyze, or process information. Even strong teams moved at roughly human speed.
+
+That assumption is changing.
+
+When people work effectively with AI, output becomes less constrained by execution speed and more constrained by imagination, judgment, and direction. A good idea can move much faster. Analysis becomes cheaper. Drafts happen faster. Iteration compresses. At the same time, many organizations are becoming flatter, with frontline managers supporting larger teams than before.
+
+The implication is straightforward: managers now control much more leverage.
+
+In the past, if a manager pointed a team in the wrong direction, the damage might be one or two wasted projects. Painful, but bounded.
+
+Now imagine a larger team, moving significantly faster, spending weeks or months solving the wrong problem.
+
+For example, a team could spend enormous energy building customer features nobody really needs while missing a major cost reduction opportunity that would materially improve company efficiency. The result is not only engineering effort wasted. It is real opportunity cost, real dollars, and real business outcomes lost at a much larger scale than before.
+
+That makes direction-setting more important, not less.
+
+In an AI-enabled world, leadership may become less about managing execution and more about asking: are we solving the right problem?
+
+Because when leverage increases, mistakes scale too.
+
+hashtag#AI hashtag#Leadership hashtag#EngineeringManagement hashtag#SystemsThinking hashtag#FutureOfWork

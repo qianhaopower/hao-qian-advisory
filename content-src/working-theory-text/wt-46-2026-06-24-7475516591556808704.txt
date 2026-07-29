@@ -1,0 +1,44 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7475516591556808704/
+DATE: 2026-06-24
+
+Working Theory #46 — HTML Is The New English
+
+Something has changed for me over the last few months.
+
+More and more people around me are communicating less with documents and more with artifacts.
+
+Even a few months ago, if someone had an idea, they might write a long Slack message, create a PowerPoint deck, draw a diagram on a whiteboard, or schedule a meeting to explain it.
+
+Today, I increasingly see people do something different.
+
+They describe the idea to AI and ask it to generate an HTML page.
+
+Not because they are web developers.
+
+Because it is often the fastest way to communicate.
+
+A single page can contain text, diagrams, status indicators, animations, interactions, workflows, screenshots, colors, and examples. Instead of describing an idea, you can often show it.
+
+Sometimes people don't even send the file anymore.
+
+They host it somewhere internally and simply send a link.
+
+"Take a look."
+
+Then the feedback loop becomes interesting.
+
+Someone opens the page, leaves comments, downloads it locally, asks AI to modify it, generates a new version, commits the changes, and shares it back.
+
+The conversation is no longer happening only through words.
+
+The conversation is happening through artifacts.
+
+The interesting shift is that HTML is becoming less of a programming language and more of a communication language.
+
+Not because everyone suddenly learned web development.
+
+But because AI dramatically reduced the cost of turning thoughts into something visual, interactive, and shareable.
+
+A surprising amount of modern communication is starting to look less like writing documents and more like exchanging prototypes.
+
+hashtag#AI hashtag#Leadership hashtag#Communication hashtag#SystemsThinking hashtag#Productivity

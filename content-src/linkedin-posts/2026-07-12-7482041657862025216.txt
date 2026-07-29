@@ -1,0 +1,13 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7482041657862025216/
+DATE: 2026-07-12
+
+The most senior reviewer on my latest AI project is six years old.
+My daughter drew a series of comic stories, and we are now turning them into a proper illustrated book together. She reviews each generated page, tells me what feels wrong, and I translate her feedback into rules for the AI production workflow.
+For example: the speech bubbles do not match the real conversation. The characters should make eye contact when they speak. Goldie needs to look bigger. Some text should be added later during print composition rather than baked into the artwork.
+The screenshot is basically our creative process becoming a system: Isabelle gives the verdict, Dad turns it into specifications, and the AI takes another production pass. A comment on one page can become a reusable rule for every page that follows.
+The most enjoyable part is not that AI can generate illustrations. It is watching a child’s imagination become detailed enough to direct an entire production process.
+She provides the creative vision.
+I build the workflow.
+AI does the heavy lifting.
+So far, the creative director remains extremely demanding.
+hashtag#AI hashtag#Creativity hashtag#Parenting hashtag#BuildingWithAI hashtag#Storytelling

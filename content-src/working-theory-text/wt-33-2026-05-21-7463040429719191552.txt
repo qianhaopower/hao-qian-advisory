@@ -1,0 +1,28 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7463040429719191552/
+DATE: 2026-05-21
+
+Working Theory #33 — The Octopus Manager (Part 2: External Working Memory)
+
+One thing that changed dramatically with AI is working memory.
+
+We still have the same carbon brain, but now we also have a kind of silicon brain — not for judgment or meaning, but for holding details and preserving context.
+
+Recently, I had to work on two very different problems at the same time. One was forward-looking: strategic planning across multiple teams and multiple quarters. The other was backward-looking: understanding infrastructure cost patterns from the last few months.
+
+Both required holding a huge amount of information in my head, but in very different ways. One required dependencies, trade-offs, priorities, and long-term thinking. The other required deployment history, operational behavior, and cost analysis.
+
+Previously, I realistically could not push both forward within the same few days. My brain simply could not hold enough of the details for both problems at once to think clearly about either of them. One topic would occupy my head for days while I slowly rebuilt enough context to reason about it, then I would switch.
+
+What changed with AI is that much of this no longer needs to live entirely in my own working memory. Agents can organize information, summarize reasoning, preserve unfinished thinking, and hold progress almost like checkpoints.
+
+At any moment, I am still focused on one thing. But when I return to another thread, much of the reasoning and detail is already waiting for me instead of needing to be painfully reconstructed.
+
+Not because I became better at multitasking.
+
+But because I no longer need to carry every unfinished thought in my own head.
+
+Moment to moment, I may actually focus more deeply. But across days and weeks, I can juggle complexity much better.
+
+Maybe this is what being an octopus manager feels like: not doing everything at once, but being able to hold many moving threads without mentally carrying every detail yourself.
+
+hashtag#AI hashtag#Leadership hashtag#SystemsThinking hashtag#Productivity hashtag#Engineering

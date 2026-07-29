@@ -1,0 +1,74 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7459556470985211905/
+DATE: 2026-05-11
+
+Working Theory #28 — Dissolving Interfaces
+
+Today I accidentally typed git status into a Codex agent instead of my terminal.
+
+The agent replied:
+
+“git status is clean. No uncommitted changes.”
+
+I didn’t even notice anything strange.
+
+---
+
+The boundary between human and machine interaction is dissolving.
+
+---
+
+In the past, technical work required learning the machine’s language.
+
+Command lines. 
+Syntax. 
+Regex.
+
+I still remember writing things like:
+
+^(feature|bugfix|hotfix)\/[a-z0-9-_]+$
+
+to validate branch naming patterns.
+
+Being precise with machine language felt essential.
+
+---
+
+The agent didn’t say:
+
+“I’m not a terminal.”
+
+It understood the intention and gave the answer.
+
+---
+
+Now the important part is shifting.
+
+Not:
+- exact syntax
+- precise commands
+- machine wording
+
+But:
+- what problem are you solving?
+- what business value are you creating?
+- what outcome are you trying to achieve?
+
+---
+
+The syntax matters less.
+
+The intention matters more.
+
+---
+
+Machines are learning human language.
+
+Humans no longer need to adapt themselves to machines as much as before.
+
+---
+
+The interface is becoming blurry.
+
+And I think this changes much more than coding.
+
+hashtag#WorkingTheory hashtag#AI hashtag#Engineering hashtag#Technology hashtag#SystemsThinking hashtag#Future

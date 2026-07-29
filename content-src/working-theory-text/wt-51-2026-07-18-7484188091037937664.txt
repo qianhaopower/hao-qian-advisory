@@ -1,0 +1,24 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7484188091037937664/
+DATE: 2026-07-18
+
+Working Theory #51 — Four-Dimensional Optimization Problem
+
+Over the last few days, my work has felt less like completing a to-do list and more like solving a four-dimensional constrained optimization problem.
+
+The first dimension is model capacity. My strongest AI model operates within rolling token windows, so I need to control the burn rate and preserve high-quality reasoning capacity for the tasks that genuinely require it. If I spend the best model on formatting or repetitive edits, it may not be available later when I need to make a difficult architectural or product decision.
+
+The second dimension is time. A token window may reset in four hours, but that does not mean I will be free in four hours. The useful intersection may be much narrower: the model is available, I have an uninterrupted hour, and the project is ready for the next decision.
+
+The third dimension is money. Reasoning tokens are one budget; image generation and other APIs are separate budgets. Some work needs rough exploration, where cheap output is sufficient. Other work needs publication-quality diagrams or final assets, where spending more is justified. Using premium resources too early is like polishing a branch of the decision tree that may later be discarded.
+
+The fourth dimension is my own cognitive and physical capacity. Complex judgment needs sleep, attention, and low stress. It also has to fit around meetings, family time, my daughter’s activities, and the rest of life. A powerful model and a full API budget are useless if my brain is too tired to evaluate the result.
+
+So the optimization is not simply: “How can I produce the most?”
+
+It is: which task should be performed at which time, using which model, at what cost, and in what human state?
+
+A complex decision should happen when the strongest model, sufficient budget, uninterrupted time, and my best attention overlap. Routine work should fill the gaps between those moments.
+
+AI has accelerated execution, but it has also turned personal productivity into resource orchestration. The scarce resource is no longer a single thing. It is the intersection of several constraints—and good work happens inside that intersection.
+
+hashtag#AI hashtag#SystemsThinking hashtag#Optimization hashtag#Productivity hashtag#Leadership

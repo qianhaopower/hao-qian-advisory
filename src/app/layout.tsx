@@ -1,24 +1,42 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Newsreader, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://haoqian.co"),
   title: {
-    default: "Hao Qian — Leadership Advisory",
-    template: "%s | Hao Qian — Leadership Advisory",
+    default: "Hao Qian — Turning ideas into systems",
+    template: "%s · Hao Qian",
   },
   description:
-    "1:1 advisory for first-time and early-stage tech managers navigating priorities, delegation, and managing up.",
+    "The library of Hao Qian: books, Working Theory essays, projects, talks and a digital garden. A permanent home for a life's work.",
+  openGraph: {
+    title: "Hao Qian — Turning ideas into systems",
+    description:
+      "A library, not a website. Books, essays, projects, talks and ideas — collected permanently.",
+    url: "https://haoqian.co",
+    siteName: "HaoQian.co",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${newsreader.variable} ${instrumentSans.variable} ${plexMono.variable} antialiased`}
       >
         {children}
       </body>

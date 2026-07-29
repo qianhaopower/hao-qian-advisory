@@ -1,0 +1,92 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7456182251903631361/
+DATE: 2026-05-02
+
+Working Theory #23 — The Action–Outlook Matrix
+
+People tend to operate from two beliefs:
+
+Will my actions change anything? 
+And is the future getting better or worse?
+
+---
+
+Those two beliefs shape how we behave.
+
+---
+
+Take a common situation.
+
+A team needs to make a design choice.
+
+Build a more complex, generic system 
+with potential for the future,
+
+or build something smaller 
+that solves immediate needs 
+but may not scale well.
+
+---
+
+There are too many dependencies.
+
+It’s not clear what the future will require.
+
+---
+
+Four response modes show up.
+
+---
+
+The Builders 
+believe their actions matter and things can improve. 
+They design forward.
+
+---
+
+The Protectors 
+believe their actions matter but things may get worse. 
+They design for resilience.
+
+---
+
+The Waiters 
+believe things will improve but their actions don’t matter. 
+They wait and keep things small.
+
+---
+
+The Minimizers 
+believe their actions don’t matter and things will get worse. 
+They question the need and push for the smallest workaround.
+
+---
+
+Same situation.
+
+Very different systems get built.
+
+---
+
+Good leaders don’t try to eliminate these differences.
+
+They recognize them.
+
+---
+
+They make sure the organization doesn’t over-index on just one voice.
+
+Too many Builders → over-engineering. 
+Too many Protectors → slow decisions. 
+Too many Waiters → missed opportunities. 
+Too many Minimizers → short-term patches.
+
+---
+
+The goal is balance.
+
+---
+
+Because the best outcomes 
+usually come from tension — not uniform thinking.
+
+hashtag#WorkingTheory hashtag#Leadership hashtag#DecisionMaking hashtag#SystemsThinking hashtag#Engineering

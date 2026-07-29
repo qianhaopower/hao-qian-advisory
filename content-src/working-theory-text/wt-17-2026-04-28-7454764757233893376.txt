@@ -1,0 +1,114 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7454764757233893376/
+DATE: 2026-04-28
+
+Working Theory #17 — The Domain Size Theory
+
+Traditionally, we use two signals to judge how senior a leader is:
+
+Title 
+Org size
+
+---
+
+How big is the team? 
+How many people report to them?
+
+---
+
+That made sense.
+
+Because in the past,
+
+problem size scaled with team size.
+
+---
+
+Bigger problem → more people 
+More people → more senior leader
+
+---
+
+That mapping is breaking.
+
+---
+
+With AI,
+
+small teams can now handle much larger domains.
+
+Fewer people, 
+but significantly more complexity.
+
+---
+
+You can already see it:
+
+Small startups building products 
+that compete with much larger organisations
+
+Leaders owning end-to-end systems 
+that used to require multiple teams
+
+---
+
+So the signal is shifting.
+
+---
+
+It’s less about how many people you manage.
+
+It’s more about what you own.
+
+---
+
+Not tasks. Not projects.
+
+Problem domains.
+
+---
+
+For example:
+
+Owning whether an entire product ecosystem stays up or breaks 
+
+Owning how customer needs become real products 
+
+Owning how products connect, evolve, and scale across the company 
+
+---
+
+These are large surfaces of complexity.
+
+---
+
+But there’s a more personal signal.
+
+---
+
+You know your seniority is increasing when:
+
+important problems 
+cannot bypass you
+
+---
+
+When your input is needed 
+before decisions are made 
+
+When your judgment shapes the direction 
+
+When your absence creates a gap 
+
+---
+
+That’s not about control.
+
+It’s about ownership.
+
+---
+
+Not headcount.
+
+But domain size.
+
+hashtag#WorkingTheory hashtag#Leadership hashtag#AI hashtag#Management hashtag#SystemsThinking hashtag#ProductLeadership

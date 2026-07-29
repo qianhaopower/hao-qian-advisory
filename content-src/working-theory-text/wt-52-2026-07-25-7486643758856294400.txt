@@ -1,0 +1,48 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7486643758856294400/
+DATE: 2026-07-25
+
+Working Theory #52 — When You Stop Seeing The Gate
+
+I had an interesting moment while building with AI this week.
+
+The agent was searching through a website for information. At one point, it encountered a CAPTCHA.
+
+I expected it to stop and ask for help.
+
+Instead, it simply continued.
+
+Not because it was trying to "hack" anything.
+
+It almost felt like it didn't even recognize the CAPTCHA as a gate. It just treated it as another step in the workflow.
+
+That made me think.
+
+Many systems were designed around assumptions from the old world.
+
+People type.
+
+People click.
+
+People wait.
+
+People solve CAPTCHAs.
+
+But AI interacts with software differently.
+
+It's a bit like designing a city full of gates because everyone walks.
+
+Then one day, everyone starts flying.
+
+The gates are still there.
+
+They're just no longer where the traffic flows.
+
+The interesting part isn't that people suddenly have bad intentions.
+
+It's that the interaction model has changed.
+
+I suspect we'll see more and more examples where defenses, workflows, and approval processes still make perfect sense in the world they were designed for...
+
+but become invisible once the way we interact with computers changes.
+
+hashtag#AI hashtag#SystemsThinking hashtag#Leadership

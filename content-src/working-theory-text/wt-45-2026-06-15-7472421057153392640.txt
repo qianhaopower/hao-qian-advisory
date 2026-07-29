@@ -1,0 +1,52 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7472421057153392640/
+DATE: 2026-06-15
+
+Working Theory #45 — Build The Tool First?
+
+One question I find myself asking more and more in the AI era is:
+
+Should I do the work?
+
+Or should I build the tool first?
+
+Recently, while finishing my book, I found myself repeatedly generating diagrams, checking citations, reviewing references, formatting chapters, and fact-checking claims. Instead of manually repeating those tasks over and over, I ended up creating a Diagram Agent, a Fact-Check Agent, an Editing Agent, and a Publishing Agent.
+
+None of them were particularly complicated.
+
+But each one eliminated an entire category of repetitive work.
+
+A few months ago, I probably would have done most of those tasks manually. Building specialized tools and workflows simply cost too much time to justify.
+
+Today, the calculation feels different.
+
+The interesting decision is not whether something repeats.
+
+It is estimating the magnitude of the work.
+
+How much time will it consume?
+
+How much context will it require?
+
+How often will a similar problem appear again?
+
+How much cognitive effort will it demand?
+
+The better I get at estimating that magnitude, the easier it becomes to decide whether to do the work directly or invest a little effort upfront to build an engine.
+
+That feels like a new decision point in the AI era.
+
+In the past, building tools was expensive enough that most people defaulted to doing the work.
+
+Today, creating the tool is often surprisingly cheap.
+
+The question is no longer:
+
+Can I build a tool?
+
+The question is:
+
+Is this problem large enough that I should?
+
+Because that decision may determine whether you repeatedly perform the work yourself, or create something that performs it for you.
+
+hashtag#AI hashtag#Leadership hashtag#SystemsThinking hashtag#Productivity hashtag#Automation

@@ -1,0 +1,58 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7438889172527960064/
+DATE: 2026-03-15
+
+Working Theory #4: Human-First
+
+Over time I’ve noticed an asymmetry in how problems behave inside teams.
+
+Systems recover quickly.
+Humans recover slowly.
+
+A production incident can often be diagnosed and fixed with known playbooks.
+A design mistake can be corrected in the next iteration.
+Technical systems, while complex, usually have repeatable recovery paths.
+
+Human issues behave differently.
+
+Trust takes months to build.
+Misunderstandings take time to unwind.
+A damaged working dynamic can quietly affect a team for a very long time.
+
+Of course, some system problems are genuinely urgent.
+Security incidents, data loss, and safety issues demand immediate attention.
+
+But outside of those true emergencies, I’ve noticed a pattern in busy teams:
+
+When delivery pressure rises, leaders instinctively prioritize systems and postpone people problems.
+
+Early in my management career, I made that mistake.
+
+I sensed growing tension between two engineers on my team.
+There were small signals — subtle disagreements, awkward conversations, reduced collaboration.
+
+Nothing explosive. Nothing urgent.
+
+So I waited.
+
+Over time the tension grew.
+Eventually the relationship became a drag on the entire team’s performance, and the situation ended with a restructuring of the team.
+
+Years later, I encountered a very similar situation.
+
+This time, when the first signals appeared, I acted immediately.
+We had open conversations early, clarified expectations, and addressed the misunderstandings while the tension was still small.
+
+The pattern never had the chance to grow.
+
+That experience reinforced a rule I now try to follow:
+
+Address human issues early, even when the schedule is tight.
+
+Because systems usually have recovery playbooks.
+
+Human dynamics rarely do.
+
+And the highest-performing teams I’ve seen are not just technically strong —
+they are teams where leaders protect the human system with the same seriousness as the technical one.
+
+hashtag#Leadership hashtag#EngineeringManagement hashtag#TeamDynamics hashtag#ManagementThinking hashtag#WorkingTheories

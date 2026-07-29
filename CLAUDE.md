@@ -1,0 +1,37 @@
+# HaoQian.co — the library
+
+Hao Qian's personal digital library ("a library, not a website"): books, Working Theory essays, projects, talks, a digital garden. Next.js 16 (App Router) + Tailwind 4, deployed to AWS Amplify on push to `main` (haoqian.co).
+
+## Read these first
+
+- `STRATEGY.md` — the north star: vision, principles, IA, success criteria. Decisions defer to it.
+- `CONTENT-INVENTORY.md` — every verified asset (books, app, projects, all recovered Working Theory LinkedIn URLs, what's still missing). Update it when assets are added or confirmed.
+
+## Design system — do not improvise
+
+Source of truth is Hao's own Claude Design project ("Design System Foundations Review", claude.ai/design project `072c5a47-f4f5-45f8-b4d4-6a2b41d04565`, file `Design System.dc.html`). Implemented as tokens in `src/app/globals.css` and fonts in `src/app/layout.tsx`.
+
+- Voices: **Newsreader** (serif — titles + long-form), **Instrument Sans** (UI only), **IBM Plex Mono** (metadata/dates/code, uppercase, 0.14em tracking — use the `.meta` class).
+- Palette: paper `#FBFAF7`, surface `#F4F2ED`, line/hairline, ink `#1F1D1A`/`#57534A`/`#8A857A`. Blue accent = links/interactive only; green = connections between works only. Accents never fill surfaces; no gradients; no shadows.
+- Layout: 1140px container / 48px margins (24px < 900px), reading columns 640px max, 8px spacing scale, radius 2px.
+- Motion: one curve, one speed — 250ms ease; hover = border darkens / surface tints / text takes accent; page fades up 8px (`.fade-up`); everything collapses under `prefers-reduced-motion`.
+- **Light-locked.** Hao explicitly rejects dark/murky rendering; dark mode is specced in his design but ships only as a deliberate later pass.
+
+## Architecture
+
+- `src/content/*.ts` — all content as typed data (site nav, `writing.ts` Working Theory links, `garden.ts` ideas, `projects.ts` roster). Adding content = editing these files; no CMS, ever.
+- `src/components/site/Chrome.tsx` — SiteShell/Header/Footer + primitives (Container, Kicker, PageTitle, Lede, Note).
+- `src/app/{books,writing,projects,talks,garden,about,archive}` — the library rooms.
+- `/advisory` — the 2026 advisory practice, archived (noindex, enquiry form still wired to `/api/enquiry` via Resend). Linked only from `/archive`.
+- Legacy kept intact: `/sites` + business sites under `public/`, `/worldcupfighter`, `/friendsintelligence` static landing (redirect in `next.config.ts`).
+- `content-src/working-theory-cache/` (gitignored) — raw LinkedIn guest-page HTML for the recovered posts; use for full-text migration.
+
+## Roadmap state (2026-07)
+
+Phase 1 shipped (foundation, Home, About, section pages, advisory archived). Remaining: full book pages (why/contents/updates), project write-ups (Problem/Context/Design/Implementation/Lessons/Status/Future), Working Theory full-text migration home (needs Hao's LinkedIn data export for #23–47 etc.), talks as they happen, connections panel (green cross-links between works), RSS, dark pass.
+
+## Conventions
+
+- Counts and claims on pages must stay honest — empty sections say so plainly ("Empty · deliberately"), never fake fullness.
+- Pre-existing lint errors live in `public/premiumhairstyle/*.jsx` and the enquiry code; don't chase them in unrelated work.
+- `npm run dev` / `npm run build` / `npm run lint`. Amplify builds from `amplify.yml`.

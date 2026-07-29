@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HaoQian.co
 
-## Getting Started
+> Turning ideas into systems.
 
-First, run the development server:
+The personal digital library of Hao Qian — a permanent home for books, Working Theory essays, projects, talks and a digital garden. Built to be tended for decades, not redesigned every season.
+
+- **Strategy:** [STRATEGY.md](STRATEGY.md)
+- **Content inventory:** [CONTENT-INVENTORY.md](CONTENT-INVENTORY.md)
+- **Working notes for agents/contributors:** [CLAUDE.md](CLAUDE.md)
+
+## Stack
+
+Next.js 16 (App Router) · Tailwind CSS 4 · deployed via AWS Amplify (push to `main`).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # local dev on :3000
+npm run build   # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Path | What |
+|---|---|
+| `src/content/` | All content as typed data files — the shelves |
+| `src/components/site/Chrome.tsx` | Header, footer, page shell, primitives |
+| `src/app/` | The rooms: books, writing, projects, talks, garden, about, archive |
+| `public/` | Static assets incl. legacy sites and book covers |
+| `/advisory` | Archived 2026 advisory practice (unlinked, still functional) |

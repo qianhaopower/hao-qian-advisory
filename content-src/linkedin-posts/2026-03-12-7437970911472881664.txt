@@ -1,0 +1,12 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7437970911472881664/
+DATE: 2026-03-12
+
+Leo and I worked very closely together at Atlassian, and I can’t recommend him highly enough.
+
+We partnered on large-scale infrastructure work that moved hundreds of services across regions, helping deliver a more robust and reliable data experience to millions of Atlassian customers. Leo played a key role in making that happen.
+
+What makes Leo stand out is the rare combination of deep technical strength and strong leadership. He understands complex systems at a detailed level while also building trust, clarity, and momentum across teams. That balance makes him an exceptionally effective engineering manager.
+
+If you’re looking for a Senior Engineering Manager who can lead complex technical programs and build strong teams, Leo would be an outstanding addition.
+
+Happy to provide more context if helpful.

@@ -1,0 +1,84 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7453927899482681345/
+DATE: 2026-04-25
+
+Working Theory #15 — The First Anchor Wins
+
+“How about $1,200?”
+
+“No, that’s too much.”
+
+---
+
+But something has already happened.
+
+---
+
+Even though you said “too much,” 
+your mind is already working around that number.
+
+$1,000? 
+Maybe $900?
+
+---
+
+You’re no longer thinking:
+
+what should this actually be?
+
+You’re thinking:
+
+how far away from $1,200?
+
+---
+
+That’s the anchoring effect.
+
+---
+
+Experienced negotiators know this.
+
+They don’t react to the first number.
+
+They step back and ask:
+
+what is this actually worth?
+
+---
+
+And this shows up at work too.
+
+---
+
+I’ve seen many technical projects — refactors, redeployments — initially described as “about a week of work.”
+
+But once someone goes into the details, it turns out to be a few hours.
+
+---
+
+The first estimate wasn’t wrong on purpose.
+
+It was just a quick starting point.
+
+---
+
+But if no one challenges it,
+
+the thinking stays at that level.
+
+---
+
+That’s the challenge for a technical manager:
+
+Go into the details. 
+Understand what’s actually there. 
+
+Don’t let the first estimate anchor your judgment.
+
+---
+
+Even if you question the estimate, 
+you might still be thinking around it.
+
+That’s the anchoring effect.
+
+hashtag#WorkingTheory hashtag#Leadership hashtag#DecisionMaking hashtag#Negotiation hashtag#ProductThinking hashtag#SystemsThinking hashtag#EngineeringManagement

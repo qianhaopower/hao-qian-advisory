@@ -1,0 +1,52 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7466618314484748288/
+DATE: 2026-05-30
+
+Working Theory #44 — AI Playbook (Part 4: Set Hard Boundaries)
+
+One mistake I increasingly notice with AI is starting exploration without clear boundaries.
+
+When solving a complex problem, AI can generate an enormous number of possible directions. That sounds powerful, but in practice it often creates noise.
+
+The problem is not intelligence.
+
+The problem is search space.
+
+If you leave everything open, AI starts exploring too many branches at once: rewrite the architecture, reorganize teams, rebuild systems, change ownership, redesign workflows, rethink dependencies, optimize adjacent problems, and so on. Before long, the discussion becomes broad, expensive, and cognitively exhausting.
+
+I increasingly find it useful to define hard boundaries before asking AI to reason.
+
+Sometimes the rule is:
+
+> “Do not assume organizational restructuring.”
+
+Sometimes:
+
+> “No major rewrite.”
+
+Or:
+
+> “Ignore dependencies outside this team.”
+
+Or:
+
+> “Assume this system must stay backward compatible.”
+
+The point is not to artificially limit thinking.
+
+The point is to deliberately reduce the search space.
+
+In computer science terms, it feels a bit like pruning branches from a search tree. By removing paths we already know are unrealistic, too expensive, or simply outside scope, AI spends less effort wandering and more effort thinking deeply where it matters.
+
+The surprising thing is that stronger constraints often produce better answers.
+
+Less breadth.
+
+More depth.
+
+More focus.
+
+Because better reasoning is often not about exploring everything.
+
+It is about deciding what not to explore.
+
+hashtag#AI hashtag#Leadership hashtag#SystemsThinking hashtag#Engineering hashtag#Productivity

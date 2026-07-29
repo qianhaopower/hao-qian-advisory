@@ -1,0 +1,24 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7463410579526000640/
+DATE: 2026-05-22
+
+Working Theory #35 — When The World Speeds Up, Old Limits Break
+
+Yesterday LinkedIn temporarily rate-limited me because I posted three times within roughly 5–10 minutes 😄
+
+From LinkedIn’s perspective, this probably looked suspicious. In the old world, producing several reasonably thoughtful posts within minutes looked much more like automation than human behavior.
+
+But what actually happened was simple: I had a few ideas, discussed them with AI, pressure-tested them, rewrote them, and posted them. What previously might have taken hours now took minutes.
+
+The interesting part is not LinkedIn itself. It is the assumption behind the limit.
+
+Many systems are designed around assumptions of human speed: how quickly people think, write, review, decide, respond, or create. Those assumptions made sense when the pace of work changed slowly. But AI changes throughput. A draft becomes editable in minutes. Analysis becomes faster. Iteration compresses. Work that previously moved weekly sometimes moves daily, or even hourly.
+
+This raises a broader question for leaders and system designers: what are the hidden rate limits inside our organizations?
+
+Approval processes, review cycles, meeting cadence, escalation paths, planning timelines — are these still shaped for the world we are entering, or for the one we came from?
+
+Some limits still protect quality and trust.
+
+Some may simply be protecting assumptions that no longer exist.
+
+hashtag#AI hashtag#Leadership hashtag#SystemsThinking hashtag#FutureOfWork hashtag#Productivity

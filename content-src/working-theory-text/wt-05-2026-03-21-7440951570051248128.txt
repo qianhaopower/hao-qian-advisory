@@ -1,0 +1,36 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7440951570051248128/
+DATE: 2026-03-21
+
+Working Theory #5: Desk Theory
+
+If you’re a manager, work is always trying to flow back to you.
+
+Not because people are lazy, but because uncertainty, risk, and ownership are uncomfortable. When things are unclear or high-stakes, the easiest move is to bring the problem back “to the desk” — sometimes explicitly, often unconsciously.
+
+I’ve started to think of this as a desk with a slope.
+
+By default, the desk should slope away from the manager. Work flows outward, and ownership stays with the team. But if you’re not careful, the slope gradually tilts the other way. More decisions come back, more problems land on your desk, and before long, you become the bottleneck.
+
+Early in my career, I didn’t manage the slope well.
+
+I was leading a project to improve data protection for thousands of customers. The project lead pushed a lot of the uncertainty and pressure back to me. I stepped in, broke down the work, de-risked the plan, and carried a large part of the execution myself.
+
+The project moved forward — but at a cost.
+
+Other parts of my team were neglected because my capacity was stretched, and the project lead didn’t get the opportunity to grow into the problem.
+
+Years later, I faced a similar situation — a large load testing program across services owned by dozens of engineers. The project lead again faced complexity and looked to me to take it on.
+
+This time, I kept the slope.
+
+I provided support, guidance, and structure — but I didn’t take the problem back. I held ownership in the right place and helped them work through it.
+
+The outcome was very different.
+
+The project delivered as expected.
+The individual grew significantly.
+And I still had the capacity to manage other critical areas.
+
+Good management is not about absorbing work. It’s about controlling the slope of the desk. Most of the time, keep it tilted outward — so ownership stays with the team and people grow into larger problems. And when needed, deliberately tilt it inward — to provide support where it truly matters. 
+
+hashtag#Leadership hashtag#EngineeringManagement hashtag#Delegation hashtag#TeamLeadership hashtag#WorkingTheories

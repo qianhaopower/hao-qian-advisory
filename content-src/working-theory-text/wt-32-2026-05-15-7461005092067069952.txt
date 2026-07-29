@@ -1,0 +1,69 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7461005092067069952/
+DATE: 2026-05-15
+
+Working Theory #32 — The Octopus Manager — Part 1: Seeing the System
+
+Our deployment system runs as true continuous deployment.
+
+Dozens of PRs move toward production every week. Deployments progressively roll out through staged percentage gates over extended deployment windows.
+
+At the same time:
+- deployments overlap
+- old stacks are retained temporarily
+- worker groups scale up and down continuously
+- multiple regions are deploying simultaneously
+
+As a result, our infrastructure footprint fluctuates dynamically across thousands of EC2 instances at runtime.
+
+The system became too dynamic for humans to continuously reason about end-to-end.
+
+---
+
+Before AI-assisted analysis, correlating this behavior continuously required significant manual effort.
+
+The deployment timeline and the infrastructure cost timeline lived in different systems.
+
+To investigate them together, engineers would:
+- grep logs
+- write ad hoc scripts
+- stitch timelines together
+- mentally reconstruct rollout behavior
+
+Even then, humans could usually only identify local patterns and make educated guesses.
+
+---
+
+We started using AI-assisted analysis to correlate deployment timelines, infrastructure lifecycle events, and operational cost patterns over time.
+
+This became useful as a cognitive amplification layer for identifying recurring operational patterns across systems.
+
+One major discovery was surprisingly simple:
+
+Many EC2 instances were no longer doing meaningful work, but residual tasks and historical retention rules were preventing them from terminating promptly.
+
+The eventual fix itself was relatively small:
+inactive worker groups scaled down to a minimal safe footprint instead of remaining unnecessarily alive.
+
+Humans still made the final operational judgment calls.
+
+Some recommendations reduced redundancy more aggressively than what we considered operationally safe, so we intentionally retained additional redundancy during deployment windows.
+
+Humans optimized for survivability and operational safety.
+
+---
+
+The optimization materially improved infrastructure efficiency.
+
+But the more important realization was that the bottleneck was no longer compute capacity.
+
+It was human cognitive bandwidth.
+
+Modern distributed systems evolve faster than humans can continuously reason across deployment timelines, infrastructure behavior, operational state transitions, and cost patterns manually and simultaneously.
+
+AI-assisted analysis did not replace operational judgment.
+
+It expanded operational visibility.
+
+For the first time, it felt possible to observe the system more holistically instead of reasoning through isolated fragments and incomplete mental models.
+
+hashtag#AI hashtag#DistributedSystems hashtag#Engineering hashtag#PlatformEngineering hashtag#DevOps hashtag#SystemsThinking

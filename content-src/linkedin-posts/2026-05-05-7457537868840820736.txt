@@ -1,0 +1,37 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7457537868840820736/
+DATE: 2026-05-05
+
+We’re closing month-end 5 days faster.
+
+No extra hires.
+No new systems.
+
+Four weeks ago, I connected Claude to Xero via an MCP server.
+
+10-minute setup. £5/month custom connector.
+
+Since then, everything’s changed.
+
+Here’s what it’s actually doing at month-end:
+
+• Flags journals, accruals, and issues before I’ve even opened the file
+• Analyses variances vs budget and prior periods and tells me what actually matters
+• Drafts commentary and variance analysis 
+• Builds KPI dashboards and the management pack
+
+And outside of month-end:
+
+• Sends weekly AR chaser updates to clients automatically
+• Answers ad-hoc questions and pulls reports without me logging into Xero
+
+Tasks that used to take an afternoon now take 10 minutes.
+
+But it’s not perfect.
+It lacks context, It guesses on outliers and It gets things wrong, just like a junior.
+
+The difference?
+You train it the same way.
+Give it context, Explain why the numbers look the way they do, Teach it what to flag next time and unlike a junior… it doesn’t forget.
+
+AI won’t replace accountants.
+But accountants using AI will replace the ones who don’t.

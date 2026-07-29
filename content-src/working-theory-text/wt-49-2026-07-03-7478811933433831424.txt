@@ -1,0 +1,53 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7478811933433831424/
+DATE: 2026-07-03
+
+Working Theory #49
+
+From Screenshot to Software
+
+Recently, I noticed something strange while working on software changes for a client.
+
+The client would send feedback through Slack messages, screenshots, or a short video.
+
+I would look at it briefly, take the screenshot, and send it directly to AI.
+
+Then AI would read the conversation, understand the context, find the relevant part of the software, and make the change.
+
+Very often, I did not need to rewrite the feedback.
+
+I did not need to create a detailed ticket.
+
+I did not need to translate the client’s words into technical requirements.
+
+The screenshot was enough.
+
+The old workflow looked like this:
+
+Client feedback 
+→ understand it 
+→ rewrite the requirement 
+→ explain the context 
+→ build the change
+
+Now it increasingly looks like this:
+
+Client feedback 
+→ screenshot 
+→ AI 
+→ working software
+
+Of course, I still need to check whether the interpretation and implementation are correct.
+
+But the translation work in the middle is disappearing.
+
+A screenshot is no longer just an image.
+
+It contains the interface, the wording, the surrounding conversation, and often enough context for AI to understand what the client wants.
+
+This feels like a fundamental change in software work.
+
+Maybe the future of software requirements is not a perfectly written ticket.
+
+Maybe sometimes it is simply:
+
+“Here is the screenshot. Please fix it.”

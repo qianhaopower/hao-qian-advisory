@@ -1,0 +1,56 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7466617043635658752/
+DATE: 2026-05-30
+
+Working Theory #43 — AI Playbook (Part 3: Replay & Learn)
+
+One mistake I increasingly notice with AI is treating every project as disposable thinking.
+
+We use AI to plan, debate trade-offs, predict risks, estimate costs, challenge assumptions, and make decisions. Then the project ships, reality happens, and we move on.
+
+That feels like a missed opportunity.
+
+After enough time passes, real feedback eventually arrives. Some assumptions turn out right. Others fail. Some risks materialize. Some never happen. Costs blow up in places nobody expected. Security concerns appear. Dependencies surface. Sometimes the biggest surprise is discovering what we never even thought to ask.
+
+Instead of starting fresh, I increasingly find it useful to go back to the original planning agent.
+
+Bring reality back into the conversation.
+
+What actually happened?
+
+Which predictions held?
+
+Which assumptions failed?
+
+What signals did we miss?
+
+What should have been compared but wasn’t?
+
+What turned out to be genuinely unknowable versus avoidable?
+
+Then write those lessons down.
+
+Not as vague retrospectives, but as reusable constraints for the next problem.
+
+For example:
+
+> “Always compare against historical incidents.”
+
+> “Search cost patterns before recommending rollout changes.”
+
+> “Do not assume local optimization improves system outcomes.”
+
+> “Validate dependencies before suggesting simplification.”
+
+Over time, something interesting happens.
+
+The AI assistant starts accumulating scars.
+
+Not memory in the human sense, but operational lessons. Artifacts. Constraints. Better judgment boundaries.
+
+The biggest shift is this:
+
+Don’t just use a silicon brain.
+
+Train one.
+
+hashtag#AI hashtag#Leadership hashtag#Engineering hashtag#SystemsThinking hashtag#Learning

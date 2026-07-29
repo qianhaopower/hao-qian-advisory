@@ -1,0 +1,39 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7442518898048110592/
+DATE: 2026-03-25
+
+Working Theory #6：Decision Timing Theory
+
+Not all decisions should be made the same way. The key distinction is whether the system you’re operating in converges or keeps moving.
+
+In small, contained problems — like planning a 3–4 person project — you can afford to wait. Availability, requirements, dependencies, and complexity can all be gathered and stabilized. The system converges, and once enough variables settle, the decision naturally becomes clear.
+
+But in larger, multi-quarter initiatives, the system behaves differently. Inputs don’t converge — they evolve. People change, priorities shift, dependencies expand, constraints emerge, and trade-offs multiply. By the time you collect the information, it is already outdated. There is no clean “ready” state.
+
+At that point, waiting is no longer a path to clarity. It becomes a trap.
+
+A useful way to think about this is:
+
+Decision Value = Information Value − Delay Cost
+
+In converging systems, information value grows faster than delay cost, so waiting improves decisions.
+In non-converging systems, delay cost grows faster than information value, because the system itself keeps changing.
+
+There is a tipping point where:
+
+d(Information Value)/dt < d(Delay Cost)/dt
+
+Beyond this point, every additional unit of waiting reduces overall outcome quality.
+
+That is the moment most teams miss.
+
+Instead of asking “Do we have enough to decide?”, the better question becomes “When will we decide?” — defining a clear decision threshold based on time, key signals, or bounded assumptions.
+
+In simple systems, you wait for clarity.
+In complex systems, you create the moment of decision.
+
+Good leadership is not just about making better decisions.
+It’s about knowing when waiting stops helping — and deciding anyway.
+
+⸻
+
+hashtag#WorkingTheory hashtag#Leadership hashtag#DecisionMaking

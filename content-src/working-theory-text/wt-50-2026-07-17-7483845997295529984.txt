@@ -1,0 +1,38 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7483845997295529984/
+DATE: 2026-07-17
+
+**Working Theory #50 — Testing The Test**
+
+Today AI surprised me with a sentence I didn't ask for.
+
+> "Let me verify the new test actually catches the bug — a test that can't fail is worthless."
+
+I paused for a second.
+
+Not because the idea is new.
+
+Every engineer knows a good test should fail before it passes.
+
+What surprised me was that AI volunteered to test its own test.
+
+A few years ago, getting ourselves to write tests consistently was already hard enough.
+
+Now my AI assistant is saying,
+
+"Before we move on, let's make sure our verification actually verifies something."
+
+That's one extra layer of thinking.
+
+Not writing code.
+
+Not writing tests.
+
+Validating the validator.
+
+I hope one day I naturally hold my own thinking to the same standard.
+
+If an argument can't possibly be proven wrong...
+
+it probably isn't a very good test either.
+
+hashtag#AI hashtag#Engineering hashtag#SoftwareTesting hashtag#SystemsThinking

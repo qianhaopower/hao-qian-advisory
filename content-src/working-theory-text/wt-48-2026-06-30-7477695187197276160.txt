@@ -1,0 +1,40 @@
+URL: https://www.linkedin.com/feed/update/urn:li:activity:7477695187197276160/
+DATE: 2026-06-30
+
+Working Theory #48 — A Third Option
+
+I asked AI to build a feature with one constraint:
+
+No extra dependencies.
+
+I expected it to say:
+
+"Okay, then we can't do it."
+
+Instead it replied:
+
+> "I can write a tiny zip encoder by hand."
+
+By hand.
+
+Interesting choice of words from something that doesn't actually have hands.
+
+The funny part is that it wasn't joking.
+
+A few years ago, the choice was simple:
+
+Use a library.
+
+Or spend hours writing your own.
+
+Now there's a third option:
+
+Generate a tiny implementation that solves exactly one problem.
+
+AI isn't just making coding faster.
+
+It's changing what's worth building in the first place.
+
+(I'm still waiting to find out whose hands it was planning to use.)
+
+hashtag#AI hashtag#Engineering hashtag#SoftwareDevelopment hashtag#SystemsThinking
