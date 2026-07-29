@@ -25,6 +25,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: essay.date,
       authors: ["Hao Qian"],
+      images: essay.images.length > 0 ? [essay.images[0]] : undefined,
     },
   };
 }
@@ -78,6 +79,25 @@ export default async function EssayPage({
               </p>
             ))}
           </div>
+
+          {essay.images.length > 0 && (
+            <div className="mt-12 flex flex-col gap-6">
+              {essay.images.map((src, i) => (
+                <figure
+                  key={src}
+                  className="overflow-hidden rounded-[2px] border border-line"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={`${essay.title} — figure ${i + 1}`}
+                    className="block w-full"
+                    loading="lazy"
+                  />
+                </figure>
+              ))}
+            </div>
+          )}
 
           <footer className="mt-14 border-t border-line pt-6">
             <a

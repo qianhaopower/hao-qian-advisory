@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { WORKING_THEORY, type WorkingTheoryPost } from "@/content/writing";
+import imageMap from "@/content/essay-images.json";
 
 /*
  * Build-time loader for Working Theory essays.
@@ -17,6 +18,8 @@ export type Essay = WorkingTheoryPost & {
   series?: string;
   /** paragraph blocks; each block is a list of lines (soft breaks) */
   blocks: string[][];
+  /** public paths of the figures posted with the essay, in order */
+  images: string[];
   minutes: number;
   excerpt: string;
 };
@@ -138,13 +141,19 @@ export function getEssays(): Essay[] {
     const excerpt =
       firstBlock.length > 180 ? `${firstBlock.slice(0, 177).trimEnd()}…` : firstBlock;
 
+    const slug = `wt-${post.no.toLowerCase()}`;
+    const images = ((imageMap as Record<string, string[]>)[slug] ?? []).map(
+      (f) => `/writing/images/${f}`
+    );
+
     return {
       ...post,
-      slug: `wt-${post.no.toLowerCase()}`,
+      slug,
       urn,
       topics,
       series,
       blocks,
+      images,
       minutes: Math.max(1, Math.round(words / 200)),
       excerpt,
     };
