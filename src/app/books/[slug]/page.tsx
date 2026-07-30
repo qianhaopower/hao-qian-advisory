@@ -84,6 +84,22 @@ export default async function BookPage({
             <div className="meta mt-5 !normal-case !tracking-[0.08em]">
               {book.facts.join(" · ")}
             </div>
+            {book.buy && (
+              <div className="mt-7 flex flex-wrap items-center gap-5">
+                <a
+                  href={book.buy.href}
+                  className="inline-flex items-center rounded-[2px] bg-ink px-6 py-3 text-[14px] font-medium text-paper transition-colors duration-[250ms] hover:bg-[#3A362F]"
+                >
+                  {book.buy.label} ↗
+                </a>
+                <a
+                  href="#editions"
+                  className="text-[13.5px] text-ink-2 transition-colors duration-[250ms] hover:text-accent"
+                >
+                  All editions ↓
+                </a>
+              </div>
+            )}
           </div>
         </header>
 
@@ -178,7 +194,7 @@ export default async function BookPage({
           )}
 
           {/* Editions */}
-          <section className="mb-12">
+          <section id="editions" className="mb-12 scroll-mt-24">
             <h2 className="mb-5 font-serif text-[26px] font-medium leading-[1.3] min-[900px]:text-[28px]">
               Editions
             </h2>

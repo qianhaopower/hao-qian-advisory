@@ -22,6 +22,8 @@ export type Book = {
   coverLabel?: string;
   oneLiner: string;
   facts: string[];
+  /** prominent one-click purchase action, shown in the page header */
+  buy?: { label: string; href: string };
   sections: BookSection[];
   insideHeading?: string;
   inside?: BookListItem[];
@@ -52,6 +54,10 @@ export const BOOKS: Book[] = [
       "ISBN 9798181687486",
       "First edition, 2026",
     ],
+    buy: {
+      label: "Buy on Amazon — Paperback & Kindle",
+      href: "https://www.amazon.com.au/dp/B0H5R5C8B6",
+    },
     sections: [
       {
         heading: "Why this book exists",
@@ -127,6 +133,10 @@ export const BOOKS: Book[] = [
       "ISBN 9798188767174",
       "Reading age 3–8",
     ],
+    buy: {
+      label: "Buy on Amazon — Hardcover",
+      href: "https://www.amazon.com/dp/B0HBVBBBBX",
+    },
     sections: [
       {
         heading: "It started with a real fish tank",
