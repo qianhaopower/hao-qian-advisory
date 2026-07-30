@@ -106,6 +106,13 @@ export default function AboutPage() {
               — where Working Theory is serialised first.
             </li>
             <li>
+              <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href={SITE.github}>
+                GitHub
+              </a>{" "}
+              — the public source: this site, the Friends Intelligence app,
+              and a decade of learning in the open.
+            </li>
+            <li>
               <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href="https://www.amazon.com.au/dp/B0H5R5C8B6">
                 Friends Intelligence on Amazon
               </a>{" "}

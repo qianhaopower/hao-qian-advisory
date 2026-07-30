@@ -61,6 +61,12 @@ export function SiteFooter() {
             RSS
           </a>
           <a
+            href={SITE.github}
+            className="text-ink-2 transition-colors duration-[250ms] hover:text-accent"
+          >
+            GitHub
+          </a>
+          <a
             href={SITE.linkedin}
             className="text-ink-2 transition-colors duration-[250ms] hover:text-accent"
           >

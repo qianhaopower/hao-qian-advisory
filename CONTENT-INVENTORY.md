@@ -51,6 +51,21 @@ The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts
 | HaoQian.co | this repo | the library itself |
 | (candidate) Mowing service site | `~/Documents/mowing-service-marketing-site` | found locally — confirm with Hao whether it shipped |
 
+## GitHub (github.com/qianhaopower — 28 public repos, checked 2026-07-30)
+
+Distribution channel + archive material. Site links live in the footer, About/Elsewhere, project pages and /archive.
+
+| Repo | Maps to |
+|---|---|
+| `hao-qian-advisory` | this site (haoqian-co project links it) |
+| `fiappV1` (+ older `FIAPP`) | Friends Intelligence App project |
+| `lwbv2` (+ `littlewowballoonsmarketing`) | Little Wow Balloons project |
+| `calla-and-cups-cafe` | Local business sites project |
+| `smt-gardening-marketing-site` | the mowing/gardening site found locally — still unconfirmed as shipped |
+| 2015–21 back-catalogue (QuickRoster, TradesMate*, RedPill, SchoolRankMap, 23-Design-Patterns…) | /archive "The early repositories" |
+
+Private (not visible/linkable): Fish Fun, Book Publisher, aibizmate.co, charismortgage.com.au, worldcupfightor standalone.
+
 ## Digital Garden (seed ideas)
 
 - **#138** — Books are software. Readers compile them.

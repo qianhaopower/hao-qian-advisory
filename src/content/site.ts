@@ -6,6 +6,7 @@ export const SITE = {
   principle:
     "Every meaningful thing I create should eventually have a permanent home here.",
   linkedin: "https://www.linkedin.com/in/hao-qian-9ab0b04b/",
+  github: "https://github.com/qianhaopower",
 };
 
 export type SectionEntry = {

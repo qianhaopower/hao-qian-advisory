@@ -32,6 +32,12 @@ const HOLDINGS: { meta: string; title: string; note: string; href: string }[] = 
     note: "Small sites built for Melbourne neighbours — café, pies, jianbing, hair.",
     href: "/sites",
   },
+  {
+    meta: "2015–21 · Code",
+    title: "The early repositories",
+    note: "A decade of learning in public on GitHub — design-pattern drills, a rostering system, a trades marketplace, a Victorian school map. Kept, not polished.",
+    href: "https://github.com/qianhaopower?tab=repositories",
+  },
 ];
 
 export default function ArchivePage() {

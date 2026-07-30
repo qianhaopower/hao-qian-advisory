@@ -39,6 +39,7 @@ export const PROJECTS: Project[] = [
     links: [
       { label: "Open the app", href: "https://friendsintelligence.net" },
       { label: "The book it comes from", href: "/books/friends-intelligence" },
+      { label: "Source on GitHub", href: "https://github.com/qianhaopower/fiappV1" },
     ],
     facts: [
       "Next.js (App Router) · AWS Amplify · DynamoDB",
@@ -212,7 +213,10 @@ export const PROJECTS: Project[] = [
     oneLiner:
       "A silly cartoon fight simulator — 55 teams, procedural sound, shareable battle cards.",
     status: "Live at /worldcupfighter",
-    links: [{ label: "Pick two teams and hit FIGHT", href: "/worldcupfighter" }],
+    links: [
+      { label: "Pick two teams and hit FIGHT", href: "/worldcupfighter" },
+      { label: "Source on GitHub", href: "https://github.com/qianhaopower/hao-qian-advisory/tree/main/src/wcf" },
+    ],
     facts: [
       "React + TypeScript · framer-motion · Web Audio API · html2canvas",
     ],
@@ -260,7 +264,10 @@ export const PROJECTS: Project[] = [
     oneLiner:
       "My balloon studio — live twisting for parties and festivals, delivered bundles across Melbourne.",
     status: "Live at littlewowballoons.com · taking bookings",
-    links: [{ label: "The studio", href: "https://littlewowballoons.com" }],
+    links: [
+      { label: "The studio", href: "https://littlewowballoons.com" },
+      { label: "Source on GitHub", href: "https://github.com/qianhaopower/lwbv2" },
+    ],
     facts: ["Vite + React single-page site · AWS Amplify"],
     screenshot: {
       src: "/projects/little-wow-balloons.jpg",
@@ -350,7 +357,10 @@ export const PROJECTS: Project[] = [
     oneLiner:
       "A café, a pie shop, a jianbing house, a hair salon — small fast sites for real neighbours.",
     status: "Live under /sites",
-    links: [{ label: "The collection", href: "/sites" }],
+    links: [
+      { label: "The collection", href: "/sites" },
+      { label: "Calla & Cups source on GitHub", href: "https://github.com/qianhaopower/calla-and-cups-cafe" },
+    ],
     facts: ["Plain static HTML/CSS · real photography · zero build tooling"],
     screenshot: {
       src: "/projects/local-business-sites.jpg",
@@ -390,7 +400,7 @@ export const PROJECTS: Project[] = [
     oneLiner: "This library itself — a body of work given a permanent home.",
     status: "You are reading it",
     links: [
-      { label: "The strategy, in public", href: "https://github.com/qianhaopower/hao-qian-advisory" },
+      { label: "Source on GitHub — strategy, content and code, all public", href: "https://github.com/qianhaopower/hao-qian-advisory" },
     ],
     facts: [
       "Next.js 16 · Tailwind 4 · AWS Amplify",
