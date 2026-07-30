@@ -120,6 +120,7 @@ export function Constellation({ data }: { data: StarData }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hover, setHover] = useState<{ i: number; x: number; y: number } | null>(null);
   const hoverRef = useRef<number>(-1);
+  const posterRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -288,6 +289,103 @@ export function Constellation({ data }: { data: StarData }) {
       if (i >= 0) window.location.href = data.nodes[i].href;
     };
 
+    /* the same sky, printed: a 2000×2600 poster rendered on demand */
+    const serifFam = probe.getPropertyValue("--font-newsreader").trim() || "Georgia, serif";
+    const monoFam = probe.getPropertyValue("--font-plex-mono").trim() || "monospace";
+    posterRef.current = () => {
+      void (async () => {
+        await document.fonts?.ready;
+        const W = 2000;
+        const H = 2600;
+        const M = 150;
+        const c = document.createElement("canvas");
+        c.width = W;
+        c.height = H;
+        const p = c.getContext("2d");
+        if (!p) return;
+        const ls = p as CanvasRenderingContext2D & { letterSpacing?: string };
+        p.fillStyle = "#FBFAF7";
+        p.fillRect(0, 0, W, H);
+
+        ls.letterSpacing = "6px";
+        p.fillStyle = col.faint;
+        p.font = `500 26px ${monoFam}`;
+        p.fillText("HAO QIAN · MELBOURNE · A LIBRARY, NOT A WEBSITE", M, M + 16);
+
+        ls.letterSpacing = "0px";
+        p.fillStyle = col.ink;
+        p.font = `500 118px ${serifFam}`;
+        p.fillText("Turning ideas", M, M + 180);
+        p.fillText("into systems.", M, M + 312);
+
+        const cx0 = M;
+        const cy0 = 660;
+        const cw = W - 2 * M;
+        const chh = 1460;
+        const P = (i: number): [number, number] => [
+          cx0 + laid[i].hx * cw,
+          cy0 + laid[i].hy * chh,
+        ];
+        p.lineWidth = 2;
+        for (const [a, b] of touching) {
+          p.strokeStyle = col.ink;
+          p.globalAlpha = 0.16;
+          p.beginPath();
+          p.moveTo(...P(a));
+          p.lineTo(...P(b));
+          p.stroke();
+        }
+        for (let i = 0; i < data.nodes.length; i++) {
+          const n = data.nodes[i];
+          let fill = col.ink;
+          let alpha = 1;
+          if (n.kind === "essay") {
+            fill = col.faint;
+            alpha = 0.75;
+          } else if (n.kind === "project") alpha = 0.8;
+          else if (n.kind === "idea") {
+            fill = col.connect;
+            alpha = 0.95;
+          }
+          p.globalAlpha = alpha;
+          p.fillStyle = fill;
+          p.beginPath();
+          p.arc(...P(i), laid[i].r * 2.4, 0, Math.PI * 2);
+          p.fill();
+        }
+        p.globalAlpha = 1;
+
+        ls.letterSpacing = "4px";
+        p.font = `500 24px ${monoFam}`;
+        p.fillStyle = col.faint;
+        p.fillText(
+          `${data.counts.books} BOOKS · ${data.counts.projects} PROJECTS · ${data.counts.essays} THEORIES · ${data.counts.ideas} IDEAS — EVERY LINE IS REAL`,
+          M,
+          2320
+        );
+        p.fillStyle = col.ink;
+        p.fillRect(M, 2372, W - 2 * M, 3);
+        ls.letterSpacing = "0px";
+        p.font = `500 46px ${serifFam}`;
+        p.fillText("Hao Qian", M, 2465);
+        ls.letterSpacing = "4px";
+        p.font = `500 26px ${monoFam}`;
+        p.fillStyle = col.faint;
+        const foot = "HAOQIAN.CO · 2026";
+        p.fillText(foot, W - M - p.measureText(foot).width, 2458);
+
+        c.toBlob((blob) => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "haoqian-co-constellation.png";
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(url), 4000);
+        }, "image/png");
+      })();
+    };
+
     const io = new IntersectionObserver(([entry]) => {
       running = entry.isIntersecting;
     });
@@ -351,7 +449,15 @@ export function Constellation({ data }: { data: StarData }) {
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-[5px] w-[5px] rounded-full bg-connect" /> {data.counts.ideas} ideas
         </span>
-        <span className="ml-auto normal-case tracking-[0.08em]">every line is real</span>
+        <span className="ml-auto flex items-baseline gap-4 normal-case tracking-[0.08em]">
+          every line is real
+          <button
+            onClick={() => posterRef.current?.()}
+            className="rounded-[2px] border border-btnline px-2.5 py-1 uppercase tracking-[0.12em] text-ink-2 transition-colors duration-[250ms] hover:border-ink hover:text-ink"
+          >
+            ↓ poster
+          </button>
+        </span>
       </div>
     </div>
   );

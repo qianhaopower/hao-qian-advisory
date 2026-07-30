@@ -142,4 +142,33 @@ body {
       transform: translateX(var(--sway));
     }
   }
+
+  /* the Fish Fun cast, crossing the page */
+  .fish-swim {
+    animation-name: fish-swim;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+  }
+  @keyframes fish-swim {
+    from {
+      transform: translateX(-170px);
+    }
+    to {
+      transform: translateX(calc(100vw + 170px));
+    }
+  }
+  .fish-bob {
+    animation-name: fish-bob;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  @keyframes fish-bob {
+    from {
+      transform: translateY(-5px);
+    }
+    to {
+      transform: translateY(5px);
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteShell, Container, Kicker, PageTitle } from "@/components/site/Chrome";
+import { HiddenPiano } from "@/components/site/HiddenPiano";
 import { SITE } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -126,6 +127,11 @@ export default function AboutPage() {
         <p className="mt-20 font-serif text-[23px] italic leading-[1.5]">
           I&rsquo;m building a body of work.
         </p>
+
+        <p className="mt-14 font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
+          P.S. — this page is in tune. Try your home row.
+        </p>
+        <HiddenPiano />
       </Container>
     </SiteShell>
   );

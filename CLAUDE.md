@@ -39,6 +39,9 @@ The masthead's star chart (`src/components/site/Constellation.tsx`, data from `s
 - `⚂ Read one at random` on /writing (`RandomTheory.tsx`) — serendipity over the 52.
 - 404 (`app/not-found.tsx`) — "This shelf is empty." + three random theories + search.
 - Easter egg: five quick clicks on the wordmark release balloons (`Wordmark.tsx` + keyframes in globals) — a nod to Little Wow Balloons, the librarian's real balloon studio. Reduced-motion shows only the toast. Jokes must stay true to Hao's real life; no invented whimsy.
+- Hidden piano on /about (`HiddenPiano.tsx`): home row = white keys, row above = black keys, sounds synthesised via Web Audio (no files, same spirit as WCF's procedural audio); a key strip appears on first note and fades. Hint is the mono P.S. line at the page's end.
+- `↓ poster` button in the constellation legend renders the star chart as a 2000×2600 PNG (client-side canvas, real Newsreader/Plex Mono via the next/font CSS variables) and downloads it.
+- Fish Fun book page: Goldie, Zoey, Lulu and Stella (`FishSwim.tsx`, true colours incl. Lulu's spots and Stella's stripes) swim across once when the reader scrolls to the editions area; skipped entirely under reduced-motion.
 
 ## Conventions
 

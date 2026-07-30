@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteShell, Container, Kicker } from "@/components/site/Chrome";
 import { Connections } from "@/components/site/Connections";
+import { FishSwim } from "@/components/site/FishSwim";
 import { BOOKS, getBook } from "@/content/books";
 import { getEssays } from "@/lib/essays";
 
@@ -192,6 +193,8 @@ export default async function BookPage({
               </div>
             </section>
           )}
+
+          {book.slug === "fish-fun" && <FishSwim />}
 
           {/* Editions */}
           <section id="editions" className="mb-12 scroll-mt-24">
