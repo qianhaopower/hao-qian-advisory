@@ -26,7 +26,11 @@ export async function generateMetadata({
       type: "article",
       publishedTime: essay.date,
       authors: ["Hao Qian"],
-      images: essay.images.length > 0 ? [essay.images[0]] : undefined,
+      images: [
+        essay.images.length > 0
+          ? essay.images[0]
+          : `/writing/${essay.slug}/opengraph-image`,
+      ],
     },
   };
 }

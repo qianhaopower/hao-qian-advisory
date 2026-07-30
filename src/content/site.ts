@@ -23,6 +23,7 @@ export const NAV: { href: string; label: string }[] = [
   { href: "/talks", label: "Talks" },
   { href: "/garden", label: "Garden" },
   { href: "/about", label: "About" },
+  { href: "/search", label: "Search" },
 ];
 
 /* Home index — every room of the library, with honest counts. */

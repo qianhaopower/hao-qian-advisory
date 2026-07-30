@@ -42,7 +42,7 @@ The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts
 | Project | Live | Notes |
 |---|---|---|
 | Friends Intelligence App | https://friendsintelligence.net | flagship; auth/payments/DB; assessment + practices |
-| Content Studio · AI Business Mate | https://aibizmate.co (demo: /demo.html) | daily social content for AU accountants/brokers/advisers; $490–690/mo tiers; ⚠️ aibizmate.com now 301s to vittorious.app which is NOT Hao's — fix DNS or drop the .com |
+| Content Studio · AI Business Mate | https://aibizmate.co (demo: /demo.html) | daily social content for AU accountants/brokers/advisers; $490–690/mo tiers. The address is the .co — aibizmate.com is unrelated to Hao (confirmed 2026-07-30) |
 | World Cup Fighter | /worldcupfighter (this repo) | cartoon fight simulator; React/TS, framer-motion, procedural Web Audio, html2canvas share cards |
 | Little Wow Balloons | http://littlewowballoons.com | Hao's balloon business — live twisting + delivery bundles ($180/hr, $240–550 bundles), Melbourne E/SE; repos `~/Documents/lwb`, `lwbv2` |
 | Charis Mortgage | https://charismortgage.com.au | client site — Charis Fok, Melbourne broker, multilingual EN/中文/粤语; repo `~/Documents/charismortgage.com.au` |

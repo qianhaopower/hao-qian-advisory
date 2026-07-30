@@ -25,7 +25,7 @@ export async function generateMetadata({
       title: `${book.title} — Hao Qian`,
       description: book.oneLiner,
       type: "book",
-      images: book.cover ? [book.cover.src] : undefined,
+      images: [book.cover ? book.cover.src : `/books/${book.slug}/opengraph-image`],
     },
   };
 }

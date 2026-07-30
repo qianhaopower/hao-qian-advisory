@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/garden",
     "/about",
     "/archive",
+    "/search",
   ].map((p) => ({ url: `${SITE_URL}${p}` }));
 
   const bookRoutes = BOOKS.map((b) => ({

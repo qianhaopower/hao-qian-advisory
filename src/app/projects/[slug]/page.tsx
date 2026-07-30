@@ -24,6 +24,7 @@ export async function generateMetadata({
       title: `${project.name} — Hao Qian`,
       description: project.oneLiner,
       type: "article",
+      images: [`/projects/${project.slug}/opengraph-image`],
     },
   };
 }
