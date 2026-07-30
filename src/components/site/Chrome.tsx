@@ -59,6 +59,12 @@ export function SiteFooter() {
             Archive
           </Link>
           <a
+            href="/feed.xml"
+            className="text-ink-2 transition-colors duration-[250ms] hover:text-accent"
+          >
+            RSS
+          </a>
+          <a
             href={SITE.linkedin}
             className="text-ink-2 transition-colors duration-[250ms] hover:text-accent"
           >

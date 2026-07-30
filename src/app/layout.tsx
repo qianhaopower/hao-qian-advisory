@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     siteName: "HaoQian.co",
     type: "website",
   },
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
 };
 
 export default function RootLayout({
