@@ -24,6 +24,7 @@ export type Project = {
   status: string;
   links?: { label: string; href: string }[];
   facts?: string[];
+  screenshot?: { src: string; caption: string };
   sections: ProjectSection[];
 };
 
@@ -43,6 +44,10 @@ export const PROJECTS: Project[] = [
       "Next.js (App Router) · AWS Amplify · DynamoDB",
       "35-question assessment · 7 pillars · daily practices",
     ],
+    screenshot: {
+      src: "/projects/friends-intelligence-app.jpg",
+      caption: "friendsintelligence.net — find your focus pillar; free, no account needed to start.",
+    },
     sections: [
       {
         heading: "Problem",
@@ -100,6 +105,10 @@ export const PROJECTS: Project[] = [
       "Static marketing site + Next.js client portal (Amplify)",
       "Local Node content engine · googleapis · SVG→PNG rendering",
     ],
+    screenshot: {
+      src: "/projects/content-studio.jpg",
+      caption: "aibizmate.co — daily content in the client's own voice, portal preview alongside.",
+    },
     sections: [
       {
         heading: "Problem",
@@ -150,6 +159,10 @@ export const PROJECTS: Project[] = [
       "166 locked page images · SHA-256 manifests · Python tooling",
       "KDP 8.25×11″ premium-colour hardcover · 300–600 DPI pipeline",
     ],
+    screenshot: {
+      src: "/projects/fish-fun-production-line.jpg",
+      caption: "The production dashboard — every page tracked from scan to print master, cover candidates included.",
+    },
     sections: [
       {
         heading: "Problem",
@@ -203,6 +216,10 @@ export const PROJECTS: Project[] = [
     facts: [
       "React + TypeScript · framer-motion · Web Audio API · html2canvas",
     ],
+    screenshot: {
+      src: "/projects/world-cup-fighter.jpg",
+      caption: "Brazil v China, moments before kickoff. Scientifically inaccurate, emotionally correct.",
+    },
     sections: [
       {
         heading: "Problem",
@@ -245,6 +262,10 @@ export const PROJECTS: Project[] = [
     status: "Live at littlewowballoons.com · taking bookings",
     links: [{ label: "The studio", href: "https://littlewowballoons.com" }],
     facts: ["Vite + React single-page site · AWS Amplify"],
+    screenshot: {
+      src: "/projects/little-wow-balloons.jpg",
+      caption: "littlewowballoons.com — unforgettable balloons, real photos, real bookings.",
+    },
     sections: [
       {
         heading: "Problem",
@@ -290,6 +311,10 @@ export const PROJECTS: Project[] = [
       "Next.js · no database, no CRM, no paid runtime APIs",
       "EN · 中文 · 粤语 · Web3Forms as the only external call",
     ],
+    screenshot: {
+      src: "/projects/charis-mortgage.jpg",
+      caption: "charismortgage.com.au — the boutique front door, reviews and calculators a scroll away.",
+    },
     sections: [
       {
         heading: "Problem",
@@ -327,6 +352,10 @@ export const PROJECTS: Project[] = [
     status: "Live under /sites",
     links: [{ label: "The collection", href: "/sites" }],
     facts: ["Plain static HTML/CSS · real photography · zero build tooling"],
+    screenshot: {
+      src: "/projects/local-business-sites.jpg",
+      caption: "The collection at /sites — café, pies, jianbing, hair.",
+    },
     sections: [
       {
         heading: "Problem",
@@ -367,6 +396,10 @@ export const PROJECTS: Project[] = [
       "Next.js 16 · Tailwind 4 · AWS Amplify",
       "Content as typed data files · no CMS · design by owner, build by agent",
     ],
+    screenshot: {
+      src: "/projects/haoqian-co.jpg",
+      caption: "The library's front page — this site, photographed by itself.",
+    },
     sections: [
       {
         heading: "Problem",

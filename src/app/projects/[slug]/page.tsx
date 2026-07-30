@@ -89,6 +89,23 @@ export default async function ProjectPage({
           )}
         </div>
 
+        {/* Screenshot */}
+        {project.screenshot && (
+          <figure className="mt-10 max-w-[880px]">
+            <div className="overflow-hidden rounded-[2px] border border-line">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.screenshot.src}
+                alt={`${project.name} — screenshot`}
+                className="block w-full"
+              />
+            </div>
+            <figcaption className="mt-3 text-[13.5px] leading-[1.6] text-ink-2">
+              {project.screenshot.caption}
+            </figcaption>
+          </figure>
+        )}
+
         {/* The template + connections rail */}
         <div className="mt-12 grid grid-cols-1 items-start gap-10 min-[1000px]:grid-cols-[640px_minmax(240px,1fr)]">
           <div className="max-w-[640px]">
