@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   SiteShell,
   Container,
@@ -7,6 +8,7 @@ import {
   Lede,
 } from "@/components/site/Chrome";
 import { IDEAS } from "@/content/garden";
+import { getConnections } from "@/content/connections";
 
 export const metadata: Metadata = {
   title: "Digital Garden",
@@ -29,32 +31,51 @@ export default function GardenPage() {
         </section>
 
         <section className="mt-14 max-w-[640px]">
-          {IDEAS.map((idea) => (
-            <div
-              key={idea.no}
-              className="border-b border-hairline py-10 first:border-t first:border-t-ink"
-            >
-              <div className="meta !text-[11px]">
-                Idea № {idea.no} · planted {idea.planted} · {idea.status}
+          {IDEAS.map((idea) => {
+            const refs = getConnections(`idea:${idea.no}`);
+            return (
+              <div
+                key={idea.no}
+                id={`idea-${idea.no}`}
+                className="scroll-mt-24 border-b border-hairline py-10 first:border-t first:border-t-ink"
+              >
+                <div className="meta !text-[11px]">
+                  Idea № {idea.no} · planted {idea.planted} · {idea.status}
+                </div>
+                <div className="mt-4 border-l-2 border-ink pl-7">
+                  {idea.lines.map((line) => (
+                    <p
+                      key={line}
+                      className="font-serif text-[23px] italic leading-[1.5] text-ink"
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
+                {refs.length > 0 && (
+                  <div className="mt-5 flex flex-wrap items-baseline gap-x-6 gap-y-2 pl-7">
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-connect">
+                      Grew into
+                    </span>
+                    {refs.map((r) => (
+                      <Link
+                        key={r.id}
+                        href={r.href}
+                        className="text-[13.5px] text-connect transition-colors duration-[250ms] hover:text-connect-deep"
+                      >
+                        {r.title} →
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div className="mt-4 border-l-2 border-ink pl-7">
-                {idea.lines.map((line) => (
-                  <p
-                    key={line}
-                    className="font-serif text-[23px] italic leading-[1.5] text-ink"
-                  >
-                    {line}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </section>
 
         <p className="mt-10 max-w-[640px] text-[14.5px] leading-[1.65] text-ink-2">
           Ideas link to the works they grow into — essays, projects, books.
-          Those <span className="text-connect">connections</span> become
-          visible as the library fills.
+          Follow the <span className="text-connect">green</span>.
         </p>
       </Container>
     </SiteShell>

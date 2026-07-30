@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteShell, Container, Kicker } from "@/components/site/Chrome";
+import { Connections } from "@/components/site/Connections";
 import { getEssay, getEssays, formatDate } from "@/lib/essays";
 
 export function generateStaticParams() {
@@ -108,6 +109,10 @@ export default async function EssayPage({
             </a>
           </footer>
         </article>
+
+        <div className="mx-auto mt-10 max-w-[640px]">
+          <Connections id={`essay:${essay.slug}`} />
+        </div>
 
         {/* neighbours */}
         <nav className="mx-auto mt-14 grid max-w-[640px] grid-cols-1 gap-4 min-[700px]:grid-cols-2">

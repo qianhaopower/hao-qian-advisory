@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteShell, Container, Kicker } from "@/components/site/Chrome";
+import { Connections } from "@/components/site/Connections";
 import { BOOKS, getBook } from "@/content/books";
 import { getEssays } from "@/lib/essays";
 
@@ -86,8 +87,9 @@ export default async function BookPage({
           </div>
         </header>
 
-        {/* Narrative */}
-        <div className="mt-14 max-w-[640px]">
+        {/* Narrative + connections rail */}
+        <div className="mt-14 grid grid-cols-1 items-start gap-10 min-[1000px]:grid-cols-[640px_minmax(240px,1fr)]">
+        <div className="max-w-[640px]">
           {book.sections.map((s) => (
             <section key={s.heading} className="mb-12">
               <h2 className="mb-4 font-serif text-[26px] font-medium leading-[1.3] min-[900px]:text-[28px]">
@@ -252,6 +254,11 @@ export default async function BookPage({
               </div>
             </section>
           )}
+        </div>
+
+        <div className="min-[1000px]:sticky min-[1000px]:top-10">
+          <Connections id={`book:${book.slug}`} />
+        </div>
         </div>
       </Container>
     </SiteShell>

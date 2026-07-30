@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteShell, Container, Kicker } from "@/components/site/Chrome";
+import { Connections } from "@/components/site/Connections";
 import { PROJECTS, getProject } from "@/content/projects";
 
 export function generateStaticParams() {
@@ -87,20 +88,26 @@ export default async function ProjectPage({
           )}
         </div>
 
-        {/* The template */}
-        <div className="mt-12 max-w-[640px]">
-          {project.sections.map((s) => (
-            <section key={s.heading} className="mb-11">
-              <h2 className="mb-4 font-serif text-[24px] font-medium leading-[1.3] min-[900px]:text-[26px]">
-                {s.heading}
-              </h2>
-              <div className="prose-read">
-                {s.paras.map((p) => (
-                  <p key={p.slice(0, 40)}>{p}</p>
-                ))}
-              </div>
-            </section>
-          ))}
+        {/* The template + connections rail */}
+        <div className="mt-12 grid grid-cols-1 items-start gap-10 min-[1000px]:grid-cols-[640px_minmax(240px,1fr)]">
+          <div className="max-w-[640px]">
+            {project.sections.map((s) => (
+              <section key={s.heading} className="mb-11">
+                <h2 className="mb-4 font-serif text-[24px] font-medium leading-[1.3] min-[900px]:text-[26px]">
+                  {s.heading}
+                </h2>
+                <div className="prose-read">
+                  {s.paras.map((p) => (
+                    <p key={p.slice(0, 40)}>{p}</p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          <div className="min-[1000px]:sticky min-[1000px]:top-10">
+            <Connections id={`project:${project.slug}`} />
+          </div>
         </div>
       </Container>
     </SiteShell>
