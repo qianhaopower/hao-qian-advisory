@@ -1,24 +1,31 @@
 import Link from "next/link";
 import { SiteShell, Container } from "@/components/site/Chrome";
+import { Constellation } from "@/components/site/Constellation";
 import { HOME_INDEX, SITE } from "@/content/site";
+import { getStarData } from "@/lib/constellation";
 
 export default function HomePage() {
+  const stars = getStarData();
+
   return (
     <SiteShell>
       <Container>
-        {/* Masthead */}
-        <section className="pt-16 min-[900px]:pt-24">
-          <div className="meta">Hao Qian · Melbourne · A library, not a website</div>
-          <h1 className="mt-7 max-w-[900px] font-serif text-[44px] font-normal leading-[1.08] tracking-[-0.015em] min-[900px]:text-[76px] min-[900px]:leading-[1.05]">
-            {SITE.tagline}
-          </h1>
-          <p className="mt-7 max-w-[640px] font-serif text-[20px] leading-[1.55] text-ink-2 min-[900px]:text-[24px] min-[900px]:leading-[1.5]">
-            {SITE.intro}
-          </p>
+        {/* Masthead: the words and the sky */}
+        <section className="grid grid-cols-1 items-center gap-x-12 gap-y-10 pt-14 min-[1000px]:grid-cols-[minmax(380px,44%)_1fr] min-[1000px]:pt-20">
+          <div>
+            <div className="meta">Hao Qian · Melbourne · A library, not a website</div>
+            <h1 className="mt-7 font-serif text-[44px] font-normal leading-[1.08] tracking-[-0.015em] min-[900px]:text-[64px] min-[900px]:leading-[1.05]">
+              {SITE.tagline}
+            </h1>
+            <p className="mt-6 max-w-[560px] font-serif text-[19px] leading-[1.55] text-ink-2 min-[900px]:text-[22px] min-[900px]:leading-[1.5]">
+              {SITE.intro}
+            </p>
+          </div>
+          <Constellation data={stars} />
         </section>
 
         {/* Index of the library */}
-        <nav className="mt-16 border-t border-ink min-[900px]:mt-24">
+        <nav className="mt-14 border-t border-ink min-[900px]:mt-20">
           {HOME_INDEX.map((entry) => (
             <Link
               key={entry.href}
