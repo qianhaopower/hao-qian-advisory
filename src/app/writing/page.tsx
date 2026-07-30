@@ -8,6 +8,7 @@ import {
 } from "@/components/site/Chrome";
 import { getEssays, monthLabel } from "@/lib/essays";
 import { WritingIndex, type EssayListItem } from "@/components/site/WritingIndex";
+import { RandomTheory } from "@/components/site/RandomTheory";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -39,6 +40,9 @@ export default function WritingPage() {
             leadership — serialised on LinkedIn, but this library is where
             every theory lives in full.
           </Lede>
+          <div className="mt-7">
+            <RandomTheory slugs={essays.map((e) => e.slug)} />
+          </div>
         </section>
 
         <WritingIndex essays={items} />

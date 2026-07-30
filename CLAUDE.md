@@ -34,6 +34,12 @@ Phase 1 shipped (foundation, Home, About, section pages, advisory archived). Pha
 
 The masthead's star chart (`src/components/site/Constellation.tsx`, data from `src/lib/constellation.ts`) is the library's REAL graph — ink on paper, light-locked. Nodes = actual works (books large/ink, projects medium, theories small/faint, ideas green); solid edges mirror `connections.ts` plus series chains (series essays share a spatial cluster so chains read as small constellations); the faint shimmer between drifting theories is ambience only. Hover = blue + label chip + green neighbours; click navigates. Canvas, seeded deterministic layout (seed 20260730), 250ms feel, pauses off-screen, static under `prefers-reduced-motion`. When content grows, the graph grows by itself — keep it honest: no decorative nodes or fake edges, ever.
 
+## Toys (kept truthful)
+
+- `⚂ Read one at random` on /writing (`RandomTheory.tsx`) — serendipity over the 52.
+- 404 (`app/not-found.tsx`) — "This shelf is empty." + three random theories + search.
+- Easter egg: five quick clicks on the wordmark release balloons (`Wordmark.tsx` + keyframes in globals) — a nod to Little Wow Balloons, the librarian's real balloon studio. Reduced-motion shows only the toast. Jokes must stay true to Hao's real life; no invented whimsy.
+
 ## Conventions
 
 - Counts and claims on pages must stay honest — empty sections say so plainly ("Empty · deliberately"), never fake fullness.

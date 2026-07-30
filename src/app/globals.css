@@ -108,4 +108,38 @@ body {
       transform: none;
     }
   }
+
+  /* the balloon easter egg */
+  .balloon-rise {
+    animation-name: balloon-rise;
+    animation-timing-function: ease-in;
+    animation-fill-mode: both;
+  }
+  @keyframes balloon-rise {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-118vh);
+      opacity: 0;
+    }
+  }
+  .balloon-sway {
+    animation-name: balloon-sway;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  @keyframes balloon-sway {
+    from {
+      transform: translateX(calc(var(--sway) * -1));
+    }
+    to {
+      transform: translateX(var(--sway));
+    }
+  }
 }

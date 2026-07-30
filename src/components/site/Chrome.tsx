@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NAV, SITE } from "@/content/site";
+import { Wordmark } from "@/components/site/Wordmark";
 
 /* 1140px container, 48px margins (24px under 900px) — Design Foundations §04 */
 export function Container({
@@ -20,12 +21,7 @@ export function SiteHeader({ current }: { current?: string }) {
   return (
     <header className="border-b border-line">
       <Container className="flex items-baseline justify-between py-5">
-        <Link
-          href="/"
-          className="font-serif text-[19px] font-medium tracking-[0.01em] text-ink transition-colors duration-[250ms] hover:text-accent"
-        >
-          {SITE.name}
-        </Link>
+        <Wordmark />
         <nav className="flex flex-wrap items-baseline gap-x-5 gap-y-1 text-[14px] min-[900px]:gap-x-8">
           {NAV.map((item) => (
             <Link
