@@ -109,6 +109,7 @@ export const BOOKS: Book[] = [
       { label: "Companion app", note: "assessment, focus pillar, daily practices", href: "https://friendsintelligence.net" },
       { label: "The original draft blog", note: "the book, serialised before it was a book", href: "https://www.friendsintelligence.info" },
       { label: "Launch note on LinkedIn", note: "June 2026", href: "https://www.linkedin.com/posts/hao-qian-9ab0b04b_my-book-is-finally-published-it-feels-good-activity-7474331629511921664-FQIe" },
+      { label: "On Goodreads", note: "shelve, rate, review", href: "https://www.goodreads.com/book/show/254117147-friends-intelligence" },
     ],
     history: [
       { date: "2025", note: "Drafted in public — chapters serialised on the Friends Intelligence blog." },

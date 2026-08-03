@@ -51,6 +51,12 @@ The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts
 | HaoQian.co | this repo | the library itself |
 | (candidate) Mowing service site | `~/Documents/mowing-service-marketing-site` | found locally — confirm with Hao whether it shipped |
 
+## Author pages (added 2026-08)
+
+- **Amazon Author Page:** https://www.amazon.com/author/haoqian (store: /stores/Hao-Qian/author/B0HCBGC9N2) — linked from /books and About.
+- **Goodreads author:** https://www.goodreads.com/author/show/71572056.Hao_Qian — FI listed (3 editions, 222pp, 2026-06-15); ⚠️ author bio empty; ⚠️ Fish Fun not on Goodreads yet.
+- **Goodreads book (FI):** https://www.goodreads.com/book/show/254117147-friends-intelligence — linked from the FI book page ("shelve, rate, review").
+
 ## GitHub (github.com/qianhaopower — 28 public repos, checked 2026-07-30)
 
 Distribution channel + archive material. Site links live in the footer, About/Elsewhere, project pages and /archive.

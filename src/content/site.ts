@@ -7,6 +7,8 @@ export const SITE = {
     "Every meaningful thing I create should eventually have a permanent home here.",
   linkedin: "https://www.linkedin.com/in/hao-qian-9ab0b04b/",
   github: "https://github.com/qianhaopower",
+  amazonAuthor: "https://www.amazon.com/author/haoqian",
+  goodreads: "https://www.goodreads.com/author/show/71572056.Hao_Qian",
 };
 
 export type SectionEntry = {

@@ -113,20 +113,28 @@ export default function AboutPage() {
               and a decade of learning in the open.
             </li>
             <li>
-              <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href="https://www.amazon.com.au/dp/B0H5R5C8B6">
-                Friends Intelligence on Amazon
+              <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href={SITE.amazonAuthor}>
+                My Amazon author page
               </a>{" "}
-              and its companion app,{" "}
+              — the books, incl.{" "}
+              <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href="https://www.amazon.com.au/dp/B0H5R5C8B6">
+                Friends Intelligence
+              </a>{" "}
+              (companion app at{" "}
               <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href="https://friendsintelligence.net">
                 friendsintelligence.net
               </a>
-              .
+              ) and{" "}
+              <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href="https://www.amazon.com/dp/B0HBVBBBBX">
+                Fish Fun
+              </a>
+              , made with my daughter.
             </li>
             <li>
-              <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href="https://www.amazon.com/dp/B0HBVBBBBX">
-                Fish Fun on Amazon
+              <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href={SITE.goodreads}>
+                Goodreads
               </a>{" "}
-              — made with my daughter.
+              — the author profile, and where reviews live.
             </li>
           </ul>
         </section>

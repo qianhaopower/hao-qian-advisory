@@ -8,6 +8,7 @@ import {
   Lede,
 } from "@/components/site/Chrome";
 import { BOOKS } from "@/content/books";
+import { SITE } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Books",
@@ -27,6 +28,20 @@ export default function BooksPage() {
             home here: why it exists, what is inside, and every edition it
             grows.
           </Lede>
+          <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-[13.5px]">
+            <a
+              href={SITE.amazonAuthor}
+              className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+            >
+              Amazon author page ↗
+            </a>
+            <a
+              href={SITE.goodreads}
+              className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+            >
+              On Goodreads ↗
+            </a>
+          </div>
         </section>
 
         <section className="mt-14 flex flex-col gap-6">
