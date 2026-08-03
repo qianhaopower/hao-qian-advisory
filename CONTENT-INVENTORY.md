@@ -54,7 +54,7 @@ The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts
 ## Author pages (added 2026-08)
 
 - **Amazon Author Page:** https://www.amazon.com/author/haoqian (store: /stores/Hao-Qian/author/B0HCBGC9N2) — linked from /books and About.
-- **Goodreads author:** https://www.goodreads.com/author/show/71572056.Hao_Qian — FI listed (3 editions, 222pp, 2026-06-15); ⚠️ author bio empty; ⚠️ Fish Fun not on Goodreads yet.
+- **Goodreads author:** https://www.goodreads.com/author/show/71572056.Hao_Qian — FI listed (3 editions, 222pp, 2026-06-15). Profile is complete: full bio (born Baoding, China; Melbourne; piano/cubes/balloons/night markets → the FI origin story) and the Website field already points to haoqian.co/books/friends-intelligence. Only gap: Fish Fun isn't on Goodreads (would sit under Isabelle Qian's name).
 - **Goodreads book (FI):** https://www.goodreads.com/book/show/254117147-friends-intelligence — linked from the FI book page ("shelve, rate, review").
 
 ## GitHub (github.com/qianhaopower — 28 public repos, checked 2026-07-30)
