@@ -10,6 +10,7 @@ import { getEssays, formatDate } from "@/lib/essays";
 import { BOOKS } from "@/content/books";
 import { PROJECTS } from "@/content/projects";
 import { IDEAS } from "@/content/garden";
+import { getPublishedEpisodes, getSeries } from "@/lib/videos";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -68,7 +69,23 @@ function buildRecords(): SearchRecord[] {
     hay: i.lines.join(" ").toLowerCase(),
   }));
 
-  return [...essays, ...books, ...projects, ...ideas];
+  const episodes: SearchRecord[] = getPublishedEpisodes().map((e) => ({
+    kind: "Video",
+    title: `Ep. ${e.sequence} — ${e.title}`,
+    meta: `${getSeries(e).name} · ${e.publishedAt ? formatDate(e.publishedAt) : ""}`,
+    href: `/videos/${e.slug}`,
+    hay: [
+      e.title,
+      e.hook,
+      e.summary,
+      (e.keyPoints ?? []).join(" "),
+      (e.transcript ?? []).join(" "),
+    ]
+      .join(" ")
+      .toLowerCase(),
+  }));
+
+  return [...essays, ...books, ...projects, ...ideas, ...episodes];
 }
 
 export default function SearchPage() {

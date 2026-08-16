@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getEssays } from "@/lib/essays";
 import { BOOKS } from "@/content/books";
+import { getPublishedEpisodes } from "@/lib/videos";
 
 const SITE_URL = "https://haoqian.co";
 
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/books",
     "/writing",
+    "/videos",
     "/projects",
     "/talks",
     "/garden",
@@ -26,5 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: e.date,
   }));
 
-  return [...staticRoutes, ...bookRoutes, ...essayRoutes];
+  const episodeRoutes = getPublishedEpisodes().map((e) => ({
+    url: `${SITE_URL}/videos/${e.slug}`,
+    lastModified: e.publishedAt,
+  }));
+
+  return [...staticRoutes, ...bookRoutes, ...essayRoutes, ...episodeRoutes];
 }

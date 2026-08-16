@@ -37,6 +37,10 @@ The verified raw material for the digital library. Gathered 2026-07-29. Companio
 
 The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts) — no, title, date, URL for every post.
 
+## Videos — Working Theory on camera (added 2026-08-16)
+
+- **Ep. 1 "Speaker Theory"** (from essay wt-2): filmed by Hao 2026-08-16, edited via the scripted ffmpeg/whisper pipeline. Assets in `public/videos/speaker-theory/` (final.mp4 108s 1080×1920, poster.jpg, captions.vtt); entry in `src/content/videos.ts`; canonical `/videos/speaker-theory`. B-roll: Mixkit free license (IDs 22961, 46680, 45923). Format spec: `docs/VIDEO_FORMAT_REFERENCE.md`. LinkedIn distribution pending (caption stored on the entry).
+
 ## Projects (confirmed roster)
 
 | Project | Live | Notes |

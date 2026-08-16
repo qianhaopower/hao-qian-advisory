@@ -22,6 +22,7 @@ export type SectionEntry = {
 export const NAV: { href: string; label: string }[] = [
   { href: "/books", label: "Books" },
   { href: "/writing", label: "Writing" },
+  { href: "/videos", label: "Videos" },
   { href: "/projects", label: "Projects" },
   { href: "/talks", label: "Talks" },
   { href: "/garden", label: "Garden" },
@@ -42,6 +43,12 @@ export const HOME_INDEX: SectionEntry[] = [
     label: "Writing",
     meta: "Working Theory · 52 essays",
     blurb: "An essay series on AI, engineering, systems and leadership.",
+  },
+  {
+    href: "/videos",
+    label: "Videos",
+    meta: "Working Theory · Ep. 1 live",
+    blurb: "The theories, spoken — one idea per episode, published here first.",
   },
   {
     href: "/projects",

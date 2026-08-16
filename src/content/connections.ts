@@ -5,12 +5,13 @@
  * into essays. Never decorate.
  *
  * Node ids: "book:<slug>" · "project:<slug>" · "essay:<slug>" · "idea:<no>"
- *           · "series:working-theory"
+ *           · "video:<slug>" · "series:working-theory"
  */
 import { BOOKS } from "@/content/books";
 import { PROJECTS } from "@/content/projects";
 import { IDEAS } from "@/content/garden";
 import { WORKING_THEORY } from "@/content/writing";
+import { EPISODES } from "@/content/videos";
 
 export type ConnectionRef = {
   id: string;
@@ -32,6 +33,9 @@ const EDGES: [string, string][] = [
   ["idea:154", "essay:wt-32"],
   ["idea:171", "essay:wt-46"],
   ["idea:171", "essay:wt-49"],
+  // Theories that stepped in front of the camera
+  ["video:speaker-theory", "essay:wt-2"],
+  ["video:speaker-theory", "series:working-theory"],
 ];
 
 function resolve(id: string): ConnectionRef | null {
@@ -66,6 +70,16 @@ function resolve(id: string): ConnectionRef | null {
       tag: `Idea · № ${i.no}`,
       title: i.lines.join(" "),
       href: `/garden#idea-${i.no}`,
+    };
+  }
+  if (kind === "video") {
+    const v = EPISODES.find((x) => x.slug === key && x.status === "published");
+    if (!v) return null;
+    return {
+      id,
+      tag: `Video · Ep. ${v.sequence}`,
+      title: v.title,
+      href: `/videos/${v.slug}`,
     };
   }
   if (kind === "series" && key === "working-theory") {
