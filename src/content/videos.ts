@@ -137,5 +137,7 @@ export const EPISODES: VideoEpisode[] = [
     linkedinCaption:
       "Most word problems are volume problems.\n\nEp. 1 of Working Theory, on camera: why the same sentence lands as a whisper from a peer and a siren from a manager — and what changed when my title did.\n\nFull episode, transcript included, lives here first: https://haoqian.co/videos/speaker-theory",
     linkedinTags: ["WorkingTheory", "Leadership"],
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7494997549993431040/",
   },
 ];
