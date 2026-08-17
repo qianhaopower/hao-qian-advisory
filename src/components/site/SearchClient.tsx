@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 export type SearchRecord = {
-  kind: "Theory" | "Book" | "Project" | "Idea" | "Video";
+  kind: "Theory" | "Book" | "Project" | "Idea" | "Video" | "Balloons";
   title: string;
   meta: string;
   href: string;

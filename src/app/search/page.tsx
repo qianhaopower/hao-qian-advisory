@@ -10,6 +10,7 @@ import { getEssays, formatDate } from "@/lib/essays";
 import { BOOKS } from "@/content/books";
 import { PROJECTS } from "@/content/projects";
 import { IDEAS } from "@/content/garden";
+import { BALLOON_ARCHIVE_ITEMS } from "@/content/balloon-archive";
 import { getPublishedEpisodes, getSeries } from "@/lib/videos";
 
 export const metadata: Metadata = {
@@ -85,7 +86,17 @@ function buildRecords(): SearchRecord[] {
       .toLowerCase(),
   }));
 
-  return [...essays, ...books, ...projects, ...ideas, ...episodes];
+  const balloons: SearchRecord[] = [
+    {
+      kind: "Balloons",
+      title: "Little Wow Balloons — the balloon room",
+      meta: `${BALLOON_ARCHIVE_ITEMS.length} works · archived from Instagram`,
+      href: "/balloons",
+      hay: "balloons balloon art twisting little wow balloons studio markets parties festivals melbourne instagram 气球",
+    },
+  ];
+
+  return [...essays, ...books, ...projects, ...ideas, ...episodes, ...balloons];
 }
 
 export default function SearchPage() {

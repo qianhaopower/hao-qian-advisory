@@ -25,6 +25,7 @@ export const NAV: { href: string; label: string }[] = [
   { href: "/videos", label: "Videos" },
   { href: "/projects", label: "Projects" },
   { href: "/talks", label: "Talks" },
+  { href: "/balloons", label: "Balloons" },
   { href: "/garden", label: "Garden" },
   { href: "/about", label: "About" },
   { href: "/search", label: "Search" },
@@ -61,6 +62,12 @@ export const HOME_INDEX: SectionEntry[] = [
     label: "Talks",
     meta: "collecting",
     blurb: "Public thinking — conferences, meetups, podcasts, recordings.",
+  },
+  {
+    href: "/balloons",
+    label: "Balloons",
+    meta: "16 works · archived",
+    blurb: "Little Wow Balloons — real balloon art, twisted by hand, kept for good.",
   },
   {
     href: "/garden",

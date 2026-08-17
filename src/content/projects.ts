@@ -266,6 +266,7 @@ export const PROJECTS: Project[] = [
     status: "Live at littlewowballoons.com · taking bookings",
     links: [
       { label: "The studio", href: "https://littlewowballoons.com" },
+      { label: "The balloon room", href: "/balloons" },
       { label: "Source on GitHub", href: "https://github.com/qianhaopower/lwbv2" },
     ],
     facts: ["Vite + React single-page site · AWS Amplify"],

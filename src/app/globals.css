@@ -95,8 +95,11 @@ body {
 
 /* Page load: fade up 8px, one curve one speed */
 @media (prefers-reduced-motion: no-preference) {
+  /* fill-mode must not be "both"/"forwards": a filled transform (even the
+     identity matrix) makes this a containing block that hijacks any
+     position:fixed descendant (lightbox, easter eggs). */
   .fade-up {
-    animation: fade-up 0.55s ease both;
+    animation: fade-up 0.55s ease backwards;
   }
   @keyframes fade-up {
     from {
