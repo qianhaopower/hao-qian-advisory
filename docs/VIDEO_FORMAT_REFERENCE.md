@@ -94,6 +94,36 @@ Voice throughout: second person, declarative, deadpan; concessions made
 explicitly ("I'm not here to crush your dreams… but"); zero hedging
 words; no "in this video I'll…" meta-talk, ever.
 
+## Script language rules — kill the AI flavour (added after Ep. 2 draft 1)
+
+Hao's rule: scripts must read like a person talking, not like generated
+copy. Checks, in order of importance:
+
+1. **Spoken, not written.** Read it aloud once before showing Hao. If a
+   sentence stumbles or sounds like an email, rewrite it. Contractions
+   always ("don't", "that's"). Fragments are fine. Real people repeat
+   small words.
+2. **No perfectly balanced conclusions** — the single biggest AI tell.
+   Take a side. Don't acknowledge every counterargument. A human ending
+   is a specific opinion someone could push back on.
+3. **Concrete beats abstract.** "Two engineers, one month" beats "a
+   significant productivity shift". If a line has no number, name, year
+   or person in it, ask whether it earns its place.
+4. **Ownership.** Hao was there — say "my team", "we", "I". Never
+   "I watched/observed" framing that puts him on the sidelines of his
+   own story.
+5. **Banned words/patterns** (AI clichés): quieter/quiet shift, delve,
+   crucial, moreover, nuanced, robust, landscape, journey, leverage,
+   unlock, game-changer, "here's the thing", "it's worth noting",
+   "in today's world", "let that sink in", "X isn't just Y — it's Z"
+   (allowed once per script at most, never as the hook), stacked
+   rhetorical questions, three-item lists more than once per script.
+6. **The hook is a fact or a claim, not a construction.** Open with the
+   most concrete surprising thing (a number, a scene), or a blunt
+   opinion. Never open with "X hasn't done Y. It has done Z."
+7. **One metaphor per episode**, and it must be the theory's own
+   metaphor (the speaker's volume, the throughput shift).
+
 ## Production checklist per episode
 
 1. Script to the 7 beats, 250–280 words max, punch words marked.
