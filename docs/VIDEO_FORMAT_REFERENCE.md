@@ -123,6 +123,16 @@ copy. Checks, in order of importance:
    opinion. Never open with "X hasn't done Y. It has done Z."
 7. **One metaphor per episode**, and it must be the theory's own
    metaphor (the speaker's volume, the throughput shift).
+8. **Never reference series numbering in a script** — no "my first
+   theory", no "theory #12". Nobody tracks the numbers. Always just
+   "here's my working theory". (Numbering lives on the website, not in
+   the spoken word.)
+9. **Current-team specifics stay qualitative.** Numbers already
+   published in the essays are fine to reuse; fresh claims about how
+   Hao's present team works (e.g. "X% of code is AI-written") are not —
+   they invite nitpicking and read as employer statements. Describe the
+   shift through the human work instead: reviewing code, aligning
+   requirements, setting guardrails.
 
 ## Production checklist per episode
 
