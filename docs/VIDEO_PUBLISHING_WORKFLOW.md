@@ -53,6 +53,18 @@ Check the episode page on a phone-width viewport as well as desktop.
 
 ## 5 · Publish on LinkedIn (manual)
 
+**Delivery rule (since Ep. 3):** every final cut is delivered to
+~/Downloads as a three-piece package, ready to post in one sitting:
+
+1. `«Title» - EpN - final.mp4` — the video
+2. `«Title» - EpN - thumbnail.jpg` — 1080×1920 designed thumbnail:
+   a clean face frame from the episode with the episode title in the
+   caption style (Arial Black, lower third) and a small HAOQIAN.CO mono
+   line. Upload it via LinkedIn's "Edit thumbnail" on the video.
+3. `«Title» - EpN - caption.txt` — the LinkedIn caption (written at
+   script stage, stored on the `linkedinCaption` field). Hook line
+   first, canonical URL, two tags max.
+
 The LinkedIn package lives on the same episode entry — no second copy:
 
 - **Video file** — the same `public/videos/<slug>/final.mp4` (upload
