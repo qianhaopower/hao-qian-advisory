@@ -140,4 +140,37 @@ export const EPISODES: VideoEpisode[] = [
     linkedinPublishedUrl:
       "https://www.linkedin.com/feed/update/urn:li:activity:7494997549993431040/",
   },
+  {
+    slug: "ai-throughput-shift",
+    series: "working-theory",
+    sequence: 2,
+    title: "AI Throughput Shift",
+    status: "published",
+    publishedAt: "2026-08-18",
+    language: "en",
+    durationSeconds: 87,
+    hook: "AI didn't make engineers faster. It changed the job.",
+    summary:
+      "The same size project: four engineers and four months in 2021, two engineers and one month last year — call it 8 to 16 times faster, with nobody working longer hours. What changed is what engineers actually do all day: less writing code, more reviewing, aligning and setting guardrails — the judgment work. Which leaves one management question: team structure, planning and growth paths were all designed for the old job — do they still match the job engineers are actually doing now?",
+    videoUrl: "/videos/ai-throughput-shift/final.mp4",
+    aspect: "9:16",
+    poster: "/videos/ai-throughput-shift/poster.jpg",
+    captions: "/videos/ai-throughput-shift/captions.vtt",
+    transcript: [
+      "Four engineers. Four months. That's what a project took us in 2021. Last year, my team shipped a project about the same size: two engineers, one month. Call it 8 to 16 times faster.",
+      "Nobody worked longer hours. Nobody typed faster. What changed is what engineers actually do all day.",
+      "In my team, engineers spend less of their day writing code, and more of it reviewing code, aligning requirements, and setting guardrails — the judgment work.",
+      "One more thing changed. In 2021, if we needed a new framework, delivery slowed down while people went off and learned it. Nobody does that anymore. You learn it while you build. Same week. Same task.",
+      "So here is my working theory: AI didn't make engineers faster. It changed the job.",
+      "That's what I keep coming back to as a manager: my team's structure, my planning, the way engineers grow here — all of it was designed for the old job.",
+      "So the question isn't “how much faster can we go.” It is: does the way I run this team still match the job my engineers are actually doing now?",
+    ],
+    keyPoints: [
+      "AI didn't make engineers faster — it changed what engineers do all day: the judgment work of reviewing, aligning and setting guardrails.",
+      "Team structure, planning and growth paths were designed for the old job — check they still match the job engineers are actually doing.",
+    ],
+    linkedinCaption:
+      "Four engineers, four months — that was 2021. Two engineers, one month — last year. Same size project.\n\nEp. 2 of Working Theory, on camera: AI changed what engineers actually do all day — and most teams are still structured for the old job.\n\nFull episode + transcript: https://haoqian.co/videos/ai-throughput-shift\n\n#WorkingTheory #EngineeringLeadership",
+    linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
+  },
 ];

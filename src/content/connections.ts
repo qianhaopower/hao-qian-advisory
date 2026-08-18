@@ -36,6 +36,8 @@ const EDGES: [string, string][] = [
   // Theories that stepped in front of the camera
   ["video:speaker-theory", "essay:wt-2"],
   ["video:speaker-theory", "series:working-theory"],
+  ["video:ai-throughput-shift", "essay:wt-1"],
+  ["video:ai-throughput-shift", "series:working-theory"],
 ];
 
 function resolve(id: string): ConnectionRef | null {

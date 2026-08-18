@@ -40,6 +40,7 @@ The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts
 ## Videos — Working Theory on camera (added 2026-08-16)
 
 - **Ep. 1 "Speaker Theory"** (from essay wt-2): filmed by Hao 2026-08-16, edited via the scripted ffmpeg/whisper pipeline. Assets in `public/videos/speaker-theory/` (final.mp4 108s 1080×1920, poster.jpg, captions.vtt); entry in `src/content/videos.ts`; canonical `/videos/speaker-theory`. B-roll: Mixkit free license (IDs 22961, 46680, 45923). Format spec: `docs/VIDEO_FORMAT_REFERENCE.md`. LinkedIn distribution pending (caption stored on the entry).
+- **Ep. 2 "AI Throughput Shift"** (from essay wt-1): filmed by Hao 2026-08-18, same pipeline. Assets in `public/videos/ai-throughput-shift/` (final.mp4 87s 1080×1920, poster.jpg, captions.vtt); entry in `src/content/videos.ts`; canonical `/videos/ai-throughput-shift`. B-roll: Mixkit free license (ID 914). LinkedIn three-piece package (final + designed thumbnail + caption.txt, per workflow §5) delivered to ~/Downloads 2026-08-18.
 
 ## Projects (confirmed roster)
 
