@@ -133,6 +133,19 @@ copy. Checks, in order of importance:
    they invite nitpicking and read as employer statements. Describe the
    shift through the human work instead: reviewing code, aligning
    requirements, setting guardrails.
+10. **No negation-first sentences.** Never open a sentence or beat with
+    a denial ("Not for anything shady", "It's not about X", "Not
+    LinkedIn"). Say the positive thing directly; a wry reframe ("My
+    crime: posting three times in ten minutes") beats any denial.
+11. **No throat-clearing transitions.** "And that's the interesting
+    part", "the interesting part is", "what's fascinating is", "here's
+    why that matters" — all cut. If a beat matters, the next sentence
+    proves it; announcing it is filler.
+12. **When the script mentions Hao using AI**, the framing is always:
+    the ideas are his, the writing is his, AI is a sparring partner
+    (spoken conversation / voice input, thinking out loud). Never leave
+    room to read it as AI-generated content — audiences hate slop and
+    the misread poisons the whole episode.
 
 ## Production checklist per episode
 
