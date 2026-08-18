@@ -12,6 +12,7 @@ import { BalloonGallery } from "@/components/site/BalloonGallery";
 import {
   BALLOON_ARCHIVE_ITEMS,
   BALLOON_ARCHIVE_PROFILE,
+  BALLOON_STREET_ITEMS,
 } from "@/content/balloon-archive";
 
 export const metadata: Metadata = {
@@ -38,7 +39,16 @@ export default function BalloonsPage() {
           </Lede>
         </section>
 
-        <div className="mt-10 flex max-w-[640px] items-start gap-4">
+        {BALLOON_STREET_ITEMS.length > 0 && (
+          <section className="mt-12">
+            <h2 className="meta !text-[11px]">
+              On the street · markets, festivals, commissions
+            </h2>
+            <BalloonGallery items={BALLOON_STREET_ITEMS} crop={false} />
+          </section>
+        )}
+
+        <div className="mt-14 flex max-w-[640px] items-start gap-4 border-t border-line pt-12">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={p.logo}

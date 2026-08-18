@@ -18,7 +18,14 @@ function archiveDate(iso: string): string {
     .toUpperCase();
 }
 
-export function BalloonGallery({ items }: { items: BalloonArchiveItem[] }) {
+export function BalloonGallery({
+  items,
+  crop = true,
+}: {
+  items: BalloonArchiveItem[];
+  /** true → square tiles (product shots); false → natural aspect (street photos) */
+  crop?: boolean;
+}) {
   const [open, setOpen] = useState<number | null>(null);
 
   const step = useCallback(
@@ -50,7 +57,13 @@ export function BalloonGallery({ items }: { items: BalloonArchiveItem[] }) {
 
   return (
     <>
-      <div className="mt-6 grid grid-cols-2 gap-4 min-[700px]:grid-cols-3 min-[1000px]:grid-cols-4">
+      <div
+        className={
+          crop
+            ? "mt-6 grid grid-cols-2 gap-4 min-[700px]:grid-cols-3 min-[1000px]:grid-cols-4"
+            : "mt-6 grid grid-cols-1 gap-6 min-[700px]:grid-cols-2"
+        }
+      >
         {items.map((item, i) => (
           <figure key={item.src}>
             <button
@@ -64,11 +77,19 @@ export function BalloonGallery({ items }: { items: BalloonArchiveItem[] }) {
                 src={item.src}
                 alt={item.caption || "Balloon work by Little Wow Balloons"}
                 loading="lazy"
-                className="block aspect-square w-full object-cover"
+                className={
+                  crop
+                    ? "block aspect-square w-full object-cover"
+                    : "block w-full"
+                }
               />
             </button>
             <figcaption className="mt-2">
-              <span className="meta !text-[10.5px]">{archiveDate(item.date)}</span>
+              {item.date && (
+                <span className="meta !text-[10.5px]">
+                  {archiveDate(item.date)}
+                </span>
+              )}
               {item.caption && (
                 <span className="mt-1 block text-[13px] leading-[1.55] text-ink-2">
                   {item.caption}
@@ -108,7 +129,8 @@ export function BalloonGallery({ items }: { items: BalloonArchiveItem[] }) {
                 ←
               </button>
               <span className="meta !text-[11px]">
-                {(open ?? 0) + 1} / {items.length} · {archiveDate(current.date)}
+                {(open ?? 0) + 1} / {items.length}
+                {current.date ? ` · ${archiveDate(current.date)}` : ""}
               </span>
               <button
                 type="button"

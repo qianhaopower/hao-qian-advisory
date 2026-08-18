@@ -19,8 +19,8 @@ export type BalloonArchiveItem = {
   src: string;
   /** Original Instagram caption (may be empty) */
   caption: string;
-  /** ISO date the post went up, e.g. "2025-09-14" */
-  date: string;
+  /** ISO date, e.g. "2025-09-14" — absent when the photo carried no EXIF date */
+  date?: string;
 };
 
 export const BALLOON_ARCHIVE_PROFILE = {
@@ -31,3 +31,47 @@ export const BALLOON_ARCHIVE_PROFILE = {
 };
 
 export const BALLOON_ARCHIVE_ITEMS: BalloonArchiveItem[] = archive.items;
+
+/*
+ * On the street — Hao's own photos from the stall: markets, festivals,
+ * commissions. Curated by hand (not from the IG export); dates from EXIF.
+ */
+export const BALLOON_STREET_ITEMS: BalloonArchiveItem[] = [
+  {
+    src: "/projects/balloons/street-7.jpg",
+    caption:
+      "Three generations at the stall — grandparents, strollers and all. Box Hill Twilight Markets.",
+    date: "2026-02-14",
+  },
+  {
+    src: "/projects/balloons/street-1.jpg",
+    caption:
+      "The stand — small $10, large $20, buy three get one free. The QR code says scan to follow.",
+  },
+  {
+    src: "/projects/balloons/street-2.jpg",
+    caption:
+      "Box Hill Twilight Markets, Valentine's Day — a drying rack makes a fine balloon tree.",
+    date: "2026-02-14",
+  },
+  {
+    src: "/projects/balloons/street-3.jpg",
+    caption: "Evening orders at the Box Hill stall.",
+  },
+  {
+    src: "/projects/balloons/street-4.jpg",
+    caption:
+      "Saturday night on the Southbank promenade — the city does the lighting.",
+    date: "2026-03-07",
+  },
+  {
+    src: "/projects/balloons/street-5.jpg",
+    caption: "Mario, fresh off the pump — kitchen quality check.",
+    date: "2026-03-12",
+  },
+  {
+    src: "/projects/balloons/street-6.jpg",
+    caption: "Mario and Luigi, the full crew.",
+    date: "2026-03-13",
+  },
+];

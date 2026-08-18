@@ -92,7 +92,7 @@ function buildRecords(): SearchRecord[] {
       title: "Little Wow Balloons — the balloon room",
       meta: `${BALLOON_ARCHIVE_ITEMS.length} works · archived from Instagram`,
       href: "/balloons",
-      hay: "balloons balloon art twisting little wow balloons studio markets parties festivals melbourne instagram 气球",
+      hay: "balloons balloon art twisting little wow balloons studio markets parties festivals melbourne instagram street box hill twilight southbank mario luigi 气球",
     },
   ];
 
