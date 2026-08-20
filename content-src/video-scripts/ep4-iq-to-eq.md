@@ -62,10 +62,32 @@ which one have you been TRAINING?
    left→right wipe reveal of the same image (crop/overlay) fakes a
    draw-on nicely; a slow push-in also works. EQ = solid ink (steeper,
    crosses), IQ = dashed grey; labels baked in.
-2. Three-line light-up card: HARD CONFLICTS / HARD TRADE-OFFS /
-   HARD CONVERSATIONS (each lights on its phrase).
-3. Number card: ONE MEETING → WEEKS (on "save my team weeks of work").
-4. End card: "IQ-to-EQ Career Weighting." · WORKING THEORY · HAOQIAN.CO
+2. FOOTAGE — junior at work: bright shot of hands on a keyboard /
+   focused coding, on "Problems land on your desk WELL-DEFINED. The job
+   is to solve them well." (self-shot option: Hao's own screen with code
+   + hand on keyboard, 10s.)
+3. FOOTAGE — the many-people reality: bright meeting/discussion clip on
+   "working with people from very different backgrounds… hard
+   conversations — DAILY." (stock: Mixkit 23116/46680 family, or search
+   "team discussion bright office".)
+4. FOOTAGE — the meeting that pays: bright meeting-room clip (different
+   from #3 — ideally people at a whiteboard reaching agreement) on "ONE
+   hard meeting… ALIGNED". (self-shot option: Hao's own meeting-room
+   whiteboard with sketches, slow pan, 10s.)
+5. Number card: ONE MEETING → WEEKS (on "save my team weeks of work",
+   right after the footage in #4).
+6. End card: "IQ-to-EQ Career Weighting." · WORKING THEORY · HAOQIAN.CO
+
+Composition check (insert guardrails, 2026-08-20): 3 footage + 2 cards
+(chart + number) + end card — footage-first ✓, cards ≤3 ✓, photos move ✓.
+
+### B-roll self-shoot list for Hao (5 minutes, before recording)
+
+1. Your hands typing at your real keyboard, screen showing code — 10s.
+2. Your whiteboard or notebook with real sketches, slow phone pan — 10s.
+3. Your desk wide shot, bright daylight — 10s.
+Any of these replaces its stock counterpart above; self-shot wins.
+
 Guardrails: cards ≥2.2s, land on their nouns, captions per layer rules.
 
 ## LinkedIn caption (post with the video + thumbnail)

@@ -72,6 +72,33 @@ For our episodes: use our **own** artefacts as inserts (screenshots,
 diagrams from the essays, book pages, real dashboards) or licensed stock —
 not celebrity photos.
 
+### Insert composition guardrails (tightened 2026-08-20)
+
+The benchmark's five inserts are ALL real imagery (2 footage, 3 photos,
+**zero text cards**) — captions carry the words, inserts carry the world.
+Eps 1–3 drifted the other way (mostly typography). Hard rules from Ep. 4:
+
+1. **Footage-first.** Every episode carries **≥3 real-imagery inserts**
+   (licensed footage, photos, or Hao's own self-shot clips). Text cards
+   are capped at **≤3 per episode** and only earn a slot when the words
+   themselves are the evidence (a quote, a number, a chart).
+2. **Concrete noun → real image.** When the script says a place, object,
+   or activity (a meeting, a desk, code on a screen, a market, a book),
+   show the THING, never a card about the thing. Cards are for what
+   cannot be photographed.
+3. **Every script ships with a b-roll shot list.** The script writer
+   lists 3–5 ten-second clips Hao can self-shoot on his phone in the
+   five minutes before recording (his real desk, screen, whiteboard,
+   hallway, bookshelf) plus stock search terms as fallback. Self-shot
+   beats stock: it's his real world, zero licence, always bright.
+4. **Photos move.** Any still photo insert gets the Ken Burns treatment
+   (slow push/pan), like the benchmark's Jay-Z shot. Nothing on screen
+   is ever fully static except the end card.
+5. **Build the shelf, stop hunting.** The cutting room maintains a local
+   b-roll library (bright, 9:16-croppable, licence noted per clip) so
+   sourcing never again decides the edit. A thin library is not a reason
+   to substitute a card.
+
 ## Editorial structure (the 7 beats, ~90 s)
 
 1. **0:00 Thesis as cold open** — the claim, stated flat, no greeting, no
