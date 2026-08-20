@@ -194,6 +194,29 @@ export default async function BookPage({
             </section>
           )}
 
+          {/* The physical book, on video */}
+          {book.video && (
+            <section className="mb-12">
+              <h2 className="mb-5 font-serif text-[26px] font-medium leading-[1.3] min-[900px]:text-[28px]">
+                {book.video.heading}
+              </h2>
+              <figure>
+                <video
+                  className="block aspect-[9/16] w-full max-w-[400px] rounded-[2px] border border-line bg-surface object-contain"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={book.video.poster}
+                >
+                  <source src={book.video.src} />
+                </video>
+                <figcaption className="mt-3 max-w-[400px] text-[13.5px] leading-[1.6] text-ink-2">
+                  {book.video.caption}
+                </figcaption>
+              </figure>
+            </section>
+          )}
+
           {book.slug === "fish-fun" && <FishSwim />}
 
           {/* Editions */}

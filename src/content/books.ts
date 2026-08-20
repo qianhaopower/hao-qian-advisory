@@ -29,6 +29,8 @@ export type Book = {
   inside?: BookListItem[];
   figuresHeading?: string;
   figures?: BookFigure[];
+  /** a short clip of the physical book, shown after the figures */
+  video?: { src: string; poster: string; heading: string; caption: string };
   editions: BookLink[];
   related?: BookLink[];
   history?: BookEvent[];
@@ -188,6 +190,13 @@ export const BOOKS: Book[] = [
         caption: "And the printed last page — the four of them discover Fish Fun. “It's a book.” “It is about us!”",
       },
     ],
+    video: {
+      src: "/books/fish-fun/flip-through.mp4",
+      poster: "/books/fish-fun/flip-through-poster.jpg",
+      heading: "The book, in hand",
+      caption:
+        "Flipping through the printed hardcover — 400 pages of Goldie, Zoey, Lulu and Stella, on paper.",
+    },
     editions: [
       { label: "Hardcover", note: "available", href: "https://www.amazon.com/dp/B0HBVBBBBX" },
     ],
