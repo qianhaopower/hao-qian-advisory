@@ -55,10 +55,13 @@ which one have you been TRAINING?
 
 ## Insert plan (for the cutting room)
 
-1. Two-line chart, ANIMATED draw-on — paper/ink style, x = career,
-   y = importance; both lines rise, EQ steeper; labels IQ / EQ.
-   Land it on "TWO LINES … one rises FASTER" and reprise if useful at
-   "the weight keeps shifting".
+1. Two-line chart — **the finished card is already rendered and approved
+   by Hao: `ep4-assets/two-lines-chart.png` (1080×1920). Use this exact
+   image; do not redraw it.** Land it on "TWO LINES … one rises FASTER"
+   and reprise if useful at "the weight keeps shifting". For motion, a
+   left→right wipe reveal of the same image (crop/overlay) fakes a
+   draw-on nicely; a slow push-in also works. EQ = solid ink (steeper,
+   crosses), IQ = dashed grey; labels baked in.
 2. Three-line light-up card: HARD CONFLICTS / HARD TRADE-OFFS /
    HARD CONVERSATIONS (each lights on its phrase).
 3. Number card: ONE MEETING → WEEKS (on "save my team weeks of work").
