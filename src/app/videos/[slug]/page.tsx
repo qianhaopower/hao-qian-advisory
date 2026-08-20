@@ -93,7 +93,11 @@ function VideoBlock({ episode }: { episode: VideoEpisode }) {
           preload="metadata"
           poster={episode.poster}
         >
-          <source src={episode.videoUrl} />
+          {/* explicit type: the media shelf serves mp4s as octet-stream */}
+          <source
+            src={episode.videoUrl}
+            type={/\.mp4(\?|#|$)/i.test(episode.videoUrl) ? "video/mp4" : undefined}
+          />
           {episode.captions && (
             <track
               kind="captions"

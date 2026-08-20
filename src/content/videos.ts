@@ -76,9 +76,10 @@ export type VideoEpisode = {
   /** 2–3 sentence summary for listings and metadata. */
   summary: string;
   /**
-   * Final video. Either a file URL (.mp4/.webm — local /videos/... path or
-   * CDN) rendered as a native player, or a YouTube/Vimeo embed URL rendered
-   * as an iframe. Omit while the episode is in production.
+   * Final video. Either a file URL (.mp4/.webm) rendered as a native player,
+   * or a YouTube/Vimeo embed URL rendered as an iframe. Video files live on
+   * the media shelf (GitHub release "media" — scripts/publish-video.sh),
+   * never in the repo. Omit while the episode is in production.
    */
   videoUrl?: string;
   /** "9:16" (default for this series) or "16:9" */
@@ -115,7 +116,8 @@ export const EPISODES: VideoEpisode[] = [
     hook: "The same sentence, said by a different person — or heard on a different day — is a different sentence.",
     summary:
       "Why leadership communication is like adjusting a speaker's volume: the same words land as a whisper from a peer and a siren from a manager, your title moves your default volume, and the listener's moment moves their sensitivity. Told through one real story — a single curious question at a project review, asked during performance season.",
-    videoUrl: "/videos/speaker-theory/final.mp4",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/speaker-theory.mp4",
     aspect: "9:16",
     poster: "/videos/speaker-theory/poster.jpg",
     captions: "/videos/speaker-theory/captions.vtt",
@@ -152,7 +154,8 @@ export const EPISODES: VideoEpisode[] = [
     hook: "AI didn't make engineers faster. It changed the job.",
     summary:
       "The same size project: four engineers and four months in 2021, two engineers and one month last year — call it 8 to 16 times faster, with nobody working longer hours. What changed is what engineers actually do all day: less writing code, more reviewing, aligning and setting guardrails — the judgment work. Which leaves one management question: team structure, planning and growth paths were all designed for the old job — do they still match the job engineers are actually doing now?",
-    videoUrl: "/videos/ai-throughput-shift/final.mp4",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/ai-throughput-shift.mp4",
     aspect: "9:16",
     poster: "/videos/ai-throughput-shift/poster.jpg",
     captions: "/videos/ai-throughput-shift/captions.vtt",

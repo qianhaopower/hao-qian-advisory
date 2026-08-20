@@ -191,7 +191,7 @@ export const BOOKS: Book[] = [
       },
     ],
     video: {
-      src: "/books/fish-fun/flip-through.mp4",
+      src: "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/fish-fun-flip-through.mp4",
       poster: "/books/fish-fun/flip-through-poster.jpg",
       heading: "The book, in hand",
       caption:

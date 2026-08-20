@@ -208,7 +208,7 @@ export default async function BookPage({
                   preload="metadata"
                   poster={book.video.poster}
                 >
-                  <source src={book.video.src} />
+                  <source src={book.video.src} type="video/mp4" />
                 </video>
                 <figcaption className="mt-3 max-w-[400px] text-[13.5px] leading-[1.6] text-ink-2">
                   {book.video.caption}

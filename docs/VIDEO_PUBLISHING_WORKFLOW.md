@@ -18,19 +18,40 @@ Everything below should take minutes once the video file exists.
 
 ## 2 · Add the media
 
-Files live in `public/videos/<slug>/`:
+**The rule (since 2026-08-20): video bytes never enter git.** Videos live
+as assets on the repo's `media` GitHub release — the "media shelf"
+(https://github.com/qianhaopower/hao-qian-advisory/releases/tag/media).
+Release assets don't bloat the repo or Amplify builds, stream with range
+support (seek bar works), and need no account, bucket or API key beyond
+the `gh` login that already exists. Raw originals stay in Photos/Downloads
+and are never committed either.
 
-- `final.mp4` — the finished cut. **Keep it small**: 9:16 1080p H.264,
-  target well under ~100 MB (the repo and Amplify both carry it). For
-  anything bigger, host it elsewhere (YouTube unlisted, a CDN) and put the
-  full URL in `videoUrl` instead — the page renders file URLs as a native
-  player and YouTube/Vimeo URLs as an embed.
-- `poster.jpg` — the thumbnail (also used for social cards).
+One command does compress + poster + upload:
+
+```bash
+scripts/publish-video.sh <raw-video> <slug> [poster-at-seconds]
+# → uploads  https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/<slug>.mp4
+# → leaves   ~/Downloads/<slug>.mp4  and  ~/Downloads/<slug>-poster.jpg
+```
+
+(Compression standard, if doing it by hand: 1080p long-edge H.264 CRF 23,
+AAC 128k, `+faststart`. Keep a cut under ~100 MB; release assets allow up
+to 2 GB but the page should stay light. Manual upload also works — drag
+the mp4 onto the `media` release on github.com, or
+`gh release upload media <file> --clobber`.)
+
+What still lives in the repo, in `public/videos/<slug>/`:
+
+- `poster.jpg` — the thumbnail (also used for social cards); the script's
+  `<slug>-poster.jpg`, copied here.
 - `captions.vtt` — WebVTT captions (only used with file URLs).
 - optional `figure-1.jpg` … — supporting diagrams/evidence, listed in
   `supportingVisuals` with real `alt` text.
 
-Then set `videoUrl`, `poster`, `captions`, `durationSeconds`, `aspect`.
+Then set `videoUrl` (the **full release URL**), `poster`, `captions`,
+`durationSeconds`, `aspect`. YouTube/Vimeo URLs still render as embeds if
+ever needed. The same shelf serves non-episode videos too (e.g. the Fish
+Fun flip-through on its book page via `Book.video` in `books.ts`).
 
 ## 3 · Preview and validate
 
@@ -67,8 +88,9 @@ Check the episode page on a phone-width viewport as well as desktop.
 
 The LinkedIn package lives on the same episode entry — no second copy:
 
-- **Video file** — the same `public/videos/<slug>/final.mp4` (upload
-  natively; don't just link).
+- **Video file** — the same compressed cut that went to the media shelf
+  (`~/Downloads/<slug>.mp4` from the script; upload natively; don't just
+  link).
 - **Caption** — `linkedinCaption` (write it in the entry so it's kept).
   End with the canonical URL, or add it as the first comment.
 - **Hook** — `hook` is the opening line.
