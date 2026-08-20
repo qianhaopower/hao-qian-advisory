@@ -78,10 +78,13 @@ The benchmark's five inserts are ALL real imagery (2 footage, 3 photos,
 **zero text cards**) — captions carry the words, inserts carry the world.
 Eps 1–3 drifted the other way (mostly typography). Hard rules from Ep. 4:
 
-1. **Footage-first.** Every episode carries **≥3 real-imagery inserts**
-   (licensed footage, photos, or Hao's own self-shot clips). Text cards
-   are capped at **≤3 per episode** and only earn a slot when the words
-   themselves are the evidence (a quote, a number, a chart).
+1. **Footage floor, not a card cap.** Every episode carries **≥3
+   real-imagery inserts** (licensed footage, photos, or Hao's own
+   self-shot clips) — this is the hard rule. Text cards are OUR
+   signature (Hao likes them; they may outnumber the benchmark's) and
+   have no cap — but a card never takes a slot where real imagery of a
+   concrete noun is available. Cards add to the imagery floor, never
+   substitute for it.
 2. **Concrete noun → real image.** When the script says a place, object,
    or activity (a meeting, a desk, code on a screen, a market, a book),
    show the THING, never a card about the thing. Cards are for what
