@@ -176,4 +176,38 @@ export const EPISODES: VideoEpisode[] = [
       "Four engineers, four months — that was 2021. Two engineers, one month — last year. Same size project.\n\nEp. 2 of Working Theory, on camera: AI changed what engineers actually do all day — and most teams are still structured for the old job.\n\nFull episode + transcript: https://haoqian.co/videos/ai-throughput-shift\n\n#WorkingTheory #EngineeringLeadership",
     linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
   },
+  {
+    slug: "retrain-the-model",
+    series: "working-theory",
+    sequence: 3,
+    title: "Retrain the Model",
+    status: "published",
+    publishedAt: "2026-08-20",
+    language: "en",
+    durationSeconds: 106,
+    hook: "You don't argue with a stale model. You retrain it.",
+    summary:
+      "LinkedIn locked Hao out for posting three times in ten minutes — its spam filter is a model trained on the old world's data, where no human writes that fast. But that morning the three posts were real: ideas argued out loud with AI as a sparring partner, work that used to take hours done in minutes. Orgs run on models like that filter too — approval chains, review cycles, meeting cadence, planning timelines, all trained on how fast a human used to work. You don't argue with a stale model; you retrain it.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/retrain-the-model.mp4",
+    aspect: "9:16",
+    poster: "/videos/retrain-the-model/poster.jpg",
+    captions: "/videos/retrain-the-model/captions.vtt",
+    transcript: [
+      "LinkedIn locked me out for a bit a few months ago. My crime: posting three times in about ten minutes. The system looked at that and decided: “No human writes that fast. Must be a bot.”",
+      "Here is what actually happened that morning. I had three ideas in my head. I talked them through with AI, by voice — thinking out loud, arguing back, rewriting as I went. The ideas were mine. The writing was mine. AI was a sparring partner.",
+      "By the time I sat down, all three were ready to post. Work that used to take hours took minutes.",
+      "The way I see it, LinkedIn's spam filter is a model — and every model is trained on the old world's data. In the old world, three real posts — three real posts in ten minutes — means a bot. So the model looked at me and said: “Broken.” But the model is what's broken down.",
+      "And the models like this are everywhere. Your org runs on them, too. Approval chains, review cycles, meeting cadence, planning timelines — all trained on how fast a human used to work.",
+      "So here is my working theory: the rules were trained on old data. AI just changed the data. You don't argue with a stale model — you retrain it.",
+      "So which of your models is still running on old data?",
+    ],
+    keyPoints: [
+      "Every rule in your org is a model trained on the old world's data — approval chains, review cycles, planning timelines all encode how fast a human used to work.",
+      "AI changed the data. You don't argue with a stale model — you retrain it.",
+    ],
+    linkedinCaption:
+      "LinkedIn locked me out for a bit a few months ago. My crime: posting three times in ten minutes.\n\nIts spam filter is a model trained on the old world's data. Your org runs on models like it too — approval chains, review cycles, planning timelines.\n\nEp. 3 of Working Theory, on camera: you don't argue with a stale model. You retrain it.\n\nFull episode + transcript: https://haoqian.co/videos/retrain-the-model\n\n#WorkingTheory #AI",
+    linkedinTags: ["WorkingTheory", "AI"],
+  },
 ];

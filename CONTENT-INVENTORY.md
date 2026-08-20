@@ -39,8 +39,11 @@ The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts
 
 ## Videos — Working Theory on camera (added 2026-08-16)
 
-- **Ep. 1 "Speaker Theory"** (from essay wt-2): filmed by Hao 2026-08-16, edited via the scripted ffmpeg/whisper pipeline. Assets in `public/videos/speaker-theory/` (final.mp4 108s 1080×1920, poster.jpg, captions.vtt); entry in `src/content/videos.ts`; canonical `/videos/speaker-theory`. B-roll: Mixkit free license (IDs 22961, 46680, 45923). Format spec: `docs/VIDEO_FORMAT_REFERENCE.md`. LinkedIn distribution pending (caption stored on the entry).
-- **Ep. 2 "AI Throughput Shift"** (from essay wt-1): filmed by Hao 2026-08-18, same pipeline. Assets in `public/videos/ai-throughput-shift/` (final.mp4 87s 1080×1920, poster.jpg, captions.vtt); entry in `src/content/videos.ts`; canonical `/videos/ai-throughput-shift`. B-roll: Mixkit free license (ID 914). LinkedIn three-piece package (final + designed thumbnail + caption.txt, per workflow §5) delivered to ~/Downloads 2026-08-18.
+Video bytes live on the media shelf (GitHub release `media`, per `scripts/publish-video.sh`); the repo keeps only poster.jpg + captions.vtt per episode.
+
+- **Ep. 1 "Speaker Theory"** (from essay wt-2): filmed by Hao 2026-08-16, edited via the scripted ffmpeg/whisper pipeline. 108s 1080×1920 on the media shelf; poster + VTT in `public/videos/speaker-theory/`; entry in `src/content/videos.ts`; canonical `/videos/speaker-theory`. B-roll: Mixkit free license (IDs 22961, 46680, 45923). Format spec: `docs/VIDEO_FORMAT_REFERENCE.md`. Posted to LinkedIn 2026-08-17.
+- **Ep. 2 "AI Throughput Shift"** (from essay wt-1): filmed by Hao 2026-08-18, same pipeline. 87s on the media shelf; poster + VTT in `public/videos/ai-throughput-shift/`; canonical `/videos/ai-throughput-shift`. B-roll: Mixkit free license (ID 914). LinkedIn three-piece package (final + designed thumbnail + caption.txt, per workflow §5) delivered to ~/Downloads 2026-08-18.
+- **Ep. 3 "Retrain the Model"** (from essay wt-35): filmed by Hao 2026-08-20, same pipeline. 106s on the media shelf; poster + VTT in `public/videos/retrain-the-model/`; canonical `/videos/retrain-the-model`. B-roll: Mixkit free license (ID 4809). Three-piece package delivered to ~/Downloads 2026-08-20.
 
 ## Projects (confirmed roster)
 

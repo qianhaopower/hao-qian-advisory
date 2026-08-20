@@ -38,6 +38,8 @@ const EDGES: [string, string][] = [
   ["video:speaker-theory", "series:working-theory"],
   ["video:ai-throughput-shift", "essay:wt-1"],
   ["video:ai-throughput-shift", "series:working-theory"],
+  ["video:retrain-the-model", "essay:wt-35"],
+  ["video:retrain-the-model", "series:working-theory"],
 ];
 
 function resolve(id: string): ConnectionRef | null {
