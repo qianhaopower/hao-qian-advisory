@@ -175,6 +175,8 @@ export const EPISODES: VideoEpisode[] = [
     linkedinCaption:
       "Four engineers, four months — that was 2021. Two engineers, one month — last year. Same size project.\n\nEp. 2 of Working Theory, on camera: AI changed what engineers actually do all day — and most teams are still structured for the old job.\n\nFull episode + transcript: https://haoqian.co/videos/ai-throughput-shift\n\n#WorkingTheory #EngineeringLeadership",
     linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7495452142133080066/",
   },
   {
     slug: "retrain-the-model",
@@ -209,5 +211,7 @@ export const EPISODES: VideoEpisode[] = [
     linkedinCaption:
       "LinkedIn locked me out for a bit a few months ago. My crime: posting three times in ten minutes.\n\nIts spam filter is a model trained on the old world's data. Your org runs on models like it too — approval chains, review cycles, planning timelines.\n\nEp. 3 of Working Theory, on camera: you don't argue with a stale model. You retrain it.\n\nFull episode + transcript: https://haoqian.co/videos/retrain-the-model\n\n#WorkingTheory #AI",
     linkedinTags: ["WorkingTheory", "AI"],
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7496085419265142784/",
   },
 ];
