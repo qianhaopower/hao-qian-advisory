@@ -100,7 +100,23 @@ Eps 1–3 drifted the other way (mostly typography). Hard rules from Ep. 4:
 5. **Build the shelf, stop hunting.** The cutting room maintains a local
    b-roll library (bright, 9:16-croppable, licence noted per clip) so
    sourcing never again decides the edit. A thin library is not a reason
-   to substitute a card.
+   to substitute a card. The shelf lives at `~/Movies/broll-library/`
+   (clips never enter git); its index is `scripts/video-pipeline/
+   broll-index.json` — pick by tags, and **record every use in the
+   index's `used_in` field**. Reuse is fine at low density (Hao,
+   2026-08-24): a clip may come back, but **never in adjacent episodes —
+   at least 3 episodes (~two weeks) between two uses of the same clip**.
+   Eps 2–3 back-to-back with the same clip family is the failure this
+   prevents.
+6. **Captions are ALWAYS the top layer** (Hao's rule, 2026-08-24, after
+   watching the benchmark again: Galloway's captions sit over every
+   insert, never under). Nothing — footage, text card, chart, animated
+   card — ever covers the caption. Consequence for card design: the
+   lower third is the caption's; **card content lives in the upper
+   zone, y ≈ 300–1100 of 1920**, and the card's own text must never
+   duplicate the caption's words at the same moment (the caption
+   already says them). The end card is the only full-frame exception,
+   and it appears after the last caption has cleared.
 
 ## Editorial structure (the 7 beats, ~90 s)
 
