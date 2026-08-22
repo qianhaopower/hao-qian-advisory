@@ -1,28 +1,46 @@
-# Video edit pipeline (Ep. 1 reference implementation)
+# Video edit pipeline
 
-The scripted edit that produced Working Theory Ep. 1 (Speaker Theory),
-kept as the template for future episodes. Episode-specific values
-(caption BLOCKS, card/b-roll windows, trim points) are hard-coded per
-episode — duplicate and adjust, the way `videos.ts` entries are duplicated.
+Two generations live here. `*_v2.py` (from Ep. 5, 2026-08-22) is the
+current template — duplicate per episode and edit the episode block at
+the top of each file. The un-suffixed files are the Ep. 1 originals, kept
+for reference.
 
-Requires: ffmpeg, whisper-cli (whisper.cpp) + ggml-base.en.bin, Python 3 + Pillow.
+Requires: ffmpeg, whisper-cli (whisper.cpp) + ggml-base.en.bin and
+ggml-small.en.bin, Python 3 + Pillow, `gh` (media shelf upload).
 
-Order of operations (details in docs/VIDEO_FORMAT_REFERENCE.md):
+Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
 
-1. `builder.py` — silence-based EDL (tightens pauses >0.95s to ~0.55s,
-   with SKIP_CUTS for mid-phrase pauses), whisper word→script alignment,
-   emits edl.json + caption_words.json. Inputs: words.json (whisper
-   `-ml 1 -sow -oj`), silences.txt (ffmpeg silencedetect).
-2. `cards.py` — insert cards (PIL, 1080×1920, paper/ink, Arial Bold/Black
-   + the site's Plex Mono labels).
-3. `encode.py` pass 1 — cut & concat the raw footage per the EDL.
-4. `captions_render.py` — karaoke caption state PNGs + ffconcat list
-   (grey pre-laid, words turn white when spoken, punch words 2x).
-5. `compose2.py` — final composite: b-roll fades (under captions), text
-   cards slide+push-in (over captions, ≥2.2s hold), animated volume bar,
-   end card; loudnorm -14 LUFS.
-
-Verification tricks that caught real bugs: re-transcribe the OUTPUT
-around suspect times (whisper word timestamps drift up to ~1.5s late —
-trust ffmpeg silencedetect for cut points), and contact-sheet the final
-(`fps=1,tile=4x3`) to eyeball caption sync and card windows.
+0. Transcribe with the lead-in silence trimmed (`ffmpeg -ss <first speech
+   − 0.2s>`, then add the offset back) — whisper's word times drift by a
+   second when the file opens on 4 s of silence. Verify every word that
+   differs from the script with base.en AND small.en on a tight segment:
+   models agree → caption what they heard; models disagree → script text
+   wins; suffix elisions (-s, -ing) → grammatical form.
+1. `builder_v2.py` — silence-based EDL (tightens pauses >0.95 s to
+   ~0.55 s). SKIP_CUTS = protected pauses, set BEFORE the first cut:
+   "working theory:", think-beats after payoff lines, script blank lines.
+   WHISPER_PATCH fixes word times that drifted into silences (from
+   silencedetect edges). Emits edl.json + caption_words.json.
+2. `encode_v2.py` pass 1 — cut & concat from the 4K source. Framing check
+   here: if head top >13% / eyes >32% of frame height, add a centred
+   9:16 `crop=` before the scale (Ep. 5: `crop=1728:3072:216:768`, 1.25×).
+3. `captions_render_v2.py` — karaoke caption state PNGs + ffconcat list.
+4. `assets_v2.py` — thumbnail/title frame (closed-mouth frame from the
+   silent tail of edited.mp4) and the Newsreader end card. Evidence cards
+   follow Ep. 2–4's cards_*.py pattern: paper/ink, Plex Mono label, all
+   content in the upper zone (y 300–1100).
+5. `compose_v2.py` — layer order is the rule: base → footage (fades,
+   muted) → cards/animated cards/diagrams → **captions on top** → end card
+   (only after the last caption clears) → title frame (first 0.15 s).
+   ≥3 real-imagery inserts per episode, picked from
+   `~/Movies/broll-library/` via `broll-index.json` (bright only, ≥3
+   episodes between reuses) — **write `used_in` when you pick**.
+6. Loudnorm is two-pass: measure with `print_format=json`, then apply
+   with `measured_*` + `linear=true` (single-pass lands ~2 LU low).
+7. QC before Hao sees it: re-transcribe the OUTPUT around every cut
+   (small.en, full file — no fragments, no repeats), contact-sheet
+   (`fps=1,tile=4x3`), eyeball first frame / every insert window / the
+   end-card handoff.
+8. Deliver to ~/Downloads as the three-piece package (final + thumbnail +
+   caption). Publish with `scripts/publish-video.sh` (media shelf) once
+   Hao approves.

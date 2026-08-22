@@ -88,8 +88,11 @@ Check the episode page on a phone-width viewport as well as desktop.
    line. Make it with
    `python3 scripts/video-pipeline/thumbnail.py <frame.jpg> "LINE ONE" "LINE TWO." out.jpg`
    (cut the frame with `ffmpeg -ss <sec> -i <raw> -frames:v 1`, mouth
-   closed, no burnt captions). Upload it via LinkedIn's "Edit thumbnail"
-   on the video; the same file is `public/videos/<slug>/poster.jpg`.
+   closed, no burnt captions). **The cutting room also bakes this card in
+   as the video's first ~0.15 s** (Hao, 2026-08-20: LinkedIn's "Edit
+   thumbnail" doesn't stick — the feed shows frame 1 regardless), so the
+   file is the site poster (`public/videos/<slug>/poster.jpg`) and a
+   backup; try "Edit thumbnail" anyway, it costs nothing.
 3. `«Title» - EpN - caption.txt` — the LinkedIn caption (written at
    script stage, stored on the `linkedinCaption` field). Hook line
    first, canonical URL, two tags max.

@@ -26,6 +26,14 @@ wording, personality or branding.
   glasses. High contrast against white. One outfit for the whole series.
 - **Framing**: chest-up medium shot, head in upper third, centred.
   Speaker leans/rocks naturally, hands occasionally enter frame.
+  **Framing check (Hao, 2026-08-22, after Ep. 5 came in loose):** measured
+  against the benchmark — top of head **8–13%** from the frame top, eyes
+  **25–32%** down, head ≈ a quarter of the frame height. If a take is
+  looser (Ep. 5 raw: head top at 30%, eyes at 45%), the cutting room
+  reframes at pass 1 from the 4K source — crop a centred 9:16 window and
+  scale to 1080×1920 (up to 2× push-in with no quality loss; Ep. 5 used
+  1.25×: `crop=1728:3072:216:768`). Shooting closer also cuts the room
+  echo (mic is the phone) — the two problems are the same problem.
 - **Edit within talking head**: occasional subtle jump cuts between takes
   (same framing, ~1 punch-in in 90 s at 0:07). No zoom pushes, no
   animated crops.
@@ -199,7 +207,15 @@ copy. Checks, in order of importance:
 2. Record: locked camera, white wall, dark outfit, dry audio, read in
    sentence-sized takes (pauses come free from the take boundaries).
 3. Edit: assemble takes, keep 0.4–0.7 s of silence between sentences,
-   1–2 subtle jump cuts max.
+   1–2 subtle jump cuts max. **Protected pauses** (never tightened — Hao,
+   2026-08-22): the beat after "So here is my working theory:", the
+   think-beat after a payoff line ("…it's HIS."), and any blank line the
+   script marks as a pause. They go into the builder's SKIP_CUTS before
+   the first cut, not after Hao's ear finds them. Loose takes get
+   reframed from the 4K source at pass 1 (see Framing check above).
+   **Audio**: dry voice only, nothing beyond loudnorm −14 LUFS — room
+   echo (Ep. 5) is a capture problem; Hao is getting a lavalier mic, and
+   until then the phone goes closer. Never de-reverb in post.
 4. Inserts: drop each on its noun, whip-pan blur for footage, straight
    cuts for rapid-fire photo lists.
 5. Captions: karaoke word-sync, grey→white, one big punch word per

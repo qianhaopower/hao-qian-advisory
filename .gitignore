@@ -39,6 +39,9 @@ yarn-error.log*
 # raw scraped page caches (curated data lives in CONTENT-INVENTORY.md)
 /content-src/working-theory-cache/
 
+# cutting-room b-roll library (video bytes never enter git; licences noted inside)
+/content-src/broll-shelf/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
