@@ -214,4 +214,138 @@ export const EPISODES: VideoEpisode[] = [
     linkedinPublishedUrl:
       "https://www.linkedin.com/feed/update/urn:li:activity:7496085419265142784/",
   },
+  {
+    slug: "iq-to-eq",
+    series: "working-theory",
+    sequence: 4,
+    title: "IQ-to-EQ Career Weighting",
+    status: "published",
+    publishedAt: "2026-08-21",
+    language: "en",
+    durationSeconds: 87,
+    hook: "Your career runs on two lines — IQ and EQ. Both rise. One rises faster.",
+    summary:
+      "Early on, IQ does the heavy lifting: problems land well-defined and the job is to solve them well. Then scope grows, problems arrive fuzzy, and the day fills with hard conflicts, trade-offs and conversations — EQ becomes proportionally more important, and keeps going. One hard meeting where everyone walks out aligned can save a team weeks; a few sentences in the room can turn it. The bigger your scope, the more the EQ line carries your career — which line have you been training?",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/iq-to-eq.mp4",
+    aspect: "9:16",
+    poster: "/videos/iq-to-eq/poster.jpg",
+    captions: "/videos/iq-to-eq/captions.vtt",
+    transcript: [
+      "Your career runs on two lines. The IQ line. And the EQ line. Both keep rising. But one rises faster.",
+      "At the very start, IQ does the heavy lifting. As a junior, you get a lot of care from the seniors around you. Problems land on your desk well-defined. The job is to solve them well.",
+      "Then the job changes. Scope gets bigger. Problems arrive fuzzy. You're working with people from very different backgrounds. Hard conflicts. Hard trade-offs. Hard conversations — daily.",
+      "So IQ still matters. EQ just becomes, proportionally, more important. And it keeps going.",
+      "The moment I realised this: one hard meeting, where everyone walks out actually aligned, can save my team weeks of work. Because alignment moves multiple teams in one direction. And inside that room, a few sentences can turn the whole meeting. That's all EQ playing.",
+      "So here is my working theory: the weight keeps shifting. The bigger your scope, the more the EQ line carries your career.",
+      "Worth checking your own two lines — which one have you been training?",
+    ],
+    keyPoints: [
+      "Both lines keep rising; the EQ line rises faster as scope grows.",
+      "One hard meeting that ends aligned can save a team weeks — that's EQ at work.",
+    ],
+    linkedinCaption:
+      "One hard meeting, done well, can save a team weeks of work.\n\nEp. 4 of Working Theory, on camera: your career runs on two lines — IQ and EQ. Both rise. One rises faster.\n\nFull episode + transcript: https://haoqian.co/videos/iq-to-eq\n\n#WorkingTheory #CareerGrowth",
+    linkedinTags: ["WorkingTheory", "CareerGrowth"],
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7496420869465079808/",
+  },
+  {
+    slug: "goldilocks-load",
+    series: "working-theory",
+    sequence: 5,
+    title: "The Goldilocks Load",
+    status: "published",
+    publishedAt: "2026-08-22",
+    language: "en",
+    durationSeconds: 110,
+    hook: "People grow at the Goldilocks load — a little more than they can carry today, light enough to recover from.",
+    summary:
+      "A good trainer adds five kilos to the bar — maybe ten, never twenty. Careers work the same way: the job is to keep finding the extra weight that's just right, whether that's a harder problem, a riskier deployment, one more team to align, or a project that runs months instead of weeks. One real example from Hao's team: an engineer who could coordinate inside the team and next door, given exactly one extra team beyond the org — on purpose, as a stretch — aligned them beautifully, and his range and Hao's trust grew together. Finding that weight, one person at a time, is most of the manager's job.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/goldilocks-load.mp4",
+    aspect: "9:16",
+    poster: "/videos/goldilocks-load/poster.jpg",
+    captions: "/videos/goldilocks-load/captions.vtt",
+    transcript: [
+      "How do you grow a person on your team? Same way a good trainer grows you. They add five kilos to the bar. Maybe ten. Never twenty. Enough that you feel it. Light enough that you recover.",
+      "Careers work the same way. The job is to keep finding the Goldilocks load — the extra weight that's just right. In a career, the extra weight comes in a few shapes: a harder technical problem, a riskier deployment, one more team to align, or a project that runs months instead of weeks.",
+      "Get the load right, and the person steps out of their comfort zone, learns something new — and still feels neither stressed nor defeated.",
+      "Here's one from my team. One engineer could already coordinate inside our team, and with the team next door. The next level: aligning teams beyond our org. So I set it up on purpose, as a stretch. One extra team beyond our org. Just one. He aligned them beautifully. And from that point on, his range grew — and so did my trust. Next time something like this comes up, it's his.",
+      "So here is my working theory: people grow at the Goldilocks load. A little more than what they can carry today. Light enough to recover from. And finding that weight — again and again, one person at a time — that's most of the manager's job.",
+    ],
+    keyPoints: [
+      "Add five kilos, never twenty: the extra weight that's just right.",
+      "Finding that weight for each person, again and again, is most of the manager's job.",
+    ],
+    linkedinCaption:
+      "A good trainer adds five kilos, never twenty. Growing people works the same way.\n\nEp. 5 of Working Theory, on camera: the Goldilocks load — a little more than someone can carry today, light enough to recover from. One real example from my team.\n\nFull episode + transcript: https://haoqian.co/videos/goldilocks-load\n\n#WorkingTheory #EngineeringManagement",
+    linkedinTags: ["WorkingTheory", "EngineeringManagement"],
+  },
+  {
+    slug: "attention-is-not-cheap",
+    series: "working-theory",
+    sequence: 6,
+    title: "Attention Is Not Cheap",
+    status: "published",
+    publishedAt: "2026-08-22",
+    language: "en",
+    durationSeconds: 95,
+    hook: "Information is cheap. Attention is not.",
+    summary:
+      "Text, video, documents — the carriers of information cost almost nothing to make now, and work is drowning in them. But the passage from seeing something to understanding it is as narrow as it has always been. Hao wrote a ten-page proposal with every edge case and every risk; his manager's feedback was “you lost me” — she cared, she just physically couldn't. The hard skill in the AI era runs both ways: presenting information at the right level of attention, and spending your own attention on the right information.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/attention-is-not-cheap.mp4",
+    aspect: "9:16",
+    poster: "/videos/attention-is-not-cheap/poster.jpg",
+    captions: "/videos/attention-is-not-cheap/captions.vtt",
+    transcript: [
+      "Information is cheap. Attention is not.",
+      "Text, video, documents — the carriers of information cost almost nothing to make now. We live in a world drowning in information. Certainly at work. But the passage from seeing something to understanding it — that passage is still narrow. As narrow as it's always been.",
+      "Here is how I learned that. I recently wrote a proposal. Ten pages. Every edge case. Every risk — with a mitigation plan for each. I didn't write a proposal. I wrote a mini book.",
+      "My manager's feedback: “Too much detail. It is diluting your point. You lost me.” And she was right. She cared. She just physically couldn't. I drowned her in detail. I asked for attention that nobody can afford. The proposal didn't pass.",
+      "So here is my working theory: the hard skill in the AI era runs both ways — presenting information at the right level of attention, and spending our own attention on the right information. Information will keep getting cheaper. Attention stays scarce.",
+      "So, honest question: what's the longest document you ever sent that nobody actually read?",
+    ],
+    keyPoints: [
+      "The passage from seeing to understanding is as narrow as it has always been.",
+      "The hard skill runs both ways: present at the right level of attention, and spend your own attention on the right information.",
+    ],
+    linkedinCaption:
+      "Information is cheap. Attention is not.\n\nEp. 6 of Working Theory, on camera: I wrote a ten-page proposal with every edge case and every risk. My manager's feedback: \"You lost me.\" She was right.\n\nFull episode + transcript: https://haoqian.co/videos/attention-is-not-cheap\n\n#WorkingTheory #Leadership",
+    linkedinTags: ["WorkingTheory", "Leadership"],
+  },
+  {
+    slug: "html-is-the-new-english",
+    series: "working-theory",
+    sequence: 7,
+    title: "HTML Is The New English",
+    status: "published",
+    publishedAt: "2026-08-22",
+    language: "en",
+    durationSeconds: 86,
+    hook: "HTML is the new English.",
+    summary:
+      "A few years ago even a simple web page took real skill; that barrier is gone. Anyone can describe what they want to an agent and get back an animated page with diagrams, formatting, video and sound. At work, people are building pages instead of sending long docs — pulling the data together, connecting the dots in diagrams, animating it. The downside is real (version control, commenting on a sentence); the upside is that you see it in a way a static page never showed you. Present your information in ways you couldn't imagine before — expand your vocabulary to code.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/html-is-the-new-english.mp4",
+    aspect: "9:16",
+    poster: "/videos/html-is-the-new-english/poster.jpg",
+    captions: "/videos/html-is-the-new-english/captions.vtt",
+    transcript: [
+      "HTML is the new English.",
+      "A few years ago, producing code — even a simple web page — took real skill. That barrier is gone. Today anyone can open a laptop, describe to an agent what they want, and get a page with diagrams, rich formatting, colour, video, sound — a beautiful animated page they can present.",
+      "English is still better at some things. But the ways we can communicate asynchronously just expanded — exponentially. Because now, anyone can make HTML.",
+      "Here is what I see at work. We write a lot of internal doc pages. Long ones. Now, more and more, instead of sending a doc, people build a page. They pull data all together. They connect the dots in diagrams. They animate it. And they send you that.",
+      "The downside is real. You lose version control. You lose commenting on sentences. The upside: you see it. In a way a static page could never show you.",
+      "So here is my working theory: present your information in ways you could not imagine before. Expand your vocabulary to code.",
+    ],
+    keyPoints: [
+      "The barrier to making code is gone — anyone can make HTML now.",
+      "Expand your vocabulary to code: present information in ways a static page never could.",
+    ],
+    linkedinCaption:
+      "HTML is the new English.\n\nEp. 7 of Working Theory, on camera: the barrier to making code is gone — so people are sending animated pages instead of long documents, and communication just got a new vocabulary.\n\nFull episode + transcript: https://haoqian.co/videos/html-is-the-new-english\n\n#WorkingTheory #AI",
+    linkedinTags: ["WorkingTheory", "AI"],
+  },
 ];

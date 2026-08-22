@@ -1,5 +1,22 @@
 # Video signals log
 
+## LinkedIn posting status (the cutting room keeps this current)
+
+| Ep | Title | On haoqian.co | On LinkedIn | Post |
+|---|---|---|---|---|
+| 1 | Speaker Theory | 2026-08-16 | ✅ 2026-08-17 | activity 7494997549993431040 |
+| 2 | AI Throughput Shift | 2026-08-18 | ✅ 2026-08-19 | (see videos.ts) |
+| 3 | Retrain the Model | 2026-08-20 | ✅ 2026-08-20 | (see videos.ts) |
+| 4 | IQ-to-EQ Career Weighting | 2026-08-22 | ✅ 2026-08-21 | activity 7496420869465079808 |
+| 5 | The Goldilocks Load | 2026-08-22 | ✅ 2026-08-22 | URL pending — paste into `linkedinPublishedUrl` |
+| 6 | Attention Is Not Cheap | 2026-08-22 | ⬜ not yet | package ready in ~/Downloads |
+| 7 | HTML Is The New English | 2026-08-22 | ⬜ not yet | package ready in ~/Downloads |
+
+Rule: Hao tells the cutting room when a post goes live (the session cannot
+read LinkedIn — it is login-walled); the row flips and the post URL lands
+on the episode entry. Two unposted = the next two posting days.
+
+
 Raw analytics snapshots per episode, recorded manually from LinkedIn post
 analytics. Interim snapshots live here; the official 7-day snapshot also
 goes into the episode's `signals` field in `src/content/videos.ts`.
