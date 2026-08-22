@@ -11,7 +11,8 @@
 # Usage:   scripts/publish-video.sh <input-video> <slug> [poster-at-seconds]
 # Needs:   ffmpeg, gh (already logged in)
 # Output:  ~/Downloads/<slug>.mp4         — compressed cut, uploaded to the shelf
-#          ~/Downloads/<slug>-poster.jpg  — poster frame, copy into public/ + commit
+#          ~/Downloads/<slug>-poster.jpg  — raw poster frame (FALLBACK ONLY —
+#            the real poster is the designed thumbnail from video-pipeline/thumbnail.py)
 set -euo pipefail
 
 REPO="qianhaopower/hao-qian-advisory"

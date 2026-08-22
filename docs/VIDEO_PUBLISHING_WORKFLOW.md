@@ -42,8 +42,12 @@ the mp4 onto the `media` release on github.com, or
 
 What still lives in the repo, in `public/videos/<slug>/`:
 
-- `poster.jpg` — the thumbnail (also used for social cards); the script's
-  `<slug>-poster.jpg`, copied here.
+- `poster.jpg` — the designed 1080×1920 thumbnail (also used for social
+  cards): a clean face frame + title in the caption style + HAOQIAN.CO line,
+  made by `scripts/video-pipeline/thumbnail.py`. It is the SAME file that
+  goes to LinkedIn as «Title - EpN - thumbnail.jpg». Do not use the
+  raw frame `publish-video.sh` cuts — it's a fallback only (rule since
+  2026-08-22, when Eps 1–3 were switched from frames to thumbnails).
 - `captions.vtt` — WebVTT captions (only used with file URLs).
 - optional `figure-1.jpg` … — supporting diagrams/evidence, listed in
   `supportingVisuals` with real `alt` text.
@@ -81,7 +85,11 @@ Check the episode page on a phone-width viewport as well as desktop.
 2. `«Title» - EpN - thumbnail.jpg` — 1080×1920 designed thumbnail:
    a clean face frame from the episode with the episode title in the
    caption style (Arial Black, lower third) and a small HAOQIAN.CO mono
-   line. Upload it via LinkedIn's "Edit thumbnail" on the video.
+   line. Make it with
+   `python3 scripts/video-pipeline/thumbnail.py <frame.jpg> "LINE ONE" "LINE TWO." out.jpg`
+   (cut the frame with `ffmpeg -ss <sec> -i <raw> -frames:v 1`, mouth
+   closed, no burnt captions). Upload it via LinkedIn's "Edit thumbnail"
+   on the video; the same file is `public/videos/<slug>/poster.jpg`.
 3. `«Title» - EpN - caption.txt` — the LinkedIn caption (written at
    script stage, stored on the `linkedinCaption` field). Hook line
    first, canonical URL, two tags max.
