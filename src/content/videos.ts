@@ -281,6 +281,8 @@ export const EPISODES: VideoEpisode[] = [
     linkedinCaption:
       "A good trainer adds five kilos, never twenty. Growing people works the same way.\n\nEp. 5 of Working Theory, on camera: the Goldilocks load — a little more than someone can carry today, light enough to recover from. One real example from my team.\n\nFull episode + transcript: https://haoqian.co/videos/goldilocks-load\n\n#WorkingTheory #EngineeringManagement",
     linkedinTags: ["WorkingTheory", "EngineeringManagement"],
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/posts/hao-qian-9ab0b04b_workingtheory-engineeringmanagement-ugcPost-7496899874139832323-bBRf/",
   },
   {
     slug: "attention-is-not-cheap",

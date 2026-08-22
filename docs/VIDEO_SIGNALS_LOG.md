@@ -8,7 +8,7 @@
 | 2 | AI Throughput Shift | 2026-08-18 | ✅ 2026-08-19 | (see videos.ts) |
 | 3 | Retrain the Model | 2026-08-20 | ✅ 2026-08-20 | (see videos.ts) |
 | 4 | IQ-to-EQ Career Weighting | 2026-08-22 | ✅ 2026-08-21 | activity 7496420869465079808 |
-| 5 | The Goldilocks Load | 2026-08-22 | ✅ 2026-08-22 | URL pending — paste into `linkedinPublishedUrl` |
+| 5 | The Goldilocks Load | 2026-08-22 | ✅ 2026-08-22 | ugcPost 7496899874139832323 |
 | 6 | Attention Is Not Cheap | 2026-08-22 | ⬜ not yet | package ready in ~/Downloads |
 | 7 | HTML Is The New English | 2026-08-22 | ⬜ not yet | package ready in ~/Downloads |
 
