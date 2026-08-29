@@ -6,7 +6,7 @@ import subprocess, shlex, os
 from PIL import Image, ImageDraw, ImageFont
 run = lambda c: subprocess.run(shlex.split(c), check=True)
 
-FADE = 0.35; TITLE_HOLD = 0.15
+FADE = 0.35; TITLE_HOLD = 0.02   # exactly 1 frame: >1 frame reads as a flash (Hao, Ep. 8)
 BASE_DUR = 105.15; END_START = 106.55; TOTAL = END_START + 3.8
 
 brolls = [  # (path, out_s, out_e, skip, extra)

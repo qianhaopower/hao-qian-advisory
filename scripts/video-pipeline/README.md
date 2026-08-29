@@ -10,9 +10,13 @@ ggml-small.en.bin, Python 3 + Pillow, `gh` (media shelf upload).
 
 Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
 
-0. Transcribe with the lead-in silence trimmed (`ffmpeg -ss <first speech
-   − 0.2s>`, then add the offset back) — whisper's word times drift by a
-   second when the file opens on 4 s of silence. Verify every word that
+0. Transcribe word times with `transcribe_islands.py` (per-island: split
+   at silencedetect boundaries, whisper each island, clamp) — a single
+   global pass drifts up to ~1.5 s near pauses and puts the karaoke
+   highlight on the wrong word (Ep. 8 lesson). Mic-era audio: build the
+   processed track first (gain → highpass 80 → gentle acompressor →
+   loudnorm last; see the format doc §Audio processing) and run BOTH
+   silencedetect and the island transcription on it. Verify every word that
    differs from the script with base.en AND small.en on a tight segment:
    models agree → caption what they heard; models disagree → script text
    wins; suffix elisions (-s, -ing) → grammatical form.
@@ -29,9 +33,10 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
    silent tail of edited.mp4) and the Newsreader end card. Evidence cards
    follow Ep. 2–4's cards_*.py pattern: paper/ink, Plex Mono label, all
    content in the upper zone (y 300–1100).
-5. `compose_v2.py` — layer order is the rule: base → footage (fades,
-   muted) → cards/animated cards/diagrams → **captions on top** → end card
-   (only after the last caption clears) → title frame (first 0.15 s).
+5. `compose_v2.py` — layer order is the rule: base → footage (whip
+   slide+blur 0.18 s in/out, muted, ≥3.0 s clean hold) → cards/animated
+   cards/diagrams → **captions on top** → end card (only after the last
+   caption clears) → title frame (**first frame only** — longer flashes).
    ≥3 real-imagery inserts per episode, picked from
    `~/Movies/broll-library/` via `broll-index.json` (bright only, ≥3
    episodes between reuses) — **write `used_in` when you pick**.
