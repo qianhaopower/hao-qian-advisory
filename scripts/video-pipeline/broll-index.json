@@ -3999,5 +3999,29 @@
   "file": "/Users/haoqian/Movies/broll-library/px81173.mp4",
   "license": "Pixabay Content License (commercial OK, no attribution)",
   "used_in": []
+ },
+ {
+  "id": "2272",
+  "slug": "man-bouncing-a-basketball-ball",
+  "tags": [
+   "ball",
+   "basketball",
+   "bouncing",
+   "court",
+   "sunny",
+   "outdoor",
+   "bright"
+  ],
+  "width": 1280,
+  "height": 720,
+  "duration": 22.8,
+  "luma": 90,
+  "bright": true,
+  "file": "/Users/haoqian/Movies/broll-library/2272.mp4",
+  "url": "https://mixkit.co/free-stock-video/man-bouncing-a-basketball-ball-2272/",
+  "license": "Mixkit Free License (commercial OK, no attribution)",
+  "used_in": [
+   "ep10"
+  ]
  }
 ]
