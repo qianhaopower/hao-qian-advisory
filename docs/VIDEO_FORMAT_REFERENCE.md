@@ -131,6 +131,44 @@ Eps 1–3 drifted the other way (mostly typography). Hard rules from Ep. 4:
    already says them). The end card is the only full-frame exception,
    and it appears after the last caption has cleared.
 
+## Cross-reel quantitative study (2026-08-28, three Galloway explainers)
+
+Measured from segment-level scene detection + per-segment frames. Scott
+runs (at least) three sub-formats; ours remains Style A. The other two
+calibrate what's ALLOWED at the edges.
+
+| Metric | A · white-cyc karaoke (C5Y7GROAkEW, our bible) | B · whiteboard explainer (DAGiGzcIknn) | C · archive montage (DAOhSnmoh_h) |
+|---|---|---|---|
+| Length | 90 s | ~40 s | ~85 s |
+| Cuts | 8 | 5 | 52 |
+| Face share | ~90% | ~31% | ~35% |
+| Insert count | 5 | 3 | ~42 |
+| Insert lengths | 0.5–3.5 s (feature 3–3.5, rapid 0.5–1.2) | one 20 s chart + 6 s prop + product shot | avg ~1.3 s, rapid-fire runs of 6–7 |
+| Transitions | whip-blur ~0.2 s on footage; straight cuts on rapid-fire | straight cuts | straight cuts; every still gets Ken Burns |
+| Captions | karaoke word-by-word, ALL CAPS, left ~16%, y 66–72%, white on grey pre-lay, punch ~2.2×, small text ~2.2% of frame height | chunk of 1–2 lines, sentence case, CENTRED, y 50–57%, white + TEAL highlight box on key phrase, ~3.5%/line | one chunk at a time, centred, y 65–68%, white bold, occasional italic/yellow emphasis word |
+| Captions over inserts | always on top | always on top | always on top |
+
+Invariants across all three (the real Scott rules): the caption layer is
+never covered; an insert lands exactly on its noun; stills always move;
+face carries the open and the close. (Audio for B/C not yet analysed —
+A remains the sound reference.)
+
+What this changes for us (Style A stays the base):
+- **Insert duration norms**: featured insert 3.0–3.5 s; rapid-fire
+  0.5–1.2 s each; nothing beyond 4 s except a chart that is actively
+  being read.
+- **Rapid-fire runs of up to 6 consecutive images are legitimate** for
+  list beats (Style C evidence) — use for enumerations.
+- Chart inserts may hold longer (Style B holds one for 20 s) when the
+  voiceover is walking through the chart — but keep OUR paper/ink chart
+  style, never Scott's pink-label look.
+- Caption system stays OUR karaoke (A). The teal-highlight chunk system
+  (B/C) is a different campaign voice — do not mix.
+
+Reference reels: A https://www.instagram.com/reel/C5Y7GROAkEW/ ·
+B https://www.instagram.com/profgalloway/reel/DAGiGzcIknn/ ·
+C https://www.instagram.com/reel/DAOhSnmoh_h/
+
 ## Audio processing (added 2026-08-28 — the microphone era)
 
 From this batch Hao records with an external microphone. Audio is
