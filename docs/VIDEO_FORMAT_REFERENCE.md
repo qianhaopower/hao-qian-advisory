@@ -156,7 +156,12 @@ A remains the sound reference.)
 What this changes for us (Style A stays the base):
 - **Insert duration norms**: featured insert 3.0–3.5 s; rapid-fire
   0.5–1.2 s each; nothing beyond 4 s except a chart that is actively
-  being read.
+  being read. **Minimum hold (Hao, 2026-08-29, after Ep. 8 cut 1): a
+  standalone footage/photo insert holds ≥3.0 s CLEAN — transition time
+  (whip ≈0.18 s each side) doesn't count, so the window is ≥3.4 s.
+  Anything shorter reads as a flash ("还没来得及看"). Sub-3 s cuts are
+  legal only inside a rapid-fire run of ≥3 images on an enumerated
+  list beat.**
 - **Rapid-fire runs of up to 6 consecutive images are legitimate** for
   list beats (Style C evidence) — use for enumerations.
 - Chart inserts may hold longer (Style B holds one for 20 s) when the
@@ -290,5 +295,11 @@ copy. Checks, in order of importance:
 4. Inserts: drop each on its noun, whip-pan blur for footage, straight
    cuts for rapid-fire photo lists.
 5. Captions: karaoke word-sync, grey→white, one big punch word per
-   sentence, lower-left block.
+   sentence, lower-left block. **Word timing comes from PER-ISLAND
+   transcription (Hao caught global-pass drift on Ep. 8 cut 1): split
+   the audio into speech islands at the silencedetect boundaries,
+   run whisper word-mode on each island separately, offset and clamp
+   words into their island. A word's highlight must land while the
+   word is being spoken — the global whisper pass alone drifts up to
+   ~1.5 s near pauses and is never shipped unchecked.**
 6. Export 1080×1920, 24 fps → follow docs/VIDEO_PUBLISHING_WORKFLOW.md.
