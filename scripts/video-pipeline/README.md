@@ -45,7 +45,12 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
 7. QC before Hao sees it: re-transcribe the OUTPUT around every cut
    (small.en, full file — no fragments, no repeats), contact-sheet
    (`fps=1,tile=4x3`), eyeball first frame / every insert window / the
-   end-card handoff.
+   end-card handoff. **MANDATORY opening check (after four rounds on
+   Ep. 8): extract frames 0–45 of the delivered file, compute
+   consecutive-frame pixel diffs, and LOOK at the strip. The diff curve
+   must be flat through the cover freeze and ramp smoothly into speech —
+   any spike is a jump/ghost the viewer will see. Theorising about the
+   opening instead of frame-diffing it cost three cuts.**
 8. Deliver to ~/Downloads as the three-piece package (final + thumbnail +
    caption). Publish with `scripts/publish-video.sh` (media shelf) once
    Hao approves.

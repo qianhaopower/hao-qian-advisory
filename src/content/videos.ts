@@ -354,4 +354,37 @@ export const EPISODES: VideoEpisode[] = [
     linkedinPublishedUrl:
       "https://www.linkedin.com/feed/update/urn:li:activity:7498694264994820096/",
   },
+  {
+    slug: "good-work-doesnt-speak",
+    series: "working-theory",
+    sequence: 8,
+    title: "Good Work Doesn't Speak",
+    status: "published",
+    publishedAt: "2026-08-29",
+    language: "en",
+    durationSeconds: 97,
+    hook: "Many new managers believe good work speaks for itself. It doesn't.",
+    summary:
+      "You solved a serious cross-department problem — and everyone else saw one small task. In a large company people see only a compressed version of reality: each leader holds one fragment, nobody sees the whole system. So fixing the problem is only step one; the real job is converting the value you created into organizational memory — in the right forum, explain what broke, why it mattered, what changed, and why it won't happen again. That's not exaggerating the impact; it's making the full picture visible. The trust it earns becomes the capital for the next, bigger problem.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/good-work-doesnt-speak.mp4",
+    aspect: "9:16",
+    poster: "/videos/good-work-doesnt-speak/poster.jpg",
+    captions: "/videos/good-work-doesnt-speak/captions.vtt",
+    transcript: [
+      "Have you ever done something that is really difficult — and watched everyone treat it like it was easy? You solved a serious cross-department problem. But everyone else saw one small task.",
+      "Many new managers believe good work speaks for itself. It doesn't. And this isn't about bragging.",
+      "In large companies, people see only a compressed version of reality from a few sources. You understand the dependencies, the escalations, and the root causes. But each leader sees only one fragment. Nobody sees the whole system.",
+      "Fixing the problem is only the first step. You also need to convert the value you created into organizational memory. In the right forum, explain what broke, why it mattered, what changed, and why it won't happen again.",
+      "You are not exaggerating the impact. You are making the full picture visible.",
+      "When the organization understands and remembers your impact, you earn trust. The trust becomes the capital to solve the next, bigger problem. You grow. And your team grows with you.",
+    ],
+    keyPoints: [
+      "Each leader sees one fragment of what you did; nobody sees the whole system — good work cannot speak for itself.",
+      "Convert the value into organizational memory: what broke, why it mattered, what changed, why it won't happen again.",
+    ],
+    linkedinCaption:
+      "Many new managers believe good work speaks for itself. It doesn't.\n\nEp. 8 of Working Theory, on camera: in a large company every leader sees one fragment of what you did. Fixing the problem is step one — converting it into organizational memory is the real job.\n\nFull episode + transcript: https://haoqian.co/videos/good-work-doesnt-speak\n\n#WorkingTheory #EngineeringLeadership",
+    linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
+  },
 ];

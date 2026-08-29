@@ -46,6 +46,7 @@ const EDGES: [string, string][] = [
   ["video:attention-is-not-cheap", "series:working-theory"],
   ["video:html-is-the-new-english", "essay:wt-46"],
   ["video:html-is-the-new-english", "series:working-theory"],
+  ["video:good-work-doesnt-speak", "series:working-theory"],
 ];
 
 function resolve(id: string): ConnectionRef | null {

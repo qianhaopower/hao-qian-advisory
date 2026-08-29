@@ -308,4 +308,9 @@ copy. Checks, in order of importance:
    words into their island. A word's highlight must land while the
    word is being spoken — the global whisper pass alone drifts up to
    ~1.5 s near pauses and is never shipped unchecked.**
-6. Export 1080×1920, 24 fps → follow docs/VIDEO_PUBLISHING_WORKFLOW.md.
+6. Before delivering ANY cut: frame-diff the first 1.5 s (consecutive
+   frames, pixel mean) — flat through the cover, smooth ramp into
+   speech, no spikes. The opening is where every glitch class lives:
+   settling slivers, pose-jump covers, ghosting dissolves (Ep. 8 took
+   four rounds; the diff curve catches all of them in one look).
+7. Export 1080×1920, 24 fps → follow docs/VIDEO_PUBLISHING_WORKFLOW.md.
