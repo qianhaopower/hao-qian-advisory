@@ -88,14 +88,17 @@ Check the episode page on a phone-width viewport as well as desktop.
    line. Make it with
    `python3 scripts/video-pipeline/thumbnail.py <frame.jpg> "LINE ONE" "LINE TWO." out.jpg`
    (cut the frame with `ffmpeg -ss <sec> -i <raw> -frames:v 1`, mouth
-   closed, no burnt captions). **The cutting room bakes this card in as
-   the video's FIRST FRAME — exactly one frame, no more** (Hao, 2026-08-20:
-   LinkedIn's "Edit thumbnail" doesn't stick, the feed shows frame 1;
-   revised 2026-08-29: the original ~0.15 s hold read as a visible flash —
-   one frame at 30 fps is what LinkedIn needs and the eye doesn't
-   register it). In compose: `enable='lt(t,0.02)'` on the title overlay.
-   The same file is the site poster (`public/videos/<slug>/poster.jpg`);
-   try "Edit thumbnail" anyway, it costs nothing.
+   closed, no burnt captions). **The card's background IS the final
+   cut's first frame — never a frame from elsewhere in the take** (Hao,
+   three rounds on Ep. 8: a tail-frame thumbnail means the body visibly
+   jumps between frame 0 and frame 1, even at a single frame; a hold
+   reads as a flash). Build the card on frame 0 of the edited video and
+   dissolve only the TEXT layer out over ~0.12 s
+   (`fade=t=out:st=0.033:d=0.12:alpha=1` on the title overlay) — the
+   body never moves, the type melts away, LinkedIn still grabs the full
+   card as frame 1. The same file is the site poster
+   (`public/videos/<slug>/poster.jpg`); try "Edit thumbnail" anyway, it
+   costs nothing.
 3. `«Title» - EpN - caption.txt` — the LinkedIn caption (written at
    script stage, stored on the `linkedinCaption` field). Hook line
    first, canonical URL, two tags max.

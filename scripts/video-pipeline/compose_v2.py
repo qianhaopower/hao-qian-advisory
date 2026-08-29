@@ -70,8 +70,8 @@ fc.append(f"[{idx}:v]scale=1080:1920,setsar=1,trim=end_frame={int(ed*30)},format
 fc.append(f"{prev}[end]overlay=x=0:y=0:eof_action=pass[wend];"); prev = "[wend]"; idx += 1
 # title frame (LinkedIn grabs frame 1)
 inputs.append("-loop 1 -i titleframe.png")
-fc.append(f"[{idx}:v]scale=1080:1920,setsar=1,trim=end_frame=8[tf];")
-fc.append(f"{prev}[tf]overlay=x=0:y=0:enable='lt(t,{TITLE_HOLD})':eof_action=pass[vf];"); idx += 1
+fc.append(f"[{idx}:v]scale=1080:1920,setsar=1,trim=end_frame=10,format=yuva420p,fade=t=out:st=0.033:d=0.12:alpha=1[tf];")  # text dissolves; bg = frame 0, so nothing moves
+fc.append(f"{prev}[tf]overlay=x=0:y=0:eof_action=pass[vf];"); idx += 1
 fc.append("[af0]loudnorm=I=-14:TP=-1.5:LRA=11[af]")
 open("pass3.fc", "w").write("".join(fc))
 run(f"ffmpeg -y -v error {' '.join(inputs)} -filter_complex_script pass3.fc -map [vf] -map [af] -t {TOTAL} -r 30 -c:v libx264 -preset fast -crf 19 -pix_fmt yuv420p -c:a aac -b:a 192k final_cut1.mp4")

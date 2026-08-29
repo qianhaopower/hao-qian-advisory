@@ -14,7 +14,8 @@ TITLE_LINES = [("THE GOLDILOCKS", 150), ("LOAD.", 150)]
 END_TITLE = "The Goldilocks Load."
 EP = "Ep. 5"
 
-# thumbnail / title frame
+# thumbnail / title frame — background MUST be frame 0 of edited.mp4
+# (a tail frame makes the body jump at the title handoff; Ep. 8 lesson)
 img = Image.open("frame_tail2.png").convert("RGB"); W, H = img.size
 X0, MAXW = 150, W - 300
 lines = [(t, fit(t, s, MAXW)) for t, s in TITLE_LINES]
