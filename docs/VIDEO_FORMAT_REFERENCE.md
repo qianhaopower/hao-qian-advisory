@@ -96,7 +96,12 @@ Eps 1–3 drifted the other way (mostly typography). Hard rules from Ep. 4:
 2. **Concrete noun → real image.** When the script says a place, object,
    or activity (a meeting, a desk, code on a screen, a market, a book),
    show the THING, never a card about the thing. Cards are for what
-   cannot be photographed.
+   cannot be photographed. **When the episode's central metaphor is a
+   physical activity (juggling, lifting, cooking), fetch REAL footage of
+   that activity** — extend the shelf with
+   `build-broll-library.py --only <category>` or pull from Mixkit
+   category pages directly; a generic office clip or a card is not a
+   substitute for the real thing (Hao's rule, 2026-08-28).
 3. **Every script ships with a b-roll shot list.** The script writer
    lists 3–5 ten-second clips Hao can self-shoot on his phone in the
    five minutes before recording (his real desk, screen, whiteboard,
@@ -125,6 +130,34 @@ Eps 1–3 drifted the other way (mostly typography). Hard rules from Ep. 4:
    duplicate the caption's words at the same moment (the caption
    already says them). The end card is the only full-frame exception,
    and it appears after the last caption has cleared.
+
+## Audio processing (added 2026-08-28 — the microphone era)
+
+From this batch Hao records with an external microphone. Audio is
+first-class; the goal is the benchmark's sound: dry, close, intimate,
+uniform loudness, sentences that punch with true silence between them.
+Still NO music, ever.
+
+Per-episode chain (ffmpeg, in this order):
+
+1. **High-pass 80 Hz** (`highpass=f=80`) — remove rumble/handling.
+2. **Light denoise ONLY if the noise floor is audible** (`afftdn` around
+   nr=10–12). Never stack heavy noise reduction — artifacts are worse
+   than gentle hiss. Verify by re-transcribing the processed audio: if
+   word accuracy drops, the denoise was too aggressive.
+3. **Gentle compression** (`acompressor=threshold=-18dB:ratio=2.5:
+   attack=15:release=200:makeup=auto` as the starting point) — evens
+   sentences without pumping. If pauses "breathe" up and down, lengthen
+   the release.
+4. **Presence, only if muffled**: a small +2 dB shelf around 3 kHz.
+5. **Loudness last**: `loudnorm=I=-14:TP=-1.5:LRA=11` (two-pass when
+   time allows).
+
+Rules: A/B a 10-second processed-vs-raw sample BEFORE rendering the full
+cut; pauses must remain near-silent (the pause rhythm is the format);
+breaths are human — soften, never gate them to zero; when a recording
+ships with separate mic audio, prefer the mic track over the camera
+track after verifying sync.
 
 ## Editorial structure (the 7 beats, ~90 s)
 
