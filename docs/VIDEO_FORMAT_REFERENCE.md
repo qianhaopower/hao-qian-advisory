@@ -289,6 +289,12 @@ copy. Checks, in order of importance:
    script marks as a pause. They go into the builder's SKIP_CUTS before
    the first cut, not after Hao's ear finds them. Loose takes get
    reframed from the 4K source at pass 1 (see Framing check above).
+   **The lead-in is ONE cut** (Ep. 8, 2026-08-29): everything from 0 to
+   ~0.25 s before the first word goes in a single trim — camera-settling
+   noise splits the opening silence, and tightening the pieces
+   separately leaves a sliver of the speaker moving (a visible body
+   jump in the first second). builder_v2 merges the pre-speech silence
+   chain automatically.
    **Audio**: dry voice only, nothing beyond loudnorm −14 LUFS — room
    echo (Ep. 5) is a capture problem; Hao is getting a lavalier mic, and
    until then the phone goes closer. Never de-reverb in post.

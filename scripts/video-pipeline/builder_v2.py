@@ -101,6 +101,20 @@ for line in open(f"{BASE}/silences.txt"):
         sil.append((starts[-1], min(end, END_SRC)))
 sil = [(a, b) for a, b in sil if b > a and a < END_SRC]
 
+# ---------- lead-in: ONE cut, never slivers (Ep. 8 lesson) ----------
+# camera-settling noise can split the opening silence into several
+# intervals; tightening each leaves a fragment of Hao moving between
+# them (a visible "body jump" in the first second). Merge the whole
+# pre-speech chain and cut it as one piece.
+lead_end = 0.0
+for a, b in sil:
+    if a <= lead_end + 0.05:
+        lead_end = b
+    else:
+        break
+if lead_end > 0.5:
+    sil = [(0.0, lead_end)] + [(a, b) for a, b in sil if a > lead_end]
+
 # ---------- EDL: cut long silences ----------
 # dramatic pauses that must NOT be tightened:
 # "The moment I realised this: [beat]" and "…working theory: [beat]"
