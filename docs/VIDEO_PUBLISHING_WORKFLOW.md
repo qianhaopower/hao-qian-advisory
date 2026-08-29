@@ -88,17 +88,26 @@ Check the episode page on a phone-width viewport as well as desktop.
    line. Make it with
    `python3 scripts/video-pipeline/thumbnail.py <frame.jpg> "LINE ONE" "LINE TWO." out.jpg`
    (cut the frame with `ffmpeg -ss <sec> -i <raw> -frames:v 1`, mouth
-   closed, no burnt captions). **The card's background IS the final
-   cut's first frame — never a frame from elsewhere in the take** (Hao,
-   three rounds on Ep. 8: a tail-frame thumbnail means the body visibly
-   jumps between frame 0 and frame 1, even at a single frame; a hold
-   reads as a flash). Build the card on frame 0 of the edited video and
-   dissolve only the TEXT layer out over ~0.12 s
-   (`fade=t=out:st=0.033:d=0.12:alpha=1` on the title overlay) — the
-   body never moves, the type melts away, LinkedIn still grabs the full
-   card as frame 1. The same file is the site poster
-   (`public/videos/<slug>/poster.jpg`); try "Edit thumbnail" anyway, it
-   costs nothing.
+   no burnt captions). **The opening recipe (final, after four rounds on
+   Ep. 8 — every earlier variant produced a visible jump):**
+
+   1. The video starts AT the first word — the lead trim runs to ~0.06 s
+      before speech; pre-speech "settling" footage never survives (the
+      speaker is still moving into position there).
+   2. The card's background is FRAME 0 of the edited cut itself — never
+      a tail or mid-take frame (different pose ⇒ body jump even at one
+      frame).
+   3. Compose freezes frame 0 for 0.30 s (`tpad=start_mode=clone`,
+      audio `adelay`), and ONLY the text layer melts out over it
+      (`fade=t=out:st=0.14:d=0.15:alpha=1`). Text dissolving over LIVE
+      video ghosts (the speaker moves); over the frozen frame nothing
+      can move. The reel reads: cover → type melts → the frame comes
+      alive speaking. Caption/insert times shift by the freeze.
+
+   Frame 0 sits at speech onset, so the cover's mouth may be slightly
+   open — acceptable; the pose match is what matters. The same file is
+   the site poster (`public/videos/<slug>/poster.jpg`); try "Edit
+   thumbnail" anyway, it costs nothing.
 3. `«Title» - EpN - caption.txt` — the LinkedIn caption (written at
    script stage, stored on the `linkedinCaption` field). Hook line
    first, canonical URL, two tags max.

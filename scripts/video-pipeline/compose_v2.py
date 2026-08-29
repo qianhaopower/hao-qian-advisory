@@ -48,8 +48,9 @@ for fi in range(int((CARD_E - CARD_S) * FPS)):
 run(f"ffmpeg -y -v error -framerate {FPS} -i cardframes/c%04d.png -c:v libx264 -preset fast -crf 18 -pix_fmt yuv420p cardanim.mp4")
 
 fc, inputs, idx = [], ["-i edited.mp4"], 1
-fc.append(f"[0:v]trim=end={BASE_DUR},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={TOTAL-BASE_DUR+1}[basev];")
-fc.append(f"[0:a]atrim=end={BASE_DUR},asetpts=PTS-STARTPTS,apad=pad_dur={TOTAL-BASE_DUR+1}[af0];")
+FREEZE = 0.30  # cover hold: frame 0 frozen while the title text melts (Ep. 8 recipe)
+fc.append(f"[0:v]tpad=start_mode=clone:start_duration={FREEZE},trim=end={BASE_DUR},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={TOTAL-BASE_DUR+1}[basev];")
+fc.append(f"[0:a]adelay={int(FREEZE*1000)}:all=1,atrim=end={BASE_DUR},asetpts=PTS-STARTPTS,apad=pad_dur={TOTAL-BASE_DUR+1}[af0];")
 prev = "[basev]"
 for i, (path, s, e, skip, extra) in enumerate(brolls):
     dur = e - s; inputs.append(f"-i {path}")
@@ -70,7 +71,7 @@ fc.append(f"[{idx}:v]scale=1080:1920,setsar=1,trim=end_frame={int(ed*30)},format
 fc.append(f"{prev}[end]overlay=x=0:y=0:eof_action=pass[wend];"); prev = "[wend]"; idx += 1
 # title frame (LinkedIn grabs frame 1)
 inputs.append("-loop 1 -i titleframe.png")
-fc.append(f"[{idx}:v]scale=1080:1920,setsar=1,trim=end_frame=10,format=yuva420p,fade=t=out:st=0.033:d=0.12:alpha=1[tf];")  # text dissolves; bg = frame 0, so nothing moves
+fc.append(f"[{idx}:v]scale=1080:1920,setsar=1,trim=end_frame=10,format=yuva420p,fade=t=out:st=0.14:d=0.15:alpha=1[tf];")  # text dissolves; bg = frame 0, so nothing moves
 fc.append(f"{prev}[tf]overlay=x=0:y=0:eof_action=pass[vf];"); idx += 1
 fc.append("[af0]loudnorm=I=-14:TP=-1.5:LRA=11[af]")
 open("pass3.fc", "w").write("".join(fc))

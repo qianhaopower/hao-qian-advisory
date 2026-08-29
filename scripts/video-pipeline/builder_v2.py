@@ -125,8 +125,8 @@ for a, b in sil:
         continue
     if b - a >= CUT_SIL:
         ca, cb = a + KEEP_TAIL, b - KEEP_HEAD
-        if a < 0.5:  # leading silence: keep only short head
-            ca = 0.0
+        if a < 0.5:  # leading silence: cut to the first word (no settling)
+            ca, cb = 0.0, b - 0.06
         if cb - ca > 0.01:
             cuts.append((ca, cb))
 segs = []  # kept source intervals
