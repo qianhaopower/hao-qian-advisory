@@ -100,6 +100,15 @@ for line in open(f"{BASE}/silences.txt"):
         end = float(line.split(":")[1].split("|")[0])
         sil.append((starts[-1], min(end, END_SRC)))
 sil = [(a, b) for a, b in sil if b > a and a < END_SRC]
+# merge silences separated by <0.2s blips (a blip mid-pause would otherwise
+# leave a moving sliver between two tightened cuts — Ep. 10 lesson)
+merged = []
+for a, b in sil:
+    if merged and a - merged[-1][1] < 0.2:
+        merged[-1] = (merged[-1][0], b)
+    else:
+        merged.append((a, b))
+sil = merged
 
 # ---------- lead-in: ONE cut, never slivers (Ep. 8 lesson) ----------
 # camera-settling noise can split the opening silence into several

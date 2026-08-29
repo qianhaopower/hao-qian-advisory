@@ -1657,7 +1657,9 @@
   "file": "/Users/haoqian/Movies/broll-library/30007.mp4",
   "url": "https://mixkit.co/free-stock-video/woman-in-a-suit-approves-the-work-of-her-office-30007/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep9"
+  ]
  },
  {
   "id": "21373",
@@ -1680,7 +1682,9 @@
   "file": "/Users/haoqian/Movies/broll-library/21373.mp4",
   "url": "https://mixkit.co/free-stock-video/businessman-discusses-a-contract-with-a-client-21373/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep9"
+  ]
  },
  {
   "id": "34090",
@@ -1729,7 +1733,9 @@
   "file": "/Users/haoqian/Movies/broll-library/25253.mp4",
   "url": "https://mixkit.co/free-stock-video/welcoming-a-business-partner-with-a-handshake-25253/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep9"
+  ]
  },
  {
   "id": "48520",
@@ -3901,5 +3907,97 @@
   "used_in": [
    "ep5"
   ]
+ },
+ {
+  "id": "px133487",
+  "slug": "juggle-sea-sky-ball-daylight",
+  "tags": [
+   "juggling",
+   "ball",
+   "balls",
+   "outdoor",
+   "sea",
+   "sky",
+   "bright"
+  ],
+  "luma": 114,
+  "url": "https://pixabay.com/videos/juggle-sea-sky-ball-lake-ocean-boy-133485/",
+  "width": 1280,
+  "height": 720,
+  "duration": 19.7,
+  "bright": true,
+  "file": "/Users/haoqian/Movies/broll-library/px133487.mp4",
+  "license": "Pixabay Content License (commercial OK, no attribution)",
+  "used_in": [
+   "ep10"
+  ]
+ },
+ {
+  "id": "px35930",
+  "slug": "juggling-juggler-festival-street-performance",
+  "tags": [
+   "juggling",
+   "juggler",
+   "festival",
+   "balls",
+   "street",
+   "bright"
+  ],
+  "luma": 180,
+  "url": "https://pixabay.com/videos/juggling-juggler-festival-juggle-35930/",
+  "width": 1280,
+  "height": 720,
+  "duration": 26.8,
+  "bright": true,
+  "file": "/Users/haoqian/Movies/broll-library/px35930.mp4",
+  "license": "Pixabay Content License (commercial OK, no attribution)",
+  "used_in": [
+   "ep10"
+  ]
+ },
+ {
+  "id": "px6443",
+  "slug": "glass-sphere-sun-waves-beach",
+  "tags": [
+   "glass",
+   "sphere",
+   "ball",
+   "beach",
+   "sun",
+   "fragile",
+   "bright"
+  ],
+  "luma": 125,
+  "url": "https://pixabay.com/videos/glass-sphere-water-sun-waves-6443/",
+  "width": 1280,
+  "height": 720,
+  "duration": 14.0,
+  "bright": true,
+  "file": "/Users/haoqian/Movies/broll-library/px6443.mp4",
+  "license": "Pixabay Content License (commercial OK, no attribution)",
+  "used_in": [
+   "ep10"
+  ]
+ },
+ {
+  "id": "px81173",
+  "slug": "water-pouring-glass-white-background",
+  "tags": [
+   "glass",
+   "water",
+   "pour",
+   "white",
+   "fragile",
+   "bright"
+  ],
+  "luma": 192,
+  "url": "https://pixabay.com/videos/water-drink-glass-beverage-81173/",
+  "width": 1280,
+  "height": 720,
+  "duration": 30.0,
+  "bright": true,
+  "file": "/Users/haoqian/Movies/broll-library/px81173.mp4",
+  "license": "Pixabay Content License (commercial OK, no attribution)",
+  "used_in": []
  }
 ]
