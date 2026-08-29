@@ -9,8 +9,8 @@
 | 3 | Retrain the Model | 2026-08-20 | ✅ 2026-08-20 | (see videos.ts) |
 | 4 | IQ-to-EQ Career Weighting | 2026-08-22 | ✅ 2026-08-21 | activity 7496420869465079808 |
 | 5 | The Goldilocks Load | 2026-08-22 | ✅ 2026-08-22 | ugcPost 7496899874139832323 |
-| 6 | Attention Is Not Cheap | 2026-08-22 | ⬜ not yet | package ready in ~/Downloads |
-| 7 | HTML Is The New English | 2026-08-22 | ⬜ not yet | package ready in ~/Downloads |
+| 6 | Attention Is Not Cheap | 2026-08-22 | ✅ 2026-08-24 | activity 7497600638604750848 |
+| 7 | HTML Is The New English | 2026-08-22 | ✅ 2026-08-28 | activity 7498694264994820096 |
 
 Rule: Hao tells the cutting room when a post goes live (the session cannot
 read LinkedIn — it is login-walled); the row flips and the post URL lands
@@ -56,6 +56,7 @@ Posted to LinkedIn 2026-08-20 (activity 7496085419265142784). 106 s.
 | Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Reactions | Comments | Reposts | Saves | Sends | Profile views | Followers gained |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-08-22 13:34 | 1d | 411 (65% in-network) | 221 | 139 | 38m 36s | 16s | 1 | 0 | 0 | 0 | 0 | 3 | 0 |
+| 2026-08-29 20:37 | 9d | 513 (64% in-network) | 277 | 168 | 41m 34s | 14s | 1 | 0 | 0 | 0 | 0 | 3 | 0 |
 
 Audience at 1d: 10,001+ 50% · Senior 49% · Software Developer 38% ·
 Software Development 32% · Greater Melbourne 27% · Atlassian 23%.
@@ -67,8 +68,52 @@ Posted to LinkedIn 2026-08-21 (activity 7496420869465079808).
 | Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Reactions | Comments | Reposts | Saves | Sends | Profile views | Followers gained |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-08-22 13:33 | 23h | 265 (66% in-network) | 153 | 87 | 30m 4s | 20s | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
+| 2026-08-29 20:36 | 8d | 419 (64% in-network) | 232 | 133 | 41m 7s | 18s | 2 | 0 | 0 | 0 | 0 | 1 | 0 |
 
 Audience at 23h: 10,001+ 42% · Software Development 39%.
+
+## Ep. 5 — The Goldilocks Load
+
+Posted to LinkedIn 2026-08-22 (analytics activity 7496900343943806976). 110 s.
+
+| Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Reactions | Comments | Reposts | Saves | Sends | Profile views | Followers gained |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026-08-29 20:36 | ~7d | 360 (76% in-network) | 192 | 108 | 36m 31s | 20s | 2 | 0 | 0 | 0 | 0 | 2 | 0 |
+
+Audience: Software Development 44% · Senior 41% · Melbourne 39% · Atlassian 30%.
+
+## Ep. 6 — Attention Is Not Cheap
+
+Posted to LinkedIn 2026-08-24 (activity 7497600638604750848). 95 s.
+
+| Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Reactions | Comments | Reposts | Saves | Sends | Profile views | Followers gained |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026-08-29 20:35 | 5d | 260 (77% in-network) | 142 | 87 | 23m 52s | 16s | 4 | 2 | 0 | 0 | 0 | 1 | 0 |
+
+First episode with comments (2). Audience: 10,001+ 44% · Senior 43% ·
+Atlassian 35%.
+
+## Ep. 7 — HTML Is The New English
+
+Posted to LinkedIn 2026-08-28 (activity 7498694264994820096). 86 s.
+
+| Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Reactions | Comments | Reposts | Saves | Sends | Profile views | Followers gained |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026-08-29 20:34 | 1d | 201 (69% in-network) | 113 | 59 | 17m 20s | 17s | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
+
+Audience at 1d: Software Developer 52% · Senior 46%.
+
+## Non-episode post — reader review of Friends Intelligence
+
+Posted 2026-08-24 (activity 7497267560720154624): "Being smart isn't the
+same as living well." Text + image, no video.
+
+| Snapshot | Age | Impressions | Reached | Reactions | Comments |
+|---|---|---|---|---|---|
+| 2026-08-29 20:35 | 5d | 371 (66% in-network) | 230 | 4 | 1 |
+
+Out-reached the same day's video post (Ep. 6, 260) with a fraction of the
+production cost.
 
 ## Across episodes (as of 2026-08-22)
 
@@ -77,3 +122,13 @@ Trend analysis deferred until 10 episodes are out.
 
 Profile viewers since the posts: 11 recruiters (LinkedIn's own grouping).
 Comments across all four posts: 0.
+
+## Weekly snapshot (2026-08-29)
+
+Seven episodes out. Impressions at comparable ages keep sliding with the
+daily cadence: Ep. 2 745 → Ep. 5 360 → Ep. 6 260; in-network share is
+climbing back up (76–77% on Eps 5–6), i.e. distribution is contracting to
+the same core followers. Average watch stays pinned at 14–20 s regardless
+of topic. First real engagement: Ep. 6 drew 2 comments; the non-video
+reader-review post out-reached that day's episode. Inbound this week:
+~3–4 connection requests (a first), 10 recruiters viewing the profile.

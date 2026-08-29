@@ -316,6 +316,8 @@ export const EPISODES: VideoEpisode[] = [
     linkedinCaption:
       "Information is cheap. Attention is not.\n\nEp. 6 of Working Theory, on camera: I wrote a ten-page proposal with every edge case and every risk. My manager's feedback: \"You lost me.\" She was right.\n\nFull episode + transcript: https://haoqian.co/videos/attention-is-not-cheap\n\n#WorkingTheory #Leadership",
     linkedinTags: ["WorkingTheory", "Leadership"],
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7497600638604750848/",
   },
   {
     slug: "html-is-the-new-english",
@@ -349,5 +351,7 @@ export const EPISODES: VideoEpisode[] = [
     linkedinCaption:
       "HTML is the new English.\n\nEp. 7 of Working Theory, on camera: the barrier to making code is gone — so people are sending animated pages instead of long documents, and communication just got a new vocabulary.\n\nFull episode + transcript: https://haoqian.co/videos/html-is-the-new-english\n\n#WorkingTheory #AI",
     linkedinTags: ["WorkingTheory", "AI"],
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7498694264994820096/",
   },
 ];
