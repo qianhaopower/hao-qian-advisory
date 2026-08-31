@@ -46,6 +46,7 @@ Video bytes live on the media shelf (GitHub release `media`, per `scripts/publis
 - **Ep. 3 "Retrain the Model"** (from essay wt-35): filmed by Hao 2026-08-20, same pipeline. 106s on the media shelf; poster + VTT in `public/videos/retrain-the-model/`; canonical `/videos/retrain-the-model`. B-roll: Mixkit free license (ID 4809). Three-piece package delivered to ~/Downloads 2026-08-20.
 - **Eps. 4–7** (all 2026-08-22 on the site, media shelf, poster = designed thumbnail, VTT in repo): Ep. 4 "IQ-to-EQ Career Weighting" (video-first, no essay; approved chart; shelf 242/46680/9069), Ep. 5 "The Goldilocks Load" (video-first; reframed 1.25× from 4K; shelf 42899/23285/42655/5537), Ep. 6 "Attention Is Not Cheap" (from wt-38; narrow-passage diagram; shelf 45922/34096/4817), Ep. 7 "HTML Is The New English" (from wt-46; shelf 1746/42650/17446/42649). LinkedIn status table: `docs/VIDEO_SIGNALS_LOG.md`.
 - **Ep. 8 "Good Work Doesn't Speak"** (video-first, no essay; first mic-era episode; the opening recipe was finalized here): filmed 2026-08-29, 97s on the media shelf; poster + VTT in `public/videos/good-work-doesnt-speak/`; canonical `/videos/good-work-doesnt-speak`. B-roll: Mixkit 17315/914/8872/46679.
+- **Ep. 11 "Self-Assessment"** (first UNSCRIPTED episode, no teleprompter; video-first): filmed 2026-08-31, 135s on the media shelf; poster + VTT in `public/videos/self-assessment/`; canonical `/videos/self-assessment`. B-roll: Mixkit 25426/8925/46685.
 
 ## Projects (confirmed roster)
 

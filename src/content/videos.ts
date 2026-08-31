@@ -387,4 +387,38 @@ export const EPISODES: VideoEpisode[] = [
       "Many new managers believe good work speaks for itself. It doesn't.\n\nEp. 8 of Working Theory, on camera: in a large company every leader sees one fragment of what you did. Fixing the problem is step one — converting it into organizational memory is the real job.\n\nFull episode + transcript: https://haoqian.co/videos/good-work-doesnt-speak\n\n#WorkingTheory #EngineeringLeadership",
     linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
   },
+  {
+    slug: "self-assessment",
+    series: "working-theory",
+    sequence: 11,
+    title: "Self-Assessment",
+    status: "published",
+    publishedAt: "2026-08-31",
+    language: "en",
+    durationSeconds: 135,
+    hook: "By the time you write your self-assessment, it's too late to tell a new story.",
+    summary:
+      "The first unscripted episode — spoken freely, no teleprompter. The common self-assessment mistake is telling a new story and hoping your manager digs in; but a manager recalls a whole cycle of perceived reality before your document ever lands. Anything completely new is a risk: unseen work, invisible impact, or worse. The fix runs through the whole cycle — use every one-on-one to present your impact, the data you changed, the needle you moved, so the self-assessment becomes a summary of a reality you already share.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/self-assessment.mp4",
+    aspect: "9:16",
+    poster: "/videos/self-assessment/poster.jpg",
+    captions: "/videos/self-assessment/captions.vtt",
+    transcript: [
+      "Today, I'm going to talk about self-assessments. Everybody knows self-assessments is really important in terms of performance management. Basically, it's a piece of document that you officially present to your manager: what you have done in this performance cycle.",
+      "However, a common mistake a lot of people make is: create a new story in their self-assessment, in the hope of your manager is going to actually dig into the new story during the performance management cycle. It's not the best way.",
+      "Because essentially, your manager is really trying to recall their perceived reality during the whole cycle, even before your self-assessment landed in his or her desk. Essentially, you are trying to present information to match with the reality that is already in your manager's mind.",
+      "If you present something that is completely new — that is a risk. It's either: you've done something, but it's never in your manager's eye, or the impact is not in your manager's view — which is a problem. Or you are fabricating something — which is even worse.",
+      "So the best way to make sure your impact is really in your manager's mind is: during all of the one-on-ones across the whole performance management cycle — being six months, or being a whole year — using all the one-on-ones to present your impact, to present the data you changed, to present the needle you moved.",
+      "Only when you are doing those things, your manager will have a shared reality with you of what you have actually changed. And then your self-assessment will become a summary view of what's already in your manager's head. And that is the best way to making sure your self-assessment landed in the right way.",
+      "Hope this helps.",
+    ],
+    keyPoints: [
+      "A self-assessment that tells a new story is a risk — your manager already holds a cycle's worth of perceived reality.",
+      "Use every one-on-one to build shared reality; the self-assessment should only be its summary.",
+    ],
+    linkedinCaption:
+      "By the time you write your self-assessment, it's too late to tell a new story.\n\nWorking Theory, on camera — unscripted this time: your manager recalls a whole cycle of perceived reality. Build the shared reality in your one-on-ones, and let the self-assessment be the summary.\n\nFull episode + transcript: https://haoqian.co/videos/self-assessment\n\n#WorkingTheory #PerformanceReview",
+    linkedinTags: ["WorkingTheory", "PerformanceReview"],
+  },
 ];

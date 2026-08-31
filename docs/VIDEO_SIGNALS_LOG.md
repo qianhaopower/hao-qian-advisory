@@ -12,6 +12,7 @@
 | 6 | Attention Is Not Cheap | 2026-08-22 | ✅ 2026-08-24 | activity 7497600638604750848 |
 | 7 | HTML Is The New English | 2026-08-22 | ✅ 2026-08-28 | activity 7498694264994820096 |
 | 8 | Good Work Doesn't Speak | 2026-08-29 | ⬜ not yet | package ready in ~/Downloads |
+| 11 | Self-Assessment (unscripted) | 2026-08-31 | ⬜ posting now | caption on the entry |
 
 Rule: Hao tells the cutting room when a post goes live (the session cannot
 read LinkedIn — it is login-walled); the row flips and the post URL lands
