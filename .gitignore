@@ -48,4 +48,5 @@ next-env.d.ts
 
 node_modules
 .next
-.env*scripts/video-pipeline/.venv-audio/
+.env*
+scripts/video-pipeline/.venv-audio/
