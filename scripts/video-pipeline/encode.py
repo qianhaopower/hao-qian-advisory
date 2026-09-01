@@ -33,20 +33,7 @@ for n, o in enumerate(overlays, start=1):
     fc2.append(f"{prev}[c{n}]overlay=x='{x}':y=0:enable='between(t,{s},{e})'[o{n}];")
     prev = f"[o{n}]"
 fc2.append(f"{prev}subtitles=filename=captions.ass[vf];")
-# Audio chain v3 (2026-08-31, docs/SOUND_ENGINEERING_PLAN.md, Hao-approved A/B):
-# declick -> HP80 (fridge) -> EQ match to Galloway LTAS -> de-ess -> downward
-# expander (hiss in pauses only) -> 1.7:1 comp -> loudnorm. No afftdn: it eats
-# >1.6kHz speech detail and the DJI mic's NC-basic already handles noise.
-AUDIO_CHAIN = (
-    "adeclick,highpass=f=80,"
-    "firequalizer=gain_entry='entry(80,0);entry(250,2.5);entry(600,1);"
-    "entry(1200,3);entry(2200,9);entry(4500,11);entry(9000,13);entry(15000,8)',"
-    "deesser=i=0.3,"
-    "compand=attacks=0.01:decays=0.2:points=-90/-104|-52/-62|-38/-38|0/0:soft-knee=4,"
-    "acompressor=threshold=-21dB:ratio=1.7:attack=5:release=180:makeup=1,"
-    "loudnorm=I=-14:TP=-1.5:LRA=11"
-)
-fc2.append(f"[0:a]{AUDIO_CHAIN}[af]")
+fc2.append("[0:a]loudnorm=I=-14:TP=-1.5:LRA=11[af]")
 open("pass2.fc", "w").write("".join(fc2))
 cmd2 = (f"ffmpeg -y -v error {inputs} -filter_complex_script pass2.fc "
         "-map [vf] -map [af] -r 30 -c:v libx264 -preset fast -crf 19 "

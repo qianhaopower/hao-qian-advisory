@@ -174,33 +174,28 @@ Reference reels: A https://www.instagram.com/reel/C5Y7GROAkEW/ ·
 B https://www.instagram.com/profgalloway/reel/DAGiGzcIknn/ ·
 C https://www.instagram.com/reel/DAOhSnmoh_h/
 
-## Audio processing (added 2026-08-28 — the microphone era)
+## Audio processing (v3, validated 2026-08-31 — the microphone era)
 
-From this batch Hao records with an external microphone. Audio is
-first-class; the goal is the benchmark's sound: dry, close, intimate,
-uniform loudness, sentences that punch with true silence between them.
-Still NO music, ever.
+From the DJI-mic batch, audio is mastered by ONE command before anything
+else (transcription and silencedetect must see the processed track):
 
-Per-episode chain (ffmpeg, in this order):
+    scripts/video-pipeline/audio_master.py <raw source> raw.mp4
 
-1. **High-pass 80 Hz** (`highpass=f=80`) — remove rumble/handling.
-2. **Light denoise ONLY if the noise floor is audible** (`afftdn` around
-   nr=10–12). Never stack heavy noise reduction — artifacts are worse
-   than gentle hiss. Verify by re-transcribing the processed audio: if
-   word accuracy drops, the denoise was too aggressive.
-3. **Gentle compression** (`acompressor=threshold=-18dB:ratio=2.5:
-   attack=15:release=200:makeup=auto` as the starting point) — evens
-   sentences without pumping. If pauses "breathe" up and down, lengthen
-   the release.
-4. **Presence, only if muffled**: a small +2 dB shelf around 3 kHz.
-5. **Loudness last**: `loudnorm=I=-14:TP=-1.5:LRA=11` (two-pass when
-   time allows).
+It replaces the audio with the measured chain (docs/SOUND_ENGINEERING_PLAN.md,
+Hao A/B-approved): Lebart dereverb (room-fitted, 0.25 s -> ~0.18 s) ->
+adeclick -> high-pass 80 Hz (the downstairs fridge) -> EQ match to the
+Galloway LTAS (+9..13 dB across 2.2-9 kHz; curve fitted to the collar
+mic position — refit if that changes) -> de-esser -> downward expander
+(pause hiss only) -> 1.7:1 compression -> loudnorm -14.
 
-Rules: A/B a 10-second processed-vs-raw sample BEFORE rendering the full
-cut; pauses must remain near-silent (the pause rhythm is the format);
-breaths are human — soften, never gate them to zero; when a recording
-ships with separate mic audio, prefer the mic track over the camera
-track after verifying sync.
+Hard rules learned by measurement:
+- **Never afftdn** — it eats speech detail above 1.6 kHz (this is what
+  flattened the EQ in testing). The mic's NC basic handles noise.
+- Recording protocol: collar-high clip (don't brush it), NC basic always
+  on, default gain, listen for the fridge before a take. Still NO music.
+- Scoreboard vs the benchmark after this chain: all LTAS bands within
+  ~3 dB, dyn 68 dB (Scott 71), RT60 ~0.18 s (Scott 0.14), clicks below
+  Scott's same-census rate.
 
 ## Editorial structure (the 7 beats, ~90 s)
 

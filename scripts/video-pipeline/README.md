@@ -13,9 +13,9 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
 0. Transcribe word times with `transcribe_islands.py` (per-island: split
    at silencedetect boundaries, whisper each island, clamp) — a single
    global pass drifts up to ~1.5 s near pauses and puts the karaoke
-   highlight on the wrong word (Ep. 8 lesson). Mic-era audio: build the
-   processed track first (gain → highpass 80 → gentle acompressor →
-   loudnorm last; see the format doc §Audio processing) and run BOTH
+   highlight on the wrong word (Ep. 8 lesson). Mic-era audio: run
+   `audio_master.py <raw source> raw.mp4` first (dereverb + full v3 chain;
+   see the format doc §Audio processing) and run BOTH
    silencedetect and the island transcription on it. Verify every word that
    differs from the script with base.en AND small.en on a tight segment:
    models agree → caption what they heard; models disagree → script text
