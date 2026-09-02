@@ -52,12 +52,20 @@ FREEZE = 0.30  # cover hold: frame 0 frozen while the title text melts (Ep. 8 re
 fc.append(f"[0:v]tpad=start_mode=clone:start_duration={FREEZE},trim=end={BASE_DUR},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={TOTAL-BASE_DUR+1}[basev];")
 fc.append(f"[0:a]adelay={int(FREEZE*1000)}:all=1,atrim=end={BASE_DUR},asetpts=PTS-STARTPTS,apad=pad_dur={TOTAL-BASE_DUR+1}[af0];")
 prev = "[basev]"
+W_T = 0.18  # whip transition: slide + blur, benchmark spec (footage >=3.0s clean hold)
 for i, (path, s, e, skip, extra) in enumerate(brolls):
     dur = e - s; inputs.append(f"-i {path}")
-    fc.append(f"[{idx}:v]trim=start={skip}:end={skip+dur},setpts=PTS-STARTPTS,fps=30,"
-              f"crop=w='min(iw,ih*9/16)':h=ih,scale=1080:1920,setsar=1,{extra}unsharp=5:5:0.6,format=yuva420p,"
-              f"fade=t=in:st=0:d={FADE}:alpha=1,fade=t=out:st={dur-FADE}:d={FADE}:alpha=1,setpts=PTS+{s}/TB[br{i}];")
-    fc.append(f"{prev}[br{i}]overlay=x=0:y=0:eof_action=pass[b{i}];"); prev = f"[b{i}]"; idx += 1
+    base = (f"[{idx}:v]trim=start={skip}:end={skip+dur},setpts=PTS-STARTPTS,fps=30,"
+            f"crop=w='min(iw,ih*9/16)':h=ih,scale=1080:1920,setsar=1,{extra}unsharp=5:5:0.6")
+    fc.append(base + f",split=2[shp{i}][tob{i}];")
+    fc.append(f"[tob{i}]boxblur=20:1[blr{i}];")
+    x = (f"if(lt(t,{s+W_T}), W*(1-(t-{s})/{W_T}), if(gt(t,{e-W_T}), -W*(t-({e-W_T}))/{W_T}, 0))")
+    for tag, en in ((f"blr{i}", f"between(t,{s},{s+W_T})+between(t,{e-W_T},{e})"),
+                    (f"shp{i}", f"between(t,{s+W_T},{e-W_T})")):
+        fc.append(f"[{tag}]setpts=PTS+{s}/TB[{tag}p];")
+        fc.append(f"{prev}[{tag}p]overlay=x='{x}':y=0:enable='{en}':eof_action=pass[o{tag}];")
+        prev = f"[o{tag}]"
+    idx += 1
 # animated card (under captions)
 inputs.append("-i cardanim.mp4"); cd = CARD_E - CARD_S
 fc.append(f"[{idx}:v]format=yuva420p,fade=t=in:st=0:d={FADE}:alpha=1,fade=t=out:st={cd-FADE}:d={FADE}:alpha=1,setpts=PTS+{CARD_S}/TB,setsar=1[card];")
