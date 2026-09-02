@@ -88,6 +88,18 @@ Check the episode page on a phone-width viewport as well as desktop.
    line. Make it with
    `python3 scripts/video-pipeline/thumbnail.py <frame.jpg> "LINE ONE" "LINE TWO." out.jpg`
    (cut the frame with `ffmpeg -ss <sec> -i <raw> -frames:v 1`, mouth
+   **HDR sources need a tone-map for every STILL (Hao's rule, 2026-09-02
+   — the washed-out thumbnail happened twice):** direct camera MOVs
+   (IMG_*.MOV) are HLG/BT.2020 10-bit; a plain ffmpeg PNG grab reads as
+   sRGB and comes out 惨白 (washed grey). Teleprompter-app MP4s are SDR
+   and unaffected. For any poster/thumbnail from an HDR take:
+   `ffmpeg -ss <t> -i <src> -frames:v 1 -vf "scale=...:in_color_matrix=bt2020"
+   -pix_fmt rgb48be raw.png` then
+   `scripts/video-pipeline/hlg2sdr.py raw.png sdr.png` (inverse HLG OETF,
+   highlight rolloff, BT.2020→709, sRGB encode) and build the card on the
+   SDR image. Check the JPEG against the playing video before shipping.
+   Frame choice for the standalone thumbnail: head level, mouth closed,
+   eyes open — it need not be frame 0 (only the BAKED cover must be).
    no burnt captions). **The opening recipe (final, after four rounds on
    Ep. 8 — every earlier variant produced a visible jump):**
 

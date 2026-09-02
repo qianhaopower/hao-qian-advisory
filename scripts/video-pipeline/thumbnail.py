@@ -49,8 +49,19 @@ def shadow_text(base, xy, text, font, spacing=0):
 frame, line1, line2, out = sys.argv[1:5]
 img = cover(Image.open(frame).convert("RGB")).convert("RGBA")
 
-f1 = ImageFont.truetype(AB, 96)
-f2 = ImageFont.truetype(AB, 190)
+def fit(text, start):
+    # width-fit: long titles must never run off the frame (Ep. 11 lesson)
+    sz = start
+    f = ImageFont.truetype(AB, sz)
+    meas = ImageDraw.Draw(Image.new("RGB", (8, 8)))
+    while meas.textlength(text, font=f) > 1080 - 2 * X and sz > 40:
+        sz -= 6
+        f = ImageFont.truetype(AB, sz)
+    return f
+
+import sys as _sys
+f1 = fit(_sys.argv[2], 96)
+f2 = fit(_sys.argv[3], 190)
 fm = ImageFont.truetype(MONO, 36)
 
 shadow_text(img, (X, 1250), line1.upper(), f1)
