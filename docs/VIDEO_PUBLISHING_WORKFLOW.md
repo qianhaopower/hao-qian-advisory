@@ -103,7 +103,11 @@ Check the episode page on a phone-width viewport as well as desktop.
    HLG transfer tag — locally the file looks right (Apple players honor
    HLG), then plays out grey after upload. HDR sources go through
    `lut3d=hlg709.cube` at encode pass 1 with explicit bt709 output tags
-   (recipe in scripts/video-pipeline/encode_v2.py). Verify with ffprobe:
+   (recipe in scripts/video-pipeline/encode_v2.py). The x264 flags alone
+   do NOT retag (frame props win) — finish with the two-step retag:
+   `-c copy -bsf:v h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1:video_full_range_flag=0`
+   then `-c copy -color_primaries bt709 -color_trc bt709 -colorspace bt709
+   -movflags +write_colr` (VUI + container colr). Verify with ffprobe:
    the final must read bt709/bt709/bt709.
    Frame choice for the standalone thumbnail: head level, mouth closed,
    eyes open — it need not be frame 0 (only the BAKED cover must be).
