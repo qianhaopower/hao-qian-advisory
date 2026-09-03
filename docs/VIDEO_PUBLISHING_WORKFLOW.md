@@ -98,6 +98,13 @@ Check the episode page on a phone-width viewport as well as desktop.
    `scripts/video-pipeline/hlg2sdr.py raw.png sdr.png` (inverse HLG OETF,
    highlight rolloff, BT.2020→709, sRGB encode) and build the card on the
    SDR image. Check the JPEG against the playing video before shipping.
+   **And the VIDEO itself must be converted, not just stills (2026-09-03,
+   after a washed LinkedIn playback):** LinkedIn's transcoder ignores the
+   HLG transfer tag — locally the file looks right (Apple players honor
+   HLG), then plays out grey after upload. HDR sources go through
+   `lut3d=hlg709.cube` at encode pass 1 with explicit bt709 output tags
+   (recipe in scripts/video-pipeline/encode_v2.py). Verify with ffprobe:
+   the final must read bt709/bt709/bt709.
    Frame choice for the standalone thumbnail: head level, mouth closed,
    eyes open — it need not be frame 0 (only the BAKED cover must be).
    no burnt captions). **The opening recipe (final, after four rounds on

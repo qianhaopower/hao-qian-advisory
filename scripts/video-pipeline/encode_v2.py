@@ -2,6 +2,19 @@
 """Ep2 pass 1: cut & concat per EDL, downscale 4K source to 1080x1920."""
 import json, subprocess, shlex
 
+# HDR sources (direct-camera MOVs are HLG/BT.2020 — Hao's washed-video bug,
+# 2026-09-03): the VIDEO must be converted to SDR at pass 1, not just the
+# stills. LinkedIn's transcoder ignores the HLG transfer tag and plays the
+# gamma flat ("惨白"); Apple players honor it, so it looks fine locally.
+# Recipe — replace the plain scale with:
+#   scale=1080:1920:in_color_matrix=bt2020,format=rgb48le,
+#   lut3d=hlg709.cube,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p
+# and add output flags:
+#   -colorspace bt709 -color_trc bt709 -color_primaries bt709
+# hlg709.cube lives next to this script (gen_hlg_lut.py, K=2.0 calibrated
+# against hlg2sdr.py's look on the study-room takes). SDR teleprompter MP4s
+# skip all of this. Check first:
+#   ffprobe -show_entries stream=color_transfer  (arib-std-b67 = HLG)
 edl = json.load(open("edl.json"))
 segs = edl["segments"]
 
