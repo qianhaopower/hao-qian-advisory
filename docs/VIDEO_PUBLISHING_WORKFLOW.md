@@ -133,7 +133,11 @@ Check the episode page on a phone-width viewport as well as desktop.
    thumbnail" anyway, it costs nothing.
 3. `«Title» - EpN - caption.txt` — the LinkedIn caption (written at
    script stage, stored on the `linkedinCaption` field). Hook line
-   first, canonical URL, two tags max.
+   first, canonical URL, two tags max. **Blunt and boilerplate-free
+   (Hao, 2026-09-05): no "Ep. N of Working Theory, on camera
+   (unscripted):" framing, no "Full episode + transcript:" prefix —
+   hook, one or two plain sentences of substance, the bare link, tags.
+   Meta-talk about the format is filler.**
 
 The LinkedIn package lives on the same episode entry — no second copy:
 
