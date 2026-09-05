@@ -48,6 +48,20 @@ Video bytes live on the media shelf (GitHub release `media`, per `scripts/publis
 - **Ep. 8 "Good Work Doesn't Speak"** (video-first, no essay; first mic-era episode; the opening recipe was finalized here): filmed 2026-08-29, 97s on the media shelf; poster + VTT in `public/videos/good-work-doesnt-speak/`; canonical `/videos/good-work-doesnt-speak`. B-roll: Mixkit 17315/914/8872/46679.
 - **Ep. 11 "Self-Assessment"** (first UNSCRIPTED episode, no teleprompter; video-first): filmed 2026-08-31, 135s on the media shelf; poster + VTT in `public/videos/self-assessment/`; canonical `/videos/self-assessment`. B-roll: Mixkit 25426/8925/46685.
 
+## Videos — Friends Intelligence on camera, 中文 · 小红书 (added to the site 2026-09-05)
+
+The second video line (opened 2026-08-30): Hao speaks in Chinese, voice-first, on the book's seven intelligences; edited through `scripts/xhs-pipeline/` → CapCut (draft generator `to_capcut.py`, Hao exports), format law in `docs/XHS_FORMAT_REFERENCE.md`. Series id `friends-intelligence` in `src/content/videos.ts`; each episode connects to `book:friends-intelligence` in connections.ts. Posting packages (titles / 正文 / tags / pinned comment) in `content-src/video-scripts/fi-xhs-ep*.md`. Same shelf rule: mp4 on the `media` release, poster + VTT in `public/videos/<slug>/`. Posters = the designed frame-1 cover baked into each export (brush title + corner mark), so the site poster is that frame, not a raw grab. Chinese captions were extracted from the CapCut caption track of the final draft (proofread there), and the transcripts are those captions with punctuation and paragraphs added. Music in every episode: Kevin MacLeod (incompetech.com), CC-BY — credited in the pinned 小红书 comment.
+
+| Ep | Slug | Title | Pillar | Finished | Length | Source export |
+|---|---|---|---|---|---|---|
+| 1 | `fi-sleep-daylight` | 晚上睡不着，先改早上这一件事 | 睡眠 Sleep | 2026-08-30 | 244s | CapCut `FI-sleep-v17` |
+| 2 | `fi-coffee` | 下午一杯咖啡，晚上凭什么睡不着 | 睡眠 Sleep | 2026-08-31 | 165s | CapCut `FI-咖啡-v1` |
+| 3 | `fi-dim-lights` | 晚上总睡不好，睡前一小时先关大灯 | 睡眠 Sleep | 2026-09-02 | 228s | CapCut `FI-睡前调光-v1` |
+| 4 | `fi-temperature` | 晚上翻来覆去睡不着，先把卧室调低两度 | 睡眠 Sleep | 2026-09-03 | 207s | CapCut `FI-温度睡眠-v2` |
+| 6 | `fi-couple-20min` | 夫妻之间这件事，每天都应该做 | 关系 Relationship | 2026-09-05 | 193s | CapCut `FI-夫妻20分钟-v2` |
+
+Ep. 5 (打印机 vs 买车, 财富 Financial) exists only as a recording skeleton — not filmed. Site pages for Eps 1–4 were backfilled on 2026-09-05; `publishedAt` carries each episode's finish date. **The 小红书 profile URL is not recorded anywhere in the repo** — `SITE.xiaohongshu` in `src/content/site.ts` is empty and the 小红书 links (footer, About, /videos, episode footers) render only once it is filled. Per-note URLs go on each entry's `platformPublishedUrl`.
+
 ## Projects (confirmed roster)
 
 | Project | Live | Notes |

@@ -173,8 +173,33 @@ signals: {
 These support exactly one weekly decision — what to continue, what to
 stop, and the single variable to change next. Don't optimise around likes.
 
-## Adding a second series later
+## The second series (live since 2026-09-05)
 
-Add an entry to `VIDEO_SERIES` (e.g. a Friends Intelligence line for
-Xiaohongshu/Instagram) and give its episodes that `series` id. Page code
-reads series config; nothing else changes. Not part of Phase 1.
+`VIDEO_SERIES` now holds two lines — `working-theory` (English, LinkedIn)
+and `friends-intelligence` (中文, 小红书). `/videos` renders one shelf per
+series with published episodes (an empty series never shows), the home
+index counts across both, and episode pages read language, platform and
+origin from the series config. Adding a third line = one more entry in
+`VIDEO_SERIES` + `VIDEO_SERIES_ORDER`; page code needs no change.
+
+Publishing a Friends Intelligence episode (the cutting thread's steps
+after Hao exports from CapCut):
+
+1. Compress the export if it is HEVC (`ffmpeg … libx264 crf 22`, 1080×1920,
+   `+faststart`); the crf22 `上传版.mp4` is already fine — just remux with
+   `-movflags +faststart`. Upload: `gh release upload media <slug>.mp4
+   --clobber`. Slugs carry the `fi-` prefix.
+2. Poster = frame 1 of the export (the baked cover: brush title + corner
+   mark): `ffmpeg -ss 0.05 -i <export> -frames:v 1 -q:v 4
+   public/videos/<slug>/poster.jpg`.
+3. Captions: read the `captions` text track from the final CapCut draft
+   (`~/Movies/CapCut/User Data/Projects/com.lveditor.draft/<name>/
+   draft_content.json`) → WebVTT at `public/videos/<slug>/captions.vtt`.
+   The transcript on the entry is those captions with punctuation and
+   paragraphs added — nothing reworded.
+4. Entry in `src/content/videos.ts`: `series: "friends-intelligence"`,
+   `language: "zh-Hans"`, Chinese `title` + English `titleEn`, `topic`
+   (pillar), `platformCaption`/`platformTags` from the posting package;
+   `platformPublishedUrl` once the note is live. Add the edge to
+   `book:friends-intelligence` in connections.ts.
+5. `npm run build`, commit, push. Then Hao posts the note on 小红书.

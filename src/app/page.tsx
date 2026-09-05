@@ -3,6 +3,7 @@ import { SiteShell, Container } from "@/components/site/Chrome";
 import { Constellation } from "@/components/site/Constellation";
 import { HOME_INDEX, SITE } from "@/content/site";
 import { getStarData } from "@/lib/constellation";
+import { videosIndexMeta } from "@/lib/videos";
 
 export default function HomePage() {
   const stars = getStarData();
@@ -33,7 +34,7 @@ export default function HomePage() {
               className="group grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 border-b border-hairline py-5 transition-colors duration-[250ms] hover:bg-surface min-[900px]:grid-cols-[220px_1fr_auto] min-[900px]:py-6"
             >
               <span className="meta order-2 col-span-2 min-[900px]:order-none min-[900px]:col-span-1">
-                {entry.meta}
+                {entry.href === "/videos" ? videosIndexMeta() : entry.meta}
               </span>
               <span className="font-serif text-[26px] leading-[1.25] min-[900px]:text-[28px]">
                 {entry.label}

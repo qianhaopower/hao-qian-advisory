@@ -1,8 +1,10 @@
 import {
   EPISODES,
   VIDEO_SERIES,
+  VIDEO_SERIES_ORDER,
   type VideoEpisode,
   type VideoSeries,
+  type VideoSeriesId,
 } from "@/content/videos";
 
 /*
@@ -29,6 +31,37 @@ export function getEpisode(slug: string): VideoEpisode | undefined {
 
 export function getSeries(episode: VideoEpisode): VideoSeries {
   return VIDEO_SERIES[episode.series];
+}
+
+/** Every series, in display order. */
+export function getSeriesList(): VideoSeries[] {
+  return VIDEO_SERIES_ORDER.map((id) => VIDEO_SERIES[id]);
+}
+
+/** Published episodes of one series, latest first. */
+export function getPublishedEpisodesBySeries(id: VideoSeriesId): VideoEpisode[] {
+  return getPublishedEpisodes().filter((e) => e.series === id);
+}
+
+/** Series that actually have published episodes — listings never show an empty shelf. */
+export function getLiveSeries(): VideoSeries[] {
+  return getSeriesList().filter(
+    (s) => getPublishedEpisodesBySeries(s.id).length > 0
+  );
+}
+
+/** The home-index meta line — computed, so the count is always honest. */
+export function videosIndexMeta(): string {
+  const live = getLiveSeries();
+  const n = getPublishedEpisodes().length;
+  if (n === 0) return "in production";
+  const series = live.length === 1 ? live[0].name : `${live.length} series`;
+  return `${series} · ${n} episode${n === 1 ? "" : "s"}`;
+}
+
+/** Where the episode was distributed after publishing here — LinkedIn or 小红书. */
+export function getDistributionUrl(episode: VideoEpisode): string | undefined {
+  return episode.platformPublishedUrl ?? episode.linkedinPublishedUrl;
 }
 
 /** Previous/next within the same series, published episodes only. */

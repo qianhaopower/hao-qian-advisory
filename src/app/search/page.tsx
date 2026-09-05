@@ -77,6 +77,8 @@ function buildRecords(): SearchRecord[] {
     href: `/videos/${e.slug}`,
     hay: [
       e.title,
+      e.titleEn ?? "",
+      e.topic ?? "",
       e.hook,
       e.summary,
       (e.keyPoints ?? []).join(" "),

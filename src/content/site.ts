@@ -6,6 +6,9 @@ export const SITE = {
   principle:
     "Every meaningful thing I create should eventually have a permanent home here.",
   linkedin: "https://www.linkedin.com/in/hao-qian-9ab0b04b/",
+  /* 小红书 (Xiaohongshu) — the Friends Intelligence channel. Empty until the
+   * profile URL is confirmed; pages render the link only when it is set. */
+  xiaohongshu: "",
   github: "https://github.com/qianhaopower",
   amazonAuthor: "https://www.amazon.com/author/haoqian",
   goodreads: "https://www.goodreads.com/author/show/71572056.Hao_Qian",
@@ -48,8 +51,9 @@ export const HOME_INDEX: SectionEntry[] = [
   {
     href: "/videos",
     label: "Videos",
-    meta: "Working Theory · Ep. 1 live",
-    blurb: "The theories, spoken — one idea per episode, published here first.",
+    /* meta is computed live on the home page from published episodes */
+    meta: "2 series",
+    blurb: "Working Theory in English, Friends Intelligence in Chinese — published here first.",
   },
   {
     href: "/projects",

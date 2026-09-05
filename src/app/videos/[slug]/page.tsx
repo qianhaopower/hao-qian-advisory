@@ -14,6 +14,7 @@ import {
   getEpisode,
   getSeries,
   getNeighbours,
+  getDistributionUrl,
   episodeCanonicalUrl,
   formatDuration,
   isoDuration,
@@ -39,7 +40,9 @@ export async function generateMetadata({
   if (!episode) return {};
   const series = getSeries(episode);
   const canonical = episodeCanonicalUrl(episode);
-  const title = `${series.name} Ep. ${episode.sequence} — ${episode.title}`;
+  const title = `${series.name} Ep. ${episode.sequence} — ${episode.title}${
+    episode.titleEn ? ` (${episode.titleEn})` : ""
+  }`;
 
   if (episode.status === "draft") {
     return { title, robots: { index: false, follow: false } };
@@ -186,28 +189,39 @@ export default async function EpisodePage({
         />
       )}
       <Container>
-        <article className="mx-auto max-w-[640px]">
+        <article className="mx-auto max-w-[640px]" lang={episode.language}>
           <header className="pt-16 min-[900px]:pt-20">
             <Kicker>
-              <Link
-                href="/videos"
-                className="transition-colors duration-[250ms] hover:text-accent"
-              >
-                {series.name}
-              </Link>{" "}
-              · {series.form} · Ep. {episode.sequence}
+              <span lang="en">
+                <Link
+                  href={`/videos#${series.id}`}
+                  className="transition-colors duration-[250ms] hover:text-accent"
+                >
+                  {series.name}
+                </Link>{" "}
+                · {series.form} · {series.languageLabel} · Ep. {episode.sequence}
+              </span>
             </Kicker>
             <h1 className="mt-6 font-serif text-[32px] font-normal leading-[1.18] tracking-[-0.01em] min-[900px]:text-[44px] min-[900px]:leading-[1.15]">
               {episode.title}
             </h1>
+            {episode.titleEn && (
+              <p
+                lang="en"
+                className="mt-3 font-serif text-[17px] italic leading-[1.5] text-faint"
+              >
+                {episode.titleEn}
+              </p>
+            )}
             <p className="mt-5 max-w-[600px] font-serif text-[20px] italic leading-[1.5] text-ink-2 min-[900px]:text-[22px]">
               {episode.hook}
             </p>
-            <div className="meta mt-6 !normal-case !tracking-[0.08em]">
+            <div className="meta mt-6 !normal-case !tracking-[0.08em]" lang="en">
               {episode.publishedAt ? formatDate(episode.publishedAt) : "Draft"}
               {episode.durationSeconds
                 ? ` · ${formatDuration(episode.durationSeconds)}`
                 : ""}
+              {episode.topic ? ` · ${episode.topic}` : ""}
             </div>
           </header>
 
@@ -271,7 +285,10 @@ export default async function EpisodePage({
 
           {episode.transcript && episode.transcript.length > 0 && (
             <section className="mt-14 border-t border-line pt-8">
-              <h2 className="meta">Transcript</h2>
+              <h2 className="meta" lang="en">
+                Transcript
+                {series.language.startsWith("zh") ? " · 文字稿" : ""}
+              </h2>
               <div className="prose-read mt-6">
                 {episode.transcript.map((para, i) => (
                   <p key={i}>{para}</p>
@@ -280,16 +297,29 @@ export default async function EpisodePage({
             </section>
           )}
 
-          {episode.status === "published" && episode.linkedinPublishedUrl && (
-            <footer className="mt-14 border-t border-line pt-6">
-              <a
-                href={episode.linkedinPublishedUrl}
-                className="text-[13.5px] text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+          {episode.status === "published" &&
+            (getDistributionUrl(episode) || series.platformUrl) && (
+              <footer
+                className="mt-14 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-6 text-[13.5px]"
+                lang="en"
               >
-                Also published on {series.platform} →
-              </a>
-            </footer>
-          )}
+                {getDistributionUrl(episode) ? (
+                  <a
+                    href={getDistributionUrl(episode)}
+                    className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+                  >
+                    Also published on {series.platform} →
+                  </a>
+                ) : (
+                  <a
+                    href={series.platformUrl}
+                    className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+                  >
+                    {series.name} on {series.platform} →
+                  </a>
+                )}
+              </footer>
+            )}
         </article>
 
         <div className="mx-auto mt-10 max-w-[640px]">
@@ -298,13 +328,16 @@ export default async function EpisodePage({
 
         {/* neighbours */}
         {(earlier || later) && (
-          <nav className="mx-auto mt-14 grid max-w-[640px] grid-cols-1 gap-4 min-[700px]:grid-cols-2">
+          <nav
+            className="mx-auto mt-14 grid max-w-[640px] grid-cols-1 gap-4 min-[700px]:grid-cols-2"
+            lang={episode.language}
+          >
             {earlier ? (
               <Link
                 href={`/videos/${earlier.slug}`}
                 className="group rounded-[2px] border border-line p-5 transition-colors duration-[250ms] hover:border-faint"
               >
-                <div className="meta !text-[11px]">
+                <div className="meta !text-[11px]" lang="en">
                   ← Earlier · Ep. {earlier.sequence}
                 </div>
                 <div className="mt-2 font-serif text-[17px] leading-[1.4] group-hover:text-accent">
@@ -319,7 +352,7 @@ export default async function EpisodePage({
                 href={`/videos/${later.slug}`}
                 className="group rounded-[2px] border border-line p-5 text-right transition-colors duration-[250ms] hover:border-faint"
               >
-                <div className="meta !text-[11px]">
+                <div className="meta !text-[11px]" lang="en">
                   Later · Ep. {later.sequence} →
                 </div>
                 <div className="mt-2 font-serif text-[17px] leading-[1.4] group-hover:text-accent">

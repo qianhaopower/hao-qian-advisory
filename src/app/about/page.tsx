@@ -12,8 +12,12 @@ export const metadata: Metadata = {
 const TIMELINE: { year: string; text: string; now?: boolean }[] = [
   {
     year: "2026",
-    text: "The library opens. Friends Intelligence and Fish Fun published.",
+    text: "On camera, in two languages: Working Theory (English, LinkedIn) from August; Friends Intelligence (中文, 小红书) two weeks later.",
     now: true,
+  },
+  {
+    year: "2026",
+    text: "The library opens. Friends Intelligence and Fish Fun published.",
   },
   {
     year: "2017",
@@ -56,8 +60,8 @@ export default function AboutPage() {
           </p>
           <p>
             <em>{SITE.principle}</em> That is the rule this site exists to
-            keep. LinkedIn, GitHub, Amazon and YouTube are places my work
-            visits; this library is where it lives.
+            keep. LinkedIn, 小红书, GitHub, Amazon and YouTube are places my
+            work visits; this library is where it lives.
           </p>
 
           <h2 className="mb-4 mt-12 font-serif text-[26px] font-medium leading-[1.3] min-[900px]:text-[28px]">
@@ -103,7 +107,23 @@ export default function AboutPage() {
               <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href={SITE.linkedin}>
                 LinkedIn
               </a>{" "}
-              — where Working Theory is serialised first.
+              — where Working Theory goes out: the essays, and now the
+              English episodes.
+            </li>
+            <li>
+              {SITE.xiaohongshu ? (
+                <a
+                  className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+                  href={SITE.xiaohongshu}
+                  lang="zh-Hans"
+                >
+                  小红书
+                </a>
+              ) : (
+                <span lang="zh-Hans">小红书</span>
+              )}{" "}
+              (Xiaohongshu) — where Friends Intelligence goes out: the
+              Chinese episodes, one everyday practice at a time.
             </li>
             <li>
               <a className="text-accent transition-colors duration-[250ms] hover:text-accent-deep" href={SITE.github}>

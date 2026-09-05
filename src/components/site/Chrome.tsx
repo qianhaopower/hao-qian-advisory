@@ -72,6 +72,15 @@ export function SiteFooter() {
           >
             LinkedIn
           </a>
+          {SITE.xiaohongshu && (
+            <a
+              href={SITE.xiaohongshu}
+              lang="zh-Hans"
+              className="text-ink-2 transition-colors duration-[250ms] hover:text-accent"
+            >
+              小红书
+            </a>
+          )}
         </div>
       </Container>
     </footer>

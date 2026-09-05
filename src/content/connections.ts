@@ -6,12 +6,13 @@
  *
  * Node ids: "book:<slug>" · "project:<slug>" · "essay:<slug>" · "idea:<no>"
  *           · "video:<slug>" · "series:working-theory"
+ *           (Friends Intelligence episodes connect to book:friends-intelligence)
  */
 import { BOOKS } from "@/content/books";
 import { PROJECTS } from "@/content/projects";
 import { IDEAS } from "@/content/garden";
 import { WORKING_THEORY } from "@/content/writing";
-import { EPISODES } from "@/content/videos";
+import { EPISODES, VIDEO_SERIES } from "@/content/videos";
 
 export type ConnectionRef = {
   id: string;
@@ -48,6 +49,12 @@ const EDGES: [string, string][] = [
   ["video:html-is-the-new-english", "series:working-theory"],
   ["video:good-work-doesnt-speak", "series:working-theory"],
   ["video:self-assessment", "series:working-theory"],
+  // Friends Intelligence, spoken: the book's chapters, on camera in Chinese
+  ["video:fi-sleep-daylight", "book:friends-intelligence"],
+  ["video:fi-coffee", "book:friends-intelligence"],
+  ["video:fi-dim-lights", "book:friends-intelligence"],
+  ["video:fi-temperature", "book:friends-intelligence"],
+  ["video:fi-couple-20min", "book:friends-intelligence"],
 ];
 
 function resolve(id: string): ConnectionRef | null {
@@ -89,7 +96,7 @@ function resolve(id: string): ConnectionRef | null {
     if (!v) return null;
     return {
       id,
-      tag: `Video · Ep. ${v.sequence}`,
+      tag: `Video · ${VIDEO_SERIES[v.series].name} · Ep. ${v.sequence}`,
       title: v.title,
       href: `/videos/${v.slug}`,
     };

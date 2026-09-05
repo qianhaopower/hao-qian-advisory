@@ -18,6 +18,29 @@ Rule: Hao tells the cutting room when a post goes live (the session cannot
 read LinkedIn — it is login-walled); the row flips and the post URL lands
 on the episode entry. Two unposted = the next two posting days.
 
+Also cut and packaged, not yet on the site (the cutting room publishes
+them after Hao's ear review): Ep. 9 Debug the Decision Line, Ep. 10 Which
+Ball Are You Going to Drop, and the unscripted pair The Voice Unspoken /
+Who Survives the Reorg.
+
+## 小红书 posting status — Friends Intelligence (the FI cutting thread keeps this current)
+
+| Ep | Title | On haoqian.co | On 小红书 | Note |
+|---|---|---|---|---|
+| 1 | 晚上睡不着，先改早上这一件事 | 2026-09-05 (backfilled) | ✅ posted (date not recorded) | cover shipped a squint — frame-1 face rule followed |
+| 2 | 下午一杯咖啡，晚上凭什么睡不着 | 2026-09-05 (backfilled) | ✅ posted (date not recorded) | |
+| 3 | 晚上总睡不好，睡前一小时先关大灯 | 2026-09-05 (backfilled) | ✅ posted (date not recorded) | |
+| 4 | 晚上翻来覆去睡不着，先把卧室调低两度 | 2026-09-05 (backfilled) | ⬜ unknown | 上传版 exported 2026-09-03 |
+| 6 | 夫妻之间这件事，每天都应该做 | 2026-09-05 | ⬜ unknown | 上传版 exported 2026-09-05 |
+
+"Posted" for Eps 1–3 comes from the FI thread's 2026-09-03 note that three
+published covers had shipped; dates and note URLs were never recorded.
+Hao confirms post dates + note URLs → `platformPublishedUrl` on the entry.
+The account's profile URL is also unrecorded (`SITE.xiaohongshu` empty).
+7-day 小红书 signals (views / likes+saves+comments / follows) go into each
+entry's `signals` field like LinkedIn's; first review due once Eps 1–3
+have dates.
+
 
 Raw analytics snapshots per episode, recorded manually from LinkedIn post
 analytics. Interim snapshots live here; the official 7-day snapshot also

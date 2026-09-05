@@ -34,7 +34,8 @@
   --color-accent-deep: var(--accent-deep);
   --color-connect: var(--connect);
   --color-connect-deep: var(--connect-deep);
-  --font-serif: var(--font-newsreader);
+  --font-serif: var(--font-newsreader), "Songti SC", "Noto Serif CJK SC",
+    "Noto Serif SC", "Source Han Serif SC", serif;
   --font-sans: var(--font-instrument);
   --font-mono: var(--font-plex-mono);
 }
@@ -72,7 +73,9 @@ body {
 
 /* Long-form reading: serif 19/1.72, 640px measure */
 .prose-read {
-  font-family: var(--font-newsreader), serif;
+  /* @theme is inline, so the serif stack is repeated here verbatim */
+  font-family: var(--font-newsreader), "Songti SC", "Noto Serif CJK SC",
+    "Noto Serif SC", "Source Han Serif SC", serif;
   font-size: 19px;
   line-height: 1.72;
   max-width: 640px;
