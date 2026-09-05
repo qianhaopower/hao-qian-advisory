@@ -121,7 +121,18 @@ Eps 1–3 drifted the other way (mostly typography). Hard rules from Ep. 4:
    at least 3 episodes (~two weeks) between two uses of the same clip**.
    Eps 2–3 back-to-back with the same clip family is the failure this
    prevents.
-6. **Captions are ALWAYS the top layer** (Hao's rule, 2026-08-24, after
+6. **Insert mood matches the beat's emotion** (Hao, 2026-09-05; same
+   rule added on the XHS line). A frustrated/tense line (a lockout, a
+   failed proposal, "nobody likes it", things lost) never cuts to
+   smiling/cheerful footage — the mismatch reads as tone-deaf. Match the
+   register: negative beats take neutral/serious/strained imagery;
+   the positive turn ("build a plan", "you grow") is where upbeat
+   clips belong. NOTE: the **bright rule is about LIGHTING, not mood** —
+   a clip can be bright-lit and serious; that is exactly what negative
+   beats need. Check mood at frame-preview time when picking from the
+   shelf, and record a `mood` tag (serious/neutral/upbeat) on the index
+   entry whenever a clip gets used.
+7. **Captions are ALWAYS the top layer** (Hao's rule, 2026-08-24, after
    watching the benchmark again: Galloway's captions sit over every
    insert, never under). Nothing — footage, text card, chart, animated
    card — ever covers the caption. Consequence for card design: the
