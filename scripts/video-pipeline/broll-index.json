@@ -209,7 +209,10 @@
   "file": "/Users/haoqian/Movies/broll-library/41541.mp4",
   "url": "https://mixkit.co/free-stock-video/aerial-panorama-over-the-buildings-of-a-big-city-41541/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep13"
+  ],
+  "mood": "neutral"
  },
  {
   "id": "4938",
@@ -1116,8 +1119,10 @@
   "url": "https://mixkit.co/free-stock-video/digital-marketing-team-leader-explains-strategy-on-whiteboard-9069/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
   "used_in": [
-   "ep4"
-  ]
+   "ep4",
+   "ep13"
+  ],
+  "mood": "upbeat"
  },
  {
   "id": "8909",
@@ -1687,8 +1692,10 @@
   "url": "https://mixkit.co/free-stock-video/businessman-discusses-a-contract-with-a-client-21373/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
   "used_in": [
-   "ep9"
-  ]
+   "ep9",
+   "ep13"
+  ],
+  "mood": "neutral"
  },
  {
   "id": "34090",
