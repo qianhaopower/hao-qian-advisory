@@ -1,0 +1,26 @@
+{
+  "title": {"dur": 2.2,
+            "lines": [["晚上睡不着 早上不想起", "white"], ["先做对这一件事", "gold"]]},
+  "punch": [
+    {"match": "立竿见影", "text": "立竿见影", "style": "gold", "hold": 2.2},
+    {"match": "无效", "text": "无效", "style": "red", "hold": 1.8, "sfx": "thud"}
+  ],
+  "cap_colors": [
+    {"match": "晚上睡不着", "color": "red"},
+    {"match": "立竿见影", "color": "gold"}
+  ],
+  "stickers": [
+    {"match": "晚上睡不着", "emoji": "😴", "hold": 2.2},
+    {"match": "接触天光", "emoji": "☀️", "hold": 2.4, "x": 0.10, "y": 0.10}
+  ],
+  "doodles": [{"match": "为什么", "hold": 2.0}],
+  "cards": [{"match": "有极化的",
+             "lines": [["天光是极化的", "white"], ["polarized light", "gold"]],
+             "hold": 3.0}],
+  "zoom_overrides": [{"match": "三件事", "z": 1.15}],
+  "neutralize": true,
+  "exposure": 1.15,
+  "bgm": null,
+  "cover": {"frame_t": 4.0,
+            "lines": [["晚上睡不着 早上不想起", "white"], ["先做对这一件事", "gold"]]}
+}

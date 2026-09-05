@@ -1,0 +1,27 @@
+{
+  "source": "樊登 personal XHS account, 4 notes analysed frame-by-frame 2026-08-23 (容错率96s/托底69s/自由68s/厉害156s)",
+  "motion": {
+    "frame": "STATIC. Frame-to-frame size delta 0.00-0.03px per 0.5s (measured, all notes). Zero digital zoom pulses, zero drift, zero shake detected. All perceived movement = his own body.",
+    "our_rule": "baseline static; slow push (1.06-1.10, ~1.1s ease) only at fx-marked moments; shake opt-in only"
+  },
+  "colour": {
+    "his": {"warm_R_over_B": "1.21-1.50", "saturation": "0.28-0.33", "luma": "0.44-0.50", "note": "phone-native warm bookshelf room"},
+    "our_rule": "grade 'natural': keep phone WB (Hao's is accurate + his brand is paper-white), sat x1.35, con x1.04, exp x1.05. Never copy his wall warmth onto a white wall (v6 jaundice lesson)."
+  },
+  "density": {"events_per_min": "8-16 (托底 16, one per 3-4s)", "our_target": "10-14"},
+  "layers": [
+    {"type": "base_caption", "pos": "y≈77%", "size": "~60px@1080", "colour": "white, soft shadow", "notes": "1 line, 5-12字, swaps per phrase; sometimes 2-3 lines accumulate for a quoted formula; parenthetical annotations OK 脖子短的(长颈鹿)"},
+    {"type": "inline_keyword", "colour": "gold #F0C800 (concept) / red #F01010 (warning) / teal + red-orange gradient rare", "notes": "keyword coloured EVERY time it appears in caption; THE signature"},
+    {"type": "topline", "pos": "just above caption", "style": "gold quote 「…」 / red verdict / white", "notes": "the density workhorse; often with 「」 marks"},
+    {"type": "giant_word", "pos": "top third", "style": "gold italic glow (经常庆功/不要) or red heavy (无效/都不对)", "size": "~130-170px", "hold": "2-3s", "notes": "1-3 per minute at peaks"},
+    {"type": "float_words", "style": "gold, small-mid, near head", "examples": "威胁 恐吓 / 刘邦 刘秀 刘备 / 「非得」/ 对吗?", "notes": "lists get one float per item"},
+    {"type": "doodle", "examples": "?? floating white/yellow near head", "notes": "1-2 per video, humour beats"},
+    {"type": "quote_card", "style": "video shrinks into black canvas, big white+gold lines", "hold": "1.5-3s", "notes": "for formulas; 自由 ends with TWO back-to-back"},
+    {"type": "comment_card", "style": "pink rounded rect quoting a viewer question 评论区提问", "notes": "opens Q&A episodes; NOT built yet (TODO)"},
+    {"type": "insert", "style": "full-frame AI illustration/cinematic clip or cartoon (giraffes, ancestor pyramid, scales) or book-cover prop popped beside head", "notes": "only in LONG knowledge pieces (厉害 156s); 3-5s each; pipeline supports static images with ken-burns since v7; sourcing = Hao/AI-gen later"},
+    {"type": "opening", "style": "自由: darkened frame + gold title words, then WHITE FLASH into normal footage (TODO flash); others: cold open with caption immediately"},
+    {"type": "watermark", "style": "厉害 ends with personal avatar + 了解有趣的知识 关注我 bottom-right", "notes": "optional end mark, no full end card"}
+  ],
+  "audio": {"voice": "-14 LUFS after our chain; his raw is inconsistent -9.7..-15.5", "bgm": "non-periodic evolving track (autocorr <0.1), felt not heard (~-38 LUFS abs)", "sfx": "sparse, quiet; our defaults: red thud -19, gold sparkle -20, card whoosh -20, others silent"},
+  "todo": ["comment_card template", "white flash transition", "multi-line accumulated caption", "avatar end watermark", "AI illustration sourcing workflow"]
+}
