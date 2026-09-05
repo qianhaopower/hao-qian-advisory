@@ -111,7 +111,8 @@ function SeriesShelf({ series }: { series: VideoSeries }) {
                 href={series.platformUrl}
                 className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
               >
-                Also on {series.platform} →
+                Also on {series.platform}
+                {series.platformHandle ? ` · ${series.platformHandle}` : ""} →
               </a>
             )}
           </div>

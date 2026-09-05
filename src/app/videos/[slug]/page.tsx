@@ -315,7 +315,8 @@ export default async function EpisodePage({
                     href={series.platformUrl}
                     className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
                   >
-                    {series.name} on {series.platform} →
+                    {series.name} on {series.platform}
+                    {series.platformHandle ? ` · ${series.platformHandle}` : ""} →
                   </a>
                 )}
               </footer>

@@ -37,6 +37,8 @@ export type VideoSeries = {
   platform: string;
   /** The channel itself — omitted until the URL is known; never a guess. */
   platformUrl?: string;
+  /** The account name on that channel, when it differs from Hao's own. */
+  platformHandle?: string;
   /** Where the ideas come from — the essays, the book. */
   origin?: { label: string; href: string };
 };
@@ -66,6 +68,7 @@ export const VIDEO_SERIES: Record<VideoSeriesId, VideoSeries> = {
       "用七种智慧拆解生活：财富 · 关系 · 学习 · 情绪 · 营养 · 运动 · 睡眠。每集一个小窍门，先在这里发表，再发到小红书。",
     platform: "小红书",
     platformUrl: SITE.xiaohongshu || undefined,
+    platformHandle: SITE.xiaohongshuHandle,
     origin: { label: "From the book", href: "/books/friends-intelligence" },
   },
 };

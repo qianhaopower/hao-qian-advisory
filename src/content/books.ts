@@ -51,13 +51,13 @@ export const BOOKS: Book[] = [
     oneLiner:
       "Seven everyday intelligences — F.R.I.E.N.D.S — and the hidden patterns that connect them.",
     facts: [
-      "Paperback & Kindle",
+      "Kindle, paperback & hardcover",
       "222 pages · 6×9″",
       "ISBN 9798181687486",
       "First edition, 2026",
     ],
     buy: {
-      label: "Buy on Amazon — Paperback & Kindle",
+      label: "Buy on Amazon — Kindle, paperback & hardcover",
       href: "https://www.amazon.com.au/dp/B0H5R5C8B6",
     },
     sections: [
@@ -103,21 +103,37 @@ export const BOOKS: Book[] = [
       },
     ],
     editions: [
-      { label: "Paperback & Kindle", note: "available", href: "https://www.amazon.com.au/dp/B0H5R5C8B6" },
+      { label: "Kindle", note: "Amazon · KDP Select", href: "https://www.amazon.com/dp/B0H5R5C8B6" },
+      { label: "Paperback", note: "Amazon · ISBN 9798181687486", href: "https://www.amazon.com/dp/B0H5R5C8B6" },
+      { label: "Hardcover", note: "Amazon · since Jul 2026", href: "https://www.amazon.com/dp/B0HCBBY8B3" },
+      { label: "Amazon Australia", note: "all formats", href: "https://www.amazon.com.au/dp/B0H5R5C8B6" },
       { label: "Audiobook", note: "to come" },
       { label: "中文版 · Chinese edition", note: "to come" },
     ],
+    /* Every place the book verifiably exists online — the paper trail.
+     * Only links that resolve today; submissions still in review live in history. */
     related: [
       { label: "Companion app", note: "assessment, focus pillar, daily practices", href: "https://friendsintelligence.net" },
       { label: "The original draft blog", note: "the book, serialised before it was a book", href: "https://www.friendsintelligence.info" },
+      { label: "Spoken, in Chinese", note: "the Friends Intelligence episodes — 中文 · 小红书", href: "/videos#friends-intelligence" },
+      { label: "小红书 · 不内耗的人生", note: "where the Chinese episodes go out", href: "https://www.xiaohongshu.com/user/profile/60af86df0000000001007b70" },
       { label: "Launch note on LinkedIn", note: "June 2026", href: "https://www.linkedin.com/posts/hao-qian-9ab0b04b_my-book-is-finally-published-it-feels-good-activity-7474331629511921664-FQIe" },
       { label: "On Goodreads", note: "shelve, rate, review", href: "https://www.goodreads.com/book/show/254117147-friends-intelligence" },
+      { label: "Goodreads author page", note: "Goodreads Author Program, since Aug 2026", href: "https://www.goodreads.com/author/show/71572056.Hao_Qian" },
+      { label: "Amazon author page", note: "amazon.com/author/haoqian", href: "https://www.amazon.com/author/haoqian" },
+      { label: "The app's source, on GitHub", note: "FIAPP — the book compiled into software", href: "https://github.com/qianhaopower/FIAPP" },
     ],
     history: [
       { date: "2025", note: "Drafted in public — chapters serialised on the Friends Intelligence blog." },
       { date: "Jun 2026", note: "Typeset in Vellum; all 27 figures rendered by a purpose-built diagram engine." },
       { date: "15 Jun 2026", note: "Ebook and paperback submitted to KDP; ebook live." },
       { date: "21 Jun 2026", note: "Announced. In print." },
+      { date: "31 Jul 2026", note: "Hardcover edition published; Kindle edition enrolled in KDP Select. Amazon Author Central account opened." },
+      { date: "1 Aug 2026", note: "Accepted into the Goodreads Author Program. Consignment application lodged with Readings, Carlton; title suggested to Boroondara Library." },
+      { date: "3 Aug 2026", note: "Amazon author page live at amazon.com/author/haoqian. Submitted to BookSirens for reader reviews." },
+      { date: "20 Aug 2026", note: "StoryOrigin account opened for review copies." },
+      { date: "30 Aug 2026", note: "The book starts speaking Chinese: first Friends Intelligence episode on 小红书." },
+      { date: "5 Sep 2026", note: "Listing booked on CraveBooks (via Armadillo eBooks) for 9 September." },
       { date: "To come", note: "Audiobook and Chinese edition." },
     ],
   },

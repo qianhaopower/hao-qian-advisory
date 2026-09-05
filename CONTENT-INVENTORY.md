@@ -37,6 +37,26 @@ The verified raw material for the digital library. Gathered 2026-07-29. Companio
 
 The full 52-entry table lives in [src/content/writing.ts](src/content/writing.ts) — no, title, date, URL for every post.
 
+## Friends Intelligence — where the book exists online (verified 2026-09-05)
+
+Sources: Hao's own publishing emails (KDP, Goodreads, BookSirens, StoryOrigin, CraveBooks) plus direct fetches. Store search pages (Kobo, Google Play, Booktopia, B&N, Apple Books, Google Books, Open Library, WorldCat, AbeBooks) were probed by ISBN/title on 2026-09-05: no listing anywhere but Amazon — the book is KDP-only (no Expanded Distribution / aggregator).
+
+| Trace | URL / id | Status |
+|---|---|---|
+| Amazon Kindle + paperback (same detail page) | https://www.amazon.com/dp/B0H5R5C8B6 (also .com.au) | live; Kindle in KDP Select since 2026-07-31 |
+| Amazon hardcover | https://www.amazon.com/dp/B0HCBBY8B3 | live 2026-07-31 |
+| Amazon author page | https://www.amazon.com/author/haoqian (→ stores/Hao-Qian/author/B0HCBGC9N2) | live 2026-08-03 |
+| Goodreads book | https://www.goodreads.com/book/show/254117147-friends-intelligence | live |
+| Goodreads author (Author Program) | https://www.goodreads.com/author/show/71572056.Hao_Qian | approved 2026-08-01 |
+| Draft blog / companion app / GitHub | friendsintelligence.info · friendsintelligence.net · github.com/qianhaopower/FIAPP (+ fiappV1) | live |
+| 小红书 account 「不内耗的人生」 | https://www.xiaohongshu.com/user/profile/60af86df0000000001007b70 (rednote.com mirrors it) | live; the FI episodes |
+| BookSirens | submitted 2026-08-03, no public page yet | in review |
+| StoryOrigin | account 2026-08-20 (review-copy tool, private) | — |
+| CraveBooks via Armadillo eBooks | promo booked 2026-09-05 for 2026-09-09 | listing page appears on the day |
+| Readings Carlton consignment · Boroondara Library title suggestion | emailed 2026-08-01 | no reply recorded |
+
+Everything with a URL is on `/books/friends-intelligence` (Editions + "Around the book"); submissions without pages are in its History timeline. New registrations join the same way.
+
 ## Videos — Working Theory on camera (added 2026-08-16)
 
 Video bytes live on the media shelf (GitHub release `media`, per `scripts/publish-video.sh`); the repo keeps only poster.jpg + captions.vtt per episode.
