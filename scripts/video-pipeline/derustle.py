@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""derustle.py — fabric-noise ("擦擦") reduction on the FINAL-timeline audio, after every loudnorm, before the gain+limiter (Ep. 14 lesson, 2026-09-06; runs in .venv-audio).
-(a) gaps as in the format doc; (b): (a) gaps as derustle3; (b) VOICED frames: the >4.5 kHz band is
-pulled toward the clean-vowel reference (25th pct of voiced-frame HF energy) with a 2:1 downward
-expander, floor -18 dB — vowels carry little HF, so what sits there under a vowel is rustle.
-Unvoiced frames inside speech (sibilants/fricatives) are untouched.
-Usage: derustle4.py <in.wav> <out.wav> [mask.npy]"""
+"""derustle.py — fabric-noise ("擦擦") reduction (Ep. 14 lesson, 2026-09-06; runs in .venv-audio).
+Apply on the FINAL-timeline audio AFTER every loudnorm (audio_master's + compose's leveler) and
+BEFORE the gain+limiter — anything earlier gets re-levelled back up.
+  (a) gaps (outside voiced speech ±100 ms): >2.5 kHz ×0.08 (−22 dB), rest ×0.32 (−10 dB)
+  (b) voiced frames (harmonicity > 0.40, 43 ms window): the >4.5 kHz band is pulled toward the
+      clean-vowel reference (25th pct of voiced-frame HF energy) with a 2:1 downward expander,
+      floor −14 dB — vowels carry little HF, so what sits there under a vowel is rustle.
+  Unvoiced frames inside speech (sibilants/fricatives) are untouched. Gains smoothed 15/20 ms.
+Honest limit: when the noise is continuous UNDER speech (a leather jacket, gestures), this shaves
+~6–8 dB; the fix is at the mic (format doc §Audio). Usage: derustle.py <in.wav> <out.wav> [mask.npy]"""
 import sys, numpy as np, soundfile as sf
 x, sr = sf.read(sys.argv[1]); N, H = 2048, 480
 win = np.hanning(N); pad = (len(x)//H + 1)*H + N - len(x); xp = np.concatenate([x, np.zeros(pad)])
@@ -16,7 +20,7 @@ peak = ac[:, int(sr/420):int(sr/90)].max(1) / np.maximum(ac[:, 0], 1e-12)
 lvl = 10*np.log10(P[:, (fr>=100)&(fr<3000)].sum(1) + 1e-12)
 floor = np.percentile(lvl[lvl > -150], 10)
 voiced = (peak > 0.40) & (lvl > floor + 10)
-k = int(0.18/(H/sr)); sp = voiced.copy()
+k = int(0.10/(H/sr)); sp = voiced.copy()   # +-100 ms: enough for onset/offset fricatives, leaves ~0.35 s of every tightened 0.55 s pause gated
 for d in range(1, k+1): sp[d:] |= voiced[:-d]; sp[:-d] |= voiced[d:]
 hf = fr >= 2500; hf2 = fr >= 4500
 E = P[:, hf2].sum(1); ref = np.percentile(E[voiced], 25)
