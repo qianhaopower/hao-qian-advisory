@@ -200,10 +200,31 @@ mic position — refit if that changes) -> de-esser -> downward expander
 (pause hiss only) -> 1.7:1 compression -> loudnorm -14.
 
 Hard rules learned by measurement:
+- **Rustle QC before any cut ships (2026-09-06).** The chain has TWO
+  levelers (audio_master's loudnorm + compose's loudnorm) and a +9..13 dB
+  HF shelf: fabric noise the mic picks up comes out as a "擦擦擦" carpet,
+  loudest under gestures in the second half. Measure the OUTPUT against
+  the previous final: gap floor (10th-pct RMS) ≤ −55 dBFS, HF (4–12 kHz)
+  median in the speech region within ~3 dB of the last approved episode.
+  If it fails, run the de-rustle stage (`scripts/video-pipeline/derustle.py`,
+  applied on the final-timeline audio AFTER every loudnorm and BEFORE the
+  gain+limiter: gaps −20 dB / −10 dB, voiced-frame HF expander toward the
+  clean-vowel reference, sibilants untouched) and trim the 4.5–9 kHz EQ by
+  ~4 dB for that take. The audio always FADES OUT 0.35 s after the last
+  word (never hold the raw tail — that's where the hand reaches for the
+  phone).
 - **Never afftdn** — it eats speech detail above 1.6 kHz (this is what
   flattened the EQ in testing). The mic's NC basic handles noise.
 - Recording protocol: collar-high clip (don't brush it), NC basic always
   on, default gain, listen for the fridge before a take. Still NO music.
+- **No leather / stiff fabric against the collar mic (Hao, 2026-09-06,
+  "What Exactly Is the Win?").** The leather jacket rubbed the DJI clip on
+  every gesture; the chain's +9..13 dB HF boost then turned it into a
+  "擦擦擦" carpet, worst in the second half where the gestures are. Wear the
+  black tee (or any soft matte fabric) or clip the mic where no fabric can
+  touch it; record a 20 s test with gestures and listen for rustle before
+  the take. Don't reach for the phone until the take is really over — the
+  tail rustle otherwise lands under the last word.
 - Scoreboard vs the benchmark after this chain: all LTAS bands within
   ~3 dB, dyn 68 dB (Scott 71), RT60 ~0.18 s (Scott 0.14), clicks below
   Scott's same-census rate.

@@ -40,8 +40,20 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
    ≥3 real-imagery inserts per episode, picked from
    `~/Movies/broll-library/` via `broll-index.json` (bright only, ≥3
    episodes between reuses) — **write `used_in` when you pick**.
-6. Loudnorm is two-pass: measure with `print_format=json`, then apply
-   with `measured_*` + `linear=true` (single-pass lands ~2 LU low).
+6. Loudness finish (2026-09-06): compose's `loudnorm` is the dynamic
+   LEVELER (keep it — every final's LRA ≈3 comes from it). After it the
+   track sits ~−16 LUFS with TP already near −1.2, so a "two-pass linear"
+   second stage silently falls back to dynamic and lands −15..−17. Use:
+   measure → `volume=(−14−I+1)dB` → oversampled limiter
+   (`aresample=192000,alimiter=limit=0.8413:attack=3:release=60:level=disabled,aresample=48000`)
+   → re-measure (nudge once). Lands −14.3 / TP −1.5.
+6b. **Rustle QC** (format doc §Audio): compare the output's gap floor and
+   speech-region HF median against the previous final. Fabric noise (a
+   leather jacket against the collar mic, Ep. 14) passes silently through
+   the chain and comes out amplified. Fix = `derustle.py` on the
+   final-timeline audio after the leveler, before the gain+limiter, plus
+   an EQ trim above 4.5 kHz for that take; audio always fades out 0.35 s
+   after the last word instead of holding the tail.
 7. QC before Hao sees it: re-transcribe the OUTPUT around every cut
    (small.en, full file — no fragments, no repeats), contact-sheet
    (`fps=1,tile=4x3`), eyeball first frame / every insert window / the
