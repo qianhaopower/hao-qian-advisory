@@ -13,10 +13,14 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
 0. Transcribe word times with `transcribe_islands.py` (per-island: split
    at silencedetect boundaries, whisper each island, clamp) — a single
    global pass drifts up to ~1.5 s near pauses and puts the karaoke
-   highlight on the wrong word (Ep. 8 lesson). Mic-era audio: run
-   `audio_master.py <raw source> raw.mp4` first (dereverb + full v3 chain;
-   see the format doc §Audio processing) and run BOTH
-   silencedetect and the island transcription on it. Verify every word that
+   highlight on the wrong word (Ep. 8 lesson). Run silencedetect and the
+   island transcription on the RAW track (HP80 + gain if whisper needs
+   level). **Audio is SIMPLE by default since 2026-09-07** (format doc
+   §Audio processing): `audio_simple.py <raw> edl.json <last-word-end>
+   <total> out.wav` after the builder, and the composite's audio is
+   replaced by that file. `audio_master.py` (chain v3: dereverb + EQ +
+   levelers) is opt-in only after an A/B on that take — Ep. 14 came back
+   twice with "呲啦" artifacts from it. Verify every word that
    differs from the script with base.en AND small.en on a tight segment:
    models agree → caption what they heard; models disagree → script text
    wins; suffix elisions (-s, -ing) → grammatical form.
@@ -40,20 +44,11 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
    ≥3 real-imagery inserts per episode, picked from
    `~/Movies/broll-library/` via `broll-index.json` (bright only, ≥3
    episodes between reuses) — **write `used_in` when you pick**.
-6. Loudness finish (2026-09-06): compose's `loudnorm` is the dynamic
-   LEVELER (keep it — every final's LRA ≈3 comes from it). After it the
-   track sits ~−16 LUFS with TP already near −1.2, so a "two-pass linear"
-   second stage silently falls back to dynamic and lands −15..−17. Use:
-   measure → `volume=(−14−I+1)dB` → oversampled limiter
-   (`aresample=192000,alimiter=limit=0.8413:attack=3:release=60:level=disabled,aresample=48000`)
-   → re-measure (nudge once). Lands −14.3 / TP −1.5.
-6b. **Rustle QC** (format doc §Audio): compare the output's gap floor and
-   speech-region HF median against the previous final. Fabric noise (a
-   leather jacket against the collar mic, Ep. 14) passes silently through
-   the chain and comes out amplified. Fix = `derustle.py` on the
-   final-timeline audio after the leveler, before the gain+limiter, plus
-   an EQ trim above 4.5 kHz for that take; audio always fades out 0.35 s
-   after the last word instead of holding the tail.
+6. Loudness: done inside `audio_simple.py` (linear gain to −14 LUFS +
+   oversampled true-peak limiter; lands −14.5 / TP −1.5). Do NOT stack
+   loudnorm stages — compose_v2's `loudnorm` leveler is bypassed when the
+   audio is replaced. If chain v3 is ever opted in, the same rule holds:
+   one leveler at most, then linear gain + limiter.
 7. QC before Hao sees it: re-transcribe the OUTPUT around every cut
    (small.en, full file — no fragments, no repeats), contact-sheet
    (`fps=1,tile=4x3`), eyeball first frame / every insert window / the

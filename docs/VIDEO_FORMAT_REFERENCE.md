@@ -185,49 +185,42 @@ Reference reels: A https://www.instagram.com/reel/C5Y7GROAkEW/ ·
 B https://www.instagram.com/profgalloway/reel/DAGiGzcIknn/ ·
 C https://www.instagram.com/reel/DAOhSnmoh_h/
 
-## Audio processing (v3, validated 2026-08-31 — the microphone era)
+## Audio processing — SIMPLE by default (Hao, 2026-09-07)
 
-From the DJI-mic batch, audio is mastered by ONE command before anything
-else (transcription and silencedetect must see the processed track):
+Ep. 14 ("What Exactly Is the Win?") came back twice with "呲啦呲啦" —
+spectral-processing artifacts, not the recording. Hao's call: step back;
+the raw DJI take is already good (RMS ≈ −36 dBFS, speech-to-gap drop
+≈ 44 dB, LRA 4–6) and the platform needs exactly one thing: −14 LUFS at
+TP ≤ −1.5 with the voice untouched. So the default path is
 
-    scripts/video-pipeline/audio_master.py <raw source> raw.mp4
+    scripts/video-pipeline/audio_simple.py <raw> edl.json <last-word-end> <total> out.wav
+    raw → highpass 80 → 1.7:1 gentle compressor → EDL cut → cover-freeze
+    delay → fade 0.35 s after the last word → linear gain to −14 LUFS
+    → oversampled true-peak limiter
 
-It replaces the audio with the measured chain (docs/SOUND_ENGINEERING_PLAN.md,
-Hao A/B-approved): Lebart dereverb (room-fitted, 0.25 s -> ~0.18 s) ->
-adeclick -> high-pass 80 Hz (the downstairs fridge) -> EQ match to the
-Galloway LTAS (+9..13 dB across 2.2-9 kHz; curve fitted to the collar
-mic position — refit if that changes) -> de-esser -> downward expander
-(pause hiss only) -> 1.7:1 compression -> loudnorm -14.
+and the audio of the composite is replaced by that file (`-c:v copy`).
+Nothing spectral in the default: no dereverb, no EQ match, no expander,
+no dynamic-loudnorm leveler (two of them were stacked before), no
+de-rustle. Silencedetect + whisper run on the raw track (HP80 + gain if
+whisper needs level).
 
-Hard rules learned by measurement:
-- **Rustle QC before any cut ships (2026-09-06).** The chain has TWO
-  levelers (audio_master's loudnorm + compose's loudnorm) and a +9..13 dB
-  HF shelf: fabric noise the mic picks up comes out as a "擦擦擦" carpet,
-  loudest under gestures in the second half. Measure the OUTPUT against
-  the previous final: gap floor (10th-pct RMS) ≤ −55 dBFS, HF (4–12 kHz)
-  median in the speech region within ~3 dB of the last approved episode.
-  If it fails, run the de-rustle stage (`scripts/video-pipeline/derustle.py`,
-  applied on the final-timeline audio AFTER every loudnorm and BEFORE the
-  gain+limiter: gaps −20 dB / −10 dB, voiced-frame HF expander toward the
-  clean-vowel reference, sibilants untouched) and trim the 4.5–9 kHz EQ by
-  ~4 dB for that take. The audio always FADES OUT 0.35 s after the last
-  word (never hold the raw tail — that's where the hand reaches for the
-  phone).
-- **Never afftdn** — it eats speech detail above 1.6 kHz (this is what
-  flattened the EQ in testing). The mic's NC basic handles noise.
-- Recording protocol: collar-high clip (don't brush it), NC basic always
-  on, default gain, listen for the fridge before a take. Still NO music.
-- **No leather / stiff fabric against the collar mic (Hao, 2026-09-06,
-  "What Exactly Is the Win?").** The leather jacket rubbed the DJI clip on
-  every gesture; the chain's +9..13 dB HF boost then turned it into a
-  "擦擦擦" carpet, worst in the second half where the gestures are. Wear the
-  black tee (or any soft matte fabric) or clip the mic where no fabric can
-  touch it; record a 20 s test with gestures and listen for rustle before
-  the take. Don't reach for the phone until the take is really over — the
-  tail rustle otherwise lands under the last word.
-- Scoreboard vs the benchmark after this chain: all LTAS bands within
-  ~3 dB, dyn 68 dB (Scott 71), RT60 ~0.18 s (Scott 0.14), clicks below
-  Scott's same-census rate.
+Chain v3 (`audio_master.py`: Lebart dereverb → adeclick → HP80 → Galloway
+LTAS EQ +9..13 dB @ 2.2–9 kHz → de-esser → expander → 1.7:1 → loudnorm) is
+kept as an OPT-IN: only after an A/B on that specific take, and never
+stacked with a second leveler. What it bought on the scoreboard (LTAS
+within 3 dB of Galloway, RT60 0.25 → 0.18 s) is not worth an audible
+artifact; `afftdn` stays banned for the same reason (eats >1.6 kHz).
+
+Hard rules that survive:
+- Recording: collar-high clip, NC basic on, default gain, listen for the
+  fridge; record a 20 s gesture test and listen before the take; don't
+  reach for the phone until the take is really over (the tail is faded
+  now, but a clean tail is still better).
+- Every cut: the audio FADES OUT 0.35 s after the last word.
+- QC before delivery = listen to the OUTPUT at 1.5× on the second half
+  (where gestures are) and compare its gap floor with the previous
+  approved final; any "擦/呲" that isn't in the raw is a processing
+  artifact — remove the stage, don't add another one on top.
 
 ## Editorial structure (the 7 beats, ~90 s)
 
