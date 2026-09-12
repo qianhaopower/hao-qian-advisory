@@ -49,6 +49,7 @@ const EDGES: [string, string][] = [
   ["video:html-is-the-new-english", "series:working-theory"],
   ["video:good-work-doesnt-speak", "series:working-theory"],
   ["video:self-assessment", "series:working-theory"],
+  ["video:the-accountable-person", "series:working-theory"],
   // Friends Intelligence, spoken: the book's chapters, on camera in Chinese
   ["video:fi-sleep-daylight", "book:friends-intelligence"],
   ["video:fi-coffee", "book:friends-intelligence"],

@@ -470,6 +470,37 @@ export const EPISODES: VideoEpisode[] = [
       "By the time you write your self-assessment, it's too late to tell a new story.\n\nWorking Theory, on camera — unscripted this time: your manager recalls a whole cycle of perceived reality. Build the shared reality in your one-on-ones, and let the self-assessment be the summary.\n\nFull episode + transcript: https://haoqian.co/videos/self-assessment\n\n#WorkingTheory #PerformanceReview",
     linkedinTags: ["WorkingTheory", "PerformanceReview"],
   },
+  {
+    slug: "the-accountable-person",
+    series: "working-theory",
+    sequence: 16,
+    title: "The Accountable Person",
+    status: "published",
+    publishedAt: "2026-09-12",
+    language: "en",
+    durationSeconds: 67,
+    hook: "Two words give away weak accountability: \"support\" and \"enable\".",
+    summary:
+      "Unscripted, spoken direct to camera. Hand someone the ownership of a project and listen to the reply. \"I will support it. I will guide it. I will enable it.\" Each of those sentences steps quietly out of the owner's seat: if the project fails, the person was only helping. The manager's job is to catch that moment and say it plainly — you are not supporting, you are not enabling, you own it, and you are the accountable person.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/the-accountable-person.mp4",
+    aspect: "9:16",
+    poster: "/videos/the-accountable-person/poster.jpg",
+    captions: "/videos/the-accountable-person/captions.vtt",
+    transcript: [
+      "These two words reveal weak accountability. The first word is support. The second word is enable.",
+      "Have you ever experienced this scenario, that when you repeatedly assign the ownership of a project to a person, this person is going to respond: 'I will support it.' 'I will guide it.' 'I will enable it.'",
+      "By saying these sentences, meaning this person hasn't really positioned him or herself in the position as being responsible. Instead, this person is thinking: 'I'm trying to support, or guide, or help, or enable this thing from happening. But if this project, or program, or task didn't happen, it's not really my responsibility, because at the end of the day, I'm supporting it.'",
+      "So as a manager, this is the moment you catch it and say: no. You are not supporting. You are not enabling. You own it. It's your responsibility to make sure this is successful, and you are the accountable person.",
+    ],
+    keyPoints: [
+      "\"I'll support it\" and \"I'll enable it\" are the sound of someone stepping out of the owner's seat.",
+      "Catch it in the moment and name it: you own it, you are the accountable person.",
+    ],
+    linkedinCaption:
+      "Two words give away weak accountability: \"support\" and \"enable\".\n\nHand someone a project and hear \"I'll support it, I'll enable it\", and they have quietly stepped out of the owner's seat. If it fails, they were only helping. That is the moment to say it plainly: you own it, you are the accountable person.\n\nhttps://haoqian.co/videos/the-accountable-person\n\n#WorkingTheory #EngineeringLeadership",
+    linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
+  },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
   /* Captions and transcripts are Hao's spoken words (voice-first, no    */
