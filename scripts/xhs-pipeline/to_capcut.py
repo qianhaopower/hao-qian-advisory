@@ -42,6 +42,13 @@ def find(match):
     return None
 
 
+def _face_safe_x(x, y):
+    """FACE RULE: the face band is x 0.30-0.70 / y 0.15-0.60 of the frame.
+    Any pop-up placed inside it is pushed sideways to x=0.80 (or 0.20)."""
+    if 0.15 < y < 0.60 and 0.25 < x < 0.75:
+        return 0.80 if x >= 0.5 else 0.20
+    return x
+
 def T(a, b):
     return trange(tim(f"{a}s"), tim(f"{max(0.1, b - a)}s"))
 
@@ -139,7 +146,10 @@ if ti:
     for i, (txt, col) in enumerate(ti["lines"]):
         seg = cc.TextSegment(
             txt, T(0, ti.get("dur", 3.0)), font=F_TITLE,
-            style=TextStyle(size=18.0 if col == "gold" else 16.0, bold=True,
+            # TITLE WIDTH RULE (Ep8 cover clipped a 10字 gold line): gold fits 8字 at 18,
+            # white 9字 at 16 — longer lines auto-shrink instead of running off-frame.
+            style=TextStyle(size=(18.0 * min(1, 8 / max(1, len(txt))) if col == "gold"
+                                  else 16.0 * min(1, 9 / max(1, len(txt)))), bold=True,
                             color=GOLD if col == "gold" else WHITE, align=1),
             clip_settings=ClipSettings(transform_y=-0.12 - i * 0.24),
             border=TextBorder(color=(0.20, 0.12, 0.0), width=70.0) if col == "gold"
@@ -220,9 +230,11 @@ for p in FX.get("punch", []):
     seg = cc.TextSegment(
         p.get("text", p["match"]), T(c["start"], c["start"] + p.get("hold", 2.2)),
         font=F_BOLD if style == "gold" else F_HEAVY,
-        style=TextStyle(size=16.0, bold=True,
+        style=TextStyle(size=(16.0 if len(p.get("text", p["match"])) <= 3 else 12.5 if len(p.get("text", p["match"])) == 4 else 10.5), bold=True,
                         color={"gold": GOLD, "red": RED}.get(style, WHITE), align=1),
-        clip_settings=ClipSettings(transform_y=0.42,
+        # FACE RULE (Hao 2026-09-10): pop-up text never covers the face. Punch sits
+        # BESIDE the head (screen x≈80%, eye level), not on the forehead (old y=0.42).
+        clip_settings=ClipSettings(transform_x=0.60, transform_y=0.10,
                                    rotation=-4.0 if style == "gold" else 0.0),
         border=TextBorder(color=(0.25, 0.16, 0.0), width=30.0) if style == "gold"
         else TextBorder(color=(1.0, 0.95, 0.92), width=35.0))
@@ -242,7 +254,7 @@ for fl in FX.get("floaters", []):
         fl["text"], T(c["start"], c["start"] + fl.get("hold", 2.0)), font=F_BRUSH,
         style=TextStyle(size=9.5, color=GOLD if fl.get("color", "gold") == "gold"
                         else WHITE, align=1),
-        clip_settings=ClipSettings(transform_x=fl.get("x", 0.62) * 2 - 1,
+        clip_settings=ClipSettings(transform_x=_face_safe_x(fl.get("x", 0.62), fl.get("y", 0.42)) * 2 - 1,
                                    transform_y=1 - 2 * fl.get("y", 0.42), rotation=-3))
     seg.add_animation(IN_POP).add_animation(OUT_UP)
     try:

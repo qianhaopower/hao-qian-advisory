@@ -232,7 +232,15 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   cycles — listen for it before a take, or let the chain kill it.
 
 ## Audio chain (order is law)
-0. **VOICE MASTER FIRST**: `scripts/video-pipeline/audio_master.py <raw> raw.mp4`
+0. **VOICE = SIMPLE CHAIN (Hao 2026-09-07 "弄简单点", applied to FI from Ep8 2026-09-10)**:
+   highpass 80 → gentle 1.7:1 compressor → linear gain to −14 LUFS → oversampled
+   true-peak limiter. NOTHING spectral (no dereverb, no EQ match, no expander, no
+   dynamic loudnorm). One ffmpeg pass inside the trim step; measure LUFS after.
+   audio_master.py (chain v3, below) is OPT-IN only after an A/B on that take —
+   Ep7 shipped on it and Hao passed it by ear, but the WT Ep14 artifacts (呲啦)
+   came from exactly those spectral stages. When Hao hears a problem: compare raw
+   vs output at the same moment, REMOVE a stage, never add one.
+0b. (legacy, opt-in) **VOICE MASTER**: `scripts/video-pipeline/audio_master.py <raw> raw.mp4`
    (bootstraps its own .venv-audio). One command = dereverb (room-fitted
    Lebart, 0.24s -> ~0.18s) + adeclick + HP80 (fridge) + EQ match to the
    Galloway LTAS + de-esser + pause-hiss expander + 1.7:1 comp + loudnorm
@@ -269,8 +277,16 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 - Captions: 中黑体 bold 8.5 (auto-shrink >13字, floor 5.2), white,
   BLACK BORDER width 18 (white-on-white was invisible), y −0.54.
 - Toplines: 俪金黑 10.5 gold/red/white, y −0.33, 弹入+向上溶解.
-- Punch: 俪金黑 16, gold rot −4 / red straight, thick borders, 晃动 loop on gold.
-- Opening title: 庞门体 16(white)/18(gold), border 70, chest height,
+- Punch: 俪金黑 16 (≤3字; 4字→12.5, 5字+→10.5), gold rot −4 / red straight, thick
+  borders, 晃动 loop on gold. Position = BESIDE THE HEAD (transform_x 0.60, y 0.10 ≈
+  screen x 80%, eye level) — never on the face.
+- **FACE RULE (Hao 2026-09-10, Ep8 「一致性」 landed on his forehead):** pop-up text
+  (punch / floaters / doodles / stickers) NEVER covers the face. Face band = x 30–70%,
+  y 15–60% of the frame; the generator pushes any pop placed inside it out to x 80%/20%.
+  Toplines/captions live below the chin by design (y −0.33 / −0.54).
+- Opening title: 庞门体 16(white)/18(gold), border 70, chest height, **max 9字 white /
+  8字 gold per line** (Ep8: a 10字 gold line ran off both edges; generator now shrinks
+  longer lines),
   **NO intro animation — full title on frame 1** (thumbnail rule), outro 溶解.
 - Corner mark: 默陌手写 6.5 white, border 45, top-left, full duration.
 - Floaters 9.5 brush. Emoji retired. Nothing invented outside the FD atlas.
@@ -289,7 +305,10 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 - Frame 1 = face + full title (the feed thumbnail).
 - End card = the BOOK: cover + 今天讲的是·〈pillar〉智慧 + Sleep Intelligence
   等 + 《Friends Intelligence》七种智慧之一 + 英文版已出版·中文版在路上;
-  3.5s, fade-in, bgm rides under it. No 关注我 in the video.
+  3.5s, fade-in, bgm rides under it. No spoken 关注我 in the video.
+  CTA LINE (Hao 2026-09-10, since 收藏/评论/转发 carry the XHS ranking): the end
+  card carries ONE gold line under the book text — 觉得有用就点赞收藏 · 后面继续讲
+  睡眠、关系、饮食 (endcard_<pillar>_cta.png). Text only, never spoken, never 关注.
 
 ## Process law (for the agent)
 - After every scripted patch: grep the file for the new symbols BEFORE
@@ -306,6 +325,11 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 
 - EXPORT RULE (2026-09-02): CapCut export = 1080p / 30fps / bitrate "recommended" — never 4K, never high-bitrate (XHS re-encodes anyway). Target ≤250MB for ~4min; >300MB means wrong settings. Oversized exports: ffmpeg -crf 22 recompress before phone transfer.
 
+- INSERT MOOD RULE — sharpened 2026-09-10 (Ep8: "tired worker at a laptop" for 关系让人累 and
+  "hand turning a key" for 回家以后 both failed): an insert shows the FEELING of the beat, never
+  the noun in the sentence. Test per clip: would a viewer feel the line without hearing it?
+  Also: check 6 frames before baking — landscape clips with the subject at the edge die in the
+  9:16 centre crop (16293/27591 became blank walls).
 - INSERT MOOD RULE (Hao 2026-09-05): every insert must match the emotional tone of the beat AND the episode (a warm couple episode gets smiling/embracing/talking couples — never crying, clinical, workplace, or odd clips). Mood is checked by eye on a contact sheet at pick time, per clip. Keep the shelf growing (hundreds) so clips are not reused across episodes.
 - POSED PRE-ROLL RULE: the 2s cover-face pause is trimmed out of source_ready (keep ~0.8s), face_frame still overlays frame 1; music alone over a silent opening reads as too loud.
 
@@ -313,9 +337,15 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 1. PROBE LANGUAGE of every new file before touching it (an EN WT take sat next to the zh one).
 2. Cover-face candidates from the posed opening → pick eyes-open/smiling → face1.png → fx face_frame.
 3. Measure speech onset (per-second RMS); trim source_ready to onset−0.8s; then TRANSCRIBE THE TRIMMED SOURCE.
-4. Proofread: known typo classes (腺肝→腺苷, 偏正→偏振, 咒→昼, 退黑素→褪黑素, 脑白筋→脑白金, 泪干见影→立竿见影, 高中屋里→高中物理, English fragments joined) + tail-hallucination strings (未经许可不得翻唱或使用 / 优优独播剧场 / 感谢观看 / 字幕由… / 订阅…) + duplicate-start chunks.
+   **A/V SYNC LAW (Ep7, 2026-09-06 — Hao saw lips 0.78s behind the voice):** the trim must RE-ENCODE the video
+   (`ffmpeg -ss <cut> -i raw -c:v hevc_videotoolbox -b:v 50M -tag:v hvc1 -c:a aac`). NEVER `-c:v copy` on a
+   trim: HEVC copy cuts at the previous keyframe and keeps sync only through container start_time offsets,
+   which audio_master.py (and any re-mux) silently drops. GATE: run `avsync_check.py <raw> <cut> <source_ready>`
+   after building source_ready and before to_capcut — it checks stream start_times = 0, frame 0 == raw@cut,
+   and audio lag ≤ 33 ms by cross-correlation. No PASS, no draft.
+4. Proofread: known typo classes (腺肝→腺苷, 偏正→偏振, 咒→昼, 退黑素→褪黑素, 脑白筋→脑白金, 泪干见影→立竿见影, 高中屋里→高中物理, English fragments joined) + tail-hallucination strings (未经许可不得翻唱或使用 / 优优独播剧场 / 感谢观看 / 字幕由… / 订阅…) + duplicate-start chunks + the SILENT-TAIL variant (Ep7: whisper re-used an earlier phrase as a 6s chunk over trailing silence — always RMS-check where speech actually ends and cut source_ready at speech end + ~0.5s; no silent tail under music).
 5. fx: density target 1 insert per ~22s, 3-4 punches, 8-12 toplines; anchors copied from THIS captions.json; run the anchor-miss check before generating; re-run it after ANY retranscribe.
-6. Inserts: harvest a fresh category batch per episode (shelf keeps growing, no reuse), mood-check on a contact sheet, Asian faces preferred, bake vertical.
+6. Inserts: harvest a fresh category batch per episode via `fetch_life_broll.py --cats a,b,c --target N` (downloads follow category ORDER until the target — put the scarce categories first or run a second pass), mood-check on a contact sheet, Asian faces preferred, bake vertical; mark `used_in` in the shelf index.
 7. Per-pillar end card (endcard_sleep / endcard_relationship / … — build the pillar's card the first time it appears).
 8. Generate → read draft JSON → count segments per track → only then report.
 9. Export (Hao) → agent compresses to 上传版 (~80MB) → phone → title/body/tags/pinned comment from the episode package.

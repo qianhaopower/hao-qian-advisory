@@ -8,7 +8,7 @@ white faces acceptable — enforced at PICK time (human/agent eyeballs the
 contact sheet), not at harvest time.
 
   venv or system python3, needs PIL + ffmpeg:
-  python3 fetch_life_broll.py [--target 40]
+  python3 fetch_life_broll.py [--target 40] [--cats duck,egg,couple]
 """
 import json, re, subprocess, sys, time, urllib.request
 from pathlib import Path
@@ -26,6 +26,9 @@ CATEGORIES = [
     "tired", "pillow", "alarm-clock", "bathroom", "brushing-teeth", "wake-up",
     "walking", "park", "nature", "family", "breakfast", "stretching", "relax",
 ]
+# Per-episode category batch (checklist v2 item 6): --cats duck,egg,couple
+if "--cats" in sys.argv:
+    CATEGORIES = [c for c in sys.argv[sys.argv.index("--cats") + 1].split(",") if c]
 
 
 def fetch(url):
