@@ -46,6 +46,15 @@ The masthead's star chart (`src/components/site/Constellation.tsx`, data from `s
 - Fish Fun book page: Goldie, Zoey, Lulu and Stella (`FishSwim.tsx`, true colours incl. Lulu's spots and Stella's stripes) swim across once when the reader scrolls to the editions area; skipped entirely under reduced-motion.
 - /balloons room: reach the end of the page and six balloons drift up once (`BalloonDrift.tsx` — FishSwim's scroll-sentinel pattern + the wordmark egg's rise/sway keyframes and palette); skipped entirely under reduced-motion.
 
+## Video archive law (both lines, since 2026-09-12)
+
+Hao's videos will go to more platforms later, so every episode ends with an archive, not with the post. Nothing lives only in `~/Downloads`.
+
+- **Where**: `~/Movies/<LINE>-videos/archive/epNN-slug/` (`FI-videos` for Friends Intelligence / 小红书, `WT-videos` for Working Theory / LinkedIn), mirrored by `rsync -a` to Google Drive `My Drive/<LINE>-videos/archive/` (the Drive client is mounted at `~/Library/CloudStorage/GoogleDrive-qianhaopower@gmail.com/`). Verify the upload by counting files that carry the `com.google.drivefs.item-id` xattr (`scripts/drive_archive_status.sh <folder>`), never by assuming.
+- **What**: `epNN-slug-raw-IMG_xxxx.MOV` (phone original), `epNN-slug-master.<ext>` (the platform-neutral edit: CapCut export for FI, the `final` cut for WT), `epNN-slug-upload-<platform>.mp4` (the compressed file that was actually posted), `epNN-slug-posting.md` (title / body / tags / pinned comment or LinkedIn copy), and a `README.md` index per line. Old cuts and superseded CapCut drafts go to the Trash, one live version per episode.
+- **When**: right after Hao says the episode is posted (or "不用管了") — archive, rsync, update the README, `git commit` + `git push` whatever the episode changed in the repo (scripts, docs, packages). Hao should never have to ask for the push or the upload. The FI line already runs this (checklist item 10 in `docs/XHS_FORMAT_REFERENCE.md`); the WT line applies it from its next episode and back-fills eps 1–14 from `~/Downloads` (the `- final.mp4` cuts + `IMG_*.MOV` raws) when it next sits down.
+- Lines stay separate: the FI session never moves WT files and vice versa.
+
 ## Conventions
 
 - Counts and claims on pages must stay honest — empty sections say so plainly ("Empty · deliberately"), never fake fullness.
