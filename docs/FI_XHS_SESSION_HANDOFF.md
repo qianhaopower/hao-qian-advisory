@@ -16,7 +16,8 @@ Hao 只做:录像(开拍先 2 秒封面脸、侧领夹麦、头顶少留白)→ 
    竖裁前看 6 帧)、endcard_<柱子>_cta(带一行点赞收藏)、bgm(自动增益)
 5. venv-jy/bin/python scripts/xhs-pipeline/to_capcut.py <source_ready> <名字> → 读 JSON 数段落
 6. Hao 导出 → 我不等吩咐压成 上传版.mp4 → 三件套直接贴在对话里(标题3选1/正文+标签/置顶评论 含音乐署名),不能只写进文件
-7. 每集附表达反馈(语速字/分、停顿、口头禅占比、动量指数 vs 前几集、抽帧看手势表情、眼神),一集只给一个改进目标
+7. 归档(2026-09-12 起):导出压缩后,原片/母版 .mov/上传版/发布包 移到 ~/Movies/FI-videos/archive/epNN-slug/(命名 epNN-slug-raw-IMG_xxxx.MOV / -master.mov / -upload-xhs.mp4 / -posting.md),更新 archive/README.md,然后 rsync 到 Google Drive「My Drive/FI-videos/archive/」。母版 .mov 是发其他平台用的无水印版。CapCut 里每集只留最后一版草稿,旧版进废纸篓。
+8. 每集附表达反馈(语速字/分、停顿、口头禅占比、动量指数 vs 前几集、抽帧看手势表情、眼神),一集只给一个改进目标
 
 **待办**:下一集换柱子(ep5 打印机vs买车 骨架在 content-src/video-scripts/fi-xhs-ep5-printer-car.md);
 花字资源采集(Hao 在 CapCut 随手用一个花字保存,我读 ID);账号名未定(角标占位 Friends Intelligence);

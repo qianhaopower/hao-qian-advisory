@@ -349,5 +349,6 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 7. Per-pillar end card (endcard_sleep / endcard_relationship / … — build the pillar's card the first time it appears).
 8. Generate → read draft JSON → count segments per track → only then report.
 9. Export (Hao) → agent compresses to 上传版 (~80MB) → phone → title/body/tags/pinned comment from the episode package.
+10. ARCHIVE (2026-09-12): raw + master .mov + upload + posting.md → ~/Movies/FI-videos/archive/epNN-slug/ (named epNN-slug-{raw-IMG_xxxx.MOV,master.mov,upload-xhs.mp4,posting.md}), update archive/README.md, rsync to Google Drive My Drive/FI-videos/archive/. The master .mov is the platform-neutral file for any other platform. Trash superseded CapCut drafts; one live draft per episode.
 
 - COMPRESS RULE (Hao 2026-09-05): every CapCut export is compressed by the agent WITHOUT being asked — the moment a new FI-*.mov lands in Downloads, produce <题>-上传版.mp4 (crf22, ~80MB) and hand that name over; the raw export is never what goes to the phone.
