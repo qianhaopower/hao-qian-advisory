@@ -267,8 +267,15 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
    ~/Video Studio). Bed extends under the endcard, 2.5s fade-out.
 
 ## Picture
-- Grade "natural" only: keep phone WB, sat×1.35, con×1.04, exp×1.05.
+- Grade "natural" only: keep phone WB, sat×1.35, con×1.04, exp×1.05
+  (CapCut: saturation 0.35 / contrast 0.06 / brightness 0.05).
   Warm-cast or neutral-grey grading = banned (阴间, twice).
+- ROOM EXPOSURE KNOB (Ep10, hotel tungsten 2026-09-14): when a take is not the
+  usual white wall, fx "grade" {saturation,contrast,brightness} may match the
+  SERIES look — measure the raw first (home takes sit at luma ~0.61, R/B ~1.05,
+  sat ~0.085; the hotel read 0.51 / 1.16 / 0.152, so it went sat 0.20 bright 0.14).
+  Matching his own back catalogue is allowed; inventing a new look is not, and
+  the default numbers stay untouched for white-wall takes. Show an A/B still.
 - Motion: static baseline. Zoom only at fx-marked peaks (slow, ~1.1s).
   Cards snap 0.2s/0.25s. ALL scale keyframes gathered+sorted+deduped
   (out-of-order anchors caused a 115s slow-shrink).
@@ -313,6 +320,9 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 ## Process law (for the agent)
 - After every scripted patch: grep the file for the new symbols BEFORE
   claiming it landed (a silent .replace() no-op shipped an unfixed v8).
+- NEVER run two `fetch_life_broll.py` passes at once: both rewrite index.json and
+  the second clobbers the first (19 orphan clips on Ep10, recovered by re-probing
+  the folder). One pass at a time, one scarce category per pass.
 - After every draft generation: read the draft JSON and count segments
   per track before telling Hao it's there.
 - All media CapCut touches lives under ~/Movies/FI-videos/.

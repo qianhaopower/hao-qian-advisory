@@ -66,9 +66,14 @@ for tt, name in [(TrackType.video, "video"), (TrackType.audio, "bgm"),
 BASE = float(FX.get("reframe_scale", 1.0))
 vseg = cc.VideoSegment(SRC, T(0, DUR), volume=1.0,
                        clip_settings=ClipSettings(transform_y=float(FX.get("reframe_y", 0.0))))
-vseg.add_keyframe(KeyframeProperty.saturation, tim("0s"), 0.35)
-vseg.add_keyframe(KeyframeProperty.contrast, tim("0s"), 0.06)
-vseg.add_keyframe(KeyframeProperty.brightness, tim("0s"), 0.05)
+# Grade "natural" (law: keep the phone WB; no warm cast, no grey neutralize).
+# The three numbers are the series default; fx "grade" may nudge them for a room
+# that is not the usual white wall (hotel tungsten, Ep10 2026-09-14) — a per-take
+# exposure/saturation knob, never a new look.
+_g = FX.get("grade") if isinstance(FX.get("grade"), dict) else {}
+vseg.add_keyframe(KeyframeProperty.saturation, tim("0s"), float(_g.get("saturation", 0.35)))
+vseg.add_keyframe(KeyframeProperty.contrast, tim("0s"), float(_g.get("contrast", 0.06)))
+vseg.add_keyframe(KeyframeProperty.brightness, tim("0s"), float(_g.get("brightness", 0.05)))
 events = []
 for z in FX.get("zoom_overrides", []):
     c = find(z["match"])
