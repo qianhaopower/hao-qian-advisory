@@ -260,7 +260,11 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
    track when patching; it must contain zero intelligible speech.
 2. loudnorm VOICE to −14 (inside source_ready.mp4). Never normalise a mix.
 3. BGM ratio: benchmark voice-to-bed = 17–23dB → generator AUTO-GAINS the
-   bed to 21 dB under the measured voice (ebur128 on both; fixed 0.20 was
+   bed to 21 dB under the measured voice (fx bed_under_db; Ep10 2026-09-14:
+   Hao could not hear the bed at 21 under — the level was correct and matched
+   Ep9, but a sparse walking-bass track under 9 inserts disappears, so a
+   thin-textured track gets 17, the loud end of the band. Measure the track
+   across the USED span, not just overall, before blaming the gain) (ebur128 on both; fixed 0.20 was
    only right for Bossa — Wallpaper is 10.5 dB hotter, Ep6 v1 shipped ~10 dB
    under). sfx 0.15. BGM track: non-repetitive (autocorr <0.4), longer
    than the video, from ~/Movies/FI-videos/assets/ (CapCut can't read
