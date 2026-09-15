@@ -7,24 +7,27 @@ CLOSE verbatim; speak the middle from these notes. ~140 words + his example ≈ 
 
 ---
 
-**OPEN (memorize):** The more senior you get, the more relaxed you have to be.
+**Hao's final text (2026-09-15), ~110 words ≈ 55 s:**
 
-People think that's because you delegate more, or because you've seen it all before.
-The real reason is simpler: it's the only way to survive the job.
+The more senior you get, the more relaxed you have to be.
 
-The higher you go, the more decisions land on you. Harder ones. Less information,
-more at stake.
+People think that's because you delegate more, or because you've seen it all. No. The
+real reason: it's the only way to survive.
 
-And a stressed brain makes bad calls. That's physiology, not attitude. Under stress,
-the part of your brain that weighs options goes quiet, and the part that reacts takes
+The higher you go, the more decisions land on you. Harder ones. Less information, more
+at stake.
+
+A stressed brain makes bad calls. That's physiology, not attitude. Under stress, the
+part of your brain that weighs options goes silent, and the part that reacts takes
 over. You stop weighing. You start reacting.
-
-**[YOUR EXAMPLE — three sentences, one real tough call. What was on the table. What
-you did to stay calm. What the calm let you see that panic would have hidden.]**
 
 So when the pressure goes up, that's exactly the moment to slow down.
 
-**CLOSE (memorize):** Calm isn't the reward for being senior. Calm is the job.
+Calm isn't the reward for being senior. Calm is a must.
+
+(Cutting room's one open note: the close "Calm is the job" echoes the cover title;
+"a must" is flatter and the cover would need to change with it. His call.
+The example slot was removed by Hao — captions follow what he says.)
 
 ---
 
