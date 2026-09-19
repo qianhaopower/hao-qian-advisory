@@ -68,6 +68,7 @@ Video bytes live on the media shelf (GitHub release `media`, per `scripts/publis
 - **Ep. 8 "Good Work Doesn't Speak"** (video-first, no essay; first mic-era episode; the opening recipe was finalized here): filmed 2026-08-29, 97s on the media shelf; poster + VTT in `public/videos/good-work-doesnt-speak/`; canonical `/videos/good-work-doesnt-speak`. B-roll: Mixkit 17315/914/8872/46679.
 - **Ep. 11 "Self-Assessment"** (first UNSCRIPTED episode, no teleprompter; video-first): filmed 2026-08-31, 135s on the media shelf; poster + VTT in `public/videos/self-assessment/`; canonical `/videos/self-assessment`. B-roll: Mixkit 25426/8925/46685.
 - **Ep. 16 "The Accountable Person"** (unscripted, video-first; first episode on the simple audio path — raw + HP80 + gentle comp + linear −14, no spectral processing): filmed 2026-09-12, 67s on the media shelf; poster + VTT in `public/videos/the-accountable-person/`; canonical `/videos/the-accountable-person`. B-roll: Mixkit 4802/4813/14762/46447.
+- **Ep. 17 "Calm Is a Must"** (teleprompter, script written by Hao and polished with the cutting room: `content-src/video-scripts/ep17-calm-is-the-job.md`): filmed 2026-09-19, 56s on the media shelf; poster + VTT in `public/videos/calm-is-a-must/`; canonical `/videos/calm-is-a-must`. B-roll: Mixkit 5744/45922/23410. Posted to LinkedIn 2026-09-19.
 
 ## Videos — Friends Intelligence on camera, 中文 · 小红书 (added to the site 2026-09-05)
 

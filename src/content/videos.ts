@@ -501,6 +501,39 @@ export const EPISODES: VideoEpisode[] = [
       "Two words give away weak accountability: \"support\" and \"enable\".\n\nHand someone a project and hear \"I'll support it, I'll enable it\", and they have quietly stepped out of the owner's seat. If it fails, they were only helping. That is the moment to say it plainly: you own it, you are the accountable person.\n\nhttps://haoqian.co/videos/the-accountable-person\n\n#WorkingTheory #EngineeringLeadership",
     linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
   },
+  {
+    slug: "calm-is-a-must",
+    series: "working-theory",
+    sequence: 17,
+    title: "Calm Is a Must",
+    status: "published",
+    publishedAt: "2026-09-19",
+    language: "en",
+    durationSeconds: 56,
+    hook: "The more senior you get, the more relaxed you have to be.",
+    summary:
+      "People think senior leaders look calm because they delegate more, or because they have seen it all. The real reason is survival. The higher you go, the more decisions land on you: harder ones, with less information and more at stake. A stressed brain makes bad calls, and that is physiology, not attitude: under stress the part of the brain that weighs options goes silent and the part that reacts takes over. So the moment the pressure goes up is exactly the moment to slow down.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/calm-is-a-must.mp4",
+    aspect: "9:16",
+    poster: "/videos/calm-is-a-must/poster.jpg",
+    captions: "/videos/calm-is-a-must/captions.vtt",
+    transcript: [
+      "The more senior you get, the more relaxed you have to be.",
+      "People think that's because you delegate more, or because you've seen it all. No. The real reason: it's the only way to survive.",
+      "The higher you go, the more decisions land on you. Harder ones. Less information. More at stake.",
+      "A stressed brain makes bad calls. That's physiology, not attitude. Under stress, the part of your brain that weighs options goes silent, and the part that reacts takes over. You stop weighing. You start reacting.",
+      "So when the pressure goes up, that's exactly the moment to slow down.",
+      "Calm isn't the reward for being senior. Calm is a must.",
+    ],
+    keyPoints: [
+      "Seniority multiplies decisions: harder ones, with less information and more at stake.",
+      "Stress switches the brain from weighing to reacting, so calm is a working condition, not a perk.",
+    ],
+    linkedinCaption:
+      "The more senior you get, the more relaxed you have to be.\n\nPeople think it's because you delegate more, or because you've seen it all. The real reason: the higher you go, the more decisions land on you, and a stressed brain makes bad calls. That's physiology, not attitude. When the pressure goes up, that's exactly the moment to slow down.\n\nhttps://haoqian.co/videos/calm-is-a-must\n\n#WorkingTheory #EngineeringLeadership",
+    linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
+  },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
   /* Captions and transcripts are Hao's spoken words (voice-first, no    */
