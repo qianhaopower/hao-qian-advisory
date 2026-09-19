@@ -1444,7 +1444,10 @@
   "file": "/Users/haoqian/Movies/broll-library/5744.mp4",
   "url": "https://mixkit.co/free-stock-video/team-leader-hands-out-growth-charts-at-meeting-5744/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep17"
+  ],
+  "mood": "neutral"
  },
  {
   "id": "33857",
@@ -2395,8 +2398,10 @@
   "url": "https://mixkit.co/free-stock-video/young-businessman-overwhelmed-with-paperwork-45922/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
   "used_in": [
-   "ep6"
-  ]
+   "ep6",
+   "ep17"
+  ],
+  "mood": "serious"
  },
  {
   "id": "4533",
@@ -3194,7 +3199,10 @@
   "file": "/Users/haoqian/Movies/broll-library/23410.mp4",
   "url": "https://mixkit.co/free-stock-video/man-walking-on-the-concrete-sidewalk-23410/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep17"
+  ],
+  "mood": "neutral"
  },
  {
   "id": "23818",
