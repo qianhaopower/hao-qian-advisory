@@ -307,6 +307,11 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   free-commercial, luma-filtered; harvester fetch_life_broll.py) + WT shelf.
   Diagrams (paper-style) only for numbers/mechanisms.
 - Faces: Asian preferred, white OK (XHS audience) — enforced at pick time.
+- NO REPEATS INSIDE AN EPISODE (Hao 2026-09-19): every insert appears ONCE. I had
+  been reusing one clip at the top and the tail as a deliberate "bookend" (Ep10's
+  contra scene, Ep11's face-to-face clip) — he reads it as the edit running out of
+  material, not as a callback. One asset, one slot; if a beat needs a callback,
+  make a different asset for it.
 - Grammar: ~3s each, ~1 per 22s, 0.3s alpha fade in/out, bottom 28% of
   text-bearing images left empty, toplines/punches auto-suppressed during
   inserts, inserts ≥ hold+0.5s apart (overlap guard drops with a warning).
