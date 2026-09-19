@@ -10,6 +10,20 @@ export type BookFigure = { src: string; caption: string };
 export type BookListItem = { title: string; note: string };
 export type BookLink = { label: string; note?: string; href?: string };
 export type BookEvent = { date: string; note: string };
+/** the machine-readable bibliographic record — feeds the book page's JSON-LD */
+export type BookBiblio = {
+  author: string;
+  /** ISO date */
+  datePublished: string;
+  edition: string;
+  pages: number;
+  isbn: string;
+  language: string;
+  genre: string;
+  /** one entry per format, each pointing at its own listing */
+  formats: { format: "Paperback" | "Hardcover" | "EBook"; url: string; isbn?: string }[];
+  sameAs?: string[];
+};
 
 export type Book = {
   slug: string;
@@ -22,8 +36,12 @@ export type Book = {
   coverLabel?: string;
   oneLiner: string;
   facts: string[];
+  /** a quiet provenance line under the facts — where the book is held.
+   *  Wording is exact and deliberate: "held in the collections of", full stop. */
+  heldIn?: string;
+  biblio?: BookBiblio;
   /** prominent one-click purchase action, shown in the page header */
-  buy?: { label: string; href: string };
+  buy?: { label: string; href: string; alt?: { label: string; href: string } };
   sections: BookSection[];
   insideHeading?: string;
   inside?: BookListItem[];
@@ -56,9 +74,33 @@ export const BOOKS: Book[] = [
       "ISBN 9798181687486",
       "First edition, 2026",
     ],
+    /* Legal deposit via National edeposit (NED), receipt NED490461, 2026-09-19.
+     * Access is onsite-only at the libraries, so never say "borrow", "free to
+     * read" or "available at libraries" — "held in the collections of" is the
+     * whole claim. Self-published: no publisher is named anywhere.
+     * TODO(Hao to confirm): the Trove record is still processing — once it is
+     * live, add the Trove link to `related` and to `biblio.sameAs`. Not before. */
+    heldIn:
+      "Held in the collections of the National Library of Australia and the State Library Victoria.",
+    biblio: {
+      author: "Hao Qian",
+      datePublished: "2026-06-15",
+      edition: "First edition",
+      pages: 222,
+      isbn: "9798181687486",
+      language: "en",
+      genre: "Self-help",
+      formats: [
+        { format: "Paperback", url: "https://www.amazon.com/dp/B0H5R5C8B6", isbn: "9798181687486" },
+        { format: "EBook", url: "https://www.amazon.com/dp/B0H5RB9J41" },
+        { format: "Hardcover", url: "https://www.amazon.com/dp/B0HCBBY8B3" },
+      ],
+      sameAs: ["https://www.goodreads.com/book/show/254117147-friends-intelligence"],
+    },
     buy: {
-      label: "Buy on Amazon — Kindle, paperback & hardcover",
+      label: "Buy on Amazon AU — Kindle, paperback & hardcover",
       href: "https://www.amazon.com.au/dp/B0H5R5C8B6",
+      alt: { label: "Amazon US", href: "https://www.amazon.com/dp/B0H5R5C8B6" },
     },
     sections: [
       {
@@ -103,7 +145,7 @@ export const BOOKS: Book[] = [
       },
     ],
     editions: [
-      { label: "Kindle", note: "Amazon · KDP Select", href: "https://www.amazon.com/dp/B0H5R5C8B6" },
+      { label: "Kindle", note: "Amazon · KDP Select", href: "https://www.amazon.com/dp/B0H5RB9J41" },
       { label: "Paperback", note: "Amazon · ISBN 9798181687486", href: "https://www.amazon.com/dp/B0H5R5C8B6" },
       { label: "Hardcover", note: "Amazon · since Jul 2026", href: "https://www.amazon.com/dp/B0HCBBY8B3" },
       { label: "Amazon Australia", note: "all formats", href: "https://www.amazon.com.au/dp/B0H5R5C8B6" },
@@ -134,6 +176,7 @@ export const BOOKS: Book[] = [
       { date: "20 Aug 2026", note: "StoryOrigin account opened for review copies." },
       { date: "30 Aug 2026", note: "The book starts speaking Chinese: first Friends Intelligence episode on 小红书." },
       { date: "5 Sep 2026", note: "Listing booked on CraveBooks (via Armadillo eBooks) for 9 September." },
+      { date: "19 Sep 2026", note: "Deposited under Australian legal deposit and held in the collections of the National Library of Australia and the State Library Victoria." },
       { date: "To come", note: "Audiobook and Chinese edition." },
     ],
   },

@@ -6,7 +6,9 @@ The verified raw material for the digital library. Gathered 2026-07-29. Companio
 
 ### Friends Intelligence (published)
 - **Title:** Friends Intelligence — *The Hidden Patterns Connecting Money, Relationships, Health, and Decisions*
-- **Published:** 2026 · Paperback & Kindle · [Amazon AU B0H5R5C8B6](https://www.amazon.com.au/dp/B0H5R5C8B6)
+- **Published:** 15 June 2026 · First edition · 222 pages · English · Self-help / personal development · self-published (KDP) · [Amazon AU B0H5R5C8B6](https://www.amazon.com.au/dp/B0H5R5C8B6)
+- **Identifiers:** paperback ISBN 979-8181687486 · paperback ASIN B0H5R5C8B6 · Kindle ASIN B0H5RB9J41 · hardcover ASIN B0HCBBY8B3
+- **Legal deposit:** lodged via National edeposit (NED), receipt NED490461, 2026-09-19 — held in the collections of the National Library of Australia and the State Library Victoria. Access is **onsite only**: site copy says "held in the collections of" and nothing more (never "borrow" / "free to read" / "available at libraries"). Trove record still processing on 2026-09-19 — no Trove link anywhere until Hao confirms it is live (TODO markers in `src/content/books.ts`, the book page JSON-LD, and the `/friendsintelligence` landing).
 - **The seven pillars (F.R.I.E.N.D.S.):** Financial · Relationship · Information · Emotional · Nutrition · Dynamic · Sleep
 - **Editions to come:** Audiobook (占位 "to be") · 中文版 Chinese edition (占位 "to be")
 - **Cover asset:** `public/friendsintelligence/cover.jpg` (900×1440)
@@ -43,13 +45,15 @@ Sources: Hao's own publishing emails (KDP, Goodreads, BookSirens, StoryOrigin, C
 
 | Trace | URL / id | Status |
 |---|---|---|
-| Amazon Kindle + paperback (same detail page) | https://www.amazon.com/dp/B0H5R5C8B6 (also .com.au) | live; Kindle in KDP Select since 2026-07-31 |
+| Amazon paperback | https://www.amazon.com/dp/B0H5R5C8B6 (also .com.au) | live |
+| Amazon Kindle | https://www.amazon.com/dp/B0H5RB9J41 (also .com.au) | live; KDP Select since 2026-07-31 |
 | Amazon hardcover | https://www.amazon.com/dp/B0HCBBY8B3 | live 2026-07-31 |
 | Amazon author page | https://www.amazon.com/author/haoqian (→ stores/Hao-Qian/author/B0HCBGC9N2) | live 2026-08-03 |
 | Goodreads book | https://www.goodreads.com/book/show/254117147-friends-intelligence | live |
 | Goodreads author (Author Program) | https://www.goodreads.com/author/show/71572056.Hao_Qian | approved 2026-08-01 |
 | Draft blog / companion app / GitHub | friendsintelligence.info · friendsintelligence.net · github.com/qianhaopower/FIAPP (+ fiappV1) | live |
 | 小红书 account 「不内耗的人生」 | https://www.xiaohongshu.com/user/profile/60af86df0000000001007b70 (rednote.com mirrors it) | live; the FI episodes |
+| National Library of Australia + State Library Victoria (legal deposit via NED) | receipt NED490461, 2026-09-19 | held, onsite access only; Trove record processing — no public URL yet |
 | BookSirens | submitted 2026-08-03, no public page yet | in review |
 | StoryOrigin | account 2026-08-20 (review-copy tool, private) | — |
 | CraveBooks via Armadillo eBooks | promo booked 2026-09-05 for 2026-09-09 | listing page appears on the day |

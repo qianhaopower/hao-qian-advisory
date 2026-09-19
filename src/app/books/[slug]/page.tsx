@@ -6,6 +6,7 @@ import { Connections } from "@/components/site/Connections";
 import { FishSwim } from "@/components/site/FishSwim";
 import { BOOKS, getBook } from "@/content/books";
 import { getEssays } from "@/lib/essays";
+import { SITE_URL } from "@/lib/videos";
 
 export function generateStaticParams() {
   return BOOKS.map((b) => ({ slug: b.slug }));
@@ -19,12 +20,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const book = getBook(slug);
   if (!book) return {};
+  const description = book.heldIn
+    ? `${book.oneLiner} ${book.heldIn}`
+    : book.oneLiner;
   return {
     title: book.title,
-    description: book.oneLiner,
+    description,
     openGraph: {
       title: `${book.title} — Hao Qian`,
-      description: book.oneLiner,
+      description,
       type: "book",
       images: [book.cover ? book.cover.src : `/books/${book.slug}/opengraph-image`],
     },
@@ -42,8 +46,48 @@ export default async function BookPage({
 
   const essays = slug === "working-theory" ? getEssays() : null;
 
+  // schema.org Book — only for books with a verified bibliographic record.
+  // No `publisher`: the books are self-published, and the record says nothing
+  // it can't back. TODO: add the Trove URL to `biblio.sameAs` once Hao
+  // confirms the record is live.
+  const b = book.biblio;
+  const jsonLd = b
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        name: book.title,
+        ...(book.subtitle ? { alternativeHeadline: book.subtitle } : {}),
+        description: book.heldIn
+          ? `${book.oneLiner} ${book.heldIn}`
+          : book.oneLiner,
+        url: `${SITE_URL}/books/${book.slug}`,
+        ...(book.cover ? { image: `${SITE_URL}${book.cover.src}` } : {}),
+        author: { "@type": "Person", name: b.author, url: SITE_URL },
+        datePublished: b.datePublished,
+        bookEdition: b.edition,
+        numberOfPages: b.pages,
+        isbn: b.isbn,
+        inLanguage: b.language,
+        genre: b.genre,
+        ...(b.sameAs ? { sameAs: b.sameAs } : {}),
+        workExample: b.formats.map((f) => ({
+          "@type": "Book",
+          bookFormat: `https://schema.org/${f.format}`,
+          inLanguage: b.language,
+          url: f.url,
+          ...(f.isbn ? { isbn: f.isbn } : {}),
+        })),
+      }
+    : null;
+
   return (
     <SiteShell current="/books">
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <Container>
         {/* Header */}
         <header className="flex flex-col gap-8 pt-16 min-[700px]:flex-row min-[700px]:items-start min-[900px]:pt-20">
@@ -85,6 +129,11 @@ export default async function BookPage({
             <div className="meta mt-5 !normal-case !tracking-[0.08em]">
               {book.facts.join(" · ")}
             </div>
+            {book.heldIn && (
+              <p className="mt-4 max-w-[520px] border-l border-btnline pl-3 text-[13px] leading-[1.6] text-ink-2">
+                {book.heldIn}
+              </p>
+            )}
             {book.buy && (
               <div className="mt-7 flex flex-wrap items-center gap-5">
                 <a
@@ -93,6 +142,14 @@ export default async function BookPage({
                 >
                   {book.buy.label} ↗
                 </a>
+                {book.buy.alt && (
+                  <a
+                    href={book.buy.alt.href}
+                    className="text-[13.5px] text-ink-2 transition-colors duration-[250ms] hover:text-accent"
+                  >
+                    {book.buy.alt.label} ↗
+                  </a>
+                )}
                 <a
                   href="#editions"
                   className="text-[13.5px] text-ink-2 transition-colors duration-[250ms] hover:text-accent"

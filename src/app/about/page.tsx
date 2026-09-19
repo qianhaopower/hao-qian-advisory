@@ -17,6 +17,10 @@ const TIMELINE: { year: string; text: string; now?: boolean }[] = [
   },
   {
     year: "2026",
+    text: "Friends Intelligence. Deposited under Australian legal deposit and held in the collections of the National Library of Australia and the State Library Victoria.",
+  },
+  {
+    year: "2026",
     text: "The library opens. Friends Intelligence and Fish Fun published.",
   },
   {
@@ -80,7 +84,7 @@ export default function AboutPage() {
           <div className="meta mb-8">Milestones</div>
           <div className="flex flex-col gap-7 border-l border-btnline pl-8">
             {TIMELINE.map((t) => (
-              <div key={t.year} className="relative">
+              <div key={t.text} className="relative">
                 <div
                   className={`absolute -left-[36.5px] top-1.5 h-2 w-2 rounded-full ${
                     t.now ? "bg-ink" : "border border-faint bg-paper"
