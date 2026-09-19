@@ -103,6 +103,7 @@ sc.add_segment(vseg, "video")
 # benchmark: 7 in 156s, mean 2.9s). Images are pre-baked to mp4 with a slow
 # push by prep step below; captions render above via text tracks.
 sc.add_track(TrackType.video, "inserts", relative_index=1)
+FACE_HOLD = float((FX.get("face_frame") or {}).get("hold", 0.35)) if FX.get("face_frame") else 0.0
 for ins in FX.get("inserts", []):            # {"match","file","hold"?}
     c = find(ins["match"])
     fp = os.path.expanduser(ins["file"])
@@ -126,6 +127,11 @@ for ins in FX.get("inserts", []):            # {"match","file","hold"?}
                            capture_output=True, text=True).stdout.strip()
     if probe:
         hold = min(hold, float(probe) - 0.1)     # clamp to material length
+    if c["start"] < FACE_HOLD:
+        # frame 1 belongs to the cover face + title (the thumbnail) — an insert
+        # anchored there used to crash the generator with SegmentOverlap.
+        print(f"!! insert skipped (sits on the frame-1 cover): {ins['match'][:18]}")
+        continue
     iseg = cc.VideoSegment(fp, T(c["start"], c["start"] + hold))
     for dt, av in [(0.0, 0.0), (0.30, 1.0), (hold - 0.25, 1.0), (hold, 0.0)]:
         iseg.add_keyframe(KeyframeProperty.alpha, tim(f"{dt}s"), av)
