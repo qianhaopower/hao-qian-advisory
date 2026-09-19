@@ -34,6 +34,12 @@ wording, personality or branding.
   scale to 1080×1920 (up to 2× push-in with no quality loss; Ep. 5 used
   1.25×: `crop=1728:3072:216:768`). Shooting closer also cuts the room
   echo (mic is the phone) — the two problems are the same problem.
+- **Teleprompter-app exports need a lift (Ep. 17, 2026-09-19).** The
+  PromptSmart MP4s are SDR bt709 but `yuvj420p` full-range and come out
+  visibly darker than the camera MOVs (wall ≈165 vs ≈214 on Ep. 9). At
+  pass 1: `scale=…:in_range=pc:out_range=tv` plus a mid lift
+  (`curves=all='0/0 0.5/0.68 0.85/0.94 1/1'`), checked against the
+  previous episode's wall and face values. Bright, never murky.
 - **Edit within talking head**: occasional subtle jump cuts between takes
   (same framing, ~1 punch-in in 90 s at 0:07). No zoom pushes, no
   animated crops.
@@ -302,6 +308,12 @@ copy. Checks, in order of importance:
 1. Script to the 7 beats, 250–280 words max, punch words marked.
 2. Record: locked camera, white wall, dark outfit, dry audio, read in
    sentence-sized takes (pauses come free from the take boundaries).
+2b. **Density is pause structure, not word count (Ep. 17).** A friend told
+   Hao to talk faster; measured, he already articulates at ~177 wpm
+   (benchmark ≈180). What read as "slow" was 43% silence in the raw take:
+   reading the prompter one sentence at a time, ~1.2 s between each.
+   Record in runs of two or three sentences; a raw take should carry
+   ≤20% silence. The cut tightens every pause to 0.55 s regardless.
 3. Edit: assemble takes, keep 0.4–0.7 s of silence between sentences,
    1–2 subtle jump cuts max. **Protected pauses** (never tightened — Hao,
    2026-08-22): the beat after "So here is my working theory:", the
