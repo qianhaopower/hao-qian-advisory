@@ -358,6 +358,26 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 - INSERT MOOD RULE (Hao 2026-09-05): every insert must match the emotional tone of the beat AND the episode (a warm couple episode gets smiling/embracing/talking couples — never crying, clinical, workplace, or odd clips). Mood is checked by eye on a contact sheet at pick time, per clip. Keep the shelf growing (hundreds) so clips are not reused across episodes.
 - POSED PRE-ROLL RULE: the 2s cover-face pause is trimmed out of source_ready (keep ~0.8s), face_frame still overlays frame 1; music alone over a silent opening reads as too loud.
 
+## LONG-FORM GRAMMAR (the 2026-09-20 special, 9 min — for anything over ~4 min)
+- The short-episode density (10–16 events/min) does NOT scale; a long piece runs ~4/min:
+  chapter cards as the skeleton (person card = chapter card), 2–3 drawn illustrations for
+  the metaphors people will remember, ONE thesis card shown as distinct variants (never the
+  same asset twice), toplines only on the quotable lines, no doodles/floaters.
+- Internal cuts: `cut_by_edl.py` (frame-grid EDL, re-encode, 8 ms seam fades). Pick cuts at
+  silence valleys, whisper-check every seam on AUDIO first, then cut video. Every seam on the
+  locked-off shot sits under an insert (start+0.3 ≤ seam ≤ end−0.3) and is verified in the
+  draft JSON. Sync gate on the head AND a cross-correlation on the last segment.
+- Re-transcribe the cut source. When merging whisper's shredded English into readable
+  lines, map time along the ORIGINAL chunk boundaries (piecewise), not linearly over the
+  span — a linear split drifted up to ~1 s and uncovered two seams.
+- Real people named on screen = a fact pass first (names, titles, numbers); his slips stay
+  in the audio and get a correction topline; claims that can't be verified are left spoken
+  but never reinforced on screen; a pseudonym stays a pseudonym.
+- Music for > 5 min: concat approved low-periodicity tracks, each normalised to the same
+  LUFS, 5 s crossfades; bed 20 dB under.
+- Keep a PROGRESS.md in a durable work dir under ~/Movies/FI-videos/ (the scratchpad does
+  not survive a session) and timestamp each phase.
+
 ## Episode checklist v2 (locked 2026-09-05 — the Ep6 level is the baseline)
 1. PROBE LANGUAGE of every new file before touching it (an EN WT take sat next to the zh one).
 2. Cover-face candidates from the posed opening → pick eyes-open/smiling → face1.png → fx face_frame.
