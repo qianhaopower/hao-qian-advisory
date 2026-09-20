@@ -883,4 +883,39 @@ export const EPISODES: VideoEpisode[] = [
       "和你爱的人说话的时候,你会看着他的眼睛吗?\n脑成像研究发现:一张你觉得有吸引力的脸看着你时,大脑里跟奖赏有关的区域反应会很强。\n翻译过来就是四个字——我想继续。\n心理学实验也发现,两个人相互注视之后,好感和亲近感都会上升。\n所以才有「眉目传情」。\n今天就能试:他说话的时候,放下手机,看着他的眼睛,听他说完。\n不用一直盯着。你想传达的只有一句话:我在听,而且我真的感兴趣。\n\n#亲密关系 #夫妻关系 #沟通 #眼神 #情感 #两性关系",
     platformTags: ["亲密关系", "夫妻关系", "沟通", "眼神", "情感", "两性关系"],
   },
+  {
+    slug: "fi-three-stories",
+    series: "friends-intelligence",
+    sequence: 12,
+    title: "一个北京医生、一个美国医生、一个西班牙人,说了同一套话",
+    titleEn: "Three strangers, one list",
+    status: "published",
+    publishedAt: "2026-09-21",
+    language: "zh-Hans",
+    durationSeconds: 555,
+    topic: "特别版 · 七种智慧 · The whole book in three strangers",
+    hook: "三个从没见过面的人,在不同的年代、用不同的语言,总结出了同一张清单。",
+    summary:
+      "特别版,九分钟,一镜到底。夏萌(北京安贞医院,神经内科医生转营养科主任)说自己一直在悬崖底下救人,救的速度赶不上掉的速度,于是去了悬崖上面。Dr. Goobie(MIT 毕业的神经外科医生,公开使用的化名)做了九年手术后辞职:他觉得自己一直在补墙,屋子却还在漏水,真正长期好转的病人靠的是手术之外的事。Héctor García(《Ikigai》作者之一)在冲绳大宜味村看了一百多位百岁老人。三个人总结的是同一张清单:好好吃、睡够八小时、管住压力、常见朋友、天天动、好好喝水——不是做到一件,是都做到。片中两处口误已在字幕和文字稿中更正。",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/fi-three-stories.mp4",
+    aspect: "9:16",
+    poster: "/videos/fi-three-stories/poster.jpg",
+    captions: "/videos/fi-three-stories/captions.vtt",
+    transcript: [
+      "今天给大家讲个故事吧,就是三个完全不同的人,一个西班牙人,一个中国人,还有一个美籍华人,他们三个完全不同的背景,生活在不同的时代,最后用不同的语言,说出了同一套话,然后这一套话会直接指向,让我们怎么生活得快乐,我刚才看了一个视频,实在是有感而发,就跟大家分享一下。",
+      "这第一个人呢是一个北京人,叫夏萌,大家如果要是在网上看过,凉子访谈录这个频道的话,可能还有印象,非常慈祥的一位中年阿姨,或者说是一个非常非常,让人尊敬的这样的一个人,她以前是北京安贞医院的一个,神经外科医生〔更正:夏萌是神经内科医生,后任营养科主任〕,医术非常好,应该是做了很多很多手术,但是她后来呢,就转向去做营养学了,那这个是一个奇怪的转变,就是神经外科的话,一般来说在医学界,可能让大家觉得更有挑战,或者说是更厉害一些,营养学相对来说的话,可能是 soft 一点,就是不是那么的前沿,但是她在凉子访谈录的时候就说,她在安贞医院,做这个神经外科医生的时候,她的感觉就是说,看着她的病人,就从悬崖上,噗噗噗地往下掉,然后她在悬崖下面,就疯狂地救这些人,但是赶不上这些人往下掉的速率,那这些人为什么往下掉,就是因为他们不好好吃饭,工作压力大,不好好喝水,不注意睡眠不注意锻炼,就是到了神经外科或者是神经内科,就是当时夏萌主任,在安贞医院的时候的话,都是已经从悬崖上跳下来的人,他们的生活已经一团糟,他们的身体已经一团糟,我们要用非常强力的药物,技术去救他们,late,晚了,所以夏萌医生就说,我不要干这个事情,没意义,我不要再做手术,我要去悬崖上面救人,所以说她就去做了营养学,这是第一个故事。",
+      "第二个故事,几乎完全一样的版本,我刚刚花了40分钟时间,把这个视频整个看完了,是在美国 MIT 毕业的,一个 neurosurgeon,就是所有医生里面,最最困难的,我的理解,就是最困难的这种医生,他做的事情就是,在医学院毕业,先是 4 年加 5 年〔更正:4 年医学院 + 6 年住院医〕,然后又做了 9 年的 neurosurgeon,做过无数的手术,他还做过这种,就是说尝试用人脑和机器连接,让人脑控制义肢,这种非常前沿的技术,然后又做了很多这种,spine 脊椎,包括我们背部的 neck,就是脖子这块的手术,他做了 9 年手术以后的话,他也 quit the job,他就是:我觉得这个事情不对,所以说 I'm not happy,I quit my job,为什么他要 quit the job,和夏萌医生的原因几乎一样,就是说我觉得我是在 fix,屋子里的墙,墙上都是水迹,漏水了,所以说我去把墙拆掉修好,但是屋子还是在漏水,我没有办法修复,那这个美国的医生,神经外科医生,我们就叫 Goobie 医生,在 YouTube 上可以搜索到,他就是说他观察他这些病人,真正被治愈的、真正好的人,并不是手术是主要的力量,因为手术可以 get,temporary relief,就是说可以短暂的时间,让他会有一些好转,把他的 vertebral disc,就是脊柱的某一个脊椎骨 fix 掉,打上钛合金的钢钉,或者各种修复,但是真正长期 heal 的人,都是 eat well, drink well,eat plant-based food,不是说素食,而是说 many vegetables and plants,sleep well,sleep eight hours a day,就是每天要睡够八小时,manage stress really well,就是 decide how much stress,I want to take,and throw this other stress,back to the universe,have a very good support,of social network,就是会有非常好的这种社会连接,会有一帮亲人、孩子,和他们可以聊,可以接触,然后 exercise,就是 go outside to nature,and exercise,Goobie 这个医生,他描述的这一套就是说,凡是做到这些的病人,最终他们都在 healing,没有做到这些的病人,很多都是 repeatedly,coming back, getting worse。",
+      "那第三个呢就是说,大家在机场可能都看到过一本书,是叫 Ikigai,就是 I-K-I-G-A-I,这是一个日语,就是一种日本的生活方式,这个书的作者呢是一个西班牙人,他应该是,欧洲核子研究中心(CERN)的,这样的一个雇员,他好像在推特也工作过,应该是 40 多岁吧,我记得是 81 年还是几几年出生,他在日本生活了很多年,可能是十多年,他的兴趣就是说,去观察那些日本的长寿老人,长寿之乡,就是那些人有什么共同特征,他总结出来的一套,惊人地和我们刚才说的,那两位医生总结出来的一样,就是 large group of,support people,每天都有一些人,可以一起开心,一起运动,一起分享生活中的事情,eat plant-based food,majority,不是说素食,而是说吃大量的蔬菜和水果,然后 exercise,exercise 是 lifelong exercise,是一种习惯,就是 stretch, getting moved,然后 very low stress,就是没有任何一个人是,ongoing, lifelong,stressful 的一种状态,然后再加上 sleep well,drink really good water,drink plenty of water。",
+      "我们把这三个事情放到一起讲,这个西班牙人,Héctor,还有夏萌医生,还有 Goobie,这个 neurosurgeon,他们肯定是谁也不认识谁的,但是他们都是非常非常聪明的人,他们见到的事情,让他们总结出了这一套 pattern,就是说如果你想开心,你想……,咱们不说成功,成功是一个不好定义的事情,你就说你想 happy,你想快乐,那么这几件事你是终究要做的,几乎是可以和 happiness 划等号,有很多人,做了某一件事情,比如说我 exercise 很厉害,我可以跑马拉松,不是说跑马拉松不好,就是说我可以跑马拉松,我可以卧推 150 公斤,我可以深蹲 220 公斤,对吧,但是你真正快乐的,是要把这几方面都做到,每天睡够 8 个小时,一年有 360 天睡够 8 个小时,manage 你的 stress,如果你要是非常非常,stressful 的 job 的话,do something,think about it,然后 your good friends,see your friends,你的 friends 是你的,very valuable 的,不能叫 very valuable,network,very very,meaningful part of your life,如果要是说,「他是我的 friend,没问题,我六个月不见他没关系」,doesn't work,friendship doesn't work that way,然后 eat well,就是 eat mostly plant-based,a lot of fish, good oil,less sugar,less processed food,然后好好喝水,对吧,一天按你的体重两升、三升,这些事情都做到以后的话,almost guaranteed,you feel different,有空的话也可以看看我的书,也是从这几个方面讲的,希望有缘看到这条视频的人,可以去搜一下我说的这三个故事,也可以看一看我的书。",
+    ],
+    keyPoints: [
+      "去悬崖上面救人:在掉下去之前,而不是之后。",
+      "同一张清单:吃、睡、压力、人、动、水——不是做到一件,是都做到。",
+      "三个互不相识的人得出同一个答案,这本身就是证据。",
+    ],
+    platformCaption:
+      "今天看了几个视频,实在有感而发,讲长一点。\n夏萌,北京安贞医院的医生:她说自己一直在悬崖底下救人,救的速度赶不上掉的速度,于是她去了悬崖上面,做营养。\nDr. Goobie,MIT 毕业的神经外科医生:做了九年手术后辞职。他说自己一直在补墙,可屋子还在漏水。\nHéctor García,写《Ikigai》的西班牙人:在冲绳的长寿村看了一百多位老人。\n三个人从没见过面,总结出来的是同一张清单:\n好好吃(多蔬果少加工)、睡够八小时、管住压力、常见朋友、天天动、好好喝水。\n不是做到一件,是都做到。\n看完出门走一走就行。\n\n#健康 #生活方式 #睡眠 #运动 #ikigai #长寿 #自我提升",
+    platformTags: ["健康", "生活方式", "睡眠", "运动", "ikigai", "长寿", "自我提升"],
+  },
 ];
