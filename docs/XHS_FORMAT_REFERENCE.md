@@ -363,6 +363,11 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   chapter cards as the skeleton (person card = chapter card), 2–3 drawn illustrations for
   the metaphors people will remember, ONE thesis card shown as distinct variants (never the
   same asset twice), toplines only on the quotable lines, no doodles/floaters.
+- READING TIME (Hao on v1: 来不及看完): a card is held for its text — person/chapter cards
+  ~5.8 s, list cards ~6.2 s, illustrations ~5–6 s, small fact cards ≥4.2 s. Rule of thumb:
+  0.25 s per character on the card, never under 4 s. Bake the asset longer than the hold.
+- Footage found next to the take is NOT automatically his b-roll — the piano clips in
+  Downloads belonged to another project. Ask, or use only what he names.
 - Internal cuts: `cut_by_edl.py` (frame-grid EDL, re-encode, 8 ms seam fades). Pick cuts at
   silence valleys, whisper-check every seam on AUDIO first, then cut video. Every seam on the
   locked-off shot sits under an insert (start+0.3 ≤ seam ≤ end−0.3) and is verified in the

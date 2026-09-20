@@ -65,7 +65,7 @@ def chapter(name, no, place, who, lines, accent=GOLD):
     y = 760
     for t in lines:
         k.c(y, t, 46, INK if not t.startswith("·") else GREY); y += 82
-    bake_still(k.im, name)
+    bake_still(k.im, name, 6.2)      # long enough to read — Hao: the first cards flashed by
 
 
 def ch_all():
@@ -82,7 +82,7 @@ def ch_all():
     k.c(480, "从没见过面", 84, GREY)
     k.d.line((340, 640, 740, 640), fill=GOLD, width=8)
     k.c(700, "同一套答案", 120, GOLD)
-    bake_still(k.im, "sp_ch4")
+    bake_still(k.im, "sp_ch4", 5.0)
 
 
 # ------------------------------------------------------------ the shared list
@@ -118,7 +118,7 @@ def list_card(name, title, sub, mode, foot, foot_col):
     if mode == "three":
         for j, n in enumerate(["夏", "G", "H"]): k.d.text((778 + j * 66, 336), n, font=font(30), fill=GREY)
     k.c(y + 30, foot, 58, foot_col)
-    bake_still(k.im, name, 4.2)
+    bake_still(k.im, name, 6.8)
 
 
 def lists_all():
@@ -200,9 +200,9 @@ def house(n):
 
 
 def illus_all():
-    bake_frames(cliff_bottom, "sp_cliff_bottom", 4.2, 40)
-    bake_frames(cliff_top, "sp_cliff_top", 3.6, 30)
-    bake_frames(house, "sp_house", 4.2, 60)
+    bake_frames(cliff_bottom, "sp_cliff_bottom", 6.4, 40)
+    bake_frames(cliff_top, "sp_cliff_top", 5.0, 30)
+    bake_frames(house, "sp_house", 5.8, 60)
 
 
 # ------------------------------------------------------------ end card: the book, all seven
@@ -236,7 +236,7 @@ def extras():
     k.d.line((340, 680, 740, 680), fill=LINE, width=6)
     k.c(740, "全世界百岁老人比例最高的村子之一", 42, GREY)
     k.c(820, "两位作者走访了一百多位村民", 42, GREY)
-    bake_still(k.im, "sp_ogimi", 3.0)
+    bake_still(k.im, "sp_ogimi", 4.6)
 
 
 JOBS = {"extras": extras, "chapters": ch_all, "lists": lists_all, "illus": illus_all, "endcard": endcard}
