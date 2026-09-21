@@ -24,7 +24,13 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
    differs from the script with base.en AND small.en on a tight segment:
    models agree → caption what they heard; models disagree → script text
    wins; suffix elisions (-s, -ing) → grammatical form.
-1. `builder_v2.py` — silence-based EDL (tightens pauses >0.95 s to
+1. `builder_v2.py` — silence-based EDL. **Unscripted + "cut the filler"** (Ep. 18): list the
+   source intervals in `CONTENT_CUTS` — each one starts and ends on a detected silence — and
+   leave that text out of `BLOCKS`; the builder drops the removed tokens before aligning. In
+   compose, cover every content-cut junction with a card or footage (start it ~0.45 s / ~0.25 s
+   before the junction). `LEAD_PAD` (default 0.06 s) moves to the last still frame when the hands
+   are already sweeping at speech onset — the baked cover must not be motion-blurred.
+   Base recipe: silence-based EDL (tightens pauses >0.95 s to
    ~0.55 s). SKIP_CUTS = protected pauses, set BEFORE the first cut:
    "working theory:", think-beats after payoff lines, script blank lines.
    WHISPER_PATCH fixes word times that drifted into silences (from

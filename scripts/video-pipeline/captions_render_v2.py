@@ -21,6 +21,12 @@ f_small = ImageFont.truetype(FONT, SZ)
 f_big = ImageFont.truetype(FONT, SZ_BIG)
 
 blocks = json.load(open("caption_words.json"))
+FREEZE = 0.30  # compose freezes frame 0 for the cover melt: every caption time shifts by it
+for b in blocks:
+    b["start"] += FREEZE; b["end"] += FREEZE
+    for w in b["words"]:
+        w["s"] += FREEZE; w["e"] += FREEZE
+blocks[0]["start"] = max(blocks[0]["start"], 0.33)  # the cover title must finish melting before the first caption block appears (Ep. 18: double text)
 # cut 3: the film ends after the formula block (30); later blocks are dropped
 # ep2: all blocks kept
 # clamp display windows: no overlap between consecutive blocks (the concat

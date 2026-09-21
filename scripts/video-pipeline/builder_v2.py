@@ -14,6 +14,14 @@ END_SRC = 139.30          # after "manager's job." (silence 139.15->end)
 CUT_SIL = 0.95            # silences longer than this get tightened
 KEEP_TAIL = 0.30          # silence kept after speech at a cut
 KEEP_HEAD = 0.25          # silence kept before speech at a cut
+LEAD_PAD = 0.06           # video starts this long before the first word. If the hands are already
+                          # sweeping there (blurred cover frame — Ep. 18), move it to the last still
+                          # frame (check hand-zone sharpness per frame); Ep. 18 used 0.24.
+# Unscripted lane, when Hao asks for filler to be CUT (not just pauses tightened): source intervals
+# to remove. Rules (Ep. 18): every content cut starts and ends on a detected silence
+# (prev speech end + KEEP_TAIL -> next speech start - KEEP_HEAD); leave the cut text out of BLOCKS;
+# in compose, put a card or footage over every content-cut junction so no jump cut shows.
+CONTENT_CUTS = []
 
 # ---------- caption blocks (display text; ~word~ = punch word, big) ----------
 # No script handed over for Ep. 3 — blocks reconstructed from what Hao said,
@@ -90,6 +98,8 @@ for ti, t in enumerate(tok):
         break
     words.append({"w": clean(txt), "s": s, "e": e})
 
+words = [w for w in words if not any(a <= (w['s'] + w['e']) / 2 < b for a, b in CONTENT_CUTS)]
+
 # ---------- silences ----------
 sil = []
 starts = []
@@ -135,9 +145,14 @@ for a, b in sil:
     if b - a >= CUT_SIL:
         ca, cb = a + KEEP_TAIL, b - KEEP_HEAD
         if a < 0.5:  # leading silence: cut to the first word (no settling)
-            ca, cb = 0.0, b - 0.06
+            ca, cb = 0.0, b - LEAD_PAD
         if cb - ca > 0.01:
             cuts.append((ca, cb))
+cuts = sorted(cuts + CONTENT_CUTS); _m = []   # union of pause cuts and content cuts
+for _a, _b in cuts:
+    if _m and _a <= _m[-1][1]: _m[-1] = (_m[-1][0], max(_m[-1][1], _b))
+    else: _m.append((_a, _b))
+cuts = _m
 segs = []  # kept source intervals
 pos = 0.0
 for ca, cb in cuts:
