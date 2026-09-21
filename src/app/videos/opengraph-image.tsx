@@ -1,6 +1,6 @@
 import { ogCard, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 
-export const alt = "Videos — two series, spoken";
+export const alt = "Videos — two series spoken, one at the piano";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
@@ -9,6 +9,6 @@ export default function Image() {
   return ogCard({
     kicker: "Videos",
     title: "The ideas, spoken",
-    sub: "Working Theory in English, Friends Intelligence in Chinese — published here first",
+    sub: "Working Theory in English, Friends Intelligence in Chinese, and one series at the piano — published here first",
   });
 }

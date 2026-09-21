@@ -932,21 +932,27 @@ export const EPISODES: VideoEpisode[] = [
       "今天看了几个视频,实在有感而发,讲长一点。\n夏萌,北京安贞医院的医生:她说自己一直在悬崖底下救人,救的速度赶不上掉的速度,于是她去了悬崖上面,做营养。\nDr. Goobie,MIT 毕业的神经外科医生:做了九年手术后辞职。他说自己一直在补墙,可屋子还在漏水。\nHéctor García,写《Ikigai》的西班牙人:在冲绳的长寿村看了一百多位老人。\n三个人从没见过面,总结出来的是同一张清单:\n好好吃(多蔬果少加工)、睡够八小时、管住压力、常见朋友、天天动、好好喝水。\n不是做到一件,是都做到。\n看完出门走一走就行。\n\n#健康 #生活方式 #睡眠 #运动 #ikigai #长寿 #自我提升",
     platformTags: ["健康", "生活方式", "睡眠", "运动", "ikigai", "长寿", "自我提升"],
   },
-  /* At the Piano — DRAFT until Hao signs off cut4 and it is posted. Then:
-   * scripts/publish-video.sh (media shelf) → videoUrl + poster → status
-   * "published" + publishedAt. The shelf on /videos appears by itself. */
+  /* At the Piano. The shelf copy is the posted upload file itself (crf 24,
+   * AAC 192k), not a publish-video.sh re-encode — music never takes a second
+   * lossy pass through the speech-tuned 128k preset. */
   {
     slug: "piano-passacaglia",
     series: "piano",
     sequence: 1,
     title: "Passacaglia",
-    status: "draft",
+    status: "published",
+    publishedAt: "2026-09-21",
     language: "en",
     durationSeconds: 76,
     topic: "Handel – Halvorsen",
     hook: "Filmed as seriously as I could manage — until my daughter found the lens.",
     summary:
       "The last section of the Handel–Halvorsen Passacaglia, played on the upright at home in one unbroken take: the sound is never edited, and the four camera angles are all cut from a single phone frame. It opens with the take that did not go to plan — my daughter got to the lens first — and then starts again, played straight to the final chord.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/piano-passacaglia.mp4",
     aspect: "9:16",
+    poster: "/videos/piano-passacaglia/poster.jpg",
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/feed/update/urn:li:activity:7507694107390193664/",
   },
 ];
