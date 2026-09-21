@@ -169,7 +169,16 @@ except one funny beat with his daughter.
     gag, then about 20 s of music; the out-point must be a phrase ending,
     confirmed by Hao's ear.
 11. Posting copy: English for LinkedIn, Chinese for Moments.
-12. After Hao says it is posted: archive per CLAUDE.md "Video archive
-    law" (PIANO line) — raws used, master, upload copies, posting.md —
-    rsync to Drive, verify by xattr, trash superseded cuts and audition
-    samples, commit + push.
+12. After Hao signs off: put it on the site's At the Piano shelf —
+    upload the posted 上传版 file AS-IS to the media shelf
+    (`gh release upload media <slug>.mp4`; not `publish-video.sh`, whose
+    speech-tuned 128k re-encode would be a second lossy pass on music),
+    make the poster (a bright graded frame + the film's title lettering
+    over a darkened lower third — never the black title card), add the
+    entry to `src/content/videos.ts` (`series: "piano"`, `piano-` slug).
+13. After Hao says it is posted: archive per CLAUDE.md "Video archive
+    law" (`~/Movies/Piano-videos/archive/epNN-slug/`) — the raws the film
+    used, master, upload copies, thumbnail, posting.md (captions read back
+    from the live posts, plus a source map of what else the raws hold) —
+    rsync to Drive, verify by xattr, trash superseded cuts, audition
+    samples and the raws Hao rejected, commit + push.

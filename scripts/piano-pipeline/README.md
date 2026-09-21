@@ -52,4 +52,7 @@ a 10 s shot renders in about 25 s with it, several minutes without.
    the onset times; `frame_of` puts the cut one frame ahead).
 5. Look-test the grade and every framing on one still before rendering.
 
-Archive after posting: CLAUDE.md "Video archive law" (PIANO line).
+Site + archive after sign-off: docs/PIANO_FORMAT_REFERENCE.md checklist
+12–13 (`~/Movies/Piano-videos/archive/`). Ep. 1's raws now live there as
+`ep01-passacaglia-raw-IMG_28xx.MOV`; to rebuild, symlink them into an
+episode folder under their original names.
