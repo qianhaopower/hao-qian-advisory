@@ -73,6 +73,7 @@ Video bytes live on the media shelf (GitHub release `media`, per `scripts/publis
 - **Ep. 11 "Self-Assessment"** (first UNSCRIPTED episode, no teleprompter; video-first): filmed 2026-08-31, 135s on the media shelf; poster + VTT in `public/videos/self-assessment/`; canonical `/videos/self-assessment`. B-roll: Mixkit 25426/8925/46685.
 - **Ep. 16 "The Accountable Person"** (unscripted, video-first; first episode on the simple audio path — raw + HP80 + gentle comp + linear −14, no spectral processing): filmed 2026-09-12, 67s on the media shelf; poster + VTT in `public/videos/the-accountable-person/`; canonical `/videos/the-accountable-person`. B-roll: Mixkit 4802/4813/14762/46447.
 - **Ep. 17 "Calm Is a Must"** (teleprompter, script written by Hao and polished with the cutting room: `content-src/video-scripts/ep17-calm-is-the-job.md`): filmed 2026-09-19, 56s on the media shelf; poster + VTT in `public/videos/calm-is-a-must/`; canonical `/videos/calm-is-a-must`. B-roll: Mixkit 5744/45922/23410. Posted to LinkedIn 2026-09-19.
+- **Ep. 18 "Three Layers of Resources"** (spoken without a script; first cut where filler passages were removed, not only pauses: 321 → 232 words, 170 wpm): filmed 2026-09-21, 85s on the media shelf; poster + VTT in `public/videos/three-layers-of-resources/`; canonical `/videos/three-layers-of-resources`. B-roll: Mixkit 39779/14731/4605/48162. Posted to LinkedIn 2026-09-21.
 
 ## Videos — Friends Intelligence on camera, 中文 · 小红书 (added to the site 2026-09-05)
 

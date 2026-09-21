@@ -131,6 +131,14 @@ Check the episode page on a phone-width viewport as well as desktop.
    open — acceptable; the pose match is what matters. The same file is
    the site poster (`public/videos/<slug>/poster.jpg`); try "Edit
    thumbnail" anyway, it costs nothing.
+   **Nothing on the video says how it was made (Hao, 2026-09-21).** The words
+   "unscripted", "test", "teleprompter" or any lane name never appear on the
+   end card, the cover, a card, or the captions. The end card's third line is
+   always `On camera · Ep. N`, N = the site `sequence`, scripted or not. The lane
+   is our own bookkeeping: it may live in working file names in ~/Downloads, in
+   memory and in these docs, and nowhere a viewer can see. Same for site copy and
+   LinkedIn captions going forward (the blunt-caption rule already covers captions).
+   Applies from the episode after Ep. 18; published cuts are not re-rendered.
 3. `«Title» - EpN - caption.txt` — the LinkedIn caption (written at
    script stage, stored on the `linkedinCaption` field). Hook line
    first, canonical URL, two tags max. **Blunt and boilerplate-free

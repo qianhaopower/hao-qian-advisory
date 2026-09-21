@@ -548,6 +548,39 @@ export const EPISODES: VideoEpisode[] = [
       "The more senior you get, the more relaxed you have to be.\n\nPeople think it's because you delegate more, or because you've seen it all. The real reason: the higher you go, the more decisions land on you, and a stressed brain makes bad calls. That's physiology, not attitude. When the pressure goes up, that's exactly the moment to slow down.\n\nhttps://haoqian.co/videos/calm-is-a-must\n\n#WorkingTheory #EngineeringLeadership",
     linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
   },
+  {
+    slug: "three-layers-of-resources",
+    series: "working-theory",
+    sequence: 18,
+    title: "Three Layers of Resources",
+    status: "published",
+    publishedAt: "2026-09-21",
+    language: "en",
+    durationSeconds: 85,
+    hook: "You have three layers of resources. Ask yourself how much you have left today, from easy to hard.",
+    summary:
+      "Before taking on one more thing, check three layers, from easy to hard. Time is the easy one: three hours left, a two-hour task, do it or push it. Thinking is harder: three hours on the clock is not three hours of thinking, and nobody thinks for eight hours even in an eight-hour day, so ask whether the decision is today's or tomorrow's. The hardest layer is emotional reserve. Hard conversations, performance management, escalations, conflicts and urgencies all draw from it, and most people never check the balance. Some things cannot be done today simply because that reserve is spent.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/three-layers-of-resources.mp4",
+    aspect: "9:16",
+    poster: "/videos/three-layers-of-resources/poster.jpg",
+    captions: "/videos/three-layers-of-resources/captions.vtt",
+    transcript: [
+      "You have three layers of resources you have to ask yourself: how much I have left today? From easy to hard.",
+      "The first layer is time. It's easy to think: I still have three hours until I wrap up the day, and I have a critical task that I have to finish. Easy. Just take two hours, so I can finish them. I don't have enough time for this for today, so I'll push it tomorrow.",
+      "The second layer is about thinking. You have three hours left. It doesn't mean you can think for three hours. Nobody can think for eight hours a day, even if you have 8 working hours a day. Do I have to think this problem, make a decision today, or is that a tomorrow problem?",
+      "The third layer is emotional resource. It's the hard one. It's hard to gauge. A lot of people don't even realize it. Because hard conversations, performance management conversations, escalations, conflicts, urgencies, they all cost you emotional resources.",
+      "So this is the time you ask yourself: I do have time today. I do have thinking power today. Do I still have enough emotional resources today? Maybe some of the things couldn't be done today, simply because you don't have enough emotional reserve.",
+      "So these are the three layers of things you ask yourself, and you can make better decisions at the right time.",
+    ],
+    keyPoints: [
+      "Time, thinking, emotional reserve: three budgets, checked from the easiest to the hardest.",
+      "Hard conversations, escalations and conflicts all spend emotional reserve; when it is gone, the right call is tomorrow.",
+    ],
+    linkedinCaption:
+      "Before you take on one more thing today, check three layers of resources, from easy to hard.\n\nTime is the easy one. Thinking is harder: nobody can think for eight hours, even in an eight-hour day. The hardest is emotional reserve. Hard conversations, escalations and conflicts all draw from it, and most people never check the balance.\n\nhttps://haoqian.co/videos/three-layers-of-resources\n\n#WorkingTheory #EngineeringLeadership",
+    linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
+  },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
   /* Captions and transcripts are Hao's spoken words (voice-first, no    */
@@ -954,5 +987,40 @@ export const EPISODES: VideoEpisode[] = [
     poster: "/videos/piano-passacaglia/poster.jpg",
     linkedinPublishedUrl:
       "https://www.linkedin.com/feed/update/urn:li:activity:7507694107390193664/",
+  },
+  {
+    slug: "fi-supermarket",
+    series: "friends-intelligence",
+    sequence: 13,
+    title: "超市是怎么让你多买的?三招破解,不为省钱为健康",
+    titleEn: "Three moves to beat the supermarket",
+    status: "published",
+    publishedAt: "2026-09-21",
+    language: "zh-Hans",
+    durationSeconds: 223,
+    topic: "营养智慧 · Nutrition Intelligence",
+    hook: "鸡蛋牛奶面包故意放在超市最远的角落——就是要你把整个超市逛一遍。",
+    summary:
+      "吃得好,从购物车开始。超市的货架摆放每一步都在让你多买不需要的东西,三招破解:进去之前先分三类(一定要买、可买可不买、一定不买);熟悉地形,必需品被故意分散在最远的角落,知道在哪就直走直拿、尽量不往两边看;结账排队时意志力最弱,收银台旁是全场利润最高的货架,提醒自己一句「我累了,小心顺手拿」。买的东西变了,身体就变了。",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/fi-supermarket.mp4",
+    aspect: "9:16",
+    poster: "/videos/fi-supermarket/poster.jpg",
+    captions: "/videos/fi-supermarket/captions.vtt",
+    transcript: [
+      "今天我们来分享三个绝招,让你成为超市达人,这个成为超市达人的绝招不是让你省钱,而是让你更健康,整个人都比较顺气。",
+      "第一个绝招是什么呢,是你去超市之前一定要心里有一个计划,有计划就是说你想买什么,你什么东西是一定要买的,什么东西是可买可不买的,什么东西大约是一定不要买的,因为我们在去超市之前的话,心里没有一个计划,进入超市以后很容易就进入他们的陷阱,超市的货架摆放是非常讲究的,它会让你不自觉的就会买很多不需要的东西,大筐的打折,大桶的冰激凌,大桶的薯片,如果你要没有计划的话,你在超市里走来走去的很容易就会拿几个不需要的东西,最后变成了肚子上的脂肪。",
+      "第二件事也跟有计划相关,就是你先要熟悉一下超市里的地形,为什么要熟悉地形呢,就是因为超市,它非常非常的聪明,它会把生活的必需品,比如说鸡蛋啊牛奶啊面包啊,这些事情分散在超市最远的,最最不好找到的角落,它这么做的原因就是,一个人去超市,很可能要买鸡蛋,就算你不知道鸡蛋在哪里,你要一定要找到它,因为这可能是生活的必需品,牛奶也一样面包也一样,那么它把这些东西分散在超市最靠里边的一个角落,就在强迫你一个不熟悉超市地形的人走来走去走来走去,不知不觉地就把整个超市逛了一个遍,那么超市里边那些,各种打折的东西尤其是糖啊,零食啊这些,你就会不自觉的买很多,所以说第二个,技巧就是熟悉超市的地形,如果我需要买鸡蛋,直接就往鸡蛋那边走,尽量不往两边看,这样的话可以减少你,买奇奇怪怪东西的概率。",
+      "第三个小技巧就是在最后结账的时候,最后结账的时候,货架上的那些东西,是整个超市,利润最丰厚的地方,也是攻击你意志力最薄弱的地方的商品,巧克力啊、零食啊、nut bar 啊,甚至有一些,各种各样奇怪的杂志啊,随手拿一本,对吧,当然也会有一些有用的东西,比如电池啊什么的,这个是可以拿一些,但是你在排队的时候,你要在最后走的时候,你要提醒自己说,我现在可能已经很烦了,我的意志力变得薄弱了,而且我在 checkout,准备结账的时候的话,有可能会拿一些,我不是很需要的东西,所以说这时候你需要更多的 self-awareness,就是你需要更加的,知道自己有可能会拿一些奇奇怪怪的不太需要的东西。",
+      "所以说这三件事去超市前,想一想自己要什么,进到超市里头按着地形走,直接去拿,出超市的时候不要拿奇奇怪怪的东西,那么你整体的,健康状况就有可能因为你买东西的不同而得到改变。",
+    ],
+    keyPoints: [
+      "进超市前先分三类:一定要买、可买可不买、一定不买。",
+      "必需品在最远的角落;熟悉地形,直走直拿。",
+      "排队结账时意志力最弱——知道这一点,就少拿一样。",
+    ],
+    platformCaption:
+      "超市的货架摆放非常讲究,每一步都在让你多买不需要的东西。\n三招:\n① 进去之前先分三类:一定要买、可买可不买、一定不买。\n② 熟悉地形。鸡蛋牛奶面包故意放在最远的角落,就是让你把整个超市逛一遍。知道在哪,直走直拿,尽量不往两边看。\n③ 结账排队时意志力最弱,收银台旁边是全场利润最高的货架。提醒自己一句:我累了,小心顺手拿。\n买的东西变了,身体就变了。\n\n#健康饮食 #超市 #减脂 #自律 #消费心理 #生活方式",
+    platformTags: ["健康饮食", "超市", "减脂", "自律", "消费心理", "生活方式"],
   },
 ];

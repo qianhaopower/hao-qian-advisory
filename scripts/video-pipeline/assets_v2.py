@@ -12,7 +12,7 @@ def fit(text, start, maxw, path=AB):
 
 TITLE_LINES = [("THE GOLDILOCKS", 150), ("LOAD.", 150)]
 END_TITLE = "The Goldilocks Load."
-EP = "Ep. 5"
+EP = "Ep. 5"   # ALWAYS "Ep. N" with N = the site sequence. Never "unscripted"/"test"/lane words on the video (Hao, 2026-09-21): how a take was made is internal.
 
 # thumbnail / title frame — background MUST be frame 0 of edited.mp4
 # (a tail frame makes the body jump at the title handoff; Ep. 8 lesson)

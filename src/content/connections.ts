@@ -51,6 +51,7 @@ const EDGES: [string, string][] = [
   ["video:self-assessment", "series:working-theory"],
   ["video:the-accountable-person", "series:working-theory"],
   ["video:calm-is-a-must", "series:working-theory"],
+  ["video:three-layers-of-resources", "series:working-theory"],
   // Friends Intelligence, spoken: the book's chapters, on camera in Chinese
   ["video:fi-sleep-daylight", "book:friends-intelligence"],
   ["video:fi-coffee", "book:friends-intelligence"],
@@ -63,6 +64,7 @@ const EDGES: [string, string][] = [
   ["video:fi-contra", "book:friends-intelligence"],
   ["video:fi-eye-contact", "book:friends-intelligence"],
   ["video:fi-three-stories", "book:friends-intelligence"],
+  ["video:fi-supermarket", "book:friends-intelligence"],
 ];
 
 function resolve(id: string): ConnectionRef | null {
