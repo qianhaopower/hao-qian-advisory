@@ -97,6 +97,18 @@ except one funny beat with his daughter.
 - **Cuts**: shot length 6–12 s. Every cut lands one frame before a
   strong note onset, and the biggest musical event gets the hard cut to
   the hands.
+- **Soften the big scale jumps (Hao, 2026-09-21, after watching Ep. 1).**
+  The hard cut from the hands close-up (z 2.6–2.8) straight to the
+  profile of the person (z 1.9) felt abrupt: "看着手,噔一下突然蹦出个人来".
+  Ep. 1 stays as posted; from Ep. 2 on, a hands shot never hard-cuts
+  straight to a person shot. Ways to soften, to be A/B'd with Hao on
+  the next episode because the agent cannot judge motion: a short
+  cross-dissolve (about 0.4–0.8 s) on any cut where the zoom changes by
+  more than ~1.3×; let the hands shot pull out and drift towards the
+  player so the person is already entering the frame before the cut;
+  or step the scale (hands → medium → profile) instead of jumping. The
+  one deliberate hard cut that stays is black → hands on the big
+  entrance.
 - **Titles**: Newsreader 500 (`src/assets/og/newsreader-500.ttf`), cream
   `#EDE6D8` on black; letter-spaced caps for the title (84 px), 44/40 px
   below, a short rule between. This ffmpeg build has **no drawtext and
@@ -157,6 +169,10 @@ except one funny beat with his daughter.
    Hao whether it is a stumble. Set the out-point before the bench noise.
 6. Pick the one gag from the raws and place it at the top. Offer the
    bolder version.
+6b. Plan the shot order so no hands close-up cuts straight to a person
+   shot (see "Soften the big scale jumps"); `build.py` as of Ep. 1 only
+   hard-cuts — dissolves need adding to `final` (xfade between shots,
+   audio untouched).
 7. Duplicate `scripts/piano-pipeline/build.py`, edit the constants block.
    Look-test the grade and every framing on one still before rendering.
 8. `titles` → `audio` → `shots` → `final` → `upload`. Confirm the master
