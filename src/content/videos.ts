@@ -992,7 +992,7 @@ export const EPISODES: VideoEpisode[] = [
     slug: "fi-supermarket",
     series: "friends-intelligence",
     sequence: 13,
-    title: "超市是怎么让你多买的?三招破解,不为省钱为健康",
+    title: "超市怎么让你多买?三招破解,为健康",
     titleEn: "Three moves to beat the supermarket",
     status: "published",
     publishedAt: "2026-09-21",

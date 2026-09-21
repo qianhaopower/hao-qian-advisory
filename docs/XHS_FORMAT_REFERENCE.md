@@ -430,7 +430,8 @@ Path / shopper / hud / fly helpers — copy the file per episode, keep the engin
 6. Inserts: harvest a fresh category batch per episode via `fetch_life_broll.py --cats a,b,c --target N` (downloads follow category ORDER until the target — put the scarce categories first or run a second pass), mood-check on a contact sheet, Asian faces preferred, bake vertical; mark `used_in` in the shelf index.
 7. Per-pillar end card (endcard_sleep / endcard_relationship / … — build the pillar's card the first time it appears).
 8. Generate → read draft JSON → count segments per track → only then report.
-9. Export (Hao) → agent compresses to 上传版 (~80MB) → phone → title/body/tags/pinned comment from the episode package.
+8b. POST TITLE ≤ 20 字 (Hao 2026-09-21; it is also 小红书's own title limit) — count every character incl. punctuation, all three options; the on-screen cover title keeps its own ≤9/≤8 rule.
+9. Export (Hao) → agent compresses to 上传版 (crf 20 since 2026-09-21 — his upload speed is fine) → phone → title/body/tags/pinned comment from the episode package.
 10b. SITE (2026-09-12): the haoqian.co entry ships with the archive — `scripts/publish-video.sh <master.mov> fi-<slug> 0.1` (media release), poster = frame 0.1s of the master, captions.vtt from the CapCut caption track, entry in src/content/videos.ts + edge in connections.ts, tsc clean, push. Then move the site mp4 into archive/epNN/-site-1080p.mp4.
 10. ARCHIVE (2026-09-12): raw + master .mov + upload + posting.md → ~/Movies/FI-videos/archive/epNN-slug/ (named epNN-slug-{raw-IMG_xxxx.MOV,master.mov,upload-xhs.mp4,posting.md}), update archive/README.md, rsync to Google Drive My Drive/FI-videos/archive/. The master .mov is the platform-neutral file for any other platform. Trash superseded CapCut drafts; one live draft per episode.
 
