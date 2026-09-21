@@ -17,10 +17,15 @@ import {
 } from "@/lib/videos";
 import { formatDate } from "@/lib/essays";
 
+/* The piano line joins the page copy only once it has a published film —
+ * same honesty rule as the shelves. */
+const pianoLive = getLiveSeries().some((s) => s.id === "piano");
+
 export const metadata: Metadata = {
   title: "Videos",
-  description:
-    "Two series, spoken: Working Theory in English, Friends Intelligence in Chinese — one idea per episode, published here first.",
+  description: `Two series, spoken: Working Theory in English, Friends Intelligence in Chinese — one idea per episode, published here first.${
+    pianoLive ? " And one without words: Hao at the piano." : ""
+  }`,
 };
 
 function EpisodeRow({ e, series }: { e: VideoEpisode; series: VideoSeries }) {
@@ -149,6 +154,8 @@ export default function VideosPage() {
             Intelligence in Chinese. One idea per episode, face to camera.
             Every episode lives here first, with its captions and transcript;
             LinkedIn and 小红书 are where it travels.
+            {pianoLive &&
+              " And one series without words: at the piano, one unbroken take per film."}
           </Lede>
           {live.length > 1 && (
             <div className="meta mt-8 flex flex-wrap gap-x-6 gap-y-2 !text-[11px]">

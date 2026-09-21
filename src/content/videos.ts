@@ -5,9 +5,11 @@
  * home; platforms are distribution. Adding an episode = adding one entry to
  * EPISODES below. No CMS, ever.
  *
- * Two series live here, each with its own language and its own channel:
+ * Three series live here, each with its own language and its own channel:
  *   working-theory        English · distributed on LinkedIn
  *   friends-intelligence  中文     · distributed on 小红书 (Xiaohongshu)
+ *   piano                 no words · LinkedIn + WeChat Moments
+ *                         (production: scripts/piano-pipeline, docs/PIANO_FORMAT_REFERENCE.md)
  * Page code reads VIDEO_SERIES; adding a third line = one more entry here.
  *
  * Draft episodes: status "draft" keeps an episode OUT of the index page,
@@ -17,7 +19,7 @@
  */
 import { SITE } from "@/content/site";
 
-export type VideoSeriesId = "working-theory" | "friends-intelligence";
+export type VideoSeriesId = "working-theory" | "friends-intelligence" | "piano";
 
 export type VideoSeries = {
   id: VideoSeriesId;
@@ -71,12 +73,24 @@ export const VIDEO_SERIES: Record<VideoSeriesId, VideoSeries> = {
     platformHandle: SITE.xiaohongshuHandle,
     origin: { label: "From the book", href: "/books/friends-intelligence" },
   },
+  piano: {
+    id: "piano",
+    name: "At the Piano",
+    form: "Performance",
+    language: "en",
+    languageLabel: "Instrumental",
+    description:
+      "Hao at the upright piano at home — one unbroken take per film, every angle cut from a single camera, and the performance as the only soundtrack. Published here first, then shared on LinkedIn and WeChat Moments.",
+    platform: "LinkedIn",
+    platformUrl: SITE.linkedin,
+  },
 };
 
 /** Display order on /videos and the home index. */
 export const VIDEO_SERIES_ORDER: VideoSeriesId[] = [
   "working-theory",
   "friends-intelligence",
+  "piano",
 ];
 
 export type SupportingVisual = {
@@ -917,5 +931,22 @@ export const EPISODES: VideoEpisode[] = [
     platformCaption:
       "今天看了几个视频,实在有感而发,讲长一点。\n夏萌,北京安贞医院的医生:她说自己一直在悬崖底下救人,救的速度赶不上掉的速度,于是她去了悬崖上面,做营养。\nDr. Goobie,MIT 毕业的神经外科医生:做了九年手术后辞职。他说自己一直在补墙,可屋子还在漏水。\nHéctor García,写《Ikigai》的西班牙人:在冲绳的长寿村看了一百多位老人。\n三个人从没见过面,总结出来的是同一张清单:\n好好吃(多蔬果少加工)、睡够八小时、管住压力、常见朋友、天天动、好好喝水。\n不是做到一件,是都做到。\n看完出门走一走就行。\n\n#健康 #生活方式 #睡眠 #运动 #ikigai #长寿 #自我提升",
     platformTags: ["健康", "生活方式", "睡眠", "运动", "ikigai", "长寿", "自我提升"],
+  },
+  /* At the Piano — DRAFT until Hao signs off cut4 and it is posted. Then:
+   * scripts/publish-video.sh (media shelf) → videoUrl + poster → status
+   * "published" + publishedAt. The shelf on /videos appears by itself. */
+  {
+    slug: "piano-passacaglia",
+    series: "piano",
+    sequence: 1,
+    title: "Passacaglia",
+    status: "draft",
+    language: "en",
+    durationSeconds: 76,
+    topic: "Handel – Halvorsen",
+    hook: "Filmed as seriously as I could manage — until my daughter found the lens.",
+    summary:
+      "The last section of the Handel–Halvorsen Passacaglia, played on the upright at home in one unbroken take: the sound is never edited, and the four camera angles are all cut from a single phone frame. It opens with the take that did not go to plan — my daughter got to the lens first — and then starts again, played straight to the final chord.",
+    aspect: "9:16",
   },
 ];
