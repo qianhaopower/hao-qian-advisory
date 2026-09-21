@@ -358,6 +358,35 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 - INSERT MOOD RULE (Hao 2026-09-05): every insert must match the emotional tone of the beat AND the episode (a warm couple episode gets smiling/embracing/talking couples — never crying, clinical, workplace, or odd clips). Mood is checked by eye on a contact sheet at pick time, per clip. Keep the shelf growing (hundreds) so clips are not reused across episodes.
 - POSED PRE-ROLL RULE: the 2s cover-face pause is trimmed out of source_ready (keep ~0.8s), face_frame still overlays frame 1; music alone over a silent opening reads as too loud.
 
+## SIM ANIMATION STYLE — Hao's preferred illustration language (approved 2026-09-21, Ep13)
+"这些动画做得非常好,以后也按这种风格来做。" When a beat can be SHOWN as a little world with
+someone moving through it, build a sim instead of a static diagram or stock footage.
+Reference implementation: `scripts/xhs-pipeline/make_supermarket_sim.py` (reuse its Cv /
+Path / shopper / hud / fly helpers — copy the file per episode, keep the engine).
+- THE LOOK: top-down "video game" map on the paper palette — tile floor with a faint grid,
+  ink walls, furniture as rounded blocks with small coloured products, green = what you
+  came for, red = what tempts you, gold = the insight. A small character with a body,
+  head, hair and a prop (the cart), a soft shadow and a walking bob. Drawn at 2x and
+  downsampled (LANCZOS) — no jagged edges. Source Han Heavy for every label.
+- IT TELLS A STORY, IT DOESN'T DECORATE: the character walks an eased polyline path and
+  leaves footprints; things happen BECAUSE of where they are (end-caps pulse as they
+  pass, items arc into the cart with a floating "+名字"); a game HUD on top carries the
+  score that makes the point (计划外 +5 vs +0, 步数 658 vs 337, a draining 意志力 bar).
+  Build scenes in contrasting PAIRS (the wrong way, then the right way) — same map,
+  different path, different score.
+- SLOW AND LONG: 6–10 s per scene, one idea per scene, ease in and out, let the viewer
+  follow the character. Hold = asset length − 0.1. This is the opposite of the 3 s b-roll
+  grammar; a sim replaces 2–3 stock inserts.
+- LAYOUT: title y≈120, HUD bar y 220–330, the world y 380–1330, nothing important below
+  y 1340 (captions). Each scene is its own asset (no repeats); save three stills per scene
+  and eyeball a contact sheet before generating the draft.
+- GOTCHAS paid for: draw checkboxes/ticks as shapes (the font's √ is a radical sign);
+  never reuse a parameter name as a loop variable inside a sprite function (`k` scaled
+  the shopper to 66x); render scenes in parallel processes (8 scenes ≈ 6 min).
+- The pixel-art inserts of Ep10 (make_pixel_inserts.py) and the stick-figure cliff of the
+  special are cousins of this style; when in doubt, prefer THIS one — a smooth top-down
+  world with a character, a path and a score.
+
 ## LONG-FORM GRAMMAR (the 2026-09-20 special, 9 min — for anything over ~4 min)
 - The short-episode density (10–16 events/min) does NOT scale; a long piece runs ~4/min:
   chapter cards as the skeleton (person card = chapter card), 2–3 drawn illustrations for
