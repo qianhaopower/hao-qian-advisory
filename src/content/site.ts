@@ -54,7 +54,7 @@ export const HOME_INDEX: SectionEntry[] = [
     label: "Videos",
     /* meta is computed live on the home page from published episodes */
     meta: "2 series",
-    blurb: "Working Theory in English, Friends Intelligence in Chinese — published here first.",
+    blurb: "Working Theory in English, Friends Intelligence in Chinese, and one series at the piano — published here first.",
   },
   {
     href: "/projects",
