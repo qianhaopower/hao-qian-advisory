@@ -24,13 +24,13 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://haoqian.co"),
   title: {
-    default: "Hao Qian — Turning ideas into systems",
+    default: "Hao Qian — A book, a piano, and balloons on the street",
     template: "%s · Hao Qian",
   },
   description:
-    "The library of Hao Qian: books, Working Theory essays, projects, talks and a digital garden. A permanent home for a life's work.",
+    "The library of Hao Qian: a book, a piano, balloons on the street — and Working Theory essays, videos, projects and a digital garden. A permanent home for a life's work.",
   openGraph: {
-    title: "Hao Qian — Turning ideas into systems",
+    title: "Hao Qian — A book, a piano, and balloons on the street",
     description:
       "A library, not a website. Books, essays, projects, talks and ideas — collected permanently.",
     url: "https://haoqian.co",

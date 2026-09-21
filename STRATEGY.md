@@ -26,7 +26,9 @@ HaoQian.co 不是一个个人主页，不是一个 Resume，也不是一个 Coac
 
 ## Brand Identity
 
-**Tagline:** Turning ideas into systems.
+> **Repositioned 2026-09-21 (Hao):** 旗舰是三样东西——一本书(Friends Intelligence)、会弹钢琴、在街头做气球。工作的事在 LinkedIn 上讲。首页、浏览器标题和分享卡片现在说的是 **"A book, a piano, and balloons on the street."**;"Turning ideas into systems." 是 2026-07 的定位,继续作为 Working Theory(文章线)的那句话保留,不再是整个网站的门面。下面的原文保留作历史。
+
+**Tagline (2026-07):** Turning ideas into systems.
 
 **一句介绍:**
 
@@ -66,7 +68,9 @@ HaoQian.co 不是一个个人主页，不是一个 Resume，也不是一个 Coac
 
 ### Home
 
-一句话：**Turning ideas into systems.**
+**现行(2026-09-21):** 一句话 **A book, a piano, and balloons on the street.** + 星图;下面一排三张同尺寸的图(The book · At the piano · On the street),一行 "On weekdays"(带团队,工作的事去 LinkedIn,留下来的想法是 Working Theory),然后才是所有房间的目录。不花:没有新颜色、没有动画、没有按钮。
+
+原始设定(2026-07)：一句话 **Turning ideas into systems.**
 
 下面只有几个入口：Books · Writing · Projects · Talks · Digital Garden · About
 

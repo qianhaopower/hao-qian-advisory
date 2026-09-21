@@ -2,11 +2,61 @@ import Link from "next/link";
 import { SiteShell, Container } from "@/components/site/Chrome";
 import { Constellation } from "@/components/site/Constellation";
 import { HOME_INDEX, SITE } from "@/content/site";
+import { BOOKS } from "@/content/books";
 import { getStarData } from "@/lib/constellation";
 import { videosIndexMeta } from "@/lib/videos";
 
+/* The home page (Hao, 2026-09-21): the flagship is a book, a piano and
+ * balloons on the street; work is what LinkedIn is for. Masthead + sky,
+ * one band of three, one line about weekdays, then every room. Quiet on
+ * purpose — no new colour, no motion, nothing to click but the work. */
+type Flagship = {
+  href: string;
+  label: string;
+  title: string;
+  line: string;
+  img: { src: string; alt: string; fit: string };
+};
+
 export default function HomePage() {
   const stars = getStarData();
+  const book = BOOKS.find((b) => b.slug === "friends-intelligence")!;
+
+  const flagships: Flagship[] = [
+    {
+      href: "/books/friends-intelligence",
+      label: "The book",
+      title: book.title,
+      line: `${book.oneLiner} ${book.heldIn ?? ""}`,
+      img: {
+        src: book.cover!.src,
+        alt: book.cover!.alt,
+        fit: "object-contain p-2 min-[800px]:p-7",
+      },
+    },
+    {
+      href: "/videos/piano-passacaglia",
+      label: "At the piano",
+      title: "Passacaglia",
+      line: "Handel–Halvorsen on the upright at home — one unbroken take, and one interruption.",
+      img: {
+        src: "/home/at-the-piano.jpg",
+        alt: "Hao at the upright piano at home",
+        fit: "object-cover",
+      },
+    },
+    {
+      href: "/balloons",
+      label: "On the street",
+      title: "Little Wow Balloons",
+      line: "Balloon animals twisted by hand at Melbourne's markets and festivals.",
+      img: {
+        src: "/projects/balloons/street-2.jpg",
+        alt: "Hao at his balloon stand at a Melbourne street market",
+        fit: "object-cover object-[28%_50%]",
+      },
+    },
+  ];
 
   return (
     <SiteShell>
@@ -15,18 +65,71 @@ export default function HomePage() {
         <section className="grid grid-cols-1 items-center gap-x-12 gap-y-10 pt-14 min-[1000px]:grid-cols-[minmax(380px,44%)_1fr] min-[1000px]:pt-20">
           <div>
             <div className="meta">Hao Qian · Melbourne · A library, not a website</div>
-            <h1 className="mt-7 font-serif text-[44px] font-normal leading-[1.08] tracking-[-0.015em] min-[900px]:text-[64px] min-[900px]:leading-[1.05]">
+            <h1 className="mt-7 font-serif text-[40px] font-normal leading-[1.1] tracking-[-0.015em] min-[900px]:text-[56px] min-[900px]:leading-[1.08]">
               {SITE.tagline}
             </h1>
-            <p className="mt-6 max-w-[560px] font-serif text-[19px] leading-[1.55] text-ink-2 min-[900px]:text-[22px] min-[900px]:leading-[1.5]">
+            <p className="mt-6 max-w-[560px] font-serif text-[19px] leading-[1.55] text-ink-2 min-[900px]:text-[21px] min-[900px]:leading-[1.5]">
               {SITE.intro}
             </p>
           </div>
           <Constellation data={stars} />
         </section>
 
+        {/* The three things */}
+        <section className="mt-14 grid grid-cols-1 gap-x-8 gap-y-10 border-t border-ink pt-8 min-[800px]:grid-cols-3 min-[900px]:mt-20">
+          {flagships.map((f) => (
+            <Link
+              key={f.href}
+              href={f.href}
+              className="group grid grid-cols-[116px_1fr] items-start gap-x-5 min-[800px]:block"
+            >
+              <div className="aspect-[4/5] overflow-hidden rounded-[2px] border border-line bg-surface transition-colors duration-[250ms] group-hover:border-faint">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={f.img.src}
+                  alt={f.img.alt}
+                  className={`block h-full w-full ${f.img.fit}`}
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <div className="meta !text-[11px] min-[800px]:mt-5">{f.label}</div>
+                <div className="mt-2 font-serif text-[22px] leading-[1.25] transition-colors duration-[250ms] group-hover:text-accent min-[800px]:text-[26px]">
+                  {f.title}
+                </div>
+                <p className="mt-2 max-w-[340px] text-[14.5px] leading-[1.65] text-ink-2">
+                  {f.line}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </section>
+
+        {/* Work, in one line */}
+        <section className="mt-14 grid grid-cols-1 gap-x-12 gap-y-3 border-t border-line pt-6 min-[900px]:grid-cols-[220px_1fr]">
+          <div className="meta">On weekdays</div>
+          <p className="max-w-[640px] font-serif text-[19px] leading-[1.55] text-ink-2">
+            I lead software engineering teams, and I talk about work where work
+            is talked about —{" "}
+            <a
+              href={SITE.linkedin}
+              className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+            >
+              on LinkedIn
+            </a>
+            . The ideas that survive are kept here as{" "}
+            <Link
+              href="/writing"
+              className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+            >
+              Working Theory
+            </Link>
+            .
+          </p>
+        </section>
+
         {/* Index of the library */}
-        <nav className="mt-14 border-t border-ink min-[900px]:mt-20">
+        <nav className="mt-14 border-t border-ink min-[900px]:mt-16">
           {HOME_INDEX.map((entry) => (
             <Link
               key={entry.href}

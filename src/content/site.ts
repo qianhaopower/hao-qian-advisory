@@ -1,8 +1,11 @@
 export const SITE = {
   name: "Hao Qian",
-  tagline: "Turning ideas into systems.",
+  /* Home h1 + intro since 2026-09-21 (Hao: the flagship is the book, the piano
+   * and the street balloons). "Turning ideas into systems." was the 2026-07
+   * line; it stays with Working Theory (feed description, STRATEGY.md history). */
+  tagline: "A book, a piano, and balloons on the street.",
   intro:
-    "I build software, books, systems and ideas that help people think better. Everything worth keeping lives here — permanently.",
+    "I wrote a book about the patterns behind everyday life, I play the piano at home, and I twist balloons at Melbourne’s markets. On weekdays I lead engineering teams and write down what the work teaches me. Everything worth keeping lives here — permanently.",
   principle:
     "Every meaningful thing I create should eventually have a permanent home here.",
   linkedin: "https://www.linkedin.com/in/hao-qian-9ab0b04b/",
