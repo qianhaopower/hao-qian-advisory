@@ -10,7 +10,7 @@ Hao 只做:录像(开拍先 2 秒封面脸、侧领夹麦、头顶少留白)→ 
 1. 探测语言 → 封面脸候选(前 5 秒抽帧,挑睁眼含笑)→ face1.png
 2. 测说话起点和说话终点(RMS)→ 剪辑必须重编码视频(hevc_videotoolbox,禁止 -c:v copy)→ 简单音频链(HP80+轻压缩+线性增益 −14+真峰限制,不做频谱处理;audio_master 仅 A/B 后可选) → **avsync_check.py 三项全过才能往下走**(Ep7 口型晚 0.78s 的教训)
 3. transcribe.py(对剪后的源)→ 校对(错字类 + 幻觉尾巴)
-4. fx.json:title(暧昧/反转钩子,首帧即封面;金线≤8字、白线≤9字)、corner_mark、face_frame、reframe、
+4. fx.json:title(暧昧/反转钩子,首帧即封面;金线≤8字、白线≤9字)、pillar{zh,en}(右上角柱子标签,封面必带)、corner_mark、face_frame、reframe、
    cap_colors、toplines 8–12、punch 3–4(在头旁,不挡脸)、floaters/doodles(脸部禁区外)、zoom 2、
    inserts ≈1/22s(每轮只采一个稀缺类别;联系表看情绪:插入演的是这句话的感受,不是名词;
    竖裁前看 6 帧)、endcard_<柱子>_cta(带一行点赞收藏)、bgm(自动增益)

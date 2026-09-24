@@ -300,6 +300,12 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   longer lines),
   **NO intro animation — full title on frame 1** (thumbnail rule), outro 溶解.
 - Corner mark: 默陌手写 6.5 white, border 45, top-left, full duration.
+- PILLAR BADGE (Hao 2026-09-24: "封面上直接写这是哪一种智慧"): every episode carries fx
+  "pillar": {"zh": "营养智慧", "en": "Nutrition Intelligence"} → top-RIGHT, two lines
+  (俪金黑 7.5 gold over 中黑体 4.3 white caps), full duration, so it reads on frame 1 /
+  the cover and throughout. Mirrors the corner mark (align=2, x 0.48). The seven:
+  财富智慧 Financial · 关系智慧 Relationship · 学习智慧 Information · 情绪智慧 Emotional ·
+  营养智慧 Nutrition · 运动智慧 Dynamic · 睡眠智慧 Sleep. Multi-pillar specials use 七种智慧.
 - Floaters 9.5 brush. Emoji retired. Nothing invented outside the FD atlas.
 
 ## Inserts (真视频 b-roll)
@@ -423,6 +429,7 @@ Path / shopper / hud / fly helpers — copy the file per episode, keep the engin
    after building source_ready and before to_capcut — it checks stream start_times = 0, frame 0 == raw@cut,
    and audio lag ≤ 33 ms by cross-correlation. No PASS, no draft.
 4. Proofread: known typo classes (腺肝→腺苷, 偏正→偏振, 咒→昼, 退黑素→褪黑素, 脑白筋→脑白金, 泪干见影→立竿见影, 高中屋里→高中物理, English fragments joined) + tail-hallucination strings (未经许可不得翻唱或使用 / 优优独播剧场 / 感谢观看 / 字幕由… / 订阅…) + duplicate-start chunks + the SILENT-TAIL variant (Ep7: whisper re-used an earlier phrase as a 6s chunk over trailing silence — always RMS-check where speech actually ends and cut source_ready at speech end + ~0.5s; no silent tail under music).
+4b. fx "pillar" {zh,en} is MANDATORY (cover badge, top-right). Check it on frame 1.
 5. fx: density target 1 insert per ~22s, 3-4 punches, 8-12 toplines — but on a SHORT
    episode count events per minute instead (benchmark 10-16/min): Ep11 fit only 6
    toplines in 18 caption chunks and still ran 14.6/min. Anchors are captions, so a

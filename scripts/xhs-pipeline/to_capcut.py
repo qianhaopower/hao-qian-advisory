@@ -60,7 +60,7 @@ for tt, name in [(TrackType.video, "video"), (TrackType.audio, "bgm"),
                  (TrackType.text, "toplines"), (TrackType.text, "punch"),
                  (TrackType.text, "float"), (TrackType.text, "float2"),
                  (TrackType.text, "card1"), (TrackType.text, "card2"),
-                 (TrackType.text, "card3")]:
+                 (TrackType.text, "card3"), (TrackType.text, "pillar"), (TrackType.text, "pillar2")]:
     sc.add_track(tt, name)
 
 BASE = float(FX.get("reframe_scale", 1.0))
@@ -167,6 +167,15 @@ if ti:
             else TextBorder(color=(0.04, 0.04, 0.04), width=70.0))
         seg.add_animation(OUT_UP)          # NO intro: full title on frame 1 (thumbnail)
         sc.add_segment(seg, f"card{min(i + 1, 3)}")
+
+pil = FX.get("pillar")     # which of the seven intelligences — on the cover and throughout (Hao 2026-09-24)
+if pil:                    # top-right, mirrors the corner mark: 营养智慧 over NUTRITION INTELLIGENCE
+    for txt, size, col, y, trk in ((pil["zh"], 7.5, GOLD, 0.885, "pillar"), (pil["en"].upper(), 4.3, WHITE, 0.845, "pillar2")):
+        sc.add_segment(cc.TextSegment(
+            txt, T(0, DUR), font=F_BOLD if col == GOLD else F_HEAVY,
+            style=TextStyle(size=size, bold=True, color=col, align=2),
+            clip_settings=ClipSettings(transform_x=0.48, transform_y=y),
+            border=TextBorder(color=(0.20, 0.12, 0.0) if col == GOLD else (0.04, 0.04, 0.04), width=45.0)), trk)
 
 mark = FX.get("corner_mark")                      # persistent top-left series mark
 if mark:
