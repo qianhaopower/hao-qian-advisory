@@ -52,11 +52,11 @@ def mix(a, b, k): return tuple(int(a[i] + (b[i] - a[i]) * k) for i in range(3))
 
 # ------------------------------------------------------------ data (schematic)
 SIX = [("日本", 7, 0.5), ("意大利", 20, 1.1), ("英格兰·威尔士", 33, 3.2), ("澳大利亚", 35, 4.5), ("加拿大", 38, 5.3), ("美国", 40, 7.0)]
-MORE = [("法国", 30, 1.4), ("瑞士", 37, 2.8), ("瑞典", 36, 2.6), ("挪威", 33, 2.9), ("丹麦", 37, 3.3), ("荷兰", 34, 2.3),
-        ("西德", 31, 2.7), ("奥地利", 28, 3.9), ("芬兰", 34, 6.4), ("爱尔兰", 33, 4.6), ("以色列", 25, 3.6), ("智利", 20, 2.4),
-        ("墨西哥", 22, 0.8), ("葡萄牙", 18, 1.5), ("锡兰", 12, 1.6), ("新西兰", 38, 4.1)]
+MORE = [("法国", 33, 1.0), ("瑞士", 39, 2.2), ("瑞典", 29, 5.9), ("挪威", 36, 1.6), ("丹麦", 24, 4.8), ("荷兰", 41, 1.3),
+        ("西德", 19, 5.4), ("奥地利", 27, 6.6), ("芬兰", 31, 6.9), ("爱尔兰", 42, 3.0), ("以色列", 14, 5.0), ("智利", 22, 3.8),
+        ("墨西哥", 9, 2.9), ("葡萄牙", 16, 1.0), ("锡兰", 12, 4.2), ("新西兰", 38, 0.8)]   # spread wide: no visible trend (Hao)
 PX0, PX1, PY0, PY1 = 170, 980, 470, 1210          # plot box
-LABELLED = {"法国", "瑞士", "芬兰", "以色列", "墨西哥", "锡兰", "葡萄牙", "智利", "奥地利"}   # the ones that carry the argument
+LABELLED = {"法国", "荷兰", "新西兰", "以色列", "西德", "锡兰"}   # the ones that carry the argument
 def px(v): return PX0 + (PX1 - PX0) * v / 45.0
 def py(v): return PY1 - (PY1 - PY0) * v / 8.0
 def fit(pts):
@@ -98,42 +98,42 @@ def point(p, name, x, y, col, r, label=True, ring=None, lab_col=INK):
 NOTE = "示意图 · 按 1953 年(6 国)与 1957 年(22 国)两张图的形态重绘"
 
 
-def ch_six(n, N=240):
-    p = Cv(); k_pts = ease((n - 20) / 120); shown = int(k_pts * 6 + 1e-6)
-    axes(p, "六个国家,一条完美的线", INK, f"国家:{min(shown, 6)}", "相关性:看起来完美" if n > 180 else "", GOLD, NOTE)
-    kl = ease((n - 150) / 50)
+def ch_six(n, N=360):
+    p = Cv(); k_pts = ease((n - 30) / 180); shown = int(k_pts * 6 + 1e-6)
+    axes(p, "六个国家,一条完美的线", INK, f"国家:{min(shown, 6)}", "相关性:看起来完美" if n > 270 else "", GOLD, NOTE)
+    kl = ease((n - 225) / 75)
     if kl > 0: line(p, SIX_FIT, GOLD, 10, kl)
     for i, (name, x, y) in enumerate(SIX):
-        t = ease((n - 20 - i * 20) / 18)
+        t = ease((n - 30 - i * 30) / 24)
         if t > 0: point(p, name, x, y, GOLD, 16 * t, label=t > 0.6)
-    if n > 200: p.T(px(40) - 40, py(7.0) - 70, "Ancel Keys,1953", 28, GREY, anchor="rm")
+    if n > 300: p.T(px(40) - 40, py(7.0) - 70, "Ancel Keys,1953", 28, GREY, anchor="rm")
     return p.out()
 
 
-def ch_22(n, N=300):
-    p = Cv(); k_cloud = ease((n - 10) / 130); shown = 6 + int(k_cloud * 16 + 1e-6)
-    weak = ease((n - 150) / 60)
+def ch_22(n, N=360):
+    p = Cv(); k_cloud = ease((n - 10) / 170); shown = 6 + int(k_cloud * 16 + 1e-6)
+    weak = ease((n - 190) / 70)
     axes(p, "其实一共有 22 个国家", INK, f"国家:{min(shown, 22)}", "关系:弱得多" if weak > 0.5 else "", RED if weak > 0.5 else GOLD, NOTE)
     if weak < 1: line(p, SIX_FIT, mix(GOLD, LINE, weak), 10)
     if weak > 0: line(p, ALL_FIT, mix(PAPER, GREY, weak), 6, dashed=True)
     for i, (name, x, y) in enumerate(MORE):
-        t = ease((n - 10 - i * 8) / 22)
+        t = ease((n - 10 - i * 10) / 26)
         if t > 0: point(p, name, x, y, mix(PAPER, DOT, t), 13, label=(t > 0.7 and name in LABELLED), lab_col=GREY)
-    ring = ease((n - 215) / 40)
+    ring = ease((n - 275) / 40)
     for name, x, y in SIX: point(p, name, x, y, GOLD, 16, ring=mix(PAPER, RED, ring) if ring > 0 else None)
     if ring > 0.8: p.T(PX0 + 30, PY0 + 56, "被挑出来的六个", 34, RED, anchor="lm", stroke=WHITE)
     return p.out()
 
 
-def ch_pick(n, N=240):
-    p = Cv(); picked = int(ease((n - 30) / 130) * 6 + 1e-6); kl = ease((n - 175) / 45)
+def ch_pick(n, N=300):
+    p = Cv(); picked = int(ease((n - 30) / 170) * 6 + 1e-6); kl = ease((n - 220) / 50)
     axes(p, "他挑了正好排成一条线的六个", INK, "22 个国家", f"挑出:{picked}", GOLD, NOTE)
     for name, x, y in MORE: point(p, name, x, y, DOT, 13, label=False)
     if kl > 0: line(p, SIX_FIT, GOLD, 10, kl)
     for i, (name, x, y) in enumerate(SIX):
-        on = i < picked; t = ease((n - 30 - i * 21) / 16)
+        on = i < picked; t = ease((n - 30 - i * 28) / 18)
         point(p, name, x, y, GOLD if on else DOT, 13 + 3 * t if on else 13, label=on, ring=mix(PAPER, GOLD, min(1, t * 2)) if 0 < t < 1 else None)
-    if n > 210: p.T(PX0 + 30, PY0 + 56, "用真实的数据说谎", 40, RED, anchor="lm", stroke=WHITE)
+    if n > 262: p.T(PX0 + 30, PY0 + 56, "用真实的数据说谎", 40, RED, anchor="lm", stroke=WHITE)
     return p.out()
 
 
@@ -164,7 +164,7 @@ def ch_sugar():
     return p.out()
 
 
-SCENES = {"ch_six": (ch_six, 240), "ch_22": (ch_22, 300), "ch_pick": (ch_pick, 240), "ch_timeline": (ch_timeline, 240)}
+SCENES = {"ch_six": (ch_six, 360), "ch_22": (ch_22, 360), "ch_pick": (ch_pick, 300), "ch_timeline": (ch_timeline, 240)}
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
     want = sys.argv[1:] or list(SCENES) + ["ch_sugar"]

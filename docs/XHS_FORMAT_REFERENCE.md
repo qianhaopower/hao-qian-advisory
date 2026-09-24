@@ -285,6 +285,11 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   (out-of-order anchors caused a 115s slow-shrink).
 
 ## Text system (CapCut fonts/sizes locked)
+- CAPTION WIDTH LAW (2026-09-24, third time a line ran off the screen — Ep8 26字, Ep14
+  38字): to_capcut.py now SPLITS any caption heavier than 14字 (Latin ≈ 0.55) at a
+  punctuation mark or the midpoint, time divided by weight, and asserts the maximum
+  before writing the draft. The auto-shrink below is only a fallback for 13–14字.
+  Never rely on proofreading to catch width; the code does it.
 - Captions: 中黑体 bold 8.5 (auto-shrink >13字, floor 5.2), white,
   BLACK BORDER width 18 (white-on-white was invisible), y −0.54.
 - Toplines: 俪金黑 10.5 gold/red/white, y −0.33, 弹入+向上溶解.
@@ -398,6 +403,8 @@ Path / shopper / hud / fly helpers — copy the file per episode, keep the engin
   chapter cards as the skeleton (person card = chapter card), 2–3 drawn illustrations for
   the metaphors people will remember, ONE thesis card shown as distinct variants (never the
   same asset twice), toplines only on the quotable lines, no doodles/floaters.
+- CHART SCENES are held 10–12 s (Ep14: an 8 s six-point chart was "来不及看完"); a
+  point-by-point build needs ~1 s per point plus 3 s to read the line.
 - READING TIME (Hao on v1: 来不及看完): a card is held for its text — person/chapter cards
   ~5.8 s, list cards ~6.2 s, illustrations ~5–6 s, small fact cards ≥4.2 s. Rule of thumb:
   0.25 s per character on the card, never under 4 s. Bake the asset longer than the hold.

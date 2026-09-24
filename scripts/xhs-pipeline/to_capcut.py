@@ -16,6 +16,38 @@ DRAFTS = sys.argv[3] if len(sys.argv) > 3 else os.path.expanduser(
     "~/Movies/CapCut/User Data/Projects/com.lveditor.draft")
 
 CAPS = json.load(open("captions.json"))
+
+
+def _w(t):  # display weight: CJK = 1, Latin/digit/space ≈ 0.55
+    return sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in t)
+
+
+def _split_caption(c, limit=14.0):
+    """CAPTION WIDTH LAW (2026-09-24, Ep14: a 38字 line ran off both edges even at the
+    auto-shrink floor). Any caption heavier than `limit` is split — at punctuation if a
+    piece ≥ 4字 results, else at the weight midpoint — recursively; time is divided in
+    proportion to weight. Enforced in code so it cannot be forgotten at proofread time."""
+    t = c["text"]
+    if _w(t) <= limit: return [c]
+    cut = None
+    for i in range(len(t) - 1, 0, -1):           # prefer a natural break near the middle
+        if t[i - 1] in ",，、。;；:：?？!！ " and 4 <= _w(t[:i]) and 4 <= _w(t[i:]) and abs(_w(t[:i]) - _w(t) / 2) < limit / 2:
+            cut = i; break
+    if cut is None:
+        acc = 0.0
+        for i, ch in enumerate(t):
+            acc += 1 if ord(ch) > 0x2e80 else 0.55
+            if acc >= _w(t) / 2: cut = i + 1; break
+    a, b = t[:cut].rstrip(",，、 "), t[cut:].lstrip(",，、 ")
+    span = c["hold"] - c["start"]; k = _w(a) / max(1e-6, _w(a) + _w(b)); mid = round(c["start"] + span * k, 3)
+    c1 = dict(c, text=a, end=mid, hold=mid); c2 = dict(c, text=b, start=mid)
+    return _split_caption(c1, limit) + _split_caption(c2, limit)
+
+
+ANCH = [dict(c) for c in CAPS]           # anchors match the ORIGINAL sentences (fx.json was written against them)
+_before = len(CAPS); CAPS = [x for c in CAPS for x in _split_caption(c)]
+if len(CAPS) != _before: print(f"caption width law: {_before} -> {len(CAPS)} lines (split ≥15字)")
+assert max(_w(c["text"]) for c in CAPS) <= 14.0 + 1e-6, "a caption is still too wide"
 FX = json.load(open("fx.json"))
 DUR = CAPS[-1]["hold"]
 _probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
@@ -36,7 +68,7 @@ LOOP_SWAY = getattr(cc.TextLoopAnim, "晃动", None)
 
 
 def find(match):
-    for c in CAPS:
+    for c in ANCH:                          # original sentence → same start time as its first split piece
         if match in c["text"]:
             return c
     return None
