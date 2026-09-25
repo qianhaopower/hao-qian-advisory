@@ -581,6 +581,38 @@ export const EPISODES: VideoEpisode[] = [
       "Before you take on one more thing today, check three layers of resources, from easy to hard.\n\nTime is the easy one. Thinking is harder: nobody can think for eight hours, even in an eight-hour day. The hardest is emotional reserve. Hard conversations, escalations and conflicts all draw from it, and most people never check the balance.\n\nhttps://haoqian.co/videos/three-layers-of-resources\n\n#WorkingTheory #EngineeringLeadership",
     linkedinTags: ["WorkingTheory", "EngineeringLeadership"],
   },
+  {
+    slug: "muscle-memory-in-the-age-of-ai",
+    series: "working-theory",
+    sequence: 19,
+    title: "Muscle Memory in the Age of AI",
+    status: "published",
+    publishedAt: "2026-09-25",
+    language: "en",
+    durationSeconds: 97,
+    hook: "Stop building for clients you don't have.",
+    summary:
+      "Hao builds apps and websites for a few paying clients: brokers, restaurant owners, accountants. For a decade his muscle memory was SaaS: extendable APIs, schemas that survive multiple tenants, every side project built as if many customers would one day share it. That assumption no longer holds. When the next client reaches out, nothing has to be injected into an existing system and no code has to be reused; a new system from scratch takes days, so it can be hard-coded for one person, one business, one entity. The question the episode leaves open: in the age of AI, which muscle memories do we need to change?",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/muscle-memory-in-the-age-of-ai.mp4",
+    aspect: "9:16",
+    poster: "/videos/muscle-memory-in-the-age-of-ai/poster.jpg",
+    captions: "/videos/muscle-memory-in-the-age-of-ai/captions.vtt",
+    transcript: [
+      "What muscle memories do we need to change in the age of AI?",
+      "I built some apps and websites for a few clients, for a small fee: brokers, restaurant owners, accountants. I find myself building the system under the assumption that eventually this website and the systems will be used by multiple clients. For example, when I design the API, I make sure they are very extendable. Basically, I was always building a SaaS as an assumption, which is true for the last decade.",
+      "But recently, I realized that this is not the case anymore. When the next restaurant owner, next broker, next accountant reach out to me, I simply don't have to inject his or her data into any existing system anymore. I don't have to reuse any of the existing code. I can simply build a new one.",
+      "Because the cost of building something new is so low these days, we can afford to build something from scratch very fast. We're talking about days, or maximum weeks, and then the new client will have a working system. And as a result, we can hard-code a lot of things in the system, assuming that the website, the app, the system is only forever going to be used by one person, one business, one entity.",
+      "So ask ourselves this question: in the age of AI, what muscle memories do we need to change?",
+    ],
+    keyPoints: [
+      "The SaaS reflex (extendable APIs, multi-tenant schemas) was built for a world where new systems were expensive.",
+      "When a new system takes days, one client can get one system, hard-coded, and the sharing assumption goes away.",
+    ],
+    linkedinCaption:
+      "Stop building for clients you don't have.\n\nFor a decade my muscle memory was SaaS: extendable APIs, multi-tenant schemas, every side project built as if a hundred customers would share it. In the age of AI, a new system for a new client takes days, so I hard-code for one person, one business, one entity. What muscle memory are you changing?\n\nhttps://haoqian.co/videos/muscle-memory-in-the-age-of-ai\n\n#WorkingTheory #AI\n\nMusic: Kevin MacLeod (incompetech.com)",
+    linkedinTags: ["WorkingTheory", "AI"],
+  },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
   /* Captions and transcripts are Hao's spoken words (voice-first, no    */

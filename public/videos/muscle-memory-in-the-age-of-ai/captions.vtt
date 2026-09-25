@@ -1,0 +1,193 @@
+WEBVTT
+
+00:00:00.060 --> 00:00:01.190
+What muscle memories do
+
+00:00:01.190 --> 00:00:02.500
+we need to change in the
+
+00:00:02.500 --> 00:00:03.732
+age of AI?
+
+00:00:03.732 --> 00:00:05.012
+I built some apps and
+
+00:00:05.012 --> 00:00:06.222
+websites for a few
+
+00:00:06.222 --> 00:00:07.643
+clients,
+
+00:00:07.643 --> 00:00:08.943
+for a small fee:
+
+00:00:08.943 --> 00:00:11.213
+brokers, restaurant
+
+00:00:11.213 --> 00:00:13.059
+owners, accountants.
+
+00:00:13.059 --> 00:00:14.600
+I find myself building
+
+00:00:14.600 --> 00:00:16.269
+the system under the
+
+00:00:16.269 --> 00:00:17.460
+assumption that
+
+00:00:17.460 --> 00:00:18.611
+eventually
+
+00:00:18.611 --> 00:00:19.871
+this website and the
+
+00:00:19.871 --> 00:00:21.441
+systems will be used by
+
+00:00:21.441 --> 00:00:23.230
+multiple clients.
+
+00:00:23.230 --> 00:00:24.270
+For example, when I
+
+00:00:24.270 --> 00:00:25.774
+design the API, I make
+
+00:00:25.774 --> 00:00:26.754
+sure they are very
+
+00:00:26.754 --> 00:00:27.777
+extendable.
+
+00:00:27.777 --> 00:00:29.698
+Basically, I was always
+
+00:00:29.698 --> 00:00:31.448
+building a SaaS as an
+
+00:00:31.448 --> 00:00:32.570
+assumption,
+
+00:00:32.570 --> 00:00:34.226
+which is true for the
+
+00:00:34.226 --> 00:00:35.826
+last decade.
+
+00:00:35.826 --> 00:00:36.956
+But recently, I realized
+
+00:00:36.956 --> 00:00:38.096
+that this is not the case
+
+00:00:38.096 --> 00:00:38.944
+anymore.
+
+00:00:38.944 --> 00:00:41.204
+When the next restaurant
+
+00:00:41.204 --> 00:00:43.905
+owner, next broker, next
+
+00:00:43.905 --> 00:00:45.305
+accountant reach out to
+
+00:00:45.305 --> 00:00:45.930
+me,
+
+00:00:45.930 --> 00:00:47.632
+I simply don't have to
+
+00:00:47.632 --> 00:00:49.882
+inject his or her data
+
+00:00:49.882 --> 00:00:51.622
+into any existing system
+
+00:00:51.622 --> 00:00:52.769
+anymore.
+
+00:00:52.769 --> 00:00:54.634
+I don't have to reuse any
+
+00:00:54.634 --> 00:00:56.125
+of the existing code.
+
+00:00:56.125 --> 00:00:57.214
+I can simply build a new
+
+00:00:57.214 --> 00:00:58.067
+one.
+
+00:00:58.067 --> 00:00:59.177
+Because the cost of
+
+00:00:59.177 --> 00:01:00.877
+building something new is
+
+00:01:00.877 --> 00:01:02.361
+so low these days,
+
+00:01:02.361 --> 00:01:03.401
+we can afford to build
+
+00:01:03.401 --> 00:01:04.721
+something from scratch
+
+00:01:04.721 --> 00:01:05.738
+very fast.
+
+00:01:05.738 --> 00:01:07.228
+We're talking about days,
+
+00:01:07.228 --> 00:01:08.916
+or maximum weeks, and
+
+00:01:08.916 --> 00:01:10.256
+then the new client will
+
+00:01:10.256 --> 00:01:12.005
+have a working system.
+
+00:01:12.005 --> 00:01:13.573
+And as a result, we can
+
+00:01:13.573 --> 00:01:14.993
+hard-code a lot of things
+
+00:01:14.993 --> 00:01:16.022
+in the system,
+
+00:01:16.022 --> 00:01:17.270
+assuming that the
+
+00:01:17.270 --> 00:01:18.740
+website, the app, the
+
+00:01:18.740 --> 00:01:20.703
+system is only forever
+
+00:01:20.703 --> 00:01:21.843
+going to be used
+
+00:01:21.843 --> 00:01:23.373
+by one person, one
+
+00:01:23.373 --> 00:01:25.435
+business, one entity.
+
+00:01:25.435 --> 00:01:27.005
+So ask ourselves this
+
+00:01:27.005 --> 00:01:29.161
+question: in the age of
+
+00:01:29.161 --> 00:01:29.950
+AI,
+
+00:01:29.950 --> 00:01:30.980
+what muscle memories do
+
+00:01:30.980 --> 00:01:32.520
+we need to change?

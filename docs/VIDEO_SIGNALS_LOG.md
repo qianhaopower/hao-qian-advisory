@@ -16,6 +16,7 @@
 | 16 | The Accountable Person (unscripted) | 2026-09-12 | ⬜ package ready | three-piece in ~/Downloads |
 | 17 | Calm Is a Must | 2026-09-19 | ✅ 2026-09-19 | posted by Hao (URL not yet recorded) |
 | 18 | Three Layers of Resources | 2026-09-21 | ✅ 2026-09-21 | posted by Hao (URL not yet recorded) |
+| 19 | Muscle Memory in the Age of AI | 2026-09-25 | ✅ 2026-09-25 | first CapCut-styled episode; posted by Hao (URL not yet recorded) |
 
 Rule: Hao tells the cutting room when a post goes live (the session cannot
 read LinkedIn — it is login-walled); the row flips and the post URL lands
