@@ -87,5 +87,10 @@ stays for anything Hao wants in the old paper look.
        cap_colors / inserts / endcard; bgm null, punch sfx null (LinkedIn stays dry)
     7. "$HOME/Video Studio/work/venv-jy/bin/python" to_capcut_wt.py source_ready.mp4 <DraftName>
     8. Hao opens CapCut, eyeballs, exports -> loudness + bt709 check -> shelf/site/archive as usual
-Every content-cut junction must sit under an insert (start <= junction <= end); the generator
+Stills: grab face1.png (and any thumbnail) ONLY from the retagged bt709 file — a PNG grabbed
+from an HLG-tagged mp4 inherits color_transfer=arib-std-b67 and CapCut renders it as HDR (the
+Ep. 19 v1 cover came out red). Every PNG->mp4 bake carries the 709 matrix + tags + bsf retag.
+BGM (Hao, 2026-09-25): allowed on the WT line now — a calm CC-BY track from the FI library,
+auto-gained 21 dB under the voice; the credit line goes at the end of the LinkedIn caption.
+Every content-cut junction must sit >=0.3 s inside an insert (start+0.3 <= seam <= end-0.3); the generator
 suppresses toplines/punches during inserts, so anchor them on the caption before or after.
