@@ -123,7 +123,7 @@ def render(name):
     fn,N=SCENES[name]; d=f"{TMP}/{name}"; shutil.rmtree(d,ignore_errors=True); os.makedirs(d,exist_ok=True)
     for i in range(N): fn(i,N).save(f"{d}/f{i:04d}.png")
     for k in (0,N//2,N-1): fn(k,N).resize((270,480)).save(f"{TMP}/{name}_still{k}.png")
-    subprocess.run(["ffmpeg","-y","-v","error","-framerate","30","-i",f"{d}/f%04d.png","-c:v","libx264","-preset","fast","-crf","18","-pix_fmt","yuv420p",f"{OUT}/{name}.mp4"],check=True)
+    subprocess.run(["ffmpeg","-y","-v","error","-framerate","30","-i",f"{d}/f%04d.png","-vf","scale=out_color_matrix=bt709:out_range=tv,format=yuv420p","-colorspace","bt709","-color_trc","bt709","-color_primaries","bt709","-color_range","tv","-c:v","libx264","-preset","fast","-crf","18",f"{OUT}/{name}.mp4"],check=True)   # RGB->YUV with the 709 matrix + tags: ffmpeg defaults to 601 untagged, which CapCut/players read as 709 -> ruddy skin (Ep. 19 cover)
     return name
 if __name__=="__main__":
     os.makedirs(OUT,exist_ok=True); os.makedirs(TMP,exist_ok=True)

@@ -154,9 +154,9 @@ for ins in FX.get("inserts", []):            # {"match","file","hold"?}
                 ["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", fp,
                  "-t", "4.2", "-vf",
                  "scale=1296:2304,zoompan=z='1+0.0009*on':d=1:x='iw/2-(iw/zoom/2)'"
-                 ":y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30",
-                 "-c:v", "libx264", "-preset", "fast", "-crf", "18",
-                 "-pix_fmt", "yuv420p", mp4], check=True)
+                 ":y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p",
+                 "-colorspace", "bt709", "-color_trc", "bt709", "-color_primaries", "bt709", "-color_range", "tv",
+                 "-c:v", "libx264", "-preset", "fast", "-crf", "18", mp4], check=True)
         fp = mp4
     probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
                             "format=duration", "-of", "csv=p=0", fp],
@@ -228,9 +228,9 @@ if ff and os.path.exists(os.path.expanduser(ff["file"])):
         mp4 = fp1.rsplit(".", 1)[0] + ".mp4"
         if not os.path.exists(mp4):
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", fp1,
-                            "-t", "0.6", "-vf", "scale=1080:1920", "-c:v", "libx264",
-                            "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
-                            mp4], check=True)
+                            "-t", "0.6", "-vf", "scale=1080:1920,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p",
+                            "-colorspace", "bt709", "-color_trc", "bt709", "-color_primaries", "bt709", "-color_range", "tv",
+                            "-c:v", "libx264", "-preset", "fast", "-crf", "18", mp4], check=True)   # 709 matrix + tags (601-untagged reads ruddy)
         fp1 = mp4
     sc.add_segment(cc.VideoSegment(fp1, T(0, ff.get("hold", 0.35))), "inserts")
 
