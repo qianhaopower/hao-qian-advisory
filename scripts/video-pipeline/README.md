@@ -67,3 +67,25 @@ Order of operations (rules in docs/VIDEO_FORMAT_REFERENCE.md):
 8. Deliver to ~/Downloads as the three-piece package (final + thumbnail +
    caption). Publish with `scripts/publish-video.sh` (media shelf) once
    Hao approves.
+
+## CapCut build (the 2026-09-25 restyle — Ep. 19 "muscle memory" is the reference)
+
+Hao's LinkedIn videos sat at 30–40 views / 10–20 s watched. He asked for the 小红书 look:
+warm grade, the title on frame 1 and staying, big gold punch words beside the head, bordered
+centred captions, self-made sim animations instead of stock, a CTA end card. The WT line now
+builds through CapCut like the FI line; the ffmpeg compositor (compose_v2/captions_render_v2)
+stays for anything Hao wants in the old paper look.
+
+    work dir: ~/Movies/WT-videos/<slug>/            (durable — CapCut drafts reference absolute paths)
+    1. builder_ep.py (CONTENT_CUTS, BLOCKS)         -> edl.json, caption_words.json   [scratchpad]
+    2. cut + reframe + hlg709 LUT (no saturation bake) -> video_cut.mp4, then the bsf+colr retag
+       (frame props keep the HLG tag even with -color_trc bt709 — CapCut would tone-map twice)
+    3. audio_simple.py with FREEZE=0 (no cover freeze in this build)  -> audio_cut.wav ; mux -> source_ready.mp4
+    4. captions.json: word-boundary chunks, display weight <= 14 (Latin 0.55/char ≈ 25 chars), hold = next start
+    5. inserts: make_sim_wt.py scenes (+ PNG stills, Ken Burns is baked by the generator) into <workdir>/inserts/
+    6. fx.json (schema = xhs-pipeline/fx_example.json): title / corner_mark / face_frame / toplines / punch /
+       cap_colors / inserts / endcard; bgm null, punch sfx null (LinkedIn stays dry)
+    7. "$HOME/Video Studio/work/venv-jy/bin/python" to_capcut_wt.py source_ready.mp4 <DraftName>
+    8. Hao opens CapCut, eyeballs, exports -> loudness + bt709 check -> shelf/site/archive as usual
+Every content-cut junction must sit under an insert (start <= junction <= end); the generator
+suppresses toplines/punches during inserts, so anchor them on the caption before or after.
