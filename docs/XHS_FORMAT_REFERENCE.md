@@ -369,6 +369,16 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
 - INSERT MOOD RULE (Hao 2026-09-05): every insert must match the emotional tone of the beat AND the episode (a warm couple episode gets smiling/embracing/talking couples — never crying, clinical, workplace, or odd clips). Mood is checked by eye on a contact sheet at pick time, per clip. Keep the shelf growing (hundreds) so clips are not reused across episodes.
 - POSED PRE-ROLL RULE: the 2s cover-face pause is trimmed out of source_ready (keep ~0.8s), face_frame still overlays frame 1; music alone over a silent opening reads as too loud.
 
+## WORD CLOUD → GATHER (Ep15, 2026-09-25 — Hao's own gesture idea)
+When he reads a list on camera, fx "wordcloud" puts each word on screen AS he says it and
+KEEPS it there (23 fixed slots: 8 per side column, 7 in the chest band — never the face
+band), coloured by category, then on the caption where he closes his hands every word
+flies to one point over ~1.4 s, shrinks away, and one big gold word pops (「糖」). Words
+are real text tracks (one track per word, position/scale keyframes), so they sit over
+his video and his gesture stays visible — never a full-frame insert for this. While the
+cloud is up: no toplines in the chest band, no punches beside the head (slots collide).
+Offsets per word come from the caption start + where the word falls inside the line.
+
 ## SIM ANIMATION STYLE — Hao's preferred illustration language (approved 2026-09-21, Ep13)
 "这些动画做得非常好,以后也按这种风格来做。" When a beat can be SHOWN as a little world with
 someone moving through it, build a sim instead of a static diagram or stock footage.

@@ -313,6 +313,52 @@ for fl in FX.get("floaters", []):
         sc.add_segment(seg, "float")
     except Exception:
         sc.add_segment(seg, "float2")
+# ---- WORD CLOUD (Ep15 2026-09-25): words pop on as he says them, STAY, then on his
+# gathering gesture every word flies to one point and shrinks into a single final word.
+# fx "wordcloud": {"words":[{"match","text","cat"?,"offset"?}], "gather":{"match","offset","dur"},
+#                  "final":{"text","hold","y"?}}   — slots avoid the face band (x 30–70%, y 15–60%).
+WC = FX.get("wordcloud")
+if WC:
+    side = [(x, y) for y in (0.17, 0.23, 0.29, 0.35, 0.41, 0.47, 0.53, 0.59) for x in (0.12, 0.88)]
+    lower = [(0.5, 0.59)] + [(x, 0.65) for x in (0.2, 0.5, 0.8)] + [(x, 0.71) for x in (0.2, 0.5, 0.8)]
+    gc = find(WC["gather"]["match"]); assert gc, "wordcloud gather anchor missing"
+    g_t = gc["start"] + float(WC["gather"].get("offset", 0.0)); g_d = float(WC["gather"].get("dur", 1.4))
+    fin = WC["final"]; fy = float(fin.get("y", -0.15))
+    CAT_COL = {1: WHITE, 2: GOLD, 3: RED, 4: WHITE}
+    si = li = 0; placed = 0
+    for i, wd in enumerate(WC["words"]):
+        c = find(wd["match"])
+        if not c:
+            print(f"!! wordcloud anchor missing: {wd['match'][:16]}"); continue
+        t0 = c["start"] + float(wd.get("offset", 0.0))
+        if t0 >= g_t - 0.3: print(f"!! wordcloud word after gather, skipped: {wd['text']}"); continue
+        long_ = len(wd["text"]) > 13
+        if long_ and li < len(lower): fx_, fy_ = lower[li]; li += 1; size = 4.8
+        elif si < len(side): fx_, fy_ = side[si]; si += 1; size = 5.6
+        elif li < len(lower): fx_, fy_ = lower[li]; li += 1; size = 4.8
+        else: print("!! wordcloud: out of slots"); continue
+        txt = wd["text"]
+        if long_ and " " in txt:                    # two lines for the long names
+            ws = txt.split(" "); k = len(ws) // 2 + len(ws) % 2; txt = " ".join(ws[:k]) + "\n" + " ".join(ws[k:])
+        tx, ty = fx_ * 2 - 1, 1 - 2 * fy_
+        seg = cc.TextSegment(txt, T(t0, g_t + g_d + 0.05), font=F_HEAVY,
+                             style=TextStyle(size=size, bold=True, color=CAT_COL.get(wd.get("cat", 1), WHITE), align=1),
+                             clip_settings=ClipSettings(transform_x=tx, transform_y=ty),
+                             border=TextBorder(color=(0.04, 0.04, 0.04), width=32.0))
+        seg.add_animation(IN_POP)
+        k0, k1 = g_t - t0, g_t - t0 + g_d
+        seg.add_keyframe(KeyframeProperty.position_x, tim(f"{k0:.3f}s"), tx).add_keyframe(KeyframeProperty.position_x, tim(f"{k1:.3f}s"), 0.0)
+        seg.add_keyframe(KeyframeProperty.position_y, tim(f"{k0:.3f}s"), ty).add_keyframe(KeyframeProperty.position_y, tim(f"{k1:.3f}s"), fy)
+        seg.add_keyframe(KeyframeProperty.uniform_scale, tim(f"{k0:.3f}s"), 1.0).add_keyframe(KeyframeProperty.uniform_scale, tim(f"{k1:.3f}s"), 0.12)
+        sc.add_track(TrackType.text, f"wc{i}"); sc.add_segment(seg, f"wc{i}"); placed += 1
+    fseg = cc.TextSegment(fin["text"], T(g_t + g_d - 0.1, g_t + g_d + float(fin.get("hold", 4.0))), font=F_BOLD,
+                          style=TextStyle(size=float(fin.get("size", 34)), bold=True, color=GOLD, align=1),
+                          clip_settings=ClipSettings(transform_y=fy),
+                          border=TextBorder(color=(0.20, 0.12, 0.0), width=70.0))
+    fseg.add_animation(IN_POP).add_animation(OUT_UP)
+    sc.add_track(TrackType.text, "wcfinal"); sc.add_segment(fseg, "wcfinal")
+    print(f"wordcloud: {placed} words on screen, gather at {g_t:.1f}s -> 「{fin['text']}」")
+
 for dd in FX.get("doodles", []):
     c = find(dd["match"])
     if not c:
