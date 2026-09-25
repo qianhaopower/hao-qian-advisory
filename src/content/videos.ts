@@ -1092,4 +1092,42 @@ export const EPISODES: VideoEpisode[] = [
       "1953 年,一位美国生理学家画了一张图:六个国家,脂肪吃得越多,心脏病越多,一条完美的线。\n后来统计学家把当时能拿到的 22 个国家全放上去——那条线就没了。他只挑了正好排成一条线的六个。\n2016 年公开的行业文件又补了一刀:糖业研究基金会付钱给哈佛学者,写综述把矛头指向脂肪。\n半个世纪,脂肪背了锅,糖躲在包装后面。\n买东西看一眼配料表:sugar、syrup、各种「糖」的名字,上百种。\n能吃新鲜的,就别吃加工的。\n\n#营养 #健康饮食 #糖 #脂肪 #科学史 #认知",
     platformTags: ["营养", "健康饮食", "糖", "脂肪", "科学史", "认知"],
   },
+  {
+    slug: "fi-sugar-names",
+    series: "friends-intelligence",
+    sequence: 15,
+    title: "配料表上的糖,有 23 个化名",
+    titleEn: "Sugar's 23 aliases",
+    status: "published",
+    publishedAt: "2026-09-25",
+    language: "zh-Hans",
+    durationSeconds: 293,
+    topic: "营养智慧 · Nutrition Intelligence",
+    hook: "看配料表只躲 Sugar 这个词,远远不够——糖有 23 个化名。",
+    summary:
+      "过去几十年我们把糖当成中性的;现在医学研究很清楚,游离糖对认知、情绪、代谢、胰岛素都有负面影响。可厂家很聪明,配料表上的糖有 23 个化名:化学名(sucrose、glucose、fructose、lactose),颜色和来源(beet、coconut、palm、cane、brown、white sugar,植物来源不等于更健康),糖浆和蜂蜜(honey、maple、glucose、corn、high-fructose corn syrup、brown rice、golden syrup、molasses),以及果汁和浓缩果汁——浓缩后剩下的就是糖。片中每个名字随他念出时停在屏幕上,最后随他的手势收成一个字:糖。给自己建一个反射:看到这些名字,都当成糖。",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/fi-sugar-names.mp4",
+    aspect: "9:16",
+    poster: "/videos/fi-sugar-names/poster.jpg",
+    captions: "/videos/fi-sugar-names/captions.vtt",
+    transcript: [
+      "我最近在网上看到越来越多的讨论,关于糖的害处,我感到比较欣慰,因为在过去几十年里的话,我们其实对糖是一种中性的认识,就是在我们的过去几十年的认知中,糖并不是一个有害的东西,因为小孩子吃点糖吃个零食,做饭的时候加一些糖,甚至我们的买的食物的配料中,配上一些糖没有什么,也就是从近几年开始,越来越多的人在讨论过量的摄入糖,对身体的危害。",
+      "这是一个很好的现象,很多医学研究都在非常清晰的表明,摄入糖,尤其是游离糖,会对我们的认知,对我们的情绪对我们的代谢,对我们的胰岛素、胰岛素抵抗,各种各样身体的机能,都会造成负面的影响。",
+      "但是今天我想说的就是,我们在看食物配料表的时候的话,如果我们只是针对糖,Sugar 这个词来进行避免的话,那是远远不够的,因为我们的食品生产厂家,他是非常聪明的,他会把很多很多的原料,实际上是糖,他会用不同的形式来展现出来,所以说今天我就拍一条视频来给大家分享一下,什么东西在食品配料表中,非常常见,但它实际上本来还是糖。",
+      "就其中有几类,最简单的一类的话,就是说非常诚实的这些厂商,他的糖的化学名称,比如说像这个蔗糖 Sucrose、葡萄糖,葡萄糖 Glucose,然后果糖 Fructose,还有乳糖 Lactose,这些的话就是非常明显的,大家都知道这些。",
+      "就真的都是糖这是一类,但是第二类的话呢,就是说加上各种不同的颜色,甚至加上它这个植物的来源,那这些其实和糖,没有什么区别还是一样的,最简单的,比如说 Beet sugar,甜菜糖,就是那个 beetroot 里边的 sugar,还有这个 Coconut sugar,椰子糖,还有 Palm sugar,这个也是用的比较多的,棕榈糖,包括 Cane sugar,甚至按颜色来说的,比如 Brown sugar,White sugar,这些的话,它和我们第一类的化学糖的话,几乎是一样的。",
+      "因为我们的化学糖的分子,是分子结晶,和从植物中提取出来的话,几乎在化学上是没有区别的,就是说从植物中提取出来的糖的话,并不代表它更健康,所以说这一类也是我们非常要注意的,那么第三类的话就更加隐蔽了,这一类的话就是说是糖浆蜂蜜,或者一些含糖的原料,那最典型的比如说 Honey,对吧,还有 Maple syrup,还有 Glucose syrup、Corn syrup,各种各样的 syrup,尤其是这个 High-fructose corn syrup,HFCS,这个是在美国非常常见,甚至包括一些 Brown rice syrup,Golden syrup,甚至这个糖蜜,叫 Molasses,这一套所谓的糖浆,它在化学成分上和糖也是没有什么区别的。",
+      "实际上你看到它以后的话,你要意识到这个也是糖,最后一类呢就是说会更加隐蔽,就是各种各样的果汁,尤其是这种浓缩的果汁,因为果汁它在浓缩以后的话剩下的成分的话,这些有益的成分像维生素啊什么这些基本上都已经不存在了,都已经没有了,大部分剩下的话实际上就是糖本身,那最简单的就是说这个 Fruit juice concentrate,就是浓缩果汁,还有 Concentrated fruit juice,就这个 concentrated fruit juice,你就直接把它等价于糖,基本上是没有什么问题的,然后还有这些各种各样不同的具体的果汁,比如 Apple juice concentrate,Grape juice concentrate,它中间可能是含有 apple,可能是含有 grape,但是相比于真正的 grape,真正的 apple 而言,它的健康的功效,可以忽略不计,那么它带来的危害,从糖的角度来讲的话,是几乎一样的。",
+      "包括各种各样的 constituted fruit juice,or reconstituted fruit juice,各种情况,它实际上都是一类事情,所以就是说今天我们讲了这么多的单词,这么多的不一样的成分配料表,但是我们实际上可以把它聚集到一起,其实最后的话都是——都是糖,如果你要认为糖有危害,那你看到这些不同配料表的时候的话,你可以给自己建立一个反射,这些东西指向的都是最后是同样的东西。",
+    ],
+    keyPoints: [
+      "只躲 Sugar 这个词,远远不够:糖有 23 个化名。",
+      "植物来源的糖,化学上和白糖没有区别,并不更健康。",
+      "浓缩果汁去掉了有益成分,剩下的基本就是糖。",
+    ],
+    platformCaption:
+      "过去几十年我们把糖当成中性的:小孩吃点、做饭加点、配料里放点,没什么。\n现在医学研究很清楚了:游离糖对认知、情绪、代谢、胰岛素都有负面影响。\n但你看配料表只躲 Sugar 这个词,远远不够。厂家很聪明,糖有 23 个化名:\n化学名:sucrose、glucose、fructose、lactose;\n颜色和来源:beet、coconut、palm、cane、brown、white sugar——植物来源不等于更健康;\n糖浆和蜂蜜:honey、maple、glucose、corn、high-fructose corn syrup、brown rice、golden syrup、molasses;\n果汁:fruit juice concentrate、concentrated fruit juice、apple/grape juice concentrate、reconstituted juice——浓缩后剩下的就是糖。\n给自己建一个反射:看到这些名字,都当成糖。\n\n#游离糖 #配料表 #健康饮食 #营养 #减糖 #食品标签",
+    platformTags: ["游离糖", "配料表", "健康饮食", "营养", "减糖", "食品标签"],
+  },
 ];

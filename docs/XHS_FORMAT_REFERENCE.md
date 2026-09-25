@@ -455,8 +455,9 @@ Path / shopper / hud / fly helpers — copy the file per episode, keep the engin
 7. Per-pillar end card (endcard_sleep / endcard_relationship / … — build the pillar's card the first time it appears).
 8. Generate → read draft JSON → count segments per track → only then report.
 8b. POST TITLE ≤ 20 字 (Hao 2026-09-21; it is also 小红书's own title limit) — count every character incl. punctuation, all three options; the on-screen cover title keeps its own ≤9/≤8 rule.
-9. Export (Hao) → agent compresses to 上传版 (crf 20 since 2026-09-21 — his upload speed is fine) → phone → title/body/tags/pinned comment from the episode package.
+9. Export (Hao) → he posts the export directly (no compression since 2026-09-25) → phone → title/body/tags/pinned comment from the episode package.
 10b. SITE (2026-09-12): the haoqian.co entry ships with the archive — `scripts/publish-video.sh <master.mov> fi-<slug> 0.1` (media release), poster = frame 0.1s of the master, captions.vtt from the CapCut caption track, entry in src/content/videos.ts + edge in connections.ts, tsc clean, push. Then move the site mp4 into archive/epNN/-site-1080p.mp4.
 10. ARCHIVE (2026-09-12): raw + master .mov + upload + posting.md → ~/Movies/FI-videos/archive/epNN-slug/ (named epNN-slug-{raw-IMG_xxxx.MOV,master.mov,upload-xhs.mp4,posting.md}), update archive/README.md, rsync to Google Drive My Drive/FI-videos/archive/. The master .mov is the platform-neutral file for any other platform. Trash superseded CapCut drafts; one live draft per episode.
 
+- COMPRESS RULE RETIRED (Hao 2026-09-25): he posts the CapCut export as-is (~500 MB is fine, XHS allows 20 GB). No 上传版 any more; the archive keeps raw + master (= what was posted) + site-1080p. The old rule for the record:
 - COMPRESS RULE (Hao 2026-09-05): every CapCut export is compressed by the agent WITHOUT being asked — the moment a new FI-*.mov lands in Downloads, produce <题>-上传版.mp4 (crf22, ~80MB) and hand that name over; the raw export is never what goes to the phone.
