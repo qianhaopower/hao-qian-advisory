@@ -44,11 +44,11 @@ C. 胶原蛋白是怎么被糖毁掉的
 
 #糖化 #抗衰老 #胶原蛋白 #少吃糖 #皮肤管理 #营养
 
-## 置顶评论
-补几个片里提到的词:
+## 置顶评论(≤300 字,小红书上限)
+补几个片里的词:
 glycation 糖化:糖粘到蛋白质上,不需要酶,自己就发生
-AGEs(Advanced Glycation End Products)晚期糖基化终末产物:反复糖化后没法修复的蛋白质
-glycolysis 糖酵解 / glycogenesis 糖原合成 / glycogenolysis 糖原分解——都是 gly-(糖)开头的
-Maillard reaction 美拉德反应:面包变褐变香的反应,第一步和体内的糖化是同一件事
-我写了一本书叫《Friends Intelligence》,拆解现代生活的七种智慧:财富 · 关系 · 学习 · 情绪 · 营养 · 运动 · 睡眠。英文版已出版,中文版在路上。
+AGEs 晚期糖基化终末产物:反复糖化后没法修复的蛋白质
+glycolysis 糖酵解 / glycogenesis 糖原合成 / glycogenolysis 糖原分解,都是 gly-(糖)开头
+美拉德反应:面包变褐变香,第一步和体内糖化是同一件事
+我写了本书《Friends Intelligence》,拆解现代生活七种智慧:财富·关系·学习·情绪·营养·运动·睡眠。英文版已出,中文版在路上。
 音乐: Kevin MacLeod (incompetech.com)
