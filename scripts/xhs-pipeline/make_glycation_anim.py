@@ -12,6 +12,7 @@ is five springs; the card says 示意图. Scenes:
     gl_toast    bread browning: starch → sugar meets protein = the same reaction 8 s
     gl_gly      still: the gly- family (glycation/glycolysis/glycogenesis/…)    8 s
     gl_age      still: protein → glycated → re-glycated → AGEs (no repair)       7 s
+    gl_caramel  still: caramelisation (sugar alone) vs Maillard (sugar + protein) 4.6 s
 Run:  python3 make_glycation_anim.py [scene ...]      → ~/Movies/FI-videos/assets/inserts/
 """
 import math, os, random, shutil, subprocess, sys
@@ -137,7 +138,7 @@ def tangle_pts(n=14, cx=540, cy=830):
 CURL_SUG = [1, 4, 7, 10, 12, 2]
 
 
-def gl_curl(n, N=270):
+def gl_curl(n, N=300):
     t = n / 30; p = Cv(); A = chain_pts(); B = tangle_pts(); k = ease((t - 1.0) / 4.0)
     pts = [lerp(a, b, k) for a, b in zip(A, B)]
     k2 = ease((t - 6.0) / 1.2)                       # crosslink to the neighbour
@@ -159,8 +160,8 @@ def gl_curl(n, N=270):
         if k2 > 0.95:
             p.C(e[0], e[1], 14, fill=RED)
             p.T((a[0] + b[0]) / 2 + 70, (a[1] + b[1]) / 2, "交联", 34, RED, anchor="lm", stroke=WHITE)
-    if t > 7.6:
-        kk = ease((t - 7.6) / 0.5)
+    if t > 5.6:                                        # Hao: the red line must stay long enough to read
+        kk = ease((t - 5.6) / 0.5)
         p.T(W / 2, 560, "结构变了,功能就坏了", 44, mix(PAPER, RED, kk))
     return p.out()
 
@@ -279,6 +280,21 @@ def gl_gly():
     return p.out()
 
 
+def gl_caramel():
+    p = Cv(); p.T(W / 2, 150, "面包烤完以后,还有两步", 56, INK)
+    y = 300
+    for a, b, c, col in [("焦糖化 Caramelization", "糖自己加热,变褐、变香", "只有糖,没有蛋白质参与", GOLD),
+                         ("美拉德反应 Maillard reaction", "糖 + 蛋白质,变褐、出香气", "第一步就是糖粘上蛋白质 = 糖化", RED)]:
+        p.R(90, y, 990, y + 300, fill=WHITE, outline=col, width=5, r=24)
+        p.T(W / 2, y + 70, a, 42, col); p.T(W / 2, y + 150, b, 34, INK); p.T(W / 2, y + 225, c, 28, GREY); y += 360
+    for i, (x, k) in enumerate([(300, 0.0), (420, 0.3), (540, 0.55), (660, 0.8), (780, 1.0)]):     # a sugar cube browning
+        p.R(x - 44, 1090, x + 44, 1178, fill=mix(WHITE, BROWN, k), outline=mix(LINE, BROWN, k), width=4, r=10)
+        if i < 4: p.L([(x + 56, 1134), (x + 64, 1134)], GREY, 4)
+    p.T(W / 2, 1230, "糖 → 加热 → 褐色", 30, GREY)
+    p.T(W / 2, 1326, "示意图", 24, GREY)
+    return p.out()
+
+
 def gl_age():
     p = Cv(); p.T(W / 2, 150, "AGEs", 72, RED)
     p.T(W / 2, 236, "Advanced Glycation End Products", 34, INK); p.T(W / 2, 288, "晚期糖基化终末产物", 30, GREY)
@@ -295,7 +311,7 @@ def gl_age():
 
 
 SCENES = {"gl_stick": (gl_stick, 300), "gl_curl": (gl_curl, 270), "gl_mesh": (gl_mesh, 360), "gl_face": (gl_face, 330), "gl_toast": (gl_toast, 240)}
-STILLS = {"gl_gly": (gl_gly, 8.0), "gl_age": (gl_age, 7.0)}
+STILLS = {"gl_gly": (gl_gly, 8.0), "gl_age": (gl_age, 7.0), "gl_caramel": (gl_caramel, 4.6)}
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
     want = sys.argv[1:] or list(SCENES) + list(STILLS)

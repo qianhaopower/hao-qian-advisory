@@ -285,11 +285,13 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   (out-of-order anchors caused a 115s slow-shrink).
 
 ## Text system (CapCut fonts/sizes locked)
+- PORTRAIT INSERT LAW (2026-09-26, Ep16 v1: two shelf clips were referenced by their 1280×720 originals in `assets/broll/` and CapCut placed them as a small box in the middle of the frame — Hao: 应该弄全屏的). An insert is always the 1080×1920 file: shelf clips go in as `assets/inserts/clip_<id>.mp4` (centre crop), never `assets/broll/<id>.mp4`; to_capcut.py now probes every insert and bakes the crop itself if a landscape file slips through.
 - CAPTION WIDTH LAW (2026-09-24, third time a line ran off the screen — Ep8 26字, Ep14
   38字): to_capcut.py now SPLITS any caption heavier than 14字 (Latin ≈ 0.55) at a
   punctuation mark or the midpoint, time divided by weight, and asserts the maximum
   before writing the draft. The auto-shrink below is only a fallback for 13–14字.
   Never rely on proofreading to catch width; the code does it.
+  - WORD LAW (2026-09-26, Ep16: 「相关」「一些」 were cut in half across two caption lines — Hao: 一个中文单词不能截在字幕的两头, and this had happened before): when a line must be split without punctuation, the cut goes to the jieba word boundary nearest the weight midpoint (`_seg` in to_capcut.py; jieba lives in venv-jy). Manual splits at proofread time follow the same rule — look at the two halves as words, not character counts.
 - Captions: 中黑体 bold 8.5 (auto-shrink >13字, floor 5.2), white,
   BLACK BORDER width 18 (white-on-white was invisible), y −0.54.
 - Toplines: 俪金黑 10.5 gold/red/white, y −0.33, 弹入+向上溶解.

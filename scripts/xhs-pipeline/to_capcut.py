@@ -22,6 +22,14 @@ def _w(t):  # display weight: CJK = 1, Latin/digit/space ≈ 0.55
     return sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in t)
 
 
+try:
+    import jieba as _jieba; _jieba.setLogLevel(60)
+    def _seg(t): return list(_jieba.cut(t))
+except ImportError:                              # never split inside a word: without jieba fall back to characters
+    print("!! jieba missing — captions may split inside a word (pip install jieba into venv-jy)")
+    def _seg(t): return list(t)
+
+
 def _split_caption(c, limit=14.0):
     """CAPTION WIDTH LAW (2026-09-24, Ep14: a 38字 line ran off both edges even at the
     auto-shrink floor). Any caption heavier than `limit` is split — at punctuation if a
@@ -33,6 +41,13 @@ def _split_caption(c, limit=14.0):
     for i in range(len(t) - 1, 0, -1):           # prefer a natural break near the middle
         if t[i - 1] in ",，、。;；:：?？!！ " and 4 <= _w(t[:i]) and 4 <= _w(t[i:]) and abs(_w(t[:i]) - _w(t) / 2) < limit / 2:
             cut = i; break
+    if cut is None:                              # WORD LAW (2026-09-26, Ep16 "相关"/"一些" were cut in half):
+        bounds, pos = [], 0                       # split only at a jieba word boundary nearest the weight midpoint
+        for wd in _seg(t):
+            pos += len(wd); bounds.append(pos)
+        half = _w(t) / 2
+        cands = [b for b in bounds[:-1] if 4 <= _w(t[:b]) and 4 <= _w(t[b:])]
+        cut = min(cands, key=lambda b: abs(_w(t[:b]) - half)) if cands else None
     if cut is None:
         acc = 0.0
         for i, ch in enumerate(t):
@@ -154,11 +169,22 @@ for ins in FX.get("inserts", []):            # {"match","file","hold"?}
                  "-c:v", "libx264", "-preset", "fast", "-crf", "18",
                  "-pix_fmt", "yuv420p", mp4], check=True)
         fp = mp4
-    probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
-                            "format=duration", "-of", "csv=p=0", fp],
-                           capture_output=True, text=True).stdout.strip()
-    if probe:
-        hold = min(hold, float(probe) - 0.1)     # clamp to material length
+    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                            "stream=width,height:format=duration", "-of", "csv=p=0", fp],
+                           capture_output=True, text=True).stdout.split()
+    dims = [x for x in probe if "," in x]
+    if dims and dims[0] not in ("1080,1920", "2160,3840"):
+        # PORTRAIT LAW (2026-09-26, Ep16: a 1280x720 shelf clip sat as a small box in the middle of the
+        # frame). An insert must fill 1080x1920 — bake a centre crop next to the file and use that.
+        crop = os.path.join(os.path.dirname(fp), "clip_" + os.path.basename(fp).rsplit(".", 1)[0] + ".mp4")
+        if not os.path.exists(crop):
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", fp, "-vf", "scale=-2:1920,crop=1080:1920,fps=30",
+                            "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-an", crop], check=True)
+        print(f"!! insert was {dims[0]} — using portrait crop {os.path.basename(crop)}")
+        fp = crop
+    dur_s = [x for x in probe if "," not in x]
+    if dur_s:
+        hold = min(hold, float(dur_s[-1]) - 0.1)     # clamp to material length
     if c["start"] < FACE_HOLD:
         # frame 1 belongs to the cover face + title (the thumbnail) — an insert
         # anchored there used to crash the generator with SegmentOverlap.
