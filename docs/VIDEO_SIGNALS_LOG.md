@@ -161,3 +161,21 @@ the same core followers. Average watch stays pinned at 14–20 s regardless
 of topic. First real engagement: Ep. 6 drew 2 comments; the non-video
 reader-review post out-reached that day's episode. Inbound this week:
 ~3–4 connection requests (a first), 10 recruiters viewing the profile.
+
+## Snapshot sweep — 2026-09-26 (screenshots, ages approximate)
+
+| Episode | Age | Impressions | Reached | Video views | Avg watch | Notes |
+|---|---|---|---|---|---|---|
+| Who Survives the Reorg (unscripted) | ? | **792** (63% in-network) | 442 | 265 | **31s** | best of the whole series on every axis |
+| Ep. 16 Accountable Person | 2w | 340 (84%) | 205 | 108 | 18s | |
+| Ep. 17 Calm Is a Must | 1w | 259 (92%) | 150 | 80 | 16s | 92% in-network — worst distribution share yet |
+| Ep. 9 Debug the Decision Line | 3w | 259 (65%) | 170 | 85 | 16s | |
+| Clarity Equals Productivity | ? | 216 (76%) | 120 | 64 | 14s | |
+| Ep. 19 Muscle Memory | 23h | 178 (65%) | 102 | 72 | 17s | |
+| unidentified (likely Ep. 18 Three Layers) | ~5d | 165 (92%) | 78 | 44 | 16s | 2 profile views, 0 followers |
+
+Baseline is flat at ~170–340 impressions, avg watch 14–18 s, 0 followers
+gained per post. The one breakout: Who Survives the Reorg — 2–4× the
+baseline on impressions, out-of-network share AND average watch. Its
+shape: unscripted lane, a question-as-title about the viewer's own fear,
+not a finished theory statement.
