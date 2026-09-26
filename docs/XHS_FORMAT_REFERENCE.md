@@ -285,6 +285,7 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   (out-of-order anchors caused a 115s slow-shrink).
 
 ## Text system (CapCut fonts/sizes locked)
+- ASIAN FACE RULE (2026-09-26, Hao: 小红书在那边发,人脸尽量用中国人或亚洲人的脸,有共鸣). Whenever an insert shows a person's face (skin, smile, eating, family), pick an East Asian face from the shelf first; a non-Asian face only when the shelf has nothing that fits and the moment needs a person. The shelf is harvested with mixkit tags asian-woman / asian-man / asian-family / chinese-* / japanese-* / korean-* — top it up before an episode that needs faces, and check the frame, not the tag (mixkit's "asian" and "chinese" tags mostly return flags and buildings).
 - PORTRAIT INSERT LAW (2026-09-26, Ep16 v1: two shelf clips were referenced by their 1280×720 originals in `assets/broll/` and CapCut placed them as a small box in the middle of the frame — Hao: 应该弄全屏的). An insert is always the 1080×1920 file: shelf clips go in as `assets/inserts/clip_<id>.mp4` (centre crop), never `assets/broll/<id>.mp4`; to_capcut.py now probes every insert and bakes the crop itself if a landscape file slips through.
 - CAPTION WIDTH LAW (2026-09-24, third time a line ran off the screen — Ep8 26字, Ep14
   38字): to_capcut.py now SPLITS any caption heavier than 14字 (Latin ≈ 0.55) at a
