@@ -31,11 +31,11 @@ Who Survives the Reorg.
 
 | Ep | Title | On haoqian.co | On 小红书 | Note |
 |---|---|---|---|---|
-| 1 | 晚上睡不着，先改早上这一件事 | 2026-09-05 (backfilled) | ✅ posted (date not recorded) | cover shipped a squint — frame-1 face rule followed |
-| 2 | 下午一杯咖啡，晚上凭什么睡不着 | 2026-09-05 (backfilled) | ✅ posted (date not recorded) | |
-| 3 | 晚上总睡不好，睡前一小时先关大灯 | 2026-09-05 (backfilled) | ✅ posted (date not recorded) | |
+| 1 | 晚上睡不着，先改早上这一件事 | 2026-09-05 (backfilled) | ✅ 2026-08-30 19:08 | cover shipped a squint — frame-1 face rule followed |
+| 2 | 下午一杯咖啡，晚上凭什么睡不着 | 2026-09-05 (backfilled) | ✅ 2026-08-31 20:18 | |
+| 3 | 晚上总睡不好，睡前一小时先关大灯 | 2026-09-05 (backfilled) | ✅ 2026-09-02 20:49 | |
 | 4 | 晚上翻来覆去睡不着，先把卧室调低两度 | 2026-09-05 (backfilled) | ⬜ unknown | 上传版 exported 2026-09-03 |
-| 6 | 夫妻之间这件事，每天都应该做 | 2026-09-05 | ⬜ unknown | 上传版 exported 2026-09-05 |
+| 6 | 夫妻之间这件事，每天都应该做 | 2026-09-05 | ✅ 2026-09-05 12:33 | |
 
 "Posted" for Eps 1–3 comes from the FI thread's 2026-09-03 note that three
 published covers had shipped; dates and note URLs were never recorded.
@@ -179,3 +179,35 @@ gained per post. The one breakout: Who Survives the Reorg — 2–4× the
 baseline on impressions, out-of-network share AND average watch. Its
 shape: unscripted lane, a question-as-title about the viewer's own fear,
 not a finished theory statement.
+
+## 小红书 snapshot sweep — 2026-09-26 (creator dashboard screenshots)
+
+Account: 31 notes total; 14 video notes since 2026-08-30. Followers grew
+~23 → ~50 over the four weeks of video posting. Chart of this table:
+was rendered to Hao 2026-09-26.
+
+| Posted | Note | Topic | Views | 赞 | 藏 | 评 | 转 |
+|---|---|---|---|---|---|---|---|
+| 08-30 | 晚上睡不着，先改早上这一件事 | 睡眠 | **659** | 47 | 24 | 1 | 4 |
+| 08-31 | 咖啡到底为什么让你睡不着 | 睡眠 | 67 | 0 | 1 | 0 | 0 |
+| 09-02 | 睡前先把灯光调暗 | 睡眠 | 173 | 14 | 5 | 0 | 1 |
+| 09-03 | 先把卧室调低两度 | 睡眠 | 135 | 8 | 4 | 0 | 0 |
+| 09-05 | 夫妻之间这件事，每天都应该做 | 关系 | 40 | 0 | 0 | 0 | 0 |
+| 09-06 | 先别再孵那颗假蛋 | 关系 | 68 | 4 | 2 | 2 | 0 |
+| 09-10 | 每天回家先"闻空气"的关系 | 关系 | 110 | 2 | 0 | 1 | 0 |
+| 09-12 | 牵手、碰一下脸，身体替你说喜欢 | 关系 | 235 | 9 | 11 | 0 | 1 |
+| 09-14 | 多玩魂斗罗，少玩97拳皇 | 关系 | 53 | 2 | 0 | 0 | 0 |
+| 09-19 | 和爱人说话时你看他的眼睛吗 | 关系 | 151 | 4 | 3 | 0 | 0 |
+| 09-21 | 三个没见过面的聪明人（9分钟特辑） | 关系 | 347 | 21 | 20 | 4 | 4 |
+| 09-21 | 超市让你多买？三招破解 | 营养 | 48 | 2 | 0 | 0 | 0 |
+| 09-24 | 脂肪被冤了五十年 | 营养 | **3** | 0 | 0 | 0 | 0 |
+| 09-25 | 配料表上的糖，有 23 个化名 | 营养 | 292 | 21 | 14 | 0 | 0 |
+
+Reading: ~2,380 total views from a 23-follower cold start = essentially
+all algorithmic distribution. Engagement on the winners runs 10–14% of
+views (LinkedIn's best: ~2%). Saves≈likes on practical notes — the XHS
+currency. Concrete-action titles win (sleep 659); vague-tease titles die
+(夫妻之间这件事 40); the 3-view 脂肪 note looks suppressed/under review,
+not merely unpopular — worth checking note status in the app. Follower
+conversion ≈ 11 per 1,000 views. April text notes (~186 views) confirm
+video is not underperforming text here, unlike LinkedIn.
