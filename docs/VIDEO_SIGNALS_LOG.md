@@ -211,3 +211,14 @@ currency. Concrete-action titles win (sleep 659); vague-tease titles die
 not merely unpopular — worth checking note status in the app. Follower
 conversion ≈ 11 per 1,000 views. April text notes (~186 views) confirm
 video is not underperforming text here, unlike LinkedIn.
+
+### Update 2026-09-28 — the glycation A/B resolved, against the prediction
+
+吃糖,就是把自己放进面包机烤 (glycation, 06:50, posted 09-26 20:30): **494
+views, 赞24 藏20 评4 转4 (~11%) at ~2d** — second-best views, joint-best
+engagement on the account. 化名 slowed (292→308). 脂肪 stays dead at 3.
+
+Reading: academic depth did NOT hurt — the door did the work. The title is
+a visceral self-directed metaphor (you, in the toaster), not a lecture
+opener; compare the true mechanism-opener 咖啡为什么 (67). Refined law:
+shock-metaphor door + academic payload is the strongest XHS shape yet.
