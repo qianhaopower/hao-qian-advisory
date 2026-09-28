@@ -92,5 +92,11 @@ from an HLG-tagged mp4 inherits color_transfer=arib-std-b67 and CapCut renders i
 Ep. 19 v1 cover came out red). Every PNG->mp4 bake carries the 709 matrix + tags + bsf retag.
 BGM (Hao, 2026-09-25): allowed on the WT line now — a calm CC-BY track from the FI library,
 auto-gained 21 dB under the voice; the credit line goes at the end of the LinkedIn caption.
+Insert MIX by topic (Hao, 2026-09-28, Ep. 20): an emotional topic (anger, hurt, relief) takes
+REAL footage of faces and emotions — angry, frustrated, laughing, a private phone call — and at
+most one sim, for the one mechanism beat; sims are for rational topics (systems, flows, counts).
+Mood-match still applies (negative beat → serious clip). Emotion clips are thin on the WT shelf:
+top up with `build-broll-library.py --only angry,frustrated,stress,...`; the FI shelf
+(~/Movies/FI-videos/assets/broll, index.json) has laughing/happy — record `used_in: wt-epNN` there.
 Every content-cut junction must sit >=0.3 s inside an insert (start+0.3 <= seam <= end-0.3); the generator
 suppresses toplines/punches during inserts, so anchor them on the caption before or after.
