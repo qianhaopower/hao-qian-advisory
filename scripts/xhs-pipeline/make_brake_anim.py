@@ -120,27 +120,27 @@ def br_day(n, N=360):
     for i in range(7):                                                    # the jar of brake blocks
         x0 = 165 + i * 110; on = i < left
         p.R(x0, 430, x0 + 90, 500, fill=mix(LINE, GOLD, 1.0 if on else 0.0), outline=INK if on else GREY, width=4, r=10)
-    y0 = 720; p.L([(120, y0), (960, y0)], mix(LINE, NIGHT, night), 10)                    # the day path
+    y0 = 900; p.L([(120, y0), (960, y0)], mix(LINE, NIGHT, night), 10)                    # the day path
     p.T(120, y0 + 46, "早", 30, GREY); p.T(960, y0 + 46, "晚", 30, GREY)
-    p.C(160, y0 - 120, 34 * (1 - 0.6 * night), fill=mix(GOLD, PAPER, night))              # sun fades
-    if night > 0: p.C(920, y0 - 120, 30 * night, fill=mix(PAPER, NIGHT, night))
+    p.C(100, 600, 30 * (1 - 0.6 * night), fill=mix(GOLD, PAPER, night))                    # sun fades
+    if night > 0: p.C(980, 600, 26 * night, fill=mix(PAPER, NIGHT, night))
     prog = clamp((t - 0.6) / (ev_t[-1] + 0.6 - 0.6)); wx = 150 + 780 * prog
-    person(p, wx, y0 - 10, 110)
+    person(p, wx, y0 - 10, 100)
     for i, (hh, txt, cost) in enumerate(DAY):
         k = ease((t - ev_t[i]) / 0.5)
         if k <= 0: continue
         ex = 150 + 780 * (ev_t[i] - 0.6) / (ev_t[-1]); up = i % 2 == 0
-        ey = y0 - 190 if up else y0 + 120
+        ey = y0 - 165 if up else y0 + 105
         col = RED if cost == 0 else INK
-        p.R(ex - 100, ey - 34, ex + 100, ey + 34, fill=WHITE, outline=mix(LINE, col, k), width=4, r=14)
-        p.T(ex, ey + 1, txt, 26, mix(PAPER, col, k)); p.C(ex, y0, 10 * k, fill=col)
+        p.R(ex - 88, ey - 30, ex + 88, ey + 30, fill=WHITE, outline=mix(LINE, col, k), width=4, r=14)
+        p.T(ex, ey + 1, txt, 22, mix(PAPER, col, k)); p.C(ex, y0, 10 * k, fill=col)
         if cost and 0 < t - ev_t[i] < 1.2:                                # "-1" flies to the jar
             f = ease((t - ev_t[i]) / 1.2); pos = lerp((ex, ey), (165 + (7 - done) * 110 + 45 if done else 210, 465), f)
             p.T(pos[0], pos[1], "−1", 34, mix(RED, PAPER, f * 0.7))
     if night > 0.5:
         kk = ease((night - 0.5) / 0.5)
-        p.T(W / 2, 1040, "刹车没了,手就伸出去了", 44, mix(PAPER, RED, kk))
-        p.T(W / 2, 1110, "早上不想吃的巧克力,晚上忍不住", 28, mix(PAPER, GREY, kk))
+        p.T(W / 2, 1190, "刹车没了,手就伸出去了", 44, mix(PAPER, RED, kk))
+        p.T(W / 2, 1255, "早上不想吃的巧克力,晚上忍不住", 28, mix(PAPER, GREY, kk))
     return p.out()
 
 
@@ -191,7 +191,7 @@ def br_kid(n, N=270):
     if tongue > 0:                                                                       # the tongue reaches the pole
         hx = 800 - 150 * 0.2; hy = 1090 - 150 * 0.62
         p.L([(hx - 10, hy + 10), (hx - 10 - 200 * tongue, hy + 10 + 30 * tongue)], PINK, 14)
-        if tongue > 0.95: p.T(650, 880, "粘住了!", 36, RED, stroke=WHITE)
+        if tongue > 0.95: p.T(650, 960, "粘住了!", 36, RED, stroke=WHITE)
     if t > 7.4:
         k2 = ease((t - 7.4) / 0.5); p.T(W / 2, 1260, "刹车,是长出来的能力", 40, mix(PAPER, INK, k2))
     return p.out()
