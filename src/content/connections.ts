@@ -53,6 +53,7 @@ const EDGES: [string, string][] = [
   ["video:calm-is-a-must", "series:working-theory"],
   ["video:three-layers-of-resources", "series:working-theory"],
   ["video:muscle-memory-in-the-age-of-ai", "series:working-theory"],
+  ["video:ai-emotion-filter", "series:working-theory"],
   // Friends Intelligence, spoken: the book's chapters, on camera in Chinese
   ["video:fi-sleep-daylight", "book:friends-intelligence"],
   ["video:fi-coffee", "book:friends-intelligence"],

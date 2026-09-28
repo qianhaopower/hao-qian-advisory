@@ -613,6 +613,38 @@ export const EPISODES: VideoEpisode[] = [
       "Stop building for clients you don't have.\n\nFor a decade my muscle memory was SaaS: extendable APIs, multi-tenant schemas, every side project built as if a hundred customers would share it. In the age of AI, a new system for a new client takes days, so I hard-code for one person, one business, one entity. What muscle memory are you changing?\n\nhttps://haoqian.co/videos/muscle-memory-in-the-age-of-ai\n\n#WorkingTheory #AI\n\nMusic: Kevin MacLeod (incompetech.com)",
     linkedinTags: ["WorkingTheory", "AI"],
   },
+  {
+    slug: "ai-emotion-filter",
+    series: "working-theory",
+    sequence: 20,
+    title: "AI as My Emotion Filter",
+    status: "published",
+    publishedAt: "2026-09-28",
+    language: "en",
+    durationSeconds: 90,
+    hook: "I let AI filter my anger before it reaches anyone.",
+    summary:
+      "Do you want a personal assistant who catches you every time you get emotional and stops you from saying stupid things? Hao does. When someone breaks a promise again, or tells others something that never happened, he talks to AI first, by voice, with the raw emotion and the facts. Then one request: filter out the emotion, keep the facts, format the message. What goes out, in writing or in person, is the same information, delivered without hurting anyone.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/ai-emotion-filter.mp4",
+    aspect: "9:16",
+    poster: "/videos/ai-emotion-filter/poster.jpg",
+    captions: "/videos/ai-emotion-filter/captions.vtt",
+    transcript: [
+      "Do you want a personal assistant who's going to catch you every time when you become emotional? Stop you from saying stupid things? I do.",
+      "Recently I've been using AI as this personal assistant. When I feel myself become emotional, frustrated, angry, I use voice input to talk to AI directly, with the raw emotion. For example: 'Why did you break this promise again?' 'Why did you tell somebody else something that never happened?'",
+      "You usually become angry when you see these kinds of things, but you don't want to bring that anger to people directly, in a work context. So instead, I use AI. I just talk to it with the raw emotion, with some information. And then I ask AI, candidly: 'Can you please filter out the emotion, just leave the facts, and format the message?'",
+      "In this way, I can send the message without the emotion, only facts left, to the people, in writing or verbally. So in this way I can still deliver the message, I can still deliver the information, without hurting people.",
+      "So this is my small tip of using AI as a personal assistant to filter raw emotions. Do you have any similar experiences?",
+    ],
+    keyPoints: [
+      "Say it raw to AI first, by voice, anger included; never to the person.",
+      "One request: filter out the emotion, keep the facts, format the message. Same information, nobody hurt.",
+    ],
+    linkedinCaption:
+      "I let AI filter my anger before it reaches anyone.\n\nWhen someone breaks a promise again, I talk to AI first, with the raw emotion and the facts. Then one request: filter out the emotion, keep the facts, format the message. What goes out is the same information, delivered without hurting anyone. What do you let AI filter for you?\n\nhttps://haoqian.co/videos/ai-emotion-filter\n\n#WorkingTheory #AI\n\nMusic: Kevin MacLeod (incompetech.com)",
+    linkedinTags: ["WorkingTheory", "AI"],
+  },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
   /* Captions and transcripts are Hao's spoken words (voice-first, no    */
