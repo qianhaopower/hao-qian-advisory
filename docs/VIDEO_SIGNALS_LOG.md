@@ -222,3 +222,8 @@ Reading: academic depth did NOT hurt — the door did the work. The title is
 a visceral self-directed metaphor (you, in the toaster), not a lecture
 opener; compare the true mechanism-opener 咖啡为什么 (67). Refined law:
 shock-metaphor door + academic payload is the strongest XHS shape yet.
+
+Caveat (Hao, 2026-09-28, agreed): the 659 on the first-ever face note
+almost certainly includes the platform's new-creator cold-start boost —
+treat it as subsidised, not baseline. The toaster note's 494 (note #30+,
+no boost, 2 days) is the account's true organic best.
