@@ -34,7 +34,7 @@ C. 稍微饿一点就心慌脾气急?看看胰岛素
 #血糖 #胰岛素抵抗 #情绪稳定 #健康饮食 #少吃糖 #营养
 
 ## 置顶评论(≤300 字)
-片里三个词:胰岛素 insulin = 钥匙;胰岛素敏感性 insulin sensitivity = 一点钥匙就开门;胰岛素抵抗 insulin resistance = 敏感性降低,门听不见。我在片里说「著名的 insulin sensitivity」,指的是敏感性降低那种状态,也就是胰岛素抵抗。
+片里三个词:胰岛素 insulin = 钥匙;胰岛素敏感性 insulin sensitivity = 一点钥匙就开门;胰岛素抵抗 insulin resistance = 敏感性降低,门听不见。片里说的「著名的 insulin sensitivity」指敏感性降低,即胰岛素抵抗。
 血糖压得过低时身体会放肾上腺素把血糖抬回去,所以会心慌出汗——是应激反应,不是你脆弱。
 我写了本书《Friends Intelligence》,拆解现代生活七种智慧:财富·关系·学习·情绪·营养·运动·睡眠。英文版已出,中文版在路上。
 音乐: Kevin MacLeod (incompetech.com)
