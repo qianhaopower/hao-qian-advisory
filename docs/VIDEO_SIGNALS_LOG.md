@@ -228,3 +228,16 @@ Caveat (Hao, 2026-09-28, agreed): the 659 on the first-ever face note
 almost certainly includes the platform's new-creator cold-start boost —
 treat it as subsidised, not baseline. The toaster note's 494 (note #30+,
 no boost, 2 days) is the account's true organic best.
+
+## Ep. 20 — AI as My Emotion Filter
+
+Posted to LinkedIn 2026-09-28.
+
+| Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Notes |
+|---|---|---|---|---|---|---|---|
+| 2026-09-29 | 1d | 352 (**33% in-network / 67% out**) | 206 | 163 | 53m 48s | 19s | first post ever majority out-of-network; engagement block not captured |
+
+Second confirmation of the situation-first law after Reorg: a first-person
+confession door ("I let AI filter my anger") + concrete trigger (someone
+breaks a promise again) + practical AI payload. Benchmark to watch: >600–700
+by 7d would beat Ep. 2's friend-subsidised record organically.
