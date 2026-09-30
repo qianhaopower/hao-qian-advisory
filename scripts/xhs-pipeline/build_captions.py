@@ -142,7 +142,15 @@ for i in range(len(caps)):
         caps[i]["end"] = round(max(caps[i]["start"] + 0.4, min(SPEECH_END + 0.25, caps[i]["end"] + 0.35)), 3)
 for i in range(1, len(caps)):
     if caps[i]["start"] < caps[i - 1]["end"]: caps[i - 1]["end"] = caps[i]["start"]
+# proofreading lives in work/fix.json ([["whisper spelling", "correct"], ...]) so the builder stays the
+# only writer of captions.json — to_capcut.py refuses any captions.json this builder did not write.
+if os.path.exists("work/fix.json"):
+    for a, b in json.load(open("work/fix.json")):
+        for c in caps: c["text"] = c["text"].replace(a, b)
 for c in caps: c["hold"] = c["end"]
 json.dump(caps, open("captions.json", "w"), ensure_ascii=False, indent=1)
+import hashlib
+json.dump({"sha256": hashlib.sha256(open("captions.json", "rb").read()).hexdigest(), "builder": "build_captions v2"},
+          open("work/captions_gate.json", "w"))
 bad = [c["text"] for c in caps if any(p in c["text"] for p in PUN_CUT)]
 print(f"{len(caps)} lines; max width {max(w(c['text']) for c in caps):.1f}; lines with commas: {len(bad)}; speech end {SPEECH_END:.2f}s")

@@ -18,6 +18,33 @@ DRAFTS = sys.argv[3] if len(sys.argv) > 3 else os.path.expanduser(
 CAPS = json.load(open("captions.json"))
 
 
+def _caption_gate():
+    """CAPTION GATE (2026-09-30, Hao: 字幕的问题已经出现过好几次了,加一个比较强的规则). captions.json must
+    come from build_captions.py (hash in work/captions_gate.json) and every line must be a whole
+    clause: no comma inside a line, no line opening on 的/了/地/得/中/上/下/里, no line
+    shorter than 0.3 s. Any failure stops the generator — fix work/fix.json and rebuild."""
+    import hashlib
+    problems = []
+    try:
+        gate = json.load(open("work/captions_gate.json"))
+        if gate.get("sha256") != hashlib.sha256(open("captions.json", "rb").read()).hexdigest():
+            problems.append("captions.json was edited after build_captions.py wrote it (put fixes in work/fix.json and rebuild)")
+    except FileNotFoundError:
+        problems.append("work/captions_gate.json missing — captions.json was not produced by build_captions.py")
+    for i, c in enumerate(CAPS):
+        t = c["text"]
+        if any(p in t for p in "，,；;"): problems.append(f"line {i} has a comma inside: {t}")
+        first = next(iter(_seg(t)), "")
+        if first in ("的", "了", "地", "得", "中", "上", "下", "里"): problems.append(f"line {i} opens on a dangling word: {t}")
+        if c["hold"] - c["start"] < 0.3: problems.append(f"line {i} shorter than 0.3 s: {t}")
+    if problems:
+        print("!! CAPTION GATE FAILED"); [print("   -", x) for x in problems[:12]]
+        sys.exit(2)
+    print(f"caption gate: {len(CAPS)} lines, whole clauses, onset-timed")
+
+
+
+
 def _w(t):  # display weight: CJK = 1, Latin/digit/space ≈ 0.55
     return sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in t)
 
@@ -28,6 +55,9 @@ try:
 except ImportError:                              # never split inside a word: without jieba fall back to characters
     print("!! jieba missing — captions may split inside a word (pip install jieba into venv-jy)")
     def _seg(t): return list(t)
+
+
+if "--no-caption-gate" not in sys.argv: _caption_gate()
 
 
 def _split_caption(c, limit=14.0):
