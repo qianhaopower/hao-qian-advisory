@@ -273,3 +273,19 @@ roughly 10–20 requests arrived over the video weeks before this line.
 | Date | Connections | Note |
 |---|---|---|
 | 2026-09-30 | 2,798 | baseline |
+
+### Desk forecast — recorded 2026-09-30, to be scored at month 3 and 6
+
+Assumptions: cadence holds (a note every 2–3 days), formulas hold
+(situation/metaphor doors), review loop continues.
+
+小红书 (from 61 followers, ~13 follows per 1,000 views, 10%+ engagement):
+- Floor (no breakout): 150–300 followers at 3 months; 400–800 at 6.
+- Median (1–3 mid breakouts of a few thousand views): 300–800 at 3
+  months; 1,000–3,000 at 6. Desk considers this the likely path.
+- Tail (one true viral note): not forecastable.
+Plus a search-traffic undercurrent from save-heavy practical notes.
+
+LinkedIn: connections ~2,900 at 3 months, >3,000 at 6; the real output is
+peer-circle reputation via out-of-network episodes (Ep. 20 pattern), not
+counts. Score these against reality at 2026-12-30 and 2027-03-30.
