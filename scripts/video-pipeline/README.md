@@ -81,7 +81,12 @@ stays for anything Hao wants in the old paper look.
     2. cut + reframe + hlg709 LUT (no saturation bake) -> video_cut.mp4, then the bsf+colr retag
        (frame props keep the HLG tag even with -color_trc bt709 — CapCut would tone-map twice)
     3. audio_simple.py with FREEZE=0 (no cover freeze in this build)  -> audio_cut.wav ; mux -> source_ready.mp4
-    4. captions.json: word-boundary chunks, display weight <= 14 (Latin 0.55/char ≈ 25 chars), hold = next start
+    4. captions.json: `captions_from_blocks.py caption_words.json captions.json` — ONE CAPTION PER
+       BLOCK (a sentence or clause), wrapped inside the caption into 2–3 balanced lines (≤ ~32 chars,
+       hard cap ~38; punctuation-aware, no orphan word, never split after a function word). SENTENCE
+       LAW (Hao 2026-09-30): a caption is never cut in two mid-clause. Write BLOCKS as clauses.
+       fx entries anchor by "match" (substring of a caption) or by "at" (seconds) — use "at" when the
+       beat sits inside a sentence.
     5. inserts: make_sim_wt.py scenes (+ PNG stills, Ken Burns is baked by the generator) into <workdir>/inserts/
     6. fx.json (schema = xhs-pipeline/fx_example.json): title / corner_mark / face_frame / toplines / punch /
        cap_colors / inserts / endcard; bgm null, punch sfx null (LinkedIn stays dry)

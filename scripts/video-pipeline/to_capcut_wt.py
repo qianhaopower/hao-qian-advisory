@@ -22,8 +22,8 @@ DRAFTS = sys.argv[3] if len(sys.argv) > 3 else os.path.expanduser(
 CAPS = json.load(open("captions.json"))
 
 
-def _w(t):  # display weight: CJK = 1, Latin/digit/space ≈ 0.55
-    return sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in t)
+def _w(t):  # display weight: CJK = 1, Latin/digit/space ≈ 0.55; a multi-line text counts its LONGEST line
+    return max(sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in line) for line in t.split("\n"))
 
 
 def _split_caption(c, limit=14.0):
@@ -32,7 +32,7 @@ def _split_caption(c, limit=14.0):
     piece ≥ 4字 results, else at the weight midpoint — recursively; time is divided in
     proportion to weight. Enforced in code so it cannot be forgotten at proofread time."""
     t = c["text"]
-    if _w(t) <= limit: return [c]
+    if "\n" in t or _w(t) <= 21.0: return [c]   # SENTENCE LAW (Hao 2026-09-30): a caption is never cut in two; the size floor carries lines up to ~38 chars
     cut = None
     for i in range(len(t) - 1, 0, -1):           # prefer a natural break near the middle
         if t[i - 1] in ",，、。;；:：?？!！ " and 4 <= _w(t[:i]) and 4 <= _w(t[i:]) and abs(_w(t[:i]) - _w(t) / 2) < limit / 2:
@@ -51,8 +51,11 @@ def _split_caption(c, limit=14.0):
 ANCH = [dict(c) for c in CAPS]           # anchors match the ORIGINAL sentences (fx.json was written against them)
 _before = len(CAPS); CAPS = [x for c in CAPS for x in _split_caption(c)]
 if len(CAPS) != _before: print(f"caption width law: {_before} -> {len(CAPS)} lines (split ≥15字)")
-assert max(_w(c["text"]) for c in CAPS) <= 14.0 + 1e-6, "a caption is still too wide"
+assert max(_w(c["text"]) for c in CAPS) <= 21.0 + 1e-6, "a caption line is too wide (>21 weight ≈ 38 chars) — it would run off the frame at the size floor"
 FX = json.load(open("fx.json"))
+for _k in ("inserts", "toplines", "punch", "floaters", "doodles", "cards", "cap_colors", "zoom_overrides", "stickers"):
+    for _e in FX.get(_k, []) or []:
+        _e.setdefault("match", "")            # entries may anchor by "at" instead of "match"
 DUR = CAPS[-1]["hold"]
 _probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
                          "format=duration", "-of", "csv=p=0", SRC],
@@ -73,9 +76,17 @@ LOOP_SWAY = getattr(cc.TextLoopAnim, "晃动", None)
 
 def find(match):
     for c in ANCH:                          # original sentence → same start time as its first split piece
-        if match in c["text"]:
+        if match in c["text"] or match in c["text"].replace("\n", " "):
             return c
     return None
+
+
+def anchor(e):
+    """fx entries anchor by "match" (a substring of a caption → that caption's start) or by an explicit
+    "at" (seconds on the cut timeline) — needed since captions are whole sentences (2026-09-30)."""
+    if e.get("at") is not None:
+        return {"start": float(e["at"]), "hold": float(e["at"]) + 0.1, "text": ""}
+    return find(e.get("match", ""))
 
 
 def _face_safe_x(x, y):
@@ -112,12 +123,12 @@ vseg.add_keyframe(KeyframeProperty.contrast, tim("0s"), float(_g.get("contrast",
 vseg.add_keyframe(KeyframeProperty.brightness, tim("0s"), float(_g.get("brightness", 0.05)))
 events = []
 for z in FX.get("zoom_overrides", []):
-    c = find(z["match"])
+    c = anchor(z)
     if c:
         events.append((c["start"], z.get("z", 1.08), z.get("hold", 3.0)))
 cards = []
 for cd in FX.get("cards", []):
-    c = find(cd["match"])
+    c = anchor(cd)
     if c:
         cards.append((c["start"], c["start"] + cd.get("hold", 2.8), cd["lines"]))
 # all uniform_scale keyframes gathered, sorted, deduped — out-of-order
@@ -141,7 +152,7 @@ sc.add_segment(vseg, "video")
 sc.add_track(TrackType.video, "inserts", relative_index=1)
 FACE_HOLD = float((FX.get("face_frame") or {}).get("hold", 0.35)) if FX.get("face_frame") else 0.0
 for ins in FX.get("inserts", []):            # {"match","file","hold"?}
-    c = find(ins["match"])
+    c = anchor(ins)
     fp = os.path.expanduser(ins["file"])
     if not c or not os.path.exists(fp):
         print(f"!! insert skipped: {ins.get('match')} {ins.get('file')}")
@@ -179,7 +190,7 @@ for ins in FX.get("inserts", []):            # {"match","file","hold"?}
 # no toplines/punches/floaters while a text-bearing insert is on screen
 INSERT_WINDOWS = []
 for ins in FX.get("inserts", []):
-    c = find(ins["match"])
+    c = anchor(ins)
     if c:
         INSERT_WINDOWS.append((c["start"], c["start"] + ins.get("hold", 3.0)))
 
@@ -244,7 +255,7 @@ if ec and os.path.exists(os.path.expanduser(ec["file"])):
 
 cap_color = {}
 for c2 in FX.get("cap_colors", []):
-    c = find(c2["match"])
+    c = anchor(c2)
     if c:
         cap_color[id(c)] = c2.get("color", "gold")
 for c in CAPS:
@@ -257,7 +268,7 @@ for c in CAPS:
         border=TextBorder(color=(0.0, 0.0, 0.0), width=18.0)), "captions")
 
 for tl in FX.get("toplines", []):
-    c = find(tl["match"])
+    c = anchor(tl)
     if not c:
         continue
     if during_insert(c["start"], c["start"] + tl.get("hold", 2.4)):
@@ -276,7 +287,7 @@ for tl in FX.get("toplines", []):
     sc.add_segment(seg, "toplines")
 
 for p in FX.get("punch", []):
-    c = find(p["match"])
+    c = anchor(p)
     if not c:
         continue
     if during_insert(c["start"], c["start"] + p.get("hold", 2.2)):
@@ -300,7 +311,7 @@ for p in FX.get("punch", []):
     sc.add_segment(seg, "punch")
 
 for fl in FX.get("floaters", []):
-    c = find(fl["match"])
+    c = anchor(fl)
     if not c:
         continue
     if during_insert(c["start"], c["start"] + fl.get("hold", 2.0)):
@@ -318,7 +329,7 @@ for fl in FX.get("floaters", []):
     except Exception:
         sc.add_segment(seg, "float2")
 for dd in FX.get("doodles", []):
-    c = find(dd["match"])
+    c = anchor(dd)
     if not c:
         continue
     seg = cc.TextSegment(
@@ -369,7 +380,7 @@ SFX_DIR = os.path.join(ASSETS, "sfx")
 DEFAULT_SFX = {"gold": "sparkle", "red": "thud"}
 import wave
 for p in FX.get("punch", []):
-    c = find(p["match"])
+    c = anchor(p)
     name = p.get("sfx", DEFAULT_SFX.get(p.get("style", "gold")))
     fp = os.path.join(SFX_DIR, f"{name}.wav") if name else None
     if c and fp and os.path.exists(fp):
