@@ -59,6 +59,16 @@ Karaoke-style captions, drawn word-by-word in sync with speech:
   its own line** as it's spoken: "THEY'RE", "CHAMPAGNE.", "RATE.",
   "90%+", "GROWTH AND MASTERY".
 - Block clears at sentence boundaries (each block lives ~2–4 s).
+- **CAPTION SENTENCE LAW (Hao, 2026-09-30, after Ep. 21 v3 and the same fault on
+  the 小红书 line): one caption = one sentence or one clause, exactly as the
+  builder's BLOCKS were written. A long one wraps INSIDE the caption (2–3
+  balanced lines, ≤ ~32 Latin chars each, hard cap ~38) and the generator
+  shrinks the font by the longest line. A caption is NEVER cut in two at a
+  character count: no half-sentence, no comma dangling at the end with the
+  rest in the next caption, no break after a function word, no orphan last
+  word. Enforced in code: `captions_from_blocks.py` builds captions per
+  BLOCK and `to_capcut_wt.py` refuses to split (assert). Write BLOCKS as
+  clauses of ≤ ~32 chars per intended line.**
 - Numbers kept as figures ("90%+", "0.1%"), punctuation kept, no emoji,
   no colour highlights, no boxes.
 

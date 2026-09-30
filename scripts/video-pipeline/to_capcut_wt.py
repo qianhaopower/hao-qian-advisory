@@ -50,7 +50,8 @@ def _split_caption(c, limit=14.0):
 
 ANCH = [dict(c) for c in CAPS]           # anchors match the ORIGINAL sentences (fx.json was written against them)
 _before = len(CAPS); CAPS = [x for c in CAPS for x in _split_caption(c)]
-if len(CAPS) != _before: print(f"caption width law: {_before} -> {len(CAPS)} lines (split ≥15字)")
+if len(CAPS) != _before:
+    raise SystemExit(f"CAPTION SENTENCE LAW: {len(CAPS) - _before} caption(s) would be cut in two — build captions.json with captions_from_blocks.py (one caption per clause, wrapped inside) instead of chunking")
 assert max(_w(c["text"]) for c in CAPS) <= 21.0 + 1e-6, "a caption line is too wide (>21 weight ≈ 38 chars) — it would run off the frame at the size floor"
 FX = json.load(open("fx.json"))
 for _k in ("inserts", "toplines", "punch", "floaters", "doodles", "cards", "cap_colors", "zoom_overrides", "stickers"):

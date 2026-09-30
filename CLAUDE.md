@@ -60,6 +60,10 @@ Hao's videos will go to more platforms later, so every episode ends with an arch
 - **Archive by COPY, never by move, while a post may still be uploading** (Hao, 2026-09-21: the WT session moved Ep. 18's `final.mp4` out of `~/Downloads` the moment he said "我发了" and killed his LinkedIn upload mid-transfer). "Posted"/"发了" means he pressed the button, not that the platform has finished. So: copy raw/master/upload/thumbnail into the archive; leave the delivery package (`- final.mp4`, `- thumbnail.jpg`, `- caption.txt`, the upload file) in `~/Downloads` untouched. It leaves `~/Downloads` only when Hao gives the live post URL or explicitly says to clear it. Superseded cuts (`cut1…N`) and fallback poster frames may still go to the Trash; the file he uploads never does.
 - Lines stay separate: no session moves another line's files (FI, WT, piano).
 
+## Caption law (all video lines, since 2026-09-30)
+
+One caption = one sentence or one clause. A long one wraps INSIDE the caption (2–3 balanced lines), never gets cut into two captions at a character count — no half-sentences, no comma dangling at the end of a caption with the rest in the next one, no orphan last word. Hao rejected Ep. 21 v3 for this and has seen the same on the 小红书 line ("一句话还是得是一句话，不能一句话断成两截"). WT enforces it in `scripts/video-pipeline/captions_from_blocks.py` + `to_capcut_wt.py` (asserts); the FI generator (`scripts/xhs-pipeline/to_capcut.py`) must split long captions into lines inside one caption, falling back to a second caption only at a clause boundary.
+
 ## Conventions
 
 - Counts and claims on pages must stay honest — empty sections say so plainly ("Empty · deliberately"), never fake fullness.
