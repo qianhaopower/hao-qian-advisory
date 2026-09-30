@@ -263,3 +263,13 @@ notes running), double the monthly average. Conversion ~13 followers per
 one true breakout (thousands of views), triple-digit followers, and the
 two proven shapes (metaphor door; situation + absolution) still working.
 Weekly Sunday review, not nightly number-checking.
+
+## LinkedIn connections tracker
+
+Hao tracks one number here: total connections (he accepts incoming
+requests; growth is video-driven inbound). No earlier baseline exists —
+roughly 10–20 requests arrived over the video weeks before this line.
+
+| Date | Connections | Note |
+|---|---|---|
+| 2026-09-30 | 2,798 | baseline |
