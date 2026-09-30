@@ -253,3 +253,13 @@ best line ("大脑的刹车是限量的") sat on the cover instead of in the tit
 plus 6-minute length taxes completion. Lesson for FI titles: the most
 visceral line goes IN the title (e.g. 晚上管不住嘴,是大脑的刹车没油了).
 Hao to check the note's exit-point curve in XHS analytics.
+
+### 小红书 month-one milestone — 2026-09-30
+
+One month of posting (08-30 → 09-30), 16 notes: followers 22 → 61.
+Velocity is accelerating — +11 in the final four days (toaster + brake
+notes running), double the monthly average. Conversion ~13 followers per
+1,000 views. Judgement point set with Hao: 3 months / 50 notes — look for
+one true breakout (thousands of views), triple-digit followers, and the
+two proven shapes (metaphor door; situation + absolution) still working.
+Weekly Sunday review, not nightly number-checking.
