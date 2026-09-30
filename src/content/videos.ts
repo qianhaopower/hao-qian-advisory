@@ -645,6 +645,38 @@ export const EPISODES: VideoEpisode[] = [
       "I let AI filter my anger before it reaches anyone.\n\nWhen someone breaks a promise again, I talk to AI first, with the raw emotion and the facts. Then one request: filter out the emotion, keep the facts, format the message. What goes out is the same information, delivered without hurting anyone. What do you let AI filter for you?\n\nhttps://haoqian.co/videos/ai-emotion-filter\n\n#WorkingTheory #AI\n\nMusic: Kevin MacLeod (incompetech.com)",
     linkedinTags: ["WorkingTheory", "AI"],
   },
+  {
+    slug: "keyboard-is-a-decoration",
+    series: "working-theory",
+    sequence: 21,
+    title: "My Keyboard Is a Decoration",
+    status: "published",
+    publishedAt: "2026-09-30",
+    language: "en",
+    durationSeconds: 136,
+    hook: "My keyboard has become a decoration.",
+    summary:
+      "In the last few months Hao dictated more than 135,000 words outside of work, and about twice that through voice control. With AI on the other end there is no need to type precisely: say the rough ideas, the rough meaning, and let AI format them. A real example: a few-hundred-word Slack reply that used to take 15 to 20 minutes, spoken as three rough points, came back 20 seconds later as a well-formatted message full of context pulled from previous conversations.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/keyboard-is-a-decoration.mp4",
+    aspect: "9:16",
+    poster: "/videos/keyboard-is-a-decoration/poster.jpg",
+    captions: "/videos/keyboard-is-a-decoration/captions.vtt",
+    transcript: [
+      "My keyboard has become a decoration. Recently, I've been using voice input and AI together, to replace my keyboard. In the last few months, I've dictated more than 130,000 English words, and that's outside of work. If you count all of the words I typed in using voice control, that's probably twice as much as that.",
+      "AI being able to comprehend, understand what you mean exactly, there is no need to type precisely. You can basically use voice control to tell the rough ideas, the rough meaning, to AI, and they can format the ideas in the perfect sense.",
+      "Let's take a real example. This morning, I need to reply a Slack message. Probably a few hundred words. In the past, it's going to take 15 to 20 minutes to reply. But instead, I say these sentences to AI, via voice control: 'Help me reply to these Slack messages. Don't send anything. Just draft the message. There are three things I want to deliver to the person. First thing is, I agree that this is a true customer experience problem that we need to prioritize to fix immediately. The second thing is, I don't think we need a full analysis before we start fixing anything, because out of these many problems, there are a few low-hanging fruit there that we can pretty much start fixing straight away. The third thing is, we should involve Bob Smith from the other team into this area, because he has done recent analysis in this area.'",
+      "And that's it. 20 seconds later, there is a very well formatted message, full of context, a lot of information pulled from previous conversations injected into the message, delivered in three points, to my colleague.",
+      "So this is my two cents of how to use AI to increase your productivity, to manage better in the age of AI.",
+    ],
+    keyPoints: [
+      "With AI reading the intent, dictation only needs the rough idea; the formatting is AI's job.",
+      "A three-point Slack reply: 20 seconds spoken instead of 20 minutes typed.",
+    ],
+    linkedinCaption:
+      "My keyboard has become a decoration.\n\nIn the last few months I dictated 135,795 words outside of work (Wispr Flow counted), and about twice that through voice control. With AI on the other end there is no need to type precisely: say the rough ideas, let it format. This morning a few-hundred-word Slack reply, three points, took 20 seconds instead of 20 minutes. When did you last type a long message?\n\nhttps://haoqian.co/videos/keyboard-is-a-decoration\n\n#WorkingTheory #AI\n\nMusic: Kevin MacLeod (incompetech.com)",
+    linkedinTags: ["WorkingTheory", "AI"],
+  },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
   /* Captions and transcripts are Hao's spoken words (voice-first, no    */

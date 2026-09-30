@@ -18,6 +18,7 @@
 | 18 | Three Layers of Resources | 2026-09-21 | ✅ 2026-09-21 | posted by Hao (URL not yet recorded) |
 | 19 | Muscle Memory in the Age of AI | 2026-09-25 | ✅ 2026-09-25 | first CapCut-styled episode; posted by Hao (URL not yet recorded) |
 | 20 | AI as My Emotion Filter | 2026-09-28 | ✅ 2026-09-28 | posted by Hao (URL not yet recorded) |
+| 21 | My Keyboard Is a Decoration | 2026-09-30 | ✅ 2026-09-30 | posted by Hao (URL not yet recorded) |
 
 Rule: Hao tells the cutting room when a post goes live (the session cannot
 read LinkedIn — it is login-walled); the row flips and the post URL lands
