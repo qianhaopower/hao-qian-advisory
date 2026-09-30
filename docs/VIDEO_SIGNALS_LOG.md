@@ -241,3 +241,14 @@ Second confirmation of the situation-first law after Reorg: a first-person
 confession door ("I let AI filter my anger") + concrete trigger (someone
 breaks a promise again) + practical AI payload. Benchmark to watch: >600–700
 by 7d would beat Ep. 2's friend-subsidised record organically.
+
+### 大脑刹车 note — 2026-09-30 reading
+
+晚上忍不住吃甜的,不是你意志薄弱 (06:06, posted 09-28 19:45): 148 views,
+赞9 藏5 评1 转2 (~11.5%) at ~2d. Engagement rate matches the account's
+winners — content converted; distribution stalled. Diagnosis: the title
+offers absolution but no image and no promised payoff, while the note's
+best line ("大脑的刹车是限量的") sat on the cover instead of in the title;
+plus 6-minute length taxes completion. Lesson for FI titles: the most
+visceral line goes IN the title (e.g. 晚上管不住嘴,是大脑的刹车没油了).
+Hao to check the note's exit-point curve in XHS analytics.
