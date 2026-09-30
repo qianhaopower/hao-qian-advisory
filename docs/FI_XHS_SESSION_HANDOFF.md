@@ -24,3 +24,6 @@ Hao 只做:录像(开拍先 2 秒封面脸、侧领夹麦、头顶少留白)→ 
 花字资源采集(Hao 在 CapCut 随手用一个花字保存,我读 ID);账号名未定(角标占位 Friends Intelligence);
 7 天后看前几条数据。未提交的仓库改动:docs/、scripts/xhs-pipeline/、content-src/video-scripts/fi-xhs-*——
 要不要 commit 由 Hao 说。
+
+## 2026-09-30 字幕链 v2(Ep18 起)
+剪完的 source_ready.mp4:`transcribe.py`(留作 audio.wav + 粗转写)→ `whisper-cli -ml 1 -oj -of work/tokens` → `build_captions.py`(CLAUSE LAW + ONSET LAW)→ 校对 FIX 表 → fx 锚点按行核对 → to_capcut。BGM 一律 `assets/bed_meditation_loop.mp3`。
