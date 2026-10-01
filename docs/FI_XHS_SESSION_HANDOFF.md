@@ -27,3 +27,6 @@ Hao 只做:录像(开拍先 2 秒封面脸、侧领夹麦、头顶少留白)→ 
 
 ## 2026-09-30 字幕链 v2(Ep18 起)
 剪完的 source_ready.mp4:`transcribe.py`(留作 audio.wav + 粗转写)→ `whisper-cli -ml 1 -oj -of work/tokens` → `build_captions.py`(CLAUSE LAW + ONSET LAW)→ 校对 FIX 表 → fx 锚点按行核对 → to_capcut。BGM 一律 `assets/bed_meditation_loop.mp3`。
+
+## 2026-10-01 字幕链 v3(Ep19 起)
+`whisper-cli -ml 1 -oj -of work/tokens`(只取全文)→ `build_captions.py`:按音频里的真实停顿切「语音岛」= 一句一条字幕,长句在字幕内换行(2–3 行);错字写 `work/fix.json`,换行/挪词写 `work/caption_edits.json`;to_capcut 的 CAPTION GATE 只认 builder 写出的 captions.json。更多特效:zoom_overrides 约每 30 秒一次、punch 6–8 个、floaters 5–7 个、doodles 2 个。

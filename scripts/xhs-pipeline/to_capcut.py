@@ -34,8 +34,9 @@ def _caption_gate():
     for i, c in enumerate(CAPS):
         t = c["text"]
         if any(p in t for p in "，,；;"): problems.append(f"line {i} has a comma inside: {t}")
-        first = next(iter(_seg(t)), "")
-        if first in ("的", "了", "地", "得", "中", "上", "下", "里"): problems.append(f"line {i} opens on a dangling word: {t}")
+        for ln in t.split("\n"):
+            first = next(iter(_seg(ln)), "")
+            if first in ("的", "了", "地", "得", "中", "上", "下", "里"): problems.append(f"line {i} opens on a dangling word: {t!r}")
         if c["hold"] - c["start"] < 0.3: problems.append(f"line {i} shorter than 0.3 s: {t}")
     if problems:
         print("!! CAPTION GATE FAILED"); [print("   -", x) for x in problems[:12]]
@@ -45,8 +46,8 @@ def _caption_gate():
 
 
 
-def _w(t):  # display weight: CJK = 1, Latin/digit/space ≈ 0.55
-    return sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in t)
+def _w(t):  # display weight of the WIDEST line: CJK = 1, Latin/digit/space ≈ 0.55 (a caption may wrap inside itself)
+    return max(sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in line) for line in t.split("\n"))
 
 
 try:
@@ -114,7 +115,7 @@ LOOP_SWAY = getattr(cc.TextLoopAnim, "晃动", None)
 
 def find(match):
     for c in ANCH:                          # original sentence → same start time as its first split piece
-        if match in c["text"]:
+        if match in c["text"] or match in c["text"].replace("\n", ""):
             return c
     return None
 
@@ -301,11 +302,12 @@ for c2 in FX.get("cap_colors", []):
         cap_color[id(c)] = c2.get("color", "gold")
 for c in CAPS:
     col = {"gold": GOLD, "red": RED}.get(cap_color.get(id(c)), WHITE)
-    csize = min(8.5, max(5.2, 8.5 * 13 / max(len(c["text"]), 1)))
+    _lines = c["text"].split("\n")                 # a wrapped caption is sized by its widest line and lifted so its last line sits where one line would
+    csize = min(8.5, max(5.2, 8.5 * 13 / max(max(len(l) for l in _lines), 1)))
     sc.add_segment(cc.TextSegment(
         c["text"], T(c["start"], c["hold"]), font=F_HEAVY,
         style=TextStyle(size=csize, bold=True, color=col, align=1),
-        clip_settings=ClipSettings(transform_y=-0.54),
+        clip_settings=ClipSettings(transform_y=-0.54 + 0.035 * (len(_lines) - 1)),
         border=TextBorder(color=(0.0, 0.0, 0.0), width=18.0)), "captions")
 
 for tl in FX.get("toplines", []):
