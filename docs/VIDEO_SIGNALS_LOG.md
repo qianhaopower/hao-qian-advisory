@@ -289,3 +289,12 @@ Plus a search-traffic undercurrent from save-heavy practical notes.
 LinkedIn: connections ~2,900 at 3 months, >3,000 at 6; the real output is
 peer-circle reputation via out-of-network episodes (Ep. 20 pattern), not
 counts. Score these against reality at 2026-12-30 and 2027-03-30.
+
+### 血糖过山车 note — day one (2026-10-01)
+
+修养差?是血糖在坐过山车 (07:05, posted 09-30 19:47): 191 views, 评3 赞7
+藏5 转0 at 24h; net followers +2/−1. Strong start by account standards —
+3 comments in a day is the rarest currency; the needling question title
+("修养差?") invites replies. Follower loss = churn noise, not signal.
+Next up: a fatty-acid note in the toaster-metaphor mould — effectively the
+re-skin of the suppressed 脂肪 note; adversarial words stay banned.
