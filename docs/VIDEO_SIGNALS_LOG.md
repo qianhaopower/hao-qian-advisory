@@ -298,3 +298,19 @@ counts. Score these against reality at 2026-12-30 and 2027-03-30.
 ("修养差?") invites replies. Follower loss = churn noise, not signal.
 Next up: a fatty-acid note in the toaster-metaphor mould — effectively the
 re-skin of the suppressed 脂肪 note; adversarial words stay banned.
+
+## Ep. 21 — My Keyboard Is a Decoration
+
+Posted to LinkedIn 2026-09-30.
+
+| Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Notes |
+|---|---|---|---|---|---|---|---|
+| 2026-10-01 | ~1d | **44** (61% in) | 26 | 48 | 19m 59s | **24s** | worst distribution ever; best recent retention; views > impressions (profile/replays) |
+
+Diagnosis: not the content — strangled by its own predecessor. Ep. 20 was
+still mid-flight in the account's best-ever distribution run (67%
+out-of-network) when Ep. 21 landed 2 days later; same collapse pattern as
+the August daily-posting week. **New scheduling rule: don't post the next
+episode while the previous one's impressions are still climbing — wait
+for the plateau (a hot post gets the runway for 4–5 days).** 2/week is an
+average, not a timer. Ep. 21 stays up; retention may earn it a slow burn.
