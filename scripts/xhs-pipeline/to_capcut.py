@@ -360,10 +360,14 @@ for fl in FX.get("floaters", []):
     if during_insert(c["start"], c["start"] + fl.get("hold", 2.0)):
         print(f"!! floater suppressed (insert overlap): {fl['text']}")
         continue
+    # FLOATER WEIGHT LAW (2026-10-01, Hao: 屏幕上方蹦出来的小黄字线太细,基本看不见,重点要加粗 — and he
+    # had flagged it before): floaters are set in the heavy display face, bold, size 11, with the
+    # same black outline as the captions. The thin brush face is retired for anything he must read.
     seg = cc.TextSegment(
-        fl["text"], T(c["start"], c["start"] + fl.get("hold", 2.0)), font=F_BRUSH,
-        style=TextStyle(size=9.5, color=GOLD if fl.get("color", "gold") == "gold"
+        fl["text"], T(c["start"], c["start"] + fl.get("hold", 2.0)), font=F_BOLD,
+        style=TextStyle(size=11.0, bold=True, color=GOLD if fl.get("color", "gold") == "gold"
                         else WHITE, align=1),
+        border=TextBorder(color=(0.0, 0.0, 0.0), width=40.0),
         clip_settings=ClipSettings(transform_x=_face_safe_x(fl.get("x", 0.62), fl.get("y", 0.42)) * 2 - 1,
                                    transform_y=1 - 2 * fl.get("y", 0.42), rotation=-3))
     seg.add_animation(IN_POP).add_animation(OUT_UP)
