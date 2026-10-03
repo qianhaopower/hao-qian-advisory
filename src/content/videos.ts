@@ -1318,4 +1318,42 @@ export const EPISODES: VideoEpisode[] = [
       "有的人不管多忙都从容淡定,有的人一点事就急赤白脸、手心出汗。这可能不是修养,是血糖有多稳定。\n细胞上有门,血糖从门进;开门的钥匙是胰岛素。敏感的细胞,一点胰岛素门就开了,血糖平稳,人也平和。\n长期压力大、睡不好、吃高糖,细胞就对胰岛素不敏感了(胰岛素抵抗):血里糖很多,细胞却拿不到;身体只好释放更多胰岛素,细胞更不敏感——恶性循环。\n习惯了大剂量以后,稍微饿一点身体就一下放出很多胰岛素,把血糖压得过低:大脑(静息时占 20% 能量)先缺,脑雾、听不进话;身体再放肾上腺素救场,于是手心出汗、心跳加快、脸发白——远古看到老虎的反应,只是这次是因为一顿饭。\n让细胞变敏感的三件事:少吃甜食(含糖饮料和果汁最快);吃饭先蔬菜纤维,再米饭面条;吃完饭动一动。\n细胞越敏感,人越淡定。\n\n#血糖 #胰岛素抵抗 #情绪稳定 #健康饮食 #少吃糖 #营养",
     platformTags: ["血糖", "胰岛素抵抗", "情绪稳定", "健康饮食", "少吃糖", "营养"],
   },
+  {
+    slug: "fi-also-sugar",
+    series: "friends-intelligence",
+    sequence: 20,
+    title: "配料表上这些名字,其实都是糖",
+    titleEn: "That is sugar, too",
+    status: "published",
+    publishedAt: "2026-10-03",
+    language: "zh-Hans",
+    durationSeconds: 47,
+    topic: "营养智慧 · Nutrition Intelligence",
+    hook: "逛超市,看配料表,问了十次「这是啥」——答案都一样:糖。",
+    summary:
+      "这一集没有出镜,是一部画出来的小短片:一个提着购物篮的顾客,在超市里一样一样举起来问「这是啥」,抱着胳膊的店员板着脸回答。Maple syrup、Honey、Coconut sugar、Glucose syrup、Corn syrup、Molasses、Agave、Brown rice syrup、浓缩果汁、复原果汁——包装上写着天然、0 蔗糖、不加糖,配料表里都是糖。只有一样东西没有配料表:一个完整的苹果。按世界卫生组织的定义,这十样都算游离糖;完整水果里的糖不算。是《糖,不一定叫 Sugar》那一集的续篇。两个小人不说人话,只发出游戏里那种小音,台词都在气泡里。",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/fi-also-sugar.mp4",
+    aspect: "9:16",
+    poster: "/videos/fi-also-sugar/poster.jpg",
+    transcript: [
+      "顾客:配料表第一个:Maple syrup?这是啥? 店员:糖。",
+      "顾客:那 Honey 呢?纯天然的! 店员:也是糖。",
+      "顾客:Coconut sugar!椰子做的! 店员:还是糖。",
+      "顾客:Glucose syrup? 店员:糖。 顾客:Corn syrup? 店员:糖。 顾客:Molasses? 店员:糖。 顾客:Agave? 店员:糖。 顾客:Brown rice syrup? 店员:糖。",
+      "顾客:嘿嘿,浓缩果汁!这可是水果! 店员:……糖。",
+      "顾客:Reconstituted juice 总行了吧? 店员:兑回水,还是糖。",
+      "顾客:……那这个呢?(一个完整的苹果) 店员:这个,吃吧。",
+      "顾客:对了,您贵姓? 店员:免贵,姓唐。 顾客:也是糖!!!",
+      "看到这些名字,都当成糖。完整的水果,不算。(游离糖的定义来自世界卫生组织,2015)",
+    ],
+    keyPoints: [
+      "枫糖浆、蜂蜜、椰子糖、各种糖浆、浓缩果汁、复原果汁:配料表上都是糖。",
+      "包装上的「天然」「0 蔗糖」「不加糖」,不等于没有游离糖。",
+      "完整的水果没有配料表,它的糖不算游离糖。",
+    ],
+    platformCaption:
+      "逛超市,看配料表,问了十次「这是啥」。\n答案都一样。\nMaple syrup、Honey、Coconut sugar、Glucose syrup、Corn syrup、Molasses、Agave、Brown rice syrup、浓缩果汁、复原果汁 —— 包装上写着天然、0 蔗糖、不加糖,配料表里都是糖。\n只有一样东西没有配料表:一个完整的水果。\n之前那期讲过糖的 23 个化名,这期换两个小人演一遍。\n\n#配料表 #游离糖 #减糖 #健康饮食 #营养 #逛超市",
+    platformTags: ["配料表", "游离糖", "减糖", "健康饮食", "营养", "逛超市"],
+  },
 ];

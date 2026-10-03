@@ -417,6 +417,29 @@ Path / shopper / hud / fly helpers — copy the file per episode, keep the engin
   special are cousins of this style; when in doubt, prefer THIS one — a smooth top-down
   world with a character, a path and a score.
 
+## GENERATED SKIT (Ep20 这也是糖, 2026-10-03 — Hao: 「远超我的预期，还挺有意思的」)
+For a day with no take: a fully drawn two-character skit on one of the line's topics (Ep20 is
+the sequel to Ep15: a shopper asks 「这是啥」 ten times, a clerk with a straight face answers 糖).
+Engine: `scripts/xhs-pipeline/make_sugar_skit.py` (run with /usr/bin/python3 — it has numpy).
+A new skit = new ITEMS + new lines in build(); `--stills` for the contact sheet, `--audio` to
+redo only the sound.
+- NO AI VOICE: characters speak in game-style babble blips (a bright chirp, a low "bom"); every
+  line is in a speech bubble, so the film reads with the sound off. One music bed, −14 LUFS.
+  The agent cannot hear it — Hao listens before posting.
+- READ TIME (Hao, v1: 让人起码把每一个糖看清): even in a quick-fire run, every word the viewer
+  must read stays on screen ≥ 1.8 s, and its name card is up ~0.9 s before the verdict lands.
+- REAL BODIES (Hao, v1: 身体太草了，不要一个大圆圈): shoulders, arms, legs, clothes, a prop
+  (hoodie + jeans + basket; collar + apron + folded arms). Heads and faces can stay simple.
+- HAND-MADE, NOT GENERATED: outlines boil every 5 frames, one handwriting font for the lively
+  character and the heavy font for the stern one, static paper grain. No stock footage needed.
+- STRUCTURE THAT WORKED: cover on frame 1 (title + seal + pillar badge) → three slow beats →
+  a quick run → the long pause → the one honest exception (the apple: whole fruit is not free
+  sugar) → a tag joke true to the piece (姓唐) → recap card with the source → the book card.
+- FACTS still get the fact pass; the recap card names the source (WHO 2015).
+- CLOSE-OUT: the mp4 is posted as-is; the same file goes to the media shelf with
+  `gh release upload media` (no publish-video.sh re-encode); poster = frame 1; site transcript =
+  the dialogue; archive = master + cover + posting.md + a copy of the generator (there is no raw).
+
 ## LONG-FORM GRAMMAR (the 2026-09-20 special, 9 min — for anything over ~4 min)
 - The short-episode density (10–16 events/min) does NOT scale; a long piece runs ~4/min:
   chapter cards as the skeleton (person card = chapter card), 2–3 drawn illustrations for
