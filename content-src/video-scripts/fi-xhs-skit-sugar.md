@@ -42,9 +42,9 @@ Maple syrup、Honey、Coconut sugar、Glucose syrup、Corn syrup、Molasses、Ag
 #配料表 #游离糖 #减糖 #健康饮食 #营养 #逛超市
 
 ## 置顶评论(≤300 字)
-片里的十个名字:Maple syrup 枫糖浆 / Honey 蜂蜜 / Coconut sugar 椰子糖 / Glucose syrup 葡萄糖浆 / Corn syrup 玉米糖浆 / Molasses 糖蜜 / Agave 龙舌兰糖浆 / Brown rice syrup 糙米糖浆 / Fruit juice concentrate 浓缩果汁 / Reconstituted juice 复原果汁。
-按世界卫生组织的定义,这些都算游离糖。完整的水果和牛奶里天然的糖不算。
-我写了本书《Friends Intelligence》,拆解现代生活七种智慧:财富·关系·学习·情绪·营养·运动·睡眠。英文版已出,中文版在路上。
+片里十个名字:Maple syrup 枫糖浆 / Honey 蜂蜜 / Coconut sugar 椰子糖 / Glucose syrup 葡萄糖浆 / Corn syrup 玉米糖浆 / Molasses 糖蜜 / Agave 龙舌兰糖浆 / Brown rice syrup 糙米糖浆 / Fruit juice concentrate 浓缩果汁 / Reconstituted juice 复原果汁。
+按 WHO 的定义都算游离糖;完整水果和牛奶里天然的糖不算。
+我写了本书《Friends Intelligence》,讲现代生活七种智慧。英文版已出,中文版在路上。
 音乐: Kevin MacLeod (incompetech.com)
 
 ## 下一版可以动的地方(等 Hao 看完 v1 再说)
