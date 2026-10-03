@@ -23,7 +23,7 @@ FD = os.path.expanduser("~/Video Studio/work/fonts/")
 F_HEAVY, F_KAI = FD + "SourceHanSansSC-Heavy.otf", FD + "LXGWWenKai-Medium.ttf"
 ASSETS = os.path.expanduser("~/Movies/FI-videos/assets")
 OUTDIR = os.path.expanduser("~/Movies/FI-videos/sugarskit"); TMP = OUTDIR + "/work"
-NAME = "这也是糖-v1"
+NAME = "这也是糖-v2"
 BGM = ASSETS + "/Bossa_Antigua.mp3"; ENDCARD = ASSETS + "/inserts/endcard_nutrition_cta.png"
 
 PAPER=(251,250,247); INK=(31,29,26); INK2=(87,83,74); GOLD=(212,160,23); RED=(204,62,48); GREY=(138,133,122)
@@ -139,9 +139,9 @@ def build():
     beat(0, "配料表第一个：\nMaple syrup？这是啥？", "糖。", hold=0.95)
     beat(1, "那 Honey 呢？\n纯天然的！", "也是糖。", mood="hope")
     beat(2, "Coconut sugar！\n椰子做的！", "还是糖。", mood="hope")
-    for i in range(3, 8):                                             # rapid fire: faster each round
-        k = i - 3
-        beat(i, ITEMS[i][0] + "？", "糖。", a_cps=30, b_cps=22, pre=0.12, gap=0.16 - 0.015 * k, hold=0.40 - 0.03 * k,
+    for i in range(3, 8):                                             # the quick five — quick, but every name stays
+        k = i - 3                                                     # on screen ~1.9 s (Hao, v1: 让人把每一个糖看清)
+        beat(i, ITEMS[i][0] + "？", "糖。", a_cps=20, b_cps=22, pre=0.2, gap=0.34, hold=0.75,
              mood="curious" if k < 3 else "plead", after=None)
     beat(8, "嘿嘿，浓缩果汁！\n这可是水果！", "糖。", mood="smug", dots=True, hold=1.1)
     beat(9, "Reconstituted juice\n总行了吧？", "兑回水，\n还是糖。", mood="plead", hold=1.1, after="tired")
@@ -280,23 +280,57 @@ def limb(p, pts, col, w=26):
     p.L(pts, INK, w + 9); p.L(pts, col, w)
 
 
+def rounded(pts, r, seed=0, n=5, jit=1.2):
+    """A polygon with soft corners and a slightly unsteady hand (the seed boils it)."""
+    rnd = random.Random(seed); out = []
+    for i, v in enumerate(pts):
+        def toward(q):
+            d = math.dist(v, q); k = min(0.5, r / d)
+            return (v[0] + (q[0] - v[0]) * k, v[1] + (q[1] - v[1]) * k)
+        a, c = toward(pts[i - 1]), toward(pts[(i + 1) % len(pts)])
+        for j in range(n + 1):
+            u = j / n
+            out.append(((1 - u) ** 2 * a[0] + 2 * u * (1 - u) * v[0] + u * u * c[0] + rnd.uniform(-jit, jit),
+                        (1 - u) ** 2 * a[1] + 2 * u * (1 - u) * v[1] + u * u * c[1] + rnd.uniform(-jit, jit)))
+    return out
+
+
+JEANS = (92, 118, 166); SHOE = (64, 58, 54); YEL_D = (212, 164, 58); SHIRT = (246, 244, 238); TROUSER = (70, 72, 84)
+
+
+def legs(p, x, fy, col):
+    p.C(x, fy + 4, 122, fill=(226, 220, 206), ry=20)
+    for sx in (-1, 1):
+        p.R(x + sx * 36 - 29, fy - 156, x + sx * 36 + 29, fy - 24, fill=col, outline=INK, width=5, r=12)
+        p.R(x + sx * 42 - 42, fy - 40, x + sx * 42 + 42, fy - 2, fill=SHOE, outline=INK, width=5, r=18)
+
+
+def hand(p, x, y): p.C(x, y, 21, fill=SKIN, outline=INK, width=5)
+
+
 def shopper(p, t, n, mood, talk, holding):
+    """Hoodie, jeans, a basket in one hand; the other hand does the asking."""
     x, fy = AX, FEET; boil = n // 5
     bob = 5 * abs(math.sin(t * 10)) if talk else 2.0 * math.sin(t * 2.4)
     if mood in ("shock",): bob = -10
-    hy = fy - 400 - bob
-    p.C(x, fy + 4, 138, fill=(226, 220, 206), ry=22)
-    for sx in (-1, 1): p.C(x + sx * 54, fy - 10, 46, fill=(70, 62, 56), ry=22)
-    p.P(blob(x, fy - 188 - bob * 0.5, 130, 182, boil), fill=YEL, outline=INK, width=6)
-    sh = fy - 290 - bob * 0.5
+    hy = fy - 400 - bob; sh = fy - 300 - bob * 0.6
+    legs(p, x, fy, JEANS)
+    p.P(rounded([(x - 86, sh), (x + 86, sh), (x + 100, fy - 128), (x - 100, fy - 128)], 38, boil), fill=YEL, outline=INK, width=6)
+    p.L([(x - 92, fy - 152), (x + 92, fy - 152)], YEL_D, 5)                                        # hem, pocket, strings
+    p.P(rounded([(x - 42, fy - 226), (x + 42, fy - 226), (x + 56, fy - 168), (x - 56, fy - 168)], 12, 1, jit=0), outline=YEL_D, width=5)
+    for sx in (-1, 1): p.L([(x + sx * 15, sh + 16), (x + sx * 18, sh + 58)], YEL_D, 5)
+    by = sh + 164                                                                                  # the basket
+    p.A(x - 114, by + 14, 44, 46, 180, 360, INK, 6)
+    p.P(rounded([(x - 172, by + 12), (x - 56, by + 12), (x - 68, by + 82), (x - 160, by + 82)], 10, 2, jit=0), fill=(226, 104, 86), outline=INK, width=5)
+    for q in (34, 58): p.L([(x - 162, by + q), (x - 66, by + q)], (188, 72, 60), 4)
+    limb(p, [(x - 88, sh + 28), (x - 118, sh + 86), (x - 114, sh + 130)], YEL, 34); hand(p, x - 114, sh + 142)
     if mood in ("shock", "win"):
-        limb(p, [(x - 100, sh), (x - 170, sh - 100)], YEL); limb(p, [(x + 100, sh), (x + 170, sh - 100)], YEL)
-        p.C(x - 174, sh - 108, 22, fill=SKIN, outline=INK, width=5); p.C(x + 174, sh - 108, 22, fill=SKIN, outline=INK, width=5)
+        limb(p, [(x + 88, sh + 28), (x + 138, sh - 14), (x + 164, sh - 86)], YEL, 34); hand(p, x + 168, sh - 100)
     elif holding and mood != "tired":
-        limb(p, [(x - 108, sh + 10), (x - 128, sh + 120)], YEL)
-        limb(p, [(x + 100, sh), (x + 168, sh - 96 - bob)], YEL); p.C(x + 172, sh - 104 - bob, 22, fill=SKIN, outline=INK, width=5)
+        limb(p, [(x + 88, sh + 28), (x + 136, sh + 34), (x + 168, sh - 50 - bob)], YEL, 34); hand(p, x + 172, sh - 64 - bob)
     else:
-        limb(p, [(x - 108, sh + 10), (x - 128, sh + 120)], YEL); limb(p, [(x + 108, sh + 10), (x + 128, sh + 120)], YEL)
+        limb(p, [(x + 88, sh + 28), (x + 118, sh + 86), (x + 114, sh + 130)], YEL, 34); hand(p, x + 114, sh + 142)
+    p.P(blob(x, hy + 86, 92, 36, boil + 20), fill=YEL_D, outline=INK, width=5)                     # the hood behind the neck
     p.P(blob(x, hy - 8, 110, 108, boil + 50), fill=HAIR, outline=INK, width=6)                     # hair, then face
     p.L([(x - 6, hy - 112), (x + 6, hy - 150), (x + 30, hy - 158)], INK, 9)
     p.P(blob(x, hy + 18, 92, 84, boil + 90), fill=SKIN)
@@ -327,16 +361,17 @@ def shopper(p, t, n, mood, talk, holding):
 
 
 def clerk(p, t, n, mood, talk):
-    x, fy = BX, FEET; boil = n // 5; hy = fy - 400
-    p.C(x, fy + 4, 138, fill=(226, 220, 206), ry=22)
-    for sx in (-1, 1): p.C(x + sx * 54, fy - 10, 46, fill=(70, 62, 56), ry=22)
-    p.P(blob(x, fy - 188, 130, 182, boil + 7), fill=(246, 244, 238), outline=INK, width=6)
-    p.R(x - 86, fy - 300, x + 86, fy - 44, fill=GREEN, outline=INK, width=5, r=22)                 # the apron
-    p.L([(x - 70, fy - 298), (x - 44, fy - 356)], INK, 5); p.L([(x + 70, fy - 298), (x + 44, fy - 356)], INK, 5)
-    p.R(x + 18, fy - 286, x + 70, fy - 256, fill=WHITE, outline=INK, width=3, r=5); p.L([(x + 26, fy - 271), (x + 62, fy - 271)], GREY, 3)
-    limb(p, [(x - 112, fy - 214), (x + 112, fy - 214)], (246, 244, 238), 40)                       # arms folded
-    limb(p, [(x - 96, fy - 180), (x + 60, fy - 188)], (246, 244, 238), 34)
-    p.C(x + 76, fy - 190, 21, fill=SKIN, outline=INK, width=5); p.C(x - 88, fy - 226, 21, fill=SKIN, outline=INK, width=5)
+    """Shirt, collar, a green apron, arms folded. He does not move."""
+    x, fy = BX, FEET; boil = n // 5; hy = fy - 400; sh = fy - 300
+    legs(p, x, fy, TROUSER)
+    p.P(rounded([(x - 86, sh), (x + 86, sh), (x + 96, fy - 132), (x - 96, fy - 132)], 38, boil + 7), fill=SHIRT, outline=INK, width=6)
+    p.P(rounded([(x - 88, fy - 206), (x + 88, fy - 206), (x + 100, fy - 106), (x - 100, fy - 106)], 16, boil + 3), fill=GREEN, outline=INK, width=5)
+    p.R(x - 60, sh + 34, x + 60, fy - 196, fill=GREEN, outline=INK, width=5, r=12); p.R(x - 55, fy - 212, x + 55, fy - 198, fill=GREEN)
+    p.L([(x - 50, sh + 36), (x - 30, sh + 2)], INK, 5); p.L([(x + 50, sh + 36), (x + 30, sh + 2)], INK, 5)
+    p.R(x + 4, sh + 46, x + 48, sh + 70, fill=WHITE, outline=INK, width=3, r=5); p.L([(x + 12, sh + 58), (x + 40, sh + 58)], GREY, 3)
+    for sx in (-1, 1): p.P([(x + sx * 38, sh - 4), (x + sx * 4, sh + 6), (x + sx * 24, sh + 34)], fill=SHIRT, outline=INK, width=4)
+    limb(p, [(x + 88, sh + 26), (x + 110, sh + 96), (x - 30, sh + 116)], SHIRT, 34); hand(p, x - 44, sh + 116)   # arms folded
+    limb(p, [(x - 88, sh + 26), (x - 110, sh + 96), (x + 34, sh + 88)], SHIRT, 34); hand(p, x + 50, sh + 86)
     p.P(blob(x, hy - 2, 106, 104, boil + 31), fill=HAIR, outline=INK, width=6)
     p.R(x - 98, hy - 112, x + 98, hy - 40, fill=HAIR, outline=INK, width=6, r=20); p.R(x - 92, hy - 100, x + 92, hy - 30, fill=HAIR, r=16)
     p.P(blob(x, hy + 22, 92, 82, boil + 60, amp=0.012), fill=SKIN)
