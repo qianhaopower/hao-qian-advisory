@@ -248,10 +248,13 @@ if ti:
             txt, T(0, ti.get("dur", 3.0)), font=F_TITLE,
             # TITLE WIDTH RULE (Ep8 cover clipped a 10字 gold line): gold fits 8字 at 18,
             # white 9字 at 16 — longer lines auto-shrink instead of running off-frame.
-            style=TextStyle(size=(18.0 * min(1, 8 / max(1, len(txt))) if col == "gold"
-                                  else 16.0 * min(1, 9 / max(1, len(txt)))), bold=True,
+            # COVER LAW (2026-10-04, signals desk: cover CTR is the biggest leak — 刹车 5.3% vs 10.3% median):
+            # a short line GROWS to fill the width (gold up to 30, white up to 27) so the cover reads
+            # at feed-thumbnail size; long lines still shrink to fit.
+            style=TextStyle(size=(min(30.0, 18.0 * 8 / max(1, len(txt))) if col == "gold"
+                                  else min(27.0, 16.0 * 9 / max(1, len(txt)))), bold=True,
                             color=GOLD if col == "gold" else WHITE, align=1),
-            clip_settings=ClipSettings(transform_y=-0.12 - i * 0.24),
+            clip_settings=ClipSettings(transform_y=-0.12 - i * 0.25),
             border=TextBorder(color=(0.20, 0.12, 0.0), width=70.0) if col == "gold"
             else TextBorder(color=(0.04, 0.04, 0.04), width=70.0))
         seg.add_animation(OUT_UP)          # NO intro: full title on frame 1 (thumbnail)
