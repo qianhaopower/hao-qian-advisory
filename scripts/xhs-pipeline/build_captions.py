@@ -44,6 +44,20 @@ AVOID_END = set("地 得 在 和 对 把 被 从 向 跟 给 让 比 通过 就 
 T = json.load(open("work/tokens.json"))["transcription"]
 FULL = "".join(s["text"].strip() for s in T if s["text"].strip() and not s["text"].strip().startswith("[_"))
 FULL = re.sub(r"\s+", " ", FULL)
+# CLAUSE SOURCE (2026-10-04, Ep21: a fast take with few pauses — islands alone merged clauses). When the
+# phrase-level transcript (work/words.json, written by transcribe.py) carries punctuation, the clause
+# TEXT boundaries come from that punctuation and the speech islands serve only as the time ruler.
+PUNCT_MODE = False
+if os.path.exists("work/words.json"):
+    P_ = ""
+    for sg in json.load(open("work/words.json"))["transcription"]:
+        tx = sg["text"]
+        if tx.strip().startswith("[_") or not tx.strip(): continue
+        latin_join = bool(P_) and re.search(r"[A-Za-z]$", P_) and re.match(r"\s*[A-Za-z]", tx)   # "low" + " density"
+        if P_ and not latin_join and P_[-1] not in "，,。？?！!、；;": P_ += "。"            # a segment boundary is a clause end
+        P_ += (" " + tx.strip()) if latin_join else tx.strip()
+    P_ = re.sub(r"\s+", " ", P_).strip()
+    if sum(P_.count(ch) for ch in "，,。？?！!") >= max(8, len(P_) / 60): FULL, PUNCT_MODE = P_, True
 FIXES = json.load(open("work/fix.json")) if os.path.exists("work/fix.json") else []
 for a_, b_ in FIXES: FULL = FULL.replace(a_, b_)          # spelling first, so jieba sees real words when clauses are cut
 for wd_ in ("Omega-3", "Omega-6", "Omega-9", "这就是", "脂肪酸分子", "碳碳双键", "碳碳单键", "细胞膜", "晶莹剔透", "又僵又硬"): jieba.add_word(wd_)
@@ -132,21 +146,46 @@ def snap_cut(c):
         if prv in ("呢", "吗", "吧", "啊", "的话"): sc_ -= 2.0
         if bs is None or sc_ < bs: best, bs = q, sc_
     return best
-cuts = [0] + [snap_cut(c_) for c_ in cuts[1:-1]] + [len(FS)]
+cuts = [0] + [(c_ if PUNCT_MODE else snap_cut(c_)) for c_ in cuts[1:-1]] + [len(FS)]
 for k in range(1, len(cuts)): cuts[k] = max(cuts[k], cuts[k - 1])
 # FS has no spaces; restore Latin word spaces by mapping FS indices back into FULL
 fi = [i for i, ch in enumerate(FULL) if strip(ch)]
 def piece(c0, c1):
     if c1 <= c0: return ""
     return FULL[fi[c0]:fi[c1 - 1] + 1].strip()
+def t_at(c, end=False):
+    """time of character index c of FS on the island ruler (exact at island edges, linear inside)"""
+    for k_ in range(len(islands)):
+        c0_, c1_ = cuts[k_], cuts[k_ + 1]
+        if c1_ <= c0_: continue
+        if (c0_ <= c < c1_) or (end and c0_ < c <= c1_):
+            a_, b_ = islands[k_]
+            if c == c0_ and not end: return a_
+            if c == c1_ and end: return b_
+            return a_ + (b_ - a_) * (c - c0_) / (c1_ - c0_)
+    return islands[-1][1]
+
+
 clauses = []                                   # [text, start, end]
+if PUNCT_MODE:
+    pos = 0; buf = ""; c_start = 0
+    for ch in FULL + "。":
+        if ch in PUN_CUT:
+            t_ = re.sub(r"\s+", " ", buf).strip(); n_ = len(strip(buf))
+            if n_:
+                a_ = t_at(c_start); b_ = t_at(c_start + n_, end=True)
+                clauses.append([t_, a_, max(b_, a_ + 0.4)])
+            c_start += n_; buf = ""
+        else: buf += ch
+    for k_ in range(1, len(clauses)):
+        if clauses[k_][1] < clauses[k_ - 1][2]: clauses[k_ - 1][2] = clauses[k_][1]
 carry = None                                   # an island left without text hands its time to the next one
-for k, (a_, b_) in enumerate(islands):
+for k, (a_, b_) in enumerate(islands if not PUNCT_MODE else []):
     t_ = clean(piece(cuts[k], cuts[k + 1]))
     if not t_:
         carry = a_ if carry is None else carry; continue
     clauses.append([t_, a_ if carry is None else carry, b_]); carry = None
-if carry is not None and clauses: clauses[-1][2] = islands[-1][1]
+if carry is not None and clauses and not PUNCT_MODE: clauses[-1][2] = islands[-1][1]
 # STUB RULE: a clause under 5 units never stands alone if its neighbour is within 1 s — an opener
 # ("所以说", "那么", "我们体内") joins the clause it opens, anything else joins the clause it finishes.
 k = 0
