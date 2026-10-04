@@ -428,3 +428,12 @@ Accessibility granted to VSCode). No more manual screenshots.
 "cut all filler" era. At 4h: **242 views, 11 likes** — fastest opening in
 account history (面包机 needed ~2 days for 494; 血糖 191 at 24h). Full
 funnel sweep due at 24h. Single-note noise rules still apply.
+
+### Ep. 20 at 5d (2026-10-05)
+
+423 impressions (35% in / **65% out** — best distribution profile ever,
+sustained), 238 reached, 187 views, 18s avg. Growth stopped early
+(352→423 over four days): Ep. 21's 09-30 landing cut its run. Plateau
+rule doubly confirmed; a majority-out-of-network post gets ≥5 days of
+runway alone. The 20-second wall still stands on LinkedIn (all episodes
+14–26s avg watch).
