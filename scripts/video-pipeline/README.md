@@ -105,3 +105,12 @@ top up with `build-broll-library.py --only angry,frustrated,stress,...`; the FI 
 (~/Movies/FI-videos/assets/broll, index.json) has laughing/happy — record `used_in: wt-epNN` there.
 Every content-cut junction must sit >=0.3 s inside an insert (start+0.3 <= seam <= end-0.3); the generator
 suppresses toplines/punches during inserts, so anchor them on the caption before or after.
+
+PUNCH FRAME RULE (Hao, Ep. 22): the gold punch word sits beside the head (centre x=80%), so it has only
+~200 px to its right. `_punch_layout()` in to_capcut_wt.py measures the real Rubik width, shrinks to 470 px,
+wraps a long phrase into two lines and slides the centre left to keep a 48 px right margin. Keep punch text
+to one or two words anyway.
+
+B-ROLL TEMPERATURE (Hao, Ep. 22: a clip of one man grabbing another's collar was "太夸张"): real footage
+must never be more dramatic than what he says. Workplace tension = a serious conversation, not a fight —
+no grabbing, shoving, shouting, thrown papers. Watch the WHOLE window you bake, not only its first frame.

@@ -26,6 +26,40 @@ def _w(t):  # display weight: CJK = 1, Latin/digit/space ≈ 0.55; a multi-line 
     return max(sum(1 if ord(ch) > 0x2e80 else 0.55 for ch in line) for line in t.split("\n"))
 
 
+def _em(t, font="Rubik-Bold.ttf"):
+    """Real glyph width of the LONGEST line, in em (CapCut's own font file; 0.62/char if it is missing)."""
+    import glob
+    try:
+        from PIL import ImageFont
+        f = ImageFont.truetype(glob.glob(os.path.expanduser(f"~/Movies/CapCut/User Data/Cache/effect/*/*/{font}"))[0], 1000)
+        return max(f.getlength(line) / 1000 for line in t.split("\n"))
+    except Exception:
+        return max(0.62 * len(line) for line in t.split("\n"))
+
+
+PUNCH_K = 6.5   # px per size unit per em, measured on the Ep. 21 export ("135,795" at size 13 = 334 px wide)
+
+
+def _punch_layout(txt):
+    """PUNCH FRAME RULE (Hao 2026-10-04, Ep. 22: "WHAT MATTERS MOST" and "WE SEE LESS" ran off the right
+    edge). The punch is centred at x=80% by default, so it only has ~200 px to its right: measure the real
+    width, shrink to fit 470 px, wrap a long phrase into two lines, and slide the centre left until the
+    right edge keeps a 48 px margin. Returns (text, size, transform_x)."""
+    def tier(t):
+        w = _w(t)
+        return 16.0 if w <= 4 else 13.0 if w <= 6 else 11.0 if w <= 8 else 9.5
+    MAXW, MARGIN, CX = 470.0, 48.0, 864.0
+    size = min(tier(txt), MAXW / (_em(txt) * PUNCH_K))
+    if size < 9.0 and " " in txt and "\n" not in txt:
+        ws = txt.split(" ")
+        i = min(range(1, len(ws)), key=lambda k: max(_em(" ".join(ws[:k])), _em(" ".join(ws[k:]))))
+        txt = " ".join(ws[:i]) + "\n" + " ".join(ws[i:])
+        size = min(tier(txt), MAXW / (_em(txt) * PUNCH_K))
+    width = _em(txt) * size * PUNCH_K
+    cx = min(CX, 1080 - MARGIN - width / 2)
+    return txt, round(size, 2), round((cx / 1080 - 0.5) * 2, 3)
+
+
 def _split_caption(c, limit=14.0):
     """CAPTION WIDTH LAW (2026-09-24, Ep14: a 38字 line ran off both edges even at the
     auto-shrink floor). Any caption heavier than `limit` is split — at punctuation if a
@@ -295,14 +329,15 @@ for p in FX.get("punch", []):
         print(f"!! punch suppressed (insert overlap): {p.get('text', p['match'])}")
         continue
     style = p.get("style", "gold")
+    ptxt, psize, px = _punch_layout(p.get("text", p["match"]))
     seg = cc.TextSegment(
-        p.get("text", p["match"]), T(c["start"], c["start"] + p.get("hold", 2.2)),
+        ptxt, T(c["start"], c["start"] + p.get("hold", 2.2)),
         font=F_BOLD if style == "gold" else F_HEAVY,
-        style=TextStyle(size=(16.0 if _w(p.get("text", p["match"])) <= 4 else 13.0 if _w(p.get("text", p["match"])) <= 6 else 11.0 if _w(p.get("text", p["match"])) <= 8 else 9.5), bold=True,
+        style=TextStyle(size=psize, bold=True,
                         color={"gold": GOLD, "red": RED}.get(style, WHITE), align=1),
         # FACE RULE (Hao 2026-09-10): pop-up text never covers the face. Punch sits
         # BESIDE the head (screen x≈80%, eye level), not on the forehead (old y=0.42).
-        clip_settings=ClipSettings(transform_x=0.60, transform_y=0.10,
+        clip_settings=ClipSettings(transform_x=px, transform_y=0.10,
                                    rotation=-4.0 if style == "gold" else 0.0),
         border=TextBorder(color=(0.25, 0.16, 0.0), width=30.0) if style == "gold"
         else TextBorder(color=(1.0, 0.95, 0.92), width=35.0))

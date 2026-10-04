@@ -913,7 +913,10 @@
   "file": "/Users/haoqian/Movies/broll-library/33407.mp4",
   "url": "https://mixkit.co/free-stock-video/coworkers-working-in-a-project-in-a-meeting-33407/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep22"
+  ],
+  "mood": "neutral"
  },
  {
   "id": "46442",
@@ -2297,7 +2300,8 @@
   "used_in": [
    "ep18"
   ],
-  "mood": "serious"
+  "mood": "serious",
+  "note": "ends in a collar grab from ~4.4 s — too aggressive for workplace-tension beats (Hao, Ep. 22)"
  },
  {
   "id": "248",
@@ -4665,7 +4669,10 @@
   "file": "/Users/haoqian/Movies/broll-library/46497.mp4",
   "url": "https://mixkit.co/free-stock-video/colleagues-having-important-discussions-in-a-meeting-46497/",
   "license": "Mixkit Free License (commercial OK, no attribution)",
-  "used_in": []
+  "used_in": [
+   "ep22"
+  ],
+  "mood": "serious"
  },
  {
   "id": "33366",
