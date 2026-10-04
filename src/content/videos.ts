@@ -704,7 +704,7 @@ export const EPISODES: VideoEpisode[] = [
       "Before pushing for commitment, ask what matters most for the organization.",
     ],
     linkedinCaption:
-      "I pushed harder to solve a customer problem, and made the collaboration worse.\n\nI was asking sibling teams to commit capacity.\nTheir leaders were already stretched.\nI kept pushing before I understood their priorities.\n\nIt took me a while to see why it backfired:\n\nWe know every detail of our own problem, so it feels bigger and more urgent.\nWe know far less about theirs, so it looks small.\n\nOne question before the ask would have fixed it:\nWhat matters most for the organization?\n\nWhat do you ask another team before you ask for their capacity?\n\nhttps://haoqian.co/videos/pushed-harder\n\n#WorkingTheory #Leadership\n\nMusic: Kevin MacLeod (incompetech.com)",
+      "A while ago I pushed other teams hard to fix a customer problem.\n\nI got tension instead of help.\n\nAt the time I thought the problem was obvious, so the answer should be too. Why wouldn't they just commit?\n\nLooking back, my problem wasn't bigger than theirs. I just knew mine better.\n\n50 seconds on what I ask first now.\n\nWhat's the first thing you ask another team before you ask for their time?\n\nhttps://haoqian.co/videos/pushed-harder\n\n#WorkingTheory #Leadership\n\nMusic: Kevin MacLeod (incompetech.com)",
     linkedinTags: ["WorkingTheory", "Leadership"],
   },
   /* ------------------------------------------------------------------ */
