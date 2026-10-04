@@ -314,3 +314,24 @@ the August daily-posting week. **New scheduling rule: don't post the next
 episode while the previous one's impressions are still climbing — wait
 for the plateau (a hot post gets the runway for 4–5 days).** 2/week is an
 average, not a timer. Ep. 21 stays up; retention may earn it a slow burn.
+
+### 这也是糖 (Ep20, the first generated skit) — day one (2026-10-04)
+
+配料表上这些名字,其实都是糖 (00:46, posted 10-03 20:32): **35 views, 赞3
+藏0 评0 转0 at <24h.** Hao reads it as ~1/10 of usual and asks whether the
+platform under-distributes "made" videos.
+
+Reading (desk): not answerable from views alone. (1) 35 at day one is low
+but inside the account's own range — five of the first fourteen face notes
+finished at 40–68 (咖啡 67, 夫妻 40, 假蛋 68, 魂斗罗 53, 超市 48); "usual"
+is being set by the winners (191 at 24h for 过山车). (2) Posted on day 3
+of the National Day week — the first holiday post on the account, so the
+baseline itself is unknown. (3) 3/35 likes is too small a sample to call
+the conversion good or bad; zero saves is the weaker sign on a list-type
+topic. (4) The deciding numbers are 曝光 and 封面点击率 in the note's data
+page: normal impressions + low click rate = the cartoon cover is not being
+tapped (every earlier cover was Hao's face); low impressions = the platform
+handed it a smaller pool (content type unlike the account's history, or an
+AI-content label — to be checked on the note itself, not assumed).
+Owed by Hao: the note's data screenshot at ~48–72h, and whether the note
+carries any AI-generated label. No verdict on the skit format until then.
