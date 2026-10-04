@@ -421,3 +421,10 @@ Accessibility granted to VSCode). No more manual screenshots.
   0.4% · Others 1.7%. **Search traffic ≈ 0 so far** — the hoped-for
   search undercurrent from practical notes has not materialised yet;
   correct the earlier assumption.
+
+### 冒烟油 note — 4h baseline (2026-10-05 afternoon)
+
+油一冒烟,你就在给自己做反式脂肪餐 — the first note of Hao's deliberate
+"cut all filler" era. At 4h: **242 views, 11 likes** — fastest opening in
+account history (面包机 needed ~2 days for 494; 血糖 191 at 24h). Full
+funnel sweep due at 24h. Single-note noise rules still apply.
