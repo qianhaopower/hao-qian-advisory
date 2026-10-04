@@ -335,3 +335,42 @@ handed it a smaller pool (content type unlike the account's history, or an
 AI-content label — to be checked on the note itself, not assumed).
 Owed by Hao: the note's data screenshot at ~48–72h, and whether the note
 carries any AI-generated label. No verdict on the skit format until then.
+
+## 小红书 deep-metrics sweep — 2026-10-04 (29 screenshots, 11 notes, full funnel)
+
+First look at the whole funnel: 曝光 → 封面点击率(CTR) → views → 5秒完播 →
+平均时长 → 完播率. Data as of 10-04 03:00 unless noted.
+
+| Note | Posted | 曝光 | CTR | Views | 5s% | Avg | 完播% | 2s退出 | 互动率 | 涨粉 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 面包机烤 (糖化) | 09-26 | 1937 | 8.9% | 511 | 48.7% | 25.8s | 4.3% | 28.2% | 10.4% | **8** |
+| 三个聪明人 (9min) | 09-21 | 1585 | **11.6%** | 362 | 55.2% | 8.9s* | 10.1% | 20.5% | 13.6% | **13** |
+| 化名清单 | 09-25 | 1425 | 6.9% | 311 | 40.8% | 20s | 2.7% | 30.5% | 12.2% | 6 |
+| 油炸细胞僵硬 (脂肪酸) | 10-01 | 1191 | 5.0% | 228 | 45.1% | 22.5s | 6.2% | 25.2% | 8.8% | 3 |
+| 血糖过山车 | 09-30 | 1124 | 4.8% (中位6.2) | 212 | 50.2% | 23.1s | 5.5% | 26.2% | 8.1% | 3 |
+| 牵手碰脸 | 09-12 | 728 | 6.6% (中位7.8) | 243 | 44% | 43.7s | 4% | 38.5% | 9.7% | 4 |
+| 大脑刹车 (甜食) | 09-28 | 717 | 5.3% (中位10.3) | 153 | 52.3% | 34s | 12.4% | 32.9% | 11.8% | 3 |
+| 超市三招 | 09-21 | 693 | 3.5% | 58 | 37.1% | 120.1s | 14.3% | 38.5% | 3.4% | 1 |
+| 魂斗罗 | 09-14 | 333 | 2.5% | 70 | 22.4% | 5.7s | 1.5% | **63.5%** | 3.6% | 1 |
+| 这也是糖 (skit) | 10-03 | 209 | **2.0%** | 35 | 36.4% | 21.7s | 18.2% | 42.9% | 0% | 0 |
+| 脂肪被冤 (suppressed) | 09-24 | 49 | 6.3% | 3 | — | — | — | — | — | 0 |
+
+*9min special shows avg 8.9s alongside 125 plays past 60s — bimodal
+(quick bounces + a deep-watcher core); its diagnosis page vs data card
+also disagree elsewhere (刹车: 66.8s vs 34s), so treat avgs as rough.
+
+Readings:
+1. **CTR is the biggest controllable leak.** Views ≈ 曝光 × CTR, and most
+   notes run BELOW category median CTR (刹车 5.3% vs 10.3% median; 血糖
+   4.8% vs 6.2%). The two best notes (面包机 8.9%, 9min 11.6%) prove the
+   ceiling. Cover + title craft is lever #1.
+2. **The middle drags.** Avg watch 20–26s vs category median 42–46s —
+   half. Hao's instinct (废话多) is data-confirmed. Lever #2: 3–4 min
+   max, front-load, cut filler.
+3. **First 2 seconds decide the floor.** 2s exit ranges 20.5% → 63.5%
+   (魂斗罗's killer). Opening line/frame is lever #3.
+4. **The 9-min special is the fan machine**: +13 follows (best on the
+   account), 125 people past 60s, top CTR and 互动率. Occasional deep
+   flagship notes convert followers like nothing else.
+5. Skit's weak start is a COVER problem (2% CTR), not concept: completion
+   18.2% is the account's best for real distribution.
