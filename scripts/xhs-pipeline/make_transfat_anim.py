@@ -114,6 +114,34 @@ def tf_shape(n, N=330):
     return p.out()
 
 
+def tf_cis(n, N=360):
+    """the bent one on its own — he spends 16 s on it before he reaches the straight one"""
+    t = n / 30; p = Cv(); k1 = ease((t - 0.5) / 0.8); bend = ease((t - 2.4) / 3.0)
+    hud(p, "顺式脂肪:自然界最常见", INK, "形状:弯的", "折弯处 = 碳碳双键", RED, lcol=GOLD)
+    p.T(120, 520, "顺式脂肪", 44, mix(PAPER, GOLD, k1), anchor="lm")
+    pts = molecule(p, 150, 700, bend, GOLD, k=k1, step=62, r=17)
+    if bend > 0.5:
+        x, y = pts[5]; kk = (bend - 0.5) / 0.5
+        p.C((pts[5][0] + pts[6][0]) / 2, (pts[5][1] + pts[6][1]) / 2, 46, outline=mix(PAPER, RED, kk), width=5)
+        p.T(x + 40, y - 80, "折弯处", 36, mix(PAPER, RED, kk), anchor="lm"); p.T(x + 40, y - 34, "碳碳双键把它拉住", 26, mix(PAPER, GREY, kk), anchor="lm")
+    if t > 8.6: p.T(W / 2, 1220, "分子中间,有一个弯", 42, mix(PAPER, INK, ease((t - 8.6) / 0.5)))
+    return p.out()
+
+
+def tf_trans(n, N=270):
+    """the straight one arrives next to the bent one"""
+    t = n / 30; p = Cv(); k2 = ease((t - 0.5) / 0.8)
+    hud(p, "反式脂肪:直直的", RED, "顺式:弯的", "反式:直的", RED, lcol=GOLD)
+    p.T(120, 440, "顺式脂肪", 36, GOLD, anchor="lm"); molecule(p, 150, 540, 1.0, GOLD)
+    p.T(120, 900, "反式脂肪", 40, mix(PAPER, RED, k2), anchor="lm")
+    pts2 = molecule(p, 150, 1020, 0.0, RED, k=k2)
+    if t > 2.2:
+        x, y = pts2[5]; kk = ease((t - 2.2) / 0.6); p.T(x + 30, y + 72, "双键在另一侧 → 直直的", 30, mix(PAPER, RED, kk))
+    if t > 5.6: p.T(W / 2, 1240, "两种分子,只差一个弯", 40, mix(PAPER, INK, ease((t - 5.6) / 0.5)))
+    return p.out()
+
+
+
 # ------------------------------------------------------------ tf_factory
 def tf_factory(n, N=270):
     t = n / 30; p = Cv(); k = ease((t - 0.6) / 0.8)
@@ -238,7 +266,7 @@ def tf_close():
     return p.out()
 
 
-SCENES = {"tf_shape": (tf_shape, 330), "tf_factory": (tf_factory, 270), "tf_build": (tf_build, 330), "tf_signal": (tf_signal, 360),
+SCENES = {"tf_shape": (tf_shape, 330), "tf_cis": (tf_cis, 360), "tf_trans": (tf_trans, 270), "tf_factory": (tf_factory, 270), "tf_build": (tf_build, 330), "tf_signal": (tf_signal, 360),
           "tf_artery": (tf_artery, 330), "tf_smoke": (tf_smoke, 270)}
 STILLS = {"tf_close": (tf_close, 5.0)}
 if __name__ == "__main__":
