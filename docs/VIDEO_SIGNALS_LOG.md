@@ -374,3 +374,35 @@ Readings:
    flagship notes convert followers like nothing else.
 5. Skit's weak start is a COVER problem (2% CTR), not concept: completion
    18.2% is the account's best for real distribution.
+
+### 这也是糖 (skit) — funnel reading, 2026-10-04 (the thread that built it)
+
+Numbers from the deep-metrics sweep above: 曝光 209 · CTR 2.0% · views 35 ·
+2s 退出 42.9% · 5s 36.4% · avg 21.7s of 46s · 完播 18.2% · 藏 0 评 0 · 涨粉 0.
+Hao's verdict: 还是不行.
+
+1. **Not suppression — a low-CTR note behaving like one.** The suppressed
+   note got 49 曝光; the skit got 209, the same order as 魂斗罗 (333 曝光,
+   2.5% CTR), a face video. Pool size follows CTR on this account; no
+   "platform dislikes made videos" theory is needed to explain 209. One
+   note cannot rule it out either.
+2. **Two things failed, both built by the desk, neither is the dialogue:**
+   the cartoon cover (lowest CTR on the account — no face, reads like an ad
+   or a children's clip) and the opening (1.7 s of a static title with
+   music only; 42.9% left inside 2 s, second-worst after 魂斗罗).
+3. **"Completion 18.2%, account best" is not evidence for the concept.**
+   A 46 s film against 4–7 min episodes is not a like-for-like completion
+   rate, and it is ~6 people out of 35 who were already the 2% that tapped.
+   The body of the skit is UNTESTED, not proven — this corrects reading 5
+   of the sweep ("not concept").
+4. **The costs that do not depend on sample size:** zero saves (the
+   saveable list is on screen for 4 s at the very end), zero follows, and
+   no Hao in the film — a note without his face or voice cannot build the
+   personal brand the line exists for, even if it travels.
+5. Metric caveat: 曝光 × CTR ≈ 4 taps, views = 35 (same gap on every note in
+   the table), so "views" includes entrances other than the discovery-feed
+   cover; treat CTR as the discovery-feed number only.
+
+Desk recommendation: no more standalone skits for now. The two characters
+go INSIDE a face episode as a 15–20 s bit — face cover, face opening, the
+skit as relief exactly where lever #2 says the middle drags.

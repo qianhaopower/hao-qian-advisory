@@ -434,7 +434,12 @@ redo only the sound.
   (hoodie + jeans + basket; collar + apron + folded arms). Heads and faces can stay simple.
 - HAND-MADE, NOT GENERATED: outlines boil every 5 frames, one handwriting font for the lively
   character and the heavy font for the stern one, static paper grain. No stock footage needed.
-- STRUCTURE THAT WORKED: cover on frame 1 (title + seal + pillar badge) → three slow beats →
+- RESULT (2026-10-04): 209 曝光, 2.0% CTR, 35 views, 42.9% gone in 2 s, 0 saves, 0 follows.
+  The cartoon cover and the 1.7 s static title opening failed; the body is untested. A
+  standalone skit carries no face and builds no following — the characters belong INSIDE a
+  face episode as a 15–20 s bit. If a standalone is ever tried again: Hao's face on the cover,
+  the first stamp inside the first second, and the list held long enough to save.
+- STRUCTURE OF THE BODY (liked by Hao, unproven with viewers): title + seal + pillar badge → three slow beats →
   a quick run → the long pause → the one honest exception (the apple: whole fruit is not free
   sugar) → a tag joke true to the piece (姓唐) → recap card with the source → the book card.
 - FACTS still get the fact pass; the recap card names the source (WHO 2015).
