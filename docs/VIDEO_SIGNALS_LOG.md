@@ -406,3 +406,18 @@ Hao's verdict: 还是不行.
 Desk recommendation: no more standalone skits for now. The two characters
 go INSIDE a face episode as a 15–20 s bit — face cover, face opening, the
 skit as relief exactly where lever #2 says the middle drags.
+
+### Desk automation + 面包机 update — 2026-10-04 evening
+
+The desk can now read the RedNote desktop app directly (window-only
+screencapture + scripted scroll/tab clicks; Screen Recording +
+Accessibility granted to VSCode). No more manual screenshots.
+
+面包机烤 at 10-04 evening: 511 views, 赞24 藏20 评5. New layers visible:
+- Fan share per metric: 曝光粉丝占 2.5%, but 5s-retention viewers are
+  88.5% fans — strangers click in, mostly bail in the opening; fans carry
+  retention. The opening isn't holding cold traffic yet.
+- Traffic sources: Recommend 73% · Explore 24.5% · Profile 0.4% · Follow
+  0.4% · Others 1.7%. **Search traffic ≈ 0 so far** — the hoped-for
+  search undercurrent from practical notes has not materialised yet;
+  correct the earlier assumption.
