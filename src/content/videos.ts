@@ -677,6 +677,36 @@ export const EPISODES: VideoEpisode[] = [
       "My keyboard has become a decoration.\n\nIn the last few months I dictated 135,795 words outside of work (Wispr Flow counted), and about twice that through voice control. With AI on the other end there is no need to type precisely: say the rough ideas, let it format. This morning a few-hundred-word Slack reply, three points, took 20 seconds instead of 20 minutes. When did you last type a long message?\n\nhttps://haoqian.co/videos/keyboard-is-a-decoration\n\n#WorkingTheory #AI\n\nMusic: Kevin MacLeod (incompetech.com)",
     linkedinTags: ["WorkingTheory", "AI"],
   },
+  {
+    slug: "pushed-harder",
+    series: "working-theory",
+    sequence: 22,
+    title: "I Pushed Harder. It Got Worse.",
+    status: "published",
+    publishedAt: "2026-10-04",
+    language: "en",
+    durationSeconds: 54,
+    hook: "I pushed harder to solve a customer problem, and ended up making collaboration harder.",
+    summary:
+      "Hao once asked sibling teams to commit capacity for a customer problem, and kept pushing before he understood their priorities; their leaders were already stretched. The reason it backfired is a matter of visibility: we know every detail of our own problem, so it feels bigger and more urgent, and we know far less about other teams' problems, so they seem less important. The more senior we become, the more effort it takes to see those other perspectives, and the question to ask before pushing for commitment is what matters most for the organization.",
+    videoUrl:
+      "https://github.com/qianhaopower/hao-qian-advisory/releases/download/media/pushed-harder.mp4",
+    aspect: "9:16",
+    poster: "/videos/pushed-harder/poster.jpg",
+    captions: "/videos/pushed-harder/captions.vtt",
+    transcript: [
+      "I pushed harder to solve a customer problem, and ended up making collaboration harder. I was asking sibling teams to commit capacity. Their leaders were already stretched, and I kept pushing before I really understood their priorities.",
+      "We focus on our own problems. We know all the details, so they feel bigger and more urgent. But we don't have the same visibility into other teams' problems. They can seem less important, simply because we know less about them.",
+      "As we become more senior, we need to make an extra effort to understand those other perspectives. So before pushing for commitment, ask: Can we understand the problems we are trying to solve, and work out what matters most for the organization?",
+    ],
+    keyPoints: [
+      "Our own problem feels bigger and more urgent because we know all its details; other teams' problems look smaller only because we know less about them.",
+      "Before pushing for commitment, ask what matters most for the organization.",
+    ],
+    linkedinCaption:
+      "I pushed harder to solve a customer problem, and made the collaboration worse.\n\nI was asking sibling teams to commit capacity.\nTheir leaders were already stretched.\nI kept pushing before I understood their priorities.\n\nIt took me a while to see why it backfired:\n\nWe know every detail of our own problem, so it feels bigger and more urgent.\nWe know far less about theirs, so it looks small.\n\nOne question before the ask would have fixed it:\nWhat matters most for the organization?\n\nWhat do you ask another team before you ask for their capacity?\n\nhttps://haoqian.co/videos/pushed-harder\n\n#WorkingTheory #Leadership\n\nMusic: Kevin MacLeod (incompetech.com)",
+    linkedinTags: ["WorkingTheory", "Leadership"],
+  },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
   /* Captions and transcripts are Hao's spoken words (voice-first, no    */
