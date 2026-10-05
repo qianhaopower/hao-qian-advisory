@@ -140,6 +140,27 @@ def fr_steal(n, N=330):
     return p.out()
 
 
+def fr_dead(n, N=150):
+    """what "失去效力" looks like: the protein that lost its electron goes grey and comes apart
+    (replaces a rusty-windmill clip Hao could not read — 2026-10-05)"""
+    t = n / 30; p = Cv(); k = ease((t - 0.5) / 2.2)
+    hud(p, "少了一个电子,它就失效了", RED, "蛋白质:被抢了一个电子", "功能:正常" if k < 0.5 else "功能:失效", INK if k < 0.5 else RED)
+    n_ = 7; x0, y = 330, 760
+    for i in range(n_):
+        drift = k * (i - 3) * 16; drop = k * 26 * math.sin(i * 1.9)
+        x, yy = x0 + i * 70 + drift, y + 24 * math.sin(i * 1.1) + drop
+        if i < n_ - 1 and k < 0.55:
+            x2, y2 = x0 + (i + 1) * 70 + k * (i - 2) * 16, y + 24 * math.sin((i + 1) * 1.1) + k * 26 * math.sin((i + 1) * 1.9)
+            p.L([(x, yy), (x2, y2)], mix(BLUE, GREY, k * 1.6), 8)
+        p.C(x, yy, 26, fill=mix(mix(WHITE, BLUE, 0.25), LINE, k), outline=mix(BLUE, GREY, k), width=4)
+        if i != 3: p.C(x, yy, 7, fill=mix(GOLD, GREY, k * 0.7))
+        else: p.C(x, yy, 9, outline=RED, width=3)                               # the empty seat
+    p.T(x0 + 3 * 70, y - 80, "电子被拿走了", 28, RED)
+    if t > 2.4: p.T(W / 2, 1100, "一个关键部位坏了,整个分子就没用了", 34, mix(PAPER, RED, ease((t - 2.4) / 0.5)))
+    return p.out()
+
+
+
 # ------------------------------------------------------------ fr_super
 def fr_super(n, N=210):
     t = n / 30; p = Cv(); k1 = ease((t - 0.4) / 0.7); k2 = ease((t - 1.6) / 0.9)
@@ -220,7 +241,7 @@ def fr_army(n, N=270):
     return p.out()
 
 
-SCENES = {"fr_machine": (fr_machine, 300), "fr_steal": (fr_steal, 330), "fr_super": (fr_super, 210), "fr_balance": (fr_balance, 330),
+SCENES = {"fr_machine": (fr_machine, 300), "fr_steal": (fr_steal, 330), "fr_dead": (fr_dead, 150), "fr_super": (fr_super, 210), "fr_balance": (fr_balance, 330),
           "fr_donate": (fr_donate, 360), "fr_army": (fr_army, 270)}
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)

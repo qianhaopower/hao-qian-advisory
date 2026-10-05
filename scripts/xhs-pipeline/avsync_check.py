@@ -14,6 +14,10 @@ to one GOP (0.78 s on Ep7). Trims must RE-ENCODE the video (hevc_videotoolbox).
 """
 import subprocess, sys, json, os, tempfile
 raw, cut, sr = sys.argv[1], float(sys.argv[2]), sys.argv[3]
+# 4th argument (2026-10-05): the length of the FIRST EDL segment. The audio comparison must stay inside it —
+# with a 60 s window and a first segment of 6.8 s the gate measured the EDL's own 2.3 s jump and failed a
+# cut that was in sync (Ep22 v2). Pass work/edl.json's first segment length; default stays 60 s.
+WIN = str(max(2.0, min(60.0, float(sys.argv[4]) - 0.4))) if len(sys.argv) > 4 else "60"
 tmp = tempfile.mkdtemp()
 def run(*a): return subprocess.run(a, capture_output=True, text=True)
 ok = True
@@ -26,8 +30,8 @@ for s in j["streams"]:
 run("ffmpeg","-v","error","-y","-ss",str(cut),"-i",raw,"-frames:v","1","-vf","scale=270:480",f"{tmp}/a.png")
 run("ffmpeg","-v","error","-y","-i",sr,"-frames:v","1","-vf","scale=270:480",f"{tmp}/b.png")
 # 3. audio lag
-run("ffmpeg","-v","error","-y","-ss",str(cut),"-t","60","-i",raw,"-vn","-ac","1","-ar","16000","-f","s16le",f"{tmp}/a.pcm")
-run("ffmpeg","-v","error","-y","-t","60","-i",sr,"-vn","-ac","1","-ar","16000","-f","s16le",f"{tmp}/b.pcm")
+run("ffmpeg","-v","error","-y","-ss",str(cut),"-t",WIN,"-i",raw,"-vn","-ac","1","-ar","16000","-f","s16le",f"{tmp}/a.pcm")
+run("ffmpeg","-v","error","-y","-t",WIN,"-i",sr,"-vn","-ac","1","-ar","16000","-f","s16le",f"{tmp}/b.pcm")
 try:
     import numpy as np
     from PIL import Image
