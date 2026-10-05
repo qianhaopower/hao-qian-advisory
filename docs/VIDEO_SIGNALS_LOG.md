@@ -458,3 +458,18 @@ two outliers (Reorg 792/31s, Ep. 20 65% out-of-network) differ by TOPIC
 episode is an abstract lesson with no concrete stake ("a customer
 problem", "sibling teams", "capacity"). Hao's question the same day:
 is the talking-head work-lesson the wrong lane? Open — see the reply.
+
+### 冒烟油 at 24h — account record (2026-10-05, read live from the app)
+
+油一冒烟,你就在给自己做反式脂肪餐 (posted 10-04 16:37): **812 views,
+赞54 藏40 评7 转16** at ~24h. Account records across the board: fastest
+views (prior best 面包机 494 at 2d), most shares ever (prior best 4),
+most comments (prior best 5), saves 40 near the top. 互动率 ≈ 14%+.
+First note of the cut-all-filler era; the thesis (less filler → better
+everything) gets its first strong confirmation. Full funnel (曝光/CTR)
+pending — the desktop app's path to Note Analysis Detail still unknown;
+Hao to show the route once, desk records it.
+
+Elsewhere on the grid: skit v2 cover live (47 views), 油炸 230, 面包机
+511. Hao also shipped the new emoji bio + Amazon book link on the
+profile.
