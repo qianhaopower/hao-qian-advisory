@@ -473,3 +473,20 @@ Hao to show the route once, desk records it.
 Elsewhere on the grid: skit v2 cover live (47 views), 油炸 230, 面包机
 511. Hao also shipped the new emoji bio + Amazon book link on the
 profile.
+
+### 冒烟油 full funnel at ~24h (from Hao's screen recording, 10-05)
+
+曝光 1939 · CTR **10.8%** (account record; at category-median level) ·
+813 views · 5s retention **60.5%** (record) · avg watch **35.8s**
+(record; first break of the 20–26s band) · 互动率 **14.4%** (record) ·
+画质 4.2. Retention curve: steep first-10s cliff, then a long flat
+plateau to the end. Audience: 国外 25% · 新一线 20% · 一线 20%; interests
+Life/Food/Science — overseas Chinese + tier-1 mainland, exactly the
+book/coaching demographic. All three levers (cover, middle, opening)
+delivered in one note; the cut-filler kitchen-situation formula is the
+new house standard. Share-count caveat: the analytics entry lives inside
+the share sheet; completed-share actions count, panel-opens shouldn't —
+verify the official 分享数 field next sweep.
+
+Desk navigation path learned (desktop app): own note → share arrow →
+second row "Data Analysis" → Note Analysis Detail.
