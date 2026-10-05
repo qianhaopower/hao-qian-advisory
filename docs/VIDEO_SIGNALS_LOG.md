@@ -510,3 +510,7 @@ distribution pool: watch whether 曝光 breaks well past 2k.
 
 Desk process note: inner pane ignores Page Down when unfocused; the
 scroll.swift CGEvent scroll-wheel poster is the reliable scroll method.
+
+Convention correction (Hao, 2026-10-05): XHS comment counts include his
+own replies — halve raw 评论数 for true inbound (冒烟油's 7 ≈ 3–4 real).
+Applies retroactively to all XHS comment figures in this log.
