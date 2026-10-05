@@ -19,6 +19,7 @@
 | 19 | Muscle Memory in the Age of AI | 2026-09-25 | ✅ 2026-09-25 | first CapCut-styled episode; posted by Hao (URL not yet recorded) |
 | 20 | AI as My Emotion Filter | 2026-09-28 | ✅ 2026-09-28 | posted by Hao (URL not yet recorded) |
 | 21 | My Keyboard Is a Decoration | 2026-09-30 | ✅ 2026-09-30 | posted by Hao (URL not yet recorded) |
+| 22 | I Pushed Harder. It Got Worse. | 2026-10-04 | ✅ 2026-10-04 | URL not recorded |
 
 Rule: Hao tells the cutting room when a post goes live (the session cannot
 read LinkedIn — it is login-walled); the row flips and the post URL lands
@@ -437,3 +438,23 @@ sustained), 238 reached, 187 views, 18s avg. Growth stopped early
 rule doubly confirmed; a majority-out-of-network post gets ≥5 days of
 runway alone. The 20-second wall still stands on LinkedIn (all episodes
 14–26s avg watch).
+
+
+## Ep. 22 — I Pushed Harder. It Got Worse.
+
+Posted to LinkedIn 2026-10-04 (evening). First episode cut under the
+"20-second wall" brief: confession cold open, setup deleted (87 s → 50 s),
+promise topline at 9–14 s, non-script caption.
+
+| Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Notes |
+|---|---|---|---|---|---|---|---|
+| 2026-10-05 | 17h | 135 (68% in) | 81 | 54 | 10m 43s | **11s** | lowest average watch of the series |
+
+Cutting-room reading: the packaging brief did not move the wall — it went
+the other way. Across 22 episodes four different looks (paper cards,
+karaoke, CapCut/小红书 style, hook-first cut) all landed at 11–26 s; the only
+two outliers (Reorg 792/31s, Ep. 20 65% out-of-network) differ by TOPIC
+(the viewer's own situation; a concrete AI trick), not by edit. This
+episode is an abstract lesson with no concrete stake ("a customer
+problem", "sibling teams", "capacity"). Hao's question the same day:
+is the talking-head work-lesson the wrong lane? Open — see the reply.
