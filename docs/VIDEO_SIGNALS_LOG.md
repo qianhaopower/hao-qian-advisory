@@ -490,3 +490,23 @@ verify the official 分享数 field next sweep.
 
 Desk navigation path learned (desktop app): own note → share arrow →
 second row "Data Analysis" → Note Analysis Detail.
+
+### 冒烟油 — desk's first fully self-driven sweep (2026-10-05 evening)
+
+Data card (更新至 10-05 03:00; 实时 views 813): 曝光 1939 (粉丝占1.8%) ·
+CTR 10.8% (粉丝24.2%) · 2s退出 25.9% · 5s完播 60.5% (粉丝86.7%) · avg
+35.8s (粉丝 122.7s) · 60s播放 72 · 互动率 14.4% · 赞54 藏40 评7 转16 弹幕0.
+
+**Share-count doubt resolved: official 分享数 = 16, 粉丝占 only 7.7%** —
+at most ~1 share from the fan base, ~15 from strangers; panel-opens for
+analytics don't count. The virality is genuine. Comments are 0% fans —
+all 7 from strangers. Retention curve: cliff to ~50% by ~10s, long
+plateau ~20–25%, ~10% reach the 2:24 end.
+
+Sharpest insight: 面包机 and 冒烟油 got the SAME shelf (曝光 1937 vs
+1939) — the cut-filler note extracted 65% more views from identical
+exposure via CTR + retention. The next milestone is a second
+distribution pool: watch whether 曝光 breaks well past 2k.
+
+Desk process note: inner pane ignores Page Down when unfocused; the
+scroll.swift CGEvent scroll-wheel poster is the reliable scroll method.
