@@ -221,7 +221,11 @@ for ins in FX.get("inserts", []):            # {"match","file","hold"?}
         # anchored there used to crash the generator with SegmentOverlap.
         print(f"!! insert skipped (sits on the frame-1 cover): {ins['match'][:18]}")
         continue
-    iseg = cc.VideoSegment(fp, T(c["start"], c["start"] + hold))
+    # "offset" (s, may be negative; 2026-10-07 Ep23): start the insert a little before/after the anchor
+    # caption — a negative offset reaches back into the pause before it so an edit seam that sits
+    # a few hundredths before the caption is hidden under the insert, not shown on the face.
+    t0 = max(FACE_HOLD, c["start"] + float(ins.get("offset", 0.0)))
+    iseg = cc.VideoSegment(fp, T(t0, t0 + hold))
     for dt, av in [(0.0, 0.0), (0.30, 1.0), (hold - 0.25, 1.0), (hold, 0.0)]:
         iseg.add_keyframe(KeyframeProperty.alpha, tim(f"{dt}s"), av)
     try:
@@ -234,7 +238,8 @@ INSERT_WINDOWS = []
 for ins in FX.get("inserts", []):
     c = find(ins["match"])
     if c:
-        INSERT_WINDOWS.append((c["start"], c["start"] + ins.get("hold", 3.0)))
+        t0 = max(FACE_HOLD, c["start"] + float(ins.get("offset", 0.0)))
+        INSERT_WINDOWS.append((t0, t0 + ins.get("hold", 3.0)))
 
 
 def during_insert(a, b):
