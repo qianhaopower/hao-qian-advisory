@@ -514,3 +514,17 @@ scroll.swift CGEvent scroll-wheel poster is the reliable scroll method.
 Convention correction (Hao, 2026-10-05): XHS comment counts include his
 own replies — halve raw 评论数 for true inbound (冒烟油's 7 ≈ 3–4 real).
 Applies retroactively to all XHS comment figures in this log.
+
+### 五颜六色 (抗氧化/自由基) at ~2d — 2026-10-07 sweep
+
+曝光 **672** · 137 views · CTR 6.0% (above category median 5.4) · 2s退出
+24.5% · 5s完播 53.9% · avg watch **78.2s (account record)** · 互动率 5.8%
+· 赞4 藏2 评1 转1 · 画质4.1. The door and retention both performed; what
+failed was (a) the shelf — one third of 冒烟油's 1939 — and (b) action:
+watchers stayed 78s but neither saved nor shared. Reading: the claim is a
+CONFIRMATION of common knowledge (colorful veggies = antioxidants), not
+news. People share surprises and save tools; they do neither for things
+they already believe. Hypothesis refined (not hardened): situation + no
+filler is necessary but not sufficient — the claim must be
+counter-intuitive news or a save-able tool. Topic test: 看完会转给谁?
+为什么收藏? No answer → re-angle before filming.
