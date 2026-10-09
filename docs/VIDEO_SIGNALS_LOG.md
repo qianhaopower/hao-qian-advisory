@@ -528,3 +528,17 @@ they already believe. Hypothesis refined (not hardened): situation + no
 filler is necessary but not sufficient — the claim must be
 counter-intuitive news or a save-able tool. Topic test: 看完会转给谁?
 为什么收藏? No answer → re-angle before filming.
+
+### 糖原 note at ~2d (2026-10-09, Hao's screenshots)
+
+你身体里藏着一斤糖,用好了不容易胖 (posted 10-07): 曝光 1280 · 261 views ·
+**CTR 11.4% (new record)** · 2s退出 **22.1% (new record)** · 5s 58.3% ·
+avg 53.9s (粉丝133.8s) · 60s播放 52 · 全片完播 9.9% · 互动率 9.7% (赞11
+藏8 评1 转2) · 涨粉 4.
+
+Third consecutive note with craft metrics (CTR / opening / density) at or
+above category level — the discipline has become muscle memory. What
+capped the pools: 藏8 转2 in absolute terms — mid-tier renewal fuel. The
+emerging shape of the formula: **craft sets the floor, the primary
+action (saves/shares) sets the ceiling.** 百步走 (naturally save-type) is
+the next test under the primary-action rule.
