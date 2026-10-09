@@ -542,3 +542,13 @@ capped the pools: 藏8 转2 in absolute terms — mid-tier renewal fuel. The
 emerging shape of the formula: **craft sets the floor, the primary
 action (saves/shares) sets the ceiling.** 百步走 (naturally save-type) is
 the next test under the primary-action rule.
+
+### BDNF note — rough landing (2026-10-09 night)
+
+Held in review ~25 min (health/brain vocabulary, presumably), released
+late evening; first-minute velocity ~1 view vs the usual 10+. Hao expects
+a ~100-view cap and moved on to the next note — correct posture. Caveat
+logged: post-review releases miss their launch pool and often refill next
+morning; final verdict tomorrow. If confirmed dead: sensitive-topic +
+review delay + off-peak release stack, not a content verdict; BDNF can be
+re-skinned later (disease words → state words) and posted in the 8pm slot.
