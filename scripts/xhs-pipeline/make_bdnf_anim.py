@@ -250,13 +250,13 @@ def bd_term():
 
 
 def bd_next():
-    p = Cv(); p.T(W / 2, 150, "下期预告", 40, GREY); p.T(W / 2, 260, "快肌 · 慢肌", 72, INK)
+    p = Cv(); p.T(W / 2, 150, "关注我", 72, GOLD); p.T(W / 2, 260, "下一条讲快肌、慢肌", 48, INK)
     p.R(90, 380, 990, 640, fill=WHITE, outline=GOLD, width=5, r=24)
     p.T(W / 2, 450, "跑步和力量训练", 46, INK); p.T(W / 2, 540, "练的是同一块肌肉吗?", 46, GOLD)
     # two figures: a runner and a lifter
     figure(p, 380, 860, 1.6, INK, 1.0, 0.7); p.T(380, 980, "跑", 30, GREY)
     figure(p, 700, 860, 1.6, INK, 0.0, 0.0); p.L([(640, 780), (760, 780)], INK, 8); p.C(640, 780, 18, fill=INK); p.C(760, 780, 18, fill=INK); p.T(700, 980, "举", 30, GREY)
-    p.T(W / 2, 1120, "关注,下一条见", 44, GOLD); p.T(W / 2, 1190, "Friends Intelligence · 营养智慧", 26, GREY)
+    p.T(W / 2, 1120, "下一条见", 44, INK); p.T(W / 2, 1190, "Friends Intelligence · 营养智慧", 26, GREY)
     return p.out()
 
 

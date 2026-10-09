@@ -43,6 +43,7 @@ fd = float(np.abs(a-b).mean()); print(f"frame0 diff vs raw@{cut}s: {fd:.2f}  ({'
 def env(s): return np.sqrt(np.convolve(s**2, np.ones(16)/16, "same"))[::16]
 x = np.fromfile(f"{tmp}/a.pcm", np.int16).astype(float); y = np.fromfile(f"{tmp}/b.pcm", np.int16).astype(float); n = min(len(x), len(y))
 ea, eb = env(x[:n]), env(y[:n]); ea -= ea.mean(); eb -= eb.mean(); m = len(ea)
-lag = max(range(-3000, 3001), key=lambda l: np.dot(ea[max(0,l):m+min(0,l)], eb[max(0,-l):m+min(0,-l)]))
+L = min(3000, m // 3)        # a 2 s first segment (Ep24) has fewer envelope samples than the ±3 s search
+lag = max(range(-L, L + 1), key=lambda l: np.dot(ea[max(0,l):m+min(0,l)], eb[max(0,-l):m+min(0,-l)]))
 print(f"audio lag vs raw@{cut}s: {lag} ms  ({'ok' if abs(lag) <= 33 else 'FAIL'})"); ok &= abs(lag) <= 33
 print("A/V SYNC", "PASS" if ok else "FAIL"); sys.exit(0 if ok else 1)
