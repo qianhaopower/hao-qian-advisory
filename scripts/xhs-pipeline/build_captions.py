@@ -284,6 +284,15 @@ if os.path.exists("work/caption_edits.json"):
         op, i, must = ed[0], ed[1], ed[2]
         assert must in _flat(caps[i]["text"]), f"caption_edits: caption {i} is {caps[i]['text']!r}, expected to contain {must!r}"
         if op == "set": caps[i]["text"] = ed[3]
+        elif op == "insert":
+            # ["insert", i, "must contain (caption i)", start, end, "text"] — a caption whisper never produced
+            # (2026-10-09, Ep24: the English term spliced in from a second take got no transcript line);
+            # it goes right after caption i and must sit inside the gap after it.
+            st_, en_, tx_ = float(ed[3]), float(ed[4]), ed[5]
+            if caps[i]["start"] + 0.4 <= st_ < caps[i]["end"]: caps[i]["end"] = round(st_, 3)     # trim the +0.35 tail hold
+            if i + 1 < len(caps) and caps[i + 1]["start"] < en_ <= caps[i + 1]["end"] - 0.4: caps[i + 1]["start"] = round(en_, 3)   # the next caption had been snapped onto this island
+            assert st_ >= caps[i]["end"] - 0.05 and (i + 1 >= len(caps) or en_ <= caps[i + 1]["start"] + 0.05), f"caption_edits: insert after {i} does not fit the gap: {caps[i]} … {caps[i + 1] if i + 1 < len(caps) else None}"
+            caps.insert(i + 1, {"start": round(st_, 3), "end": round(en_, 3), "text": tx_}); continue
         elif op == "move_head":
             t = _flat(caps[i]["text"]); n_ = ed[3]; frac = n_ / max(1, len(t)); cut_t = caps[i]["start"] + (caps[i]["end"] - caps[i]["start"]) * frac
             caps[i - 1]["text"] = _rewrap(_flat(caps[i - 1]["text"]) + " " + t[:n_].strip()); caps[i - 1]["end"] = round(cut_t, 3)

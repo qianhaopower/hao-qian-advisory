@@ -19,18 +19,21 @@ a visible jump, so each one must sit under an insert (check start+0.3 <= seam <=
 import json, subprocess, sys
 raw, edl, wd = sys.argv[1], sys.argv[2], sys.argv[3]
 F = 30.0
-keep = [[round(round(a * F) / F, 6), round(round(b * F) / F, 6)] for a, b in json.load(open(edl))["keep"]]
+# a keep entry is [start, end] in the raw, or [start, end, "<other raw>"] (2026-10-09, Ep24: the English
+# term and the Spark passage came from a second take, IMG_2996) — the other file must share fps/size.
+import os
+keep = [[round(round(e[0] * F) / F, 6), round(round(e[1] * F) / F, 6), os.path.expanduser(e[2]) if len(e) > 2 else raw] for e in json.load(open(edl))["keep"]]
 vl, al = [], []
-for i, (a, b) in enumerate(keep):
+for i, (a, b, src) in enumerate(keep):
     d = b - a; fd = min(0.008, d / 4)
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{a:.6f}", "-i", raw, "-t", f"{d:.6f}", "-map", "0:v:0", "-an",
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{a:.6f}", "-i", src, "-t", f"{d:.6f}", "-map", "0:v:0", "-an",
                     "-c:v", "hevc_videotoolbox", "-b:v", "40M", "-tag:v", "hvc1", "-pix_fmt", "yuv420p", "-r", "30", f"{wd}/v{i}.mov"], check=True)
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{a:.6f}", "-i", raw, "-t", f"{d:.6f}", "-vn", "-ac", "1", "-ar", "48000",
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{a:.6f}", "-i", src, "-t", f"{d:.6f}", "-vn", "-ac", "1", "-ar", "48000",
                     "-af", f"afade=t=in:d={fd},afade=t=out:st={d - fd:.6f}:d={fd}", f"{wd}/a{i}.wav"], check=True)
     vl.append(f"file 'v{i}.mov'"); al.append(f"file 'a{i}.wav'"); print(f"seg{i}: {a:.3f}-{b:.3f}", flush=True)
 open(f"{wd}/vlist.txt", "w").write("\n".join(vl)); open(f"{wd}/alist.txt", "w").write("\n".join(al))
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{wd}/vlist.txt", "-c", "copy", f"{wd}/video_cut.mov"], check=True)
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{wd}/alist.txt", "-c", "copy", f"{wd}/audio_cut.wav"], check=True)
 t = 0.0
-for a, b in keep[:-1]:
+for a, b, _ in keep[:-1]:
     t += b - a; print(f"seam at {t:.2f}s in the cut")
