@@ -14,7 +14,7 @@ CW, CH = 360, 640; TW, TH = 150, 200; PAD = 16
 def cover(l1, l2):
     im = Image.open(face).convert("RGB"); im = im.resize((1080, 1920)); d = ImageDraw.Draw(im)
     def line(txt, col, y, base):
-        sz = int(min(base, base * 9 / max(1, len(txt)))); f = ImageFont.truetype(F, sz)
+        sz = int(min(base, 980 / max(1, len(txt)))); f = ImageFont.truetype(F, sz)     # never wider than the frame
         w = d.textlength(txt, font=f); d.text(((1080 - w) / 2, y), txt, font=f, fill=col, stroke_width=int(sz * 0.09), stroke_fill=INK)
         return sz
     s1 = line(l1, WHITE, 1120, 150); line(l2, GOLD, 1120 + s1 + 40, 170)
