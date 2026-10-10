@@ -568,3 +568,13 @@ Lessons: (1) sensitive-vocab topics post at 17–18:00 so a review delay
 still lands before peak; (2) production to review this opening — first
 5s failed for the first time since the formula era; (3) zero comments =
 statement title leaves nothing to answer.
+
+### Milestone — 103 followers (2026-10-10)
+
+小红书 crosses triple digits: 61 (09-30) → **103** (10-10), +42 in ten
+days — more than all of month one (+39), with no single viral note:
+structural growth from 冒烟油's tail + four formula-era notes. Tracking
+ahead of the desk's floor forecast (150–300 at 3 months) and on the
+median path. Note-card 涨粉数 undercounts: it only attributes follows
+made on the note page; profile-visit follows (the majority) don't attach
+— the new bio/profile is converting.
