@@ -552,3 +552,19 @@ logged: post-review releases miss their launch pool and often refill next
 morning; final verdict tomorrow. If confirmed dead: sensitive-topic +
 review delay + off-peak release stack, not a content verdict; BDNF can be
 re-skinned later (disease words → state words) and posted in the 8pm slot.
+
+### BDNF note at ~20h (2026-10-10) — the review tax, measured
+
+爱运动的人 为什么更聪明 (posted 10-09 ~22:30 after 25-min review): 曝光
+**392** (first-pool starvation confirmed) · 262 views — views ≈ 67% of
+exposure, i.e. mostly NON-feed traffic (profile/series/fans): the account
+now self-circulates a few hundred views without the algorithm · CTR 6.7%
+· 2s退出 32.8% & 5s完播 32.8% (**first 待提升 opening of the new era**) ·
+avg 17.3s (粉丝 68.3s) · 互动率 14.1% (赞33 藏16 评0) — likes-heavy and
+watch-shallow: identity-affirming title collects cover-likes from
+exercisers without full views · 涨粉 3.
+
+Lessons: (1) sensitive-vocab topics post at 17–18:00 so a review delay
+still lands before peak; (2) production to review this opening — first
+5s failed for the first time since the formula era; (3) zero comments =
+statement title leaves nothing to answer.
