@@ -293,7 +293,13 @@ if ff and os.path.exists(os.path.expanduser(ff["file"])):
                             "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
                             mp4], check=True)
         fp1 = mp4
-    sc.add_segment(cc.VideoSegment(fp1, T(0, ff.get("hold", 0.35))), "inserts")
+    fseg = cc.VideoSegment(fp1, T(0, ff.get("hold", 0.35)))
+    # COVER GRADE (2026-10-10, Ep25 — Hao: 封面里我的脸惨白,视频里是红润的): the main video carries the
+    # series grade (saturation/contrast/brightness keyframes above) but the frame-1 face still never did,
+    # so every cover thumbnail was paler than the film. The cover takes the same three numbers.
+    for prop, key, dflt in ((KeyframeProperty.saturation, "saturation", 0.35), (KeyframeProperty.contrast, "contrast", 0.06), (KeyframeProperty.brightness, "brightness", 0.05)):
+        fseg.add_keyframe(prop, tim("0s"), float(_g.get(key, dflt)))
+    sc.add_segment(fseg, "inserts")
 
 ec = FX.get("endcard")                            # book end card after the speech
 EC_HOLD = float(ec.get("hold", 3.5)) if ec else 0.0

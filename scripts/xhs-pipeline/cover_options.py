@@ -12,7 +12,12 @@ F = os.path.expanduser("~/Video Studio/work/fonts/SourceHanSansSC-Heavy.otf")
 GOLD, WHITE, INK = (255, 204, 51), (255, 255, 255), (20, 20, 20)
 CW, CH = 360, 640; TW, TH = 150, 200; PAD = 16
 def cover(l1, l2):
-    im = Image.open(face).convert("RGB"); im = im.resize((1080, 1920)); d = ImageDraw.Draw(im)
+    im = Image.open(face).convert("RGB"); im = im.resize((1080, 1920))
+    # preview the series grade CapCut puts on the film (and, since 2026-10-10, on the cover too):
+    # saturation +35 %, a touch of contrast and brightness — otherwise the mock-up reads paler than the post.
+    from PIL import ImageEnhance
+    im = ImageEnhance.Color(im).enhance(1.35); im = ImageEnhance.Contrast(im).enhance(1.06); im = ImageEnhance.Brightness(im).enhance(1.05)
+    d = ImageDraw.Draw(im)
     def line(txt, col, y, base):
         sz = int(min(base, 980 / max(1, len(txt)))); f = ImageFont.truetype(F, sz)     # never wider than the frame
         w = d.textlength(txt, font=f); d.text(((1080 - w) / 2, y), txt, font=f, fill=col, stroke_width=int(sz * 0.09), stroke_fill=INK)
