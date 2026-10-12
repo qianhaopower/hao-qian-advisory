@@ -591,3 +591,15 @@ the review-night release crowd; later viewers watch deeply. Verdict:
 leave it burning, add a pinned question comment to open the comment lane
 (0 comments on a statement-style title). Hao's own read ("看的人少但都
 非常喜欢") was exactly right.
+
+### 快慢肌 note at ~2d (2026-10-12 sweep)
+
+天天走一万步/肌肉为什么还是没劲 (posted 10-10): 曝光 927 · 167 views ·
+CTR 7.7% — **first 流量转化 待提升 of the era, yet his 3rd-best CTR
+ever: the note was classed into the fitness vertical where category
+median is 9.7% (vs ~5.4–6.2 in nutrition)** · 2s退出 34.1% · 5s 50.6% ·
+avg 38.0s · 互动率 6.6% (赞4 藏6 评0). Second confirmation of the
+五颜六色 pattern (no save-tool, no share-fear → no renewals), plus a new
+lesson: **vertical choice moves the benchmark — enter body topics
+through the kitchen/nutrition door, not the fitness door,** where the
+cover race is twice as fierce. Slash-structured titles dilute the punch.
