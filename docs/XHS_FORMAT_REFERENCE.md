@@ -153,6 +153,29 @@ brush-calligraphy style**, e.g. 人生容错率 / **高到无法想象**;
 it's written separately. One corner mark possible (有趣的知识). Face
 looks straight into the lens.
 
+### COVER COLOUR LAW (2026-10-12, after three episodes of 「封面惨白」 — Hao: 加上规则,省得再犯)
+
+The cover must look like a frame OF the film, not a paler cousin of it. Three things went wrong in a row
+(Ep24 ball frame, Ep25 biceps frame, Ep26 belly frame) and each is now a check, not a memory:
+
+1. **Same grade, baked.** The main track carries the series grade (CapCut saturation +0.35, contrast +0.06,
+   brightness +0.05). The frame-1 face still gets the SAME grade baked into the image in PIL
+   (`to_capcut.py` writes `face1_graded.png` and uses that) — never as keyframes on a still segment, which
+   do not reach the thumbnail. `cover_options.py` previews with the same grade, so the mock-up Hao picks
+   from is what the post will show.
+2. **Match the face to the film, not the wall to the wall.** A cover frame from another clip (a gag, a
+   prop, a different take) is exposed differently. Before any mock-up: take a random frame of the TALK,
+   sample a cheek patch and a wall patch in both, and compare (a) cheek RGB, (b) face/wall luminance
+   ratio. Fix by per-channel gain / brightness on the cover frame until both are within a few points;
+   Hao judges 脸的光对墙的对比, so that ratio is the number that matters. Write the two rows in the report.
+3. **Show the pair.** Deliver `~/Downloads/<topic>-封面对比.png` — left a graded talk frame, right the graded
+   cover — alongside the 三选 sheet. If the pair does not read as one film, the cover is not ready.
+4. **Headroom.** Head top sits at ≈22 % of the frame height like the talk covers (measure it); a gag
+   frame shot looser gets cropped and scaled (×1.09, top 300 px) until it matches — 上方留白太高 is a
+   Hao note from Ep26.
+5. **Props.** A big coloured prop (green ball) shifts the phone's white balance and the eye's read; prefer
+   a frame where the prop is small or the cast is neutralised before step 2.
+
 ## 8. Post text
 
 Title = one striking sentence (the claim, with a full stop). The
