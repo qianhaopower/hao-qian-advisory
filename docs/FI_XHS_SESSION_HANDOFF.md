@@ -30,3 +30,6 @@ Hao 只做:录像(开拍先 2 秒封面脸、侧领夹麦、头顶少留白)→ 
 
 ## 2026-10-01 字幕链 v3(Ep19 起)
 `whisper-cli -ml 1 -oj -of work/tokens`(只取全文)→ `build_captions.py`:按音频里的真实停顿切「语音岛」= 一句一条字幕,长句在字幕内换行(2–3 行);错字写 `work/fix.json`,换行/挪词写 `work/caption_edits.json`;to_capcut 的 CAPTION GATE 只认 builder 写出的 captions.json。更多特效:zoom_overrides 约每 30 秒一次、punch 6–8 个、floaters 5–7 个、doodles 2 个。
+
+## 草稿名不复用(2026-10-12)
+CapCut 一旦打开过某个草稿名(文件夹里出现 draft_cover.jpg / Resources / Timelines),就不要再用同名重新生成——CapCut 会拿缓存的状态对不上新写的 draft_content.json,表现为「打不开」(Ep26 v2)。改了 fx 就升一个版本号(v3、v4…),CapCut 还开着的话让 Hao 重开一次 CapCut 刷新列表。
