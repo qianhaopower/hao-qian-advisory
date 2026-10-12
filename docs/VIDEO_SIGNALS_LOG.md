@@ -578,3 +578,16 @@ ahead of the desk's floor forecast (150–300 at 3 months) and on the
 median path. Note-card 涨粉数 undercounts: it only attributes follows
 made on the note page; profile-visit follows (the majority) don't attach
 — the new bio/profile is converting.
+
+### BDNF note at 3d (2026-10-12 sweep, self-driven) — the slow burn
+
+爱运动的人 为什么更聪明: 曝光 392→**1274** (3× since the review-night
+start), 324 views, CTR 9.2%, 5s 43.7% (back above category median), avg
+watch 17.3s→**75.1s**, 互动率 **22.5% — all-time account record** (赞46
+藏20 转7), 评论 0. The morning-refill hypothesis confirmed and exceeded:
+the note is on a slow-burn path, re-tested daily with top-tier rates.
+The 20h "identity-likes" read was half wrong — the shallow cohort was
+the review-night release crowd; later viewers watch deeply. Verdict:
+leave it burning, add a pinned question comment to open the comment lane
+(0 comments on a statement-style title). Hao's own read ("看的人少但都
+非常喜欢") was exactly right.
