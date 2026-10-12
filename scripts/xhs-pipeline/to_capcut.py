@@ -288,7 +288,15 @@ ff = FX.get("face_frame")      # eyes-open natural still overlaid on frame 1
 if ff and os.path.exists(os.path.expanduser(ff["file"])):
     fp1 = os.path.expanduser(ff["file"])
     if fp1.lower().endswith((".png", ".jpg", ".jpeg")):
+        # COVER GRADE, baked (2026-10-12, Ep26 — Hao still saw the cover paler than the film after the keyframe
+        # fix): keyframes on a still segment are not trusted; the series grade is applied in PIL to a copy
+        # (saturation ×1.35, contrast ×1.06, brightness ×1.05 ≈ the main track's keyframes) and that copy is used.
+        from PIL import Image as _Im, ImageEnhance as _En
+        _gi = _Im.open(fp1).convert("RGB"); _gi = _En.Color(_gi).enhance(1 + float(_g.get("saturation", 0.35)))
+        _gi = _En.Contrast(_gi).enhance(1 + float(_g.get("contrast", 0.06))); _gi = _En.Brightness(_gi).enhance(1 + float(_g.get("brightness", 0.05)))
+        fp1 = fp1.rsplit(".", 1)[0] + "_graded.png"; _gi.save(fp1)
         mp4 = fp1.rsplit(".", 1)[0] + ".mp4"
+        if os.path.exists(mp4): os.remove(mp4)
         if not os.path.exists(mp4):
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", fp1,
                             "-t", "0.6", "-vf", "scale=1080:1920", "-c:v", "libx264",
@@ -299,9 +307,7 @@ if ff and os.path.exists(os.path.expanduser(ff["file"])):
     # COVER GRADE (2026-10-10, Ep25 — Hao: 封面里我的脸惨白,视频里是红润的): the main video carries the
     # series grade (saturation/contrast/brightness keyframes above) but the frame-1 face still never did,
     # so every cover thumbnail was paler than the film. The cover takes the same three numbers.
-    for prop, key, dflt in ((KeyframeProperty.saturation, "saturation", 0.35), (KeyframeProperty.contrast, "contrast", 0.06), (KeyframeProperty.brightness, "brightness", 0.05)):
-        fseg.add_keyframe(prop, tim("0s"), float(_g.get(key, dflt)))
-    sc.add_segment(fseg, "inserts")
+    sc.add_segment(fseg, "inserts")          # the grade is baked into the png above, no keyframes on the still
 
 ec = FX.get("endcard")                            # book end card after the speech
 EC_HOLD = float(ec.get("hold", 3.5)) if ec else 0.0
