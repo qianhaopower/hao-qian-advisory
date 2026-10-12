@@ -116,13 +116,24 @@ def hand(p, x, y, sc=1.0, col=SKIN):
 
 
 # ------------------------------------------------------------ bf_bug
+def person_belly(p, cx, cy, k=1.0, belly=1.0):
+    """a simple standing figure with a round belly: head, shoulders, arms, legs; the belly is an oval on the torso"""
+    ol = mix(PAPER, INK, k)
+    p.C(cx, cy - 430, 70, fill=WHITE, outline=ol, width=6)                                                     # head
+    p.R(cx - 150, cy - 350, cx + 150, cy + 120, fill=WHITE, outline=ol, width=6, r=70)                         # torso
+    for dx in (-200, 200): p.R(cx + dx - 32, cy - 330, cx + dx + 32, cy - 40, fill=WHITE, outline=ol, width=6, r=28)   # arms
+    for dx in (-70, 70): p.R(cx + dx - 42, cy + 110, cx + dx + 42, cy + 400, fill=WHITE, outline=ol, width=6, r=30)    # legs
+    p.E(cx, cy - 60, 150 * belly, 120 * belly, fill=mix(WHITE, SKIN, 0.7), outline=ol, width=5)                # the belly
+    p.E(cx, cy - 50, 10, 13, fill=(214, 180, 150))
+
+
 def bf_bug(n, N=240):
     t = n / 30; p = Cv(); k = ease((t - 0.4) / 0.8); kb = ease((t - 1.4) / 0.8); ks = ease((t - 2.8) / 0.6)
-    hud(p, "腹部脂肪,像寄生虫?", INK, "《Metabolical》的说法", "它会让你吃更多", RED)
-    belly(p, 540, 900, 300, k)
-    bug(p, 540 + 40 * math.sin(t * 2), 760 + 10 * math.sin(t * 3), 120 * kb, kb, blink=(int(t * 2) % 7 == 6))
-    if ks > 0: bubble(p, 540, 470, 560 * ks, 130 * ks, "再吃一口嘛…", 44 * ks, RED, tail=(1, 1))
-    if t > 5.2: p.T(W / 2, 1250, "它分泌的东西,会悄悄改你的食欲", 34, mix(PAPER, INK, ease((t - 5.2) / 0.5)))
+    hud(p, "腹部脂肪,像寄生虫?", INK, "《Metabolical》的说法", "它会让你吃更多", RED, note=None)
+    person_belly(p, 540, 820, k, 1.0 + 0.08 * ease((t - 5.5) / 1.5))
+    bug(p, 540 + 30 * math.sin(t * 2), 740 + 8 * math.sin(t * 3), 72 * kb, kb, blink=(int(t * 2) % 7 == 6))
+    if ks > 0: bubble(p, 760, 560, 400 * ks, 120 * ks, "再吃一口嘛…", 36 * ks, RED, tail=(-1, 1))
+    if t > 5.2: p.T(W / 2, 1300, "它分泌的东西,会悄悄改你的食欲", 34, mix(PAPER, INK, ease((t - 5.2) / 0.5)))
     return p.out()
 
 
@@ -188,6 +199,19 @@ def bf_hand(n, N=300):
 
 
 # ------------------------------------------------------------ stills
+BOOK = os.path.expanduser("~/Movies/FI-videos/bellyfat/work/metab_cover.jpg")
+def bf_book():
+    p = Cv(); p.T(W / 2, 140, "这本书真的这么说", 48, INK)
+    cov = Image.open(BOOK).convert("RGB"); cw = 420; ch = int(cw * cov.height / cov.width)
+    p.R(W / 2 - cw / 2 - 16, 300 - 16, W / 2 + cw / 2 + 16, 300 + ch + 16, fill=WHITE, outline=LINE, width=4, r=12)
+    p.im.paste(cov.resize((cw * S, ch * S), Image.LANCZOS), (int((W / 2 - cw / 2) * S), 300 * S))
+    y = 300 + ch + 70
+    p.T(W / 2, y, "《Metabolical》", 44, INK); p.T(W / 2, y + 60, "Robert Lustig · 2021", 30, GREY)
+    p.T(W / 2, y + 115, "加州大学旧金山分校 儿科内分泌学教授", 26, GREY)
+    p.T(W / 2, y + 195, "腹部脂肪像寄生虫,会控制你的行为", 32, GOLD); p.T(W / 2, 1326, "示意图", 24, GREY)
+    return p.out()
+
+
 def bf_preview():
     p = Cv(); p.T(W / 2, 200, "下期预告", 44, GREY); p.T(W / 2, 330, "快碳 · 慢碳", 84, INK)
     p.R(90, 470, 990, 760, fill=WHITE, outline=GOLD, width=5, r=24)
@@ -207,7 +231,7 @@ def bf_next():
 
 
 SCENES = {"bf_bug": (bf_bug, 240), "bf_hormones": (bf_hormones, 300), "bf_dials": (bf_dials, 300), "bf_loop": (bf_loop, 240), "bf_hand": (bf_hand, 300)}
-STILLS = {"bf_preview": (bf_preview, 6.0), "bf_next": (bf_next, 6.0)}
+STILLS = {"bf_preview": (bf_preview, 6.0), "bf_next": (bf_next, 6.0), "bf_book": (bf_book, 6.0)}
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
     want = sys.argv[1:] or list(SCENES) + list(STILLS)
