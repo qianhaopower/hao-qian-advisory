@@ -235,6 +235,18 @@ for ins in FX.get("inserts", []):            # {"match","file","hold"?}
     except Exception as e:
         print(f"!! insert overlap, dropped: {ins.get('match')} ({e.__class__.__name__})")
 
+# FLASH GATE (2026-10-13, Ep27 — Hao: 14–16 秒之间我的脸闪了一下,31 秒也闪了一下,做一个最小时长的 gate):
+# an insert shorter than 1.5 s, or a sliver of face between two inserts shorter than 1.2 s, reads as a flicker.
+# The draft is refused until the fx file fixes it (touching inserts are fine; --no-flash-gate bypasses).
+_fw = sorted((seg.target_timerange.start / 1e6, (seg.target_timerange.start + seg.target_timerange.duration) / 1e6)
+             for seg in sc.tracks["inserts"].segments) if hasattr(sc.tracks.get("inserts", None), "segments") else []
+_fw = [w for w in _fw if w[0] >= FACE_HOLD]
+_flash = [f"insert {a:.2f}–{b:.2f} is only {b - a:.2f} s" for a, b in _fw if b - a < 1.5]
+_flash += [f"face sliver {_fw[i][1]:.2f}–{_fw[i + 1][0]:.2f} is only {_fw[i + 1][0] - _fw[i][1]:.2f} s" for i in range(len(_fw) - 1) if 0.05 < _fw[i + 1][0] - _fw[i][1] < 1.2]
+if _flash and "--no-flash-gate" not in sys.argv:
+    print("!! FLASH GATE FAILED"); [print("   -", f) for f in _flash]; sys.exit(1)
+print(f"flash gate: {len(_fw)} inserts, none under 1.5 s, no face sliver under 1.2 s")
+
 # no toplines/punches/floaters while a text-bearing insert is on screen
 INSERT_WINDOWS = []
 for ins in FX.get("inserts", []):

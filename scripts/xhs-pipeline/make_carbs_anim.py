@@ -186,7 +186,7 @@ def cb_next():
 
 SCENES = {"cb_molecules": (cb_molecules, 300), "cb_pool": (cb_pool, 360)}
 STILLS = {"cb_summary": (cb_summary, 8.0), "cb_preview": (cb_preview, 6.0), "cb_next": (cb_next, 6.0)}
-for _k in TERMS: STILLS[_k] = ((lambda kk: (lambda: term_card(kk)))(_k), 3.2)
+for _k in TERMS: STILLS[_k] = ((lambda kk: (lambda: term_card(kk)))(_k), 4.6)
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
     want = sys.argv[1:] or list(SCENES) + list(STILLS)

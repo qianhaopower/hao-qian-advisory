@@ -348,6 +348,14 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   营养智慧 Nutrition · 运动智慧 Dynamic · 睡眠智慧 Sleep. Multi-pillar specials use 七种智慧.
 - Floaters 9.5 brush. Emoji retired. Nothing invented outside the FD atlas.
 
+## FLASH GATE (2026-10-13, Ep27 — Hao: 14–16 秒之间我的脸闪了一下,做一个最小时长的 gate)
+
+A sliver of the face between two inserts, or a very short insert, reads as a flicker. `to_capcut.py` refuses the
+draft when any insert is under 1.5 s or any face gap between consecutive inserts is between 0.05 s and 1.2 s
+(touching inserts are fine, a real return to the face of ≥1.2 s is fine). Fix by lengthening the earlier insert
+(stills can be re-rendered longer — term cards went 3.2 → 4.6 s) or by a negative `offset` on the next one.
+`--no-flash-gate` bypasses, never for a posted cut.
+
 ## Inserts (真视频 b-roll)
 - Real footage first: FI shelf ~/Movies/FI-videos/assets/broll/ (Mixkit
   free-commercial, luma-filtered; harvester fetch_life_broll.py) + WT shelf.
