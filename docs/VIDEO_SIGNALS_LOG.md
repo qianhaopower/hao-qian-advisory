@@ -618,3 +618,14 @@ promises study repels the feed; "(收藏版)" commands saving before giving
 a reason. Save count 1 = the receipt. Re-skin later via a choice-scene
 door (两袋全麦面包,为什么一袋升糖) with the 5 terms as payload. Hao's
 instinct ("上来就讲五条没反响") confirmed with the 化名 nuance.
+
+### 肠道细菌 note — review watch (2026-10-14 ~22:00)
+
+Ep28 (gut bacteria → serotonin → mood) held in review 20+ min at posting.
+Desk audit of the full caption track: NO rejection-level vocabulary — no
+disease names, no therapeutic claims (mood stated as 开心快乐, exactly per
+the moderation playbook); the review-extenders are 血清素 ×5 / 神经递质 /
+大脑, same class as BDNF (which passed at 25 min and slow-burned to the
+account's engagement record). Expectation set: pass, cold first night
+(another late-evening release — the 17:00–18:00 rule missed again),
+morning refill, likely slow burn. Judge tomorrow afternoon, not tonight.
