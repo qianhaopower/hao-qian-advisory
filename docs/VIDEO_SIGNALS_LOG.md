@@ -603,3 +603,18 @@ avg 38.0s · 互动率 6.6% (赞4 藏6 评0). Second confirmation of the
 lesson: **vertical choice moves the benchmark — enter body topics
 through the kitchen/nutrition door, not the fitness door,** where the
 cover race is twice as fierce. Slash-structured titles dilute the punch.
+
+### 碳水 listicle at ~1d (2026-10-14) — the syllabus dies on the shelf
+
+碳水的5个名词,一次分清(收藏版) (posted 10-13): 曝光 388 · 126 views ·
+**CTR 2.4%** (2nd-worst ever; median 6.3%) · **2s exit 50% (worst
+ever)** · 5s 34.7% · but avg watch 77.7s and 全片完播 16% — the few who
+entered studied hard · 互动率 3.3% (赞5 **藏1** 评0 转0) · 涨粉 0 ·
+triple 待提升. Audience flipped: Male 56%, >44yo 39%.
+
+Reading: not "listicles are dead" — 化名's list worked (an exposé with an
+enemy); this list is a TAXONOMY ("分清5个名词" = homework). A title that
+promises study repels the feed; "(收藏版)" commands saving before giving
+a reason. Save count 1 = the receipt. Re-skin later via a choice-scene
+door (两袋全麦面包,为什么一袋升糖) with the 5 terms as payload. Hao's
+instinct ("上来就讲五条没反响") confirmed with the 化名 nuance.
