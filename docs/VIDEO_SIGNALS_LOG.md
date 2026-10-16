@@ -672,3 +672,13 @@ Reattributed to **face dominance**: no face 2.0% < face crowded out
 7.7–9.1% ≤ face+prop/text 9.2–11.4%. 碳水 flagged as a confounded
 sample (homework title). Rule stays TRIAL. Desk lesson: inspect the
 covers before blaming them.
+
+### Follower checkpoint — 2026-10-16
+
+小红书 111 followers, 27 notes total. Against the 09-30 forecast (base
+61; floor 150–300 / median 300–800 at 12-30): 18% of the window elapsed,
+56% of the floor target banked — ahead of floor, brushing the median
+path. Split: +42 in days 1–10 (冒烟油 tail) vs +8 in days 11–16 (the
+weak trio) — growth arrives in waves behind hit notes, as modeled.
+Levers unchanged: face-dominant covers, kitchen-situation titles, cut
+filler, one 9-min-class flagship per month. Score date 12-30 stands.
