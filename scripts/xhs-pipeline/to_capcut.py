@@ -273,7 +273,7 @@ if ti:
             style=TextStyle(size=(min(30.0, 18.0 * 8 / max(1, len(txt))) if col == "gold"
                                   else min(27.0, 16.0 * 9 / max(1, len(txt)))), bold=True,
                             color=GOLD if col == "gold" else WHITE, align=1),
-            clip_settings=ClipSettings(transform_y=-0.12 - i * 0.25),
+            clip_settings=ClipSettings(transform_y=-0.12 - i * 0.25 + float(FX.get("title_y", 0.0))),   # fx "title_y": lift the title (CapCut units, + = up) when the cover gag sits low (Ep29 fries bowl)
             border=TextBorder(color=(0.20, 0.12, 0.0), width=70.0) if col == "gold"
             else TextBorder(color=(0.04, 0.04, 0.04), width=70.0))
         seg.add_animation(OUT_UP)          # NO intro: full title on frame 1 (thumbnail)

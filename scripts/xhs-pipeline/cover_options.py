@@ -7,7 +7,11 @@ Line 1 white, line 2 gold (the COVER LAW look of to_capcut's card tracks), heavy
 black outline; the pillar badge top-right."""
 import sys, os
 from PIL import Image, ImageDraw, ImageFont
-face, out = sys.argv[1], sys.argv[2]; opts = [a.split("|") for a in sys.argv[3:]]
+face, out = sys.argv[1], sys.argv[2]; TY = 1120
+opts = []
+for a in sys.argv[3:]:
+    if a.startswith("y="): TY = int(a[2:]); continue        # first title line top (px of 1920); default 1120
+    opts.append(a.split("|"))
 F = os.path.expanduser("~/Video Studio/work/fonts/SourceHanSansSC-Heavy.otf")
 GOLD, WHITE, INK = (255, 204, 51), (255, 255, 255), (20, 20, 20)
 CW, CH = 360, 640; TW, TH = 150, 200; PAD = 16
@@ -22,7 +26,7 @@ def cover(l1, l2):
         sz = int(min(base, 980 / max(1, len(txt)))); f = ImageFont.truetype(F, sz)     # never wider than the frame
         w = d.textlength(txt, font=f); d.text(((1080 - w) / 2, y), txt, font=f, fill=col, stroke_width=int(sz * 0.09), stroke_fill=INK)
         return sz
-    s1 = line(l1, WHITE, 1120, 150); line(l2, GOLD, 1120 + s1 + 40, 170)
+    s1 = line(l1, WHITE, TY, 150); line(l2, GOLD, TY + s1 + 40, 170)
     f = ImageFont.truetype(F, 34); d.text((1080 - 60 - d.textlength("营养智慧", font=f), 120), "营养智慧", font=f, fill=GOLD, stroke_width=3, stroke_fill=INK)
     return im
 sheet = Image.new("RGB", (PAD + len(opts) * (CW + PAD), PAD + 40 + CH + 50 + TH + PAD), "white"); d = ImageDraw.Draw(sheet)
