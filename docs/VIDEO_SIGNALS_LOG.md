@@ -652,3 +652,13 @@ link; middle needs the knife again) · 60s播放 48. A by-the-book formula
 note: metaphor door + nutrition lane + clean face cover → paid in shelf
 space. Direct contrast with same-week 肠道细菌 (cartoon cover, 曝光 582)
 — cover law gains another data point. 2 comments to answer.
+
+### 冒烟油 — closing report at 12d (2026-10-16, self-driven)
+
+Final-ish: 曝光 **2961** (kept burning: +1000 since 10-05 unwatched) ·
+**882 views — account record** · CTR 10.5% · 赞53 藏41 评10 转17 ·
+互动率 13.9%. Avg watch fell 35.8s→9.7s (粉丝 53s): late-stage
+distribution reached colder/wider audiences who bounced — the normal
+end of a slow burn, fuel meeting the edge of its pool, not content
+decay. The account's first-phase benchmark note; case closed. Remaining
+sweep gaps: skit v2 (post-cover-swap) and LinkedIn Ep. 22.
