@@ -629,3 +629,16 @@ the moderation playbook); the review-extenders are 血清素 ×5 / 神经递质 
 account's engagement record). Expectation set: pass, cold first night
 (another late-evening release — the 17:00–18:00 rule missed again),
 morning refill, likely slow burn. Judge tomorrow afternoon, not tonight.
+
+### 肠道细菌 note at ~2d (2026-10-16) — the cartoon on the door
+
+心情说崩就崩,可能是肚子里的细菌在挨饿 (posted 10-14): 曝光 582 · 141
+views · **CTR 3.0%** (median 7.5) · 2s退出 32.8% · 5s 42.1% · avg 27.1s
+(粉丝75.4s) · 互动率 11.7% (赞8 藏5 评1) · 涨粉 1. The TITLE followed the
+situation-door formula and converts fine once entered — the cover's big
+cartoon microbe killed the click. Third cartoon-cover data point: skit
+2.0% / 碳水 2.4% / 肠道细菌 3.0% vs clean graded-face covers 9.2–11.4%.
+Pattern now 3-vs-3, 4× gap: **cartoon elements on covers are a CTR
+killer; drawn characters belong inside the film only.** Rescue plan:
+edit the cover in place (XHS allows) to face + same title text, then let
+it slow-burn. Rule proposed for promotion from trial pending Hao's nod.
