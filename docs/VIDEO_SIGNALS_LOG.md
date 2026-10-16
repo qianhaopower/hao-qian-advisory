@@ -662,3 +662,13 @@ distribution reached colder/wider audiences who bounced — the normal
 end of a slow burn, fuel meeting the edge of its pool, not content
 decay. The account's first-phase benchmark note; case closed. Remaining
 sweep gaps: skit v2 (post-cover-swap) and LinkedIn Ep. 22.
+
+### Erratum (2026-10-16 evening) — cover rule corrected by Hao
+
+The "no pasted elements" cover law was wrong: 腹部脂肪 (small pasted
+worm, 9.1%) and 快慢肌 (pasted accent, 7.7%) sit in the high-CTR group.
+Reattributed to **face dominance**: no face 2.0% < face crowded out
+2.4% < near-face-sized cartoon 3.0% << face-dominant with small accent
+7.7–9.1% ≤ face+prop/text 9.2–11.4%. 碳水 flagged as a confounded
+sample (homework title). Rule stays TRIAL. Desk lesson: inspect the
+covers before blaming them.
