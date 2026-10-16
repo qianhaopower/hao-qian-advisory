@@ -642,3 +642,13 @@ Pattern now 3-vs-3, 4× gap: **cartoon elements on covers are a CTR
 killer; drawn characters belong inside the film only.** Rescue plan:
 edit the cover in place (XHS allows) to face + same title text, then let
 it slow-burn. Rule proposed for promotion from trial pending Hao's nod.
+
+### 腹部脂肪 (Ep26) at 4d — first sweep (2026-10-16, self-driven)
+
+肚子上的肉,是寄生虫? (posted 10-12): 曝光 **1578** (2nd-largest shelf
+ever) · 288 views · CTR 9.1% (median 8.7) · 2s退出 26.2% · 5s 51% ·
+互动率 11.8% (赞17 藏12 评2 转3) · avg 22.5s (待提升 — the only weak
+link; middle needs the knife again) · 60s播放 48. A by-the-book formula
+note: metaphor door + nutrition lane + clean face cover → paid in shelf
+space. Direct contrast with same-week 肠道细菌 (cartoon cover, 曝光 582)
+— cover law gains another data point. 2 comments to answer.
