@@ -153,6 +153,16 @@ brush-calligraphy style**, e.g. 人生容错率 / **高到无法想象**;
 it's written separately. One corner mark possible (有趣的知识). Face
 looks straight into the lens.
 
+### COVER CONTENT LAW (2026-10-16, Hao — 家法, with the numbers)
+
+The cover is the graded real face + the two title lines. NOTHING pasted on afterwards: no cartoon, no cut-out
+prop, no sticker, no drawn bowl/plate/bulb/chips/bug. Data from the posted covers: composited covers clicked
+2.0 / 2.4 / 3.0 %, clean face covers 9.1 / 10.5 / 11.4 % — four times. If a prop belongs on the cover, the
+only legal way is to SHOOT it: the cover frame is re-taken with the real thing in hand (the BDNF football cover,
+real ball, 9.2 % — verified). The tools cover_bulb.py / biceps_fibres.py / belly_bulge.py / cover_terms.py /
+cover_plate.py / cover_fries.py stay in the repo as history and are not used for covers. The colour law below
+still applies on top (baked grade, cheek match, 封面对比.png, 22 % headroom).
+
 ### COVER COLOUR LAW (2026-10-12, after three episodes of 「封面惨白」 — Hao: 加上规则,省得再犯)
 
 The cover must look like a frame OF the film, not a paler cousin of it. Three things went wrong in a row
