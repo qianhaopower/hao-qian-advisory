@@ -82,6 +82,8 @@ const EDGES: [string, string][] = [
   ["video:fi-bdnf", "book:friends-intelligence"],
   ["video:fi-muscle-fibres", "book:friends-intelligence"],
   ["video:fi-belly-fat", "book:friends-intelligence"],
+  ["video:fi-carbs-five-words", "book:friends-intelligence"],
+  ["video:fi-gut-serotonin", "book:friends-intelligence"],
   ["video:fi-fries-story", "book:friends-intelligence"],
 ];
 
