@@ -163,6 +163,12 @@ real ball, 9.2 % — verified). The tools cover_bulb.py / biceps_fibres.py / bel
 cover_plate.py / cover_fries.py stay in the repo as history and are not used for covers. The colour law below
 still applies on top (baked grade, cheek match, 封面对比.png, 22 % headroom).
 
+### COVER EYES LAW (2026-10-22, Hao — Ep32 fitness and Ep33 肥胖 both opened on a blink)
+Frame 1 is the cover, and a blink there ships as the thumbnail. Before handing over any draft, look at frame 1 of `source_ready.mp4` (a face crop is enough). If the eyes are closed or half-closed, move the cover a few tenths of a second, never more:
+- if he has not started speaking yet, start the first EDL segment 0.1–0.5 s later at the first open-eyes frame;
+- if speech starts too early for that, take the open-eyes frame from within the first ~0.5 s of `source_ready.mp4`, crop it to the film's reframe (scale × `reframe_scale`, shifted by `reframe_y`), and set it as fx `face_frame` with `hold` 0.2 (Ep32 v4 precedent). It is a real frame from the film, so the COVER CONTENT LAW holds; the grade is baked as usual.
+Note it in the delivery table ("封面帧:0.35 s 睁眼帧").
+
 ### COVER COLOUR LAW (2026-10-12, after three episodes of 「封面惨白」 — Hao: 加上规则,省得再犯)
 
 The cover must look like a frame OF the film, not a paler cousin of it. Three things went wrong in a row
