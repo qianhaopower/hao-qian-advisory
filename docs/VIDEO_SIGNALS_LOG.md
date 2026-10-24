@@ -682,3 +682,39 @@ path. Split: +42 in days 1–10 (冒烟油 tail) vs +8 in days 11–16 (the
 weak trio) — growth arrives in waves behind hit notes, as modeled.
 Levers unchanged: face-dominant covers, kitchen-situation titles, cut
 filler, one 9-min-class flagship per month. Score date 12-30 stands.
+
+## Full catch-up sweep — 2026-10-24 (desk-driven end-to-end, data at 10-24 03:00)
+
+First sweep where the desk navigated everything itself (grid → note →
+share sheet → Data Analysis ×5). Followers: **123** (111 on 10-16).
+
+| Note | Posted | 曝光 | CTR | Views | 2s退出 | 5s% | Avg | 互动率 | 赞/藏/评/转 | 涨粉 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 薯条/补纤维 (Ep29) | 10-16 | 1377 | 10.9% | 261 | 28.2% | 58.6% | 63.6s | 4.2% | 6/1/4/0 | 1 |
+| 称体重 (Ep30) | 10-17 | 970 | 7.8% | 200 | 37.4% | 43.7% | — | 6.5% | 8/3/0/2 | — |
+| 骨裂/骨密度 (Ep31) | 10-20 | 1499 | 10.5% | 285 | 23.0% | 59.2% | 36.8s | 5.6% | 9/4/0/2 | 3 |
+| fitness这个词 (Ep32) | 10-21 | 1934 | **14.2% (record)** | 376 | 21.2% | 66.4% | 25.3s | 9.3% | 15/4/**13**/2 | 2 |
+| 澳洲慢性病/肥胖 (Ep33) | 10-22 | **590** | 7.2% | 311 | 24.1% | **71% (record)** | **238.2s** | **0.6%** | 1/1/0/0 | 1 |
+| 碳水 (closing, 10-13) | — | — | 3.8% (爬回) | 155 | — | 46.4% | 12.6s | 3.9% | 5/-/0/- | — |
+
+Readings:
+1. **The craft floor holds across the board**: 4 of 5 notes CTR ≥7.8%
+   (fitness 14.2% new record), 2s exits 21–28% (except 称体重 37%),
+   5s% 44–71%. The formula is no longer the variable.
+2. **fitness opened the comment lane** — 13 comments (prev record 7),
+   identity/debate topic (中英文混杂没有对应词). First proven 评论型 note;
+   its tradeoff: avg 25.3s (people came to argue, not watch).
+3. **肥胖/慢性病 is a new anomaly**: 311 views on 590 exposure (views ≈
+   53% of 曝光 → mostly non-feed), avg 238s, 全片完播 59.2% — deepest
+   watching ever recorded — with 0.6% engagement (1赞1藏). Shape matches
+   externally-shared traffic (WeChat?); ask Hao whether he shared it.
+4. No breakout since 冒烟油 (882): views band 155–376. Pools renew to
+   ~1–2k and stop; absolute 藏+转 stay single-digit — the ceiling lever
+   is still save/share design.
+5. Followers 111→123 in 8 days (~1.5/day): floor-to-median pace vs the
+   forecast.
+
+Desk ops note: first fully self-driven multi-note sweep. New mechanics
+recorded: CGEvent mouse clicks (SE click unreliable), horizontal wheel
+for the share-sheet tool row, narrow window (≈780pt) = known layout,
+share→Data Analysis executed by desk. Window resize is acceptable.
