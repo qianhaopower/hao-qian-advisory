@@ -706,8 +706,12 @@ Readings:
    its tradeoff: avg 25.3s (people came to argue, not watch).
 3. **肥胖/慢性病 is a new anomaly**: 311 views on 590 exposure (views ≈
    53% of 曝光 → mostly non-feed), avg 238s, 全片完播 59.2% — deepest
-   watching ever recorded — with 0.6% engagement (1赞1藏). Shape matches
-   externally-shared traffic (WeChat?); ask Hao whether he shared it.
+   watching ever recorded — with 0.6% engagement (1赞1藏). Hao confirms NO
+   external sharing — revised hypothesis: autoplay/连播 video-feed
+   traffic (views without cover exposure: 590×7.2% ≈ 42 feed clicks vs
+   311 views; passive deep watch, hands never on buttons). Long video
+   (avg 238s ⇒ 4min+ runtime) fits the video-feed placement. Verify via
+   Traffic Analysis source split next sweep.
 4. No breakout since 冒烟油 (882): views band 155–376. Pools renew to
    ~1–2k and stop; absolute 藏+转 stay single-digit — the ceiling lever
    is still save/share design.
