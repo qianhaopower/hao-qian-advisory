@@ -32,7 +32,7 @@ def _caption_gate():
     except FileNotFoundError:
         problems.append("work/captions_gate.json missing — captions.json was not produced by build_captions.py")
     import jieba as _jb; _jb.setLogLevel(60)
-    for wd_ in ("下一期", "下一条", "下次", "下一步", "上一条", "里面", "中间", "下丘脑"): _jb.add_word(wd_)   # whole words, not dangling 下/上/里/中 (2026-10-12)
+    for wd_ in ("下一期", "下一条", "下次", "下一步", "上一条", "里面", "中间", "下丘脑", "下一周", "上一周"): _jb.add_word(wd_)   # whole words, not dangling 下/上/里/中 (2026-10-12)
     for i, c in enumerate(CAPS):
         t = c["text"]
         if any(p in t for p in "，,；;"): problems.append(f"line {i} has a comma inside: {t}")
