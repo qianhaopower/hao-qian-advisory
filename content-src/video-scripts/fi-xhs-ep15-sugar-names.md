@@ -18,14 +18,21 @@ C. 蜂蜜、糖浆、浓缩果汁,最后都是糖
 
 ## 正文
 过去几十年我们把糖当成中性的:小孩吃点、做饭加点、配料里放点,没什么。
+ㅤ
 现在医学研究很清楚了:游离糖对认知、情绪、代谢、胰岛素都有负面影响。
+ㅤ
 但你看配料表只躲 Sugar 这个词,远远不够。厂家很聪明,糖有 23 个化名:
+ㅤ
 化学名:sucrose、glucose、fructose、lactose;
+ㅤ
 颜色和来源:beet、coconut、palm、cane、brown、white sugar——植物来源不等于更健康;
+ㅤ
 糖浆和蜂蜜:honey、maple、glucose、corn、high-fructose corn syrup、brown rice、golden syrup、molasses;
+ㅤ
 果汁:fruit juice concentrate、concentrated fruit juice、apple/grape juice concentrate、reconstituted juice——浓缩后剩下的就是糖。
+ㅤ
 给自己建一个反射:看到这些名字,都当成糖。
-
+ㅤ
 #游离糖 #配料表 #健康饮食 #营养 #减糖 #食品标签
 
 ## 置顶评论
