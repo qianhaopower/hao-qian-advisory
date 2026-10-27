@@ -145,7 +145,7 @@ card/floater/doodle, keywords marked throughout.
   exists but is rare — we use it never or almost never.
 
 ### 正文 blank lines (2026-10-26, Hao)
-小红书 swallows empty lines on paste. In every posting package (`content-src/video-scripts/fi-xhs-epNN-*.md`) the 正文 section is written with a line holding only U+3164 (ㅤ) between paragraphs, so copying straight out of the .md works. Also hand the 正文 over in the reply itself (same filler lines) and `pbcopy` it; `~/Downloads/<topic>-正文.txt` is the same text. Never plain empty lines in 正文.
+小红书 swallows empty lines on paste. In every posting package (`content-src/video-scripts/fi-xhs-epNN-*.md`) the 正文 section is written with a line holding only U+2800 (⠀, braille blank; U+3164 was swallowed on 2026-10-27) between paragraphs, so copying straight out of the .md works. Also hand the 正文 over in the reply itself (same filler lines) and `pbcopy` it; `~/Downloads/<topic>-正文.txt` is the same text. Never plain empty lines in 正文.
 
 ## 7. Cover (封面) — a designed still, same template every time
 
