@@ -89,3 +89,37 @@ Hao 看完 v2：「跳来跳去、闪一下，和小Lin完全不是一种感觉�
 5. **字幕**（Hao 问她是否逐字高亮）：**没有**。她的字幕是一行白色粗体略斜、细黑描边、5–12 字一句、固定在 ≈0.63H（紧贴信封式素材下沿），所有镜头位置不变、颜色不变。清楚来自：短、大、固定、不变色。我们的字幕 2–3 行、0.77H、切镜头时变金变红，所以显得乱。→ 字幕改一行（≤12 字，长句按从句切），固定 0.70H 左右，整集只用白色；金/红只留给大字。
 
 修正前 Ep35 不动，先在 Ep34 上重渲 v3 给 Hao 比。
+
+## 7. 零件库 `scripts/xhs-pipeline/fx_parts.py` + v3 合成器（2026-10-31）
+
+Hao 截了小Lin 免税 / HYROX 两集的 16 张图："为什么我们做不出这些效果？每个做成一个功能。" 拆完是 11 种零件，
+全部进了 `fx_parts.py`（纯 PIL，一个函数一个零件），`compose_v3.py` 按 `fx_v3.json` 的时间线调用它们。
+
+| 零件 | 她的用法 | 我们的函数 / json 键 | 放哪 |
+|---|---|---|---|
+| 气泡簇 bubble cluster | 名词一个个围着头冒出来 | `bubble()` / `"bubbles"` + steps | 脸两侧，7 个固定槽位，绝不进脸框 |
+| 锚卡矩阵 matrix | 行×列、? 逐格翻成值，整集召回 | `matrix_layer()` / `"matrix".recalls` | 全屏 + 小头像 |
+| 手边卡 twin cards | 1–3 张带线条图标的深色卡 | `card()` + `icon_*` / `"twin"` | 胸口带 0.52–0.74H |
+| 算账 calc | 顶部类目卡 + 翻牌数字 + 大窗人像 | `_counter_row()`, `flip_counter()` / `"calc"` | 全屏 |
+| 人+手机 split phone | 圆角人像 + 手机壳里真截图 | `fx_split_phone()`（本集没有真截图，未用） | 全屏 |
+| 纸面拼贴 desk collage | 真照片做拍立得贴在格纸上 | `fx_desk_collage()`（本集无真照片，未用） | 全屏 |
+| 海报章节 poster | 网点大字 + 英文小标 + 居中人像窗 | `halftone_text()`, `fx_poster_chapter()` | 章节 |
+| 卡片行 card row | 素材下沿一张张弹出的浅色卡 | `light_card()`, `chip()` / `"cardrow"` + steps | 盖在任何画面上 0.60H |
+| 侧卡 side tag | 画面边缘滑入的竖卡 | `"sidetag"` | 胸口带，左/右 |
+| 名牌三卡 logo trio | 两张斜黑牌，再中间一张大的 | `plate()`, `skew_card()` / `"trio"` | 胸口带 |
+| 照片扇 photo fan | 三张真照片叠在下三分之一 | `fx_photo_fan()`（需真照片） | 脸镜头下部 |
+
+共用基元：`ground_dots`（点阵墨底）/ `ground_paper` / `ground_diagonal`、`tint_panel`（她的行色板：teal violet navy wine olive slate rust，低饱和，只做底不做字）、
+`label_block`（中文 + 英文小字，所有卡的最小单位）、`corner_brackets`、`ornament`、`shadow`、`pip_circle` / `pip_rect`、`caption`（一行白字、细黑边、略斜）。
+
+**人脸处理 `grade_face`**：三次试错后定稿——不逐像素抠墙（抠出灰斑和光晕，Hao 当场看见了），改成两件与内容无关的事：
+高光滚降曲线（>150 压 0.62）+ 以脸为中心的光衰减。墙从 190 降到脸旁 ≈135 / 边缘 ≈100，脸保持 ≈150，帧均值 ≈103。零抠像，不会闪。
+
+**v3 合成器的规则**（compose_v3.py 自带 lint，渲染前会打印违规）：脸段 ≥5 s；图形成组（组内只换图形，小头像不断）；
+场景边界 ±1.5 s 内不换景别，有东西在身旁时锁 1.0；字幕一行、白色、0.80H，多行字幕按行拆开按字数分时；
+胸口带 0.52–0.74H 是所有"旁边的东西"的家。
+
+**v3 流程（不走 CapCut）**：原片 → `cut_by_edl.py` → `build_captions.py` → 写 `fx_v3.json`（章节 / 矩阵 / 气泡 / 卡片行 … 挂在哪句话上）
+→ `compose_v3.py --stills` 看关键帧 → `compose_v3.py` 全片（4 进程，约一刻钟）→ 封面 / 正文 / 归档照旧。想手动拖时间线的那集再出 CapCut 草稿。
+
+Ep34 v3 = `~/Movies/FI-videos/water-v3/`（fx_v3.json 另存为 `scripts/xhs-pipeline/fx_v3_example.json`）。

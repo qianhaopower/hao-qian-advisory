@@ -1,0 +1,533 @@
+{
+ "source": "source_ready.mp4",
+ "out": "final_v3.mp4",
+ "workers": 4,
+ "audio": {
+  "file": "~/Movies/FI-videos/archive/ep34-water/ep34-water-master-posted.mov",
+  "offset": 0.048
+ },
+ "zoom_in": 1.18,
+ "zoom_min_gap": 2.4,
+ "wall": 0.62,
+ "caption_y": 0.8,
+ "pillar": {
+  "zh": "营养智慧",
+  "en": "Nutrition Intelligence"
+ },
+ "title": {
+  "dur": 3.0,
+  "lines": [
+   [
+    "蛋白质算到克",
+    "white"
+   ],
+   [
+    "最基本的却没喝够",
+    "gold"
+   ]
+  ]
+ },
+ "endcard": {
+  "file": "~/Movies/FI-videos/assets/inserts/wt_next.png",
+  "hold": 6.0
+ },
+ "chapters": [
+  {
+   "match": "水是一种非常重要的营养物质",
+   "zh": "水 · 也是营养",
+   "en": "Water is a nutrient",
+   "hold": 1.2
+  },
+  {
+   "match": "我们有没有喝下足够的水呢",
+   "zh": "喝够了吗",
+   "en": "Are you drinking enough",
+   "hold": 1.2
+  },
+  {
+   "match": "喝够足够水的金标准",
+   "zh": "金标准",
+   "en": "The gold standard",
+   "hold": 1.2
+  },
+  {
+   "match": "所以总的来说",
+   "zh": "总结",
+   "en": "In short",
+   "hold": 1.2
+  }
+ ],
+ "trio": [
+  {
+   "match": "把自己的蛋白质摄入精确到克",
+   "hold": 16.3,
+   "labels": [
+    [
+     "蛋白质",
+     "Protein"
+    ],
+    [
+     "维生素",
+     "Vitamins"
+    ],
+    [
+     "水",
+     "Water"
+    ]
+   ],
+   "steps": [
+    "把自己的蛋白质摄入精确到克",
+    "同时纤维素",
+    "这种营养物质就是水"
+   ]
+  }
+ ],
+ "twin": [
+  {
+   "match": "它既是原料又是载体",
+   "hold": 7.1,
+   "cards": [
+    [
+     "原料",
+     "Raw material",
+     "teal",
+     "flask"
+    ],
+    [
+     "载体",
+     "Carrier",
+     "navy",
+     "cart"
+    ]
+   ],
+   "steps": [
+    "它既是原料又是载体",
+    {
+     "match": "它既是原料又是载体",
+     "offset": 1.0
+    }
+   ]
+  }
+ ],
+ "footage": [
+  {
+   "match": "水都会变成我们身体的一部分",
+   "file": "~/Movies/FI-videos/assets/broll/5634.mp4",
+   "hold": 2.65
+  },
+  {
+   "match": "比如说蛋白质的水解这个过程",
+   "file": "~/Movies/FI-videos/assets/broll/12579.mp4",
+   "hold": 8.58
+  },
+  {
+   "match": "比如说淀粉的水解过程也是类似",
+   "file": "~/Movies/FI-videos/assets/broll/23624.mp4",
+   "hold": 12.35
+  },
+  {
+   "match": "你就可以想象水是一把小推车",
+   "file": "~/Movies/FI-videos/assets/broll/40778.mp4",
+   "hold": 7.95
+  },
+  {
+   "match": "一个很有用的方法",
+   "file": "~/Movies/FI-videos/assets/broll/48694.mp4",
+   "hold": 9.0
+  },
+  {
+   "match": "不管你是开车出去",
+   "file": "~/Movies/FI-videos/assets/broll/21394.mp4",
+   "hold": 1.93
+  },
+  {
+   "match": "坐在电脑旁边开会",
+   "file": "~/Movies/FI-videos/assets/broll/44439.mp4",
+   "hold": 5.95
+  },
+  {
+   "match": "下一条 我们看一看",
+   "file": "~/Movies/FI-videos/assets/broll/21341.mp4",
+   "hold": 4.9
+  }
+ ],
+ "cardrow": [
+  {
+   "match": "比如说蛋白质的水解这个过程",
+   "hold": 20.9,
+   "y": 0.6,
+   "cards": [
+    [
+     "蛋白质",
+     "氨基酸"
+    ],
+    [
+     "淀粉",
+     "葡萄糖"
+    ],
+    [
+     "细胞",
+     "吸收存储"
+    ]
+   ],
+   "steps": [
+    "比如说蛋白质的水解这个过程",
+    "比如说淀粉的水解过程也是类似",
+    "然后供我们身体"
+   ]
+  },
+  {
+   "match": "一个很有用的方法",
+   "hold": 9.0,
+   "y": 0.6,
+   "cards": [
+    [
+     "大杯子",
+     "一个就够"
+    ],
+    [
+     "早上",
+     "灌满"
+    ],
+    [
+     "一天",
+     "喝完"
+    ]
+   ],
+   "steps": [
+    "一个很有用的方法",
+    "你早上把它灌满",
+    "一天把它喝完"
+   ]
+  },
+  {
+   "match": "不管你是开车出去",
+   "hold": 7.86,
+   "y": 0.6,
+   "cards": [
+    [
+     "开车",
+     "带着"
+    ],
+    [
+     "开会",
+     "放手边"
+    ],
+    [
+     "随手",
+     "喝一口"
+    ]
+   ],
+   "steps": [
+    "不管你是开车出去",
+    "坐在电脑旁边开会",
+    "你可能就会不自然地喝一口"
+   ]
+  }
+ ],
+ "matrix": {
+  "title": [
+   "水 · 一种营养物质",
+   "Water as a nutrient"
+  ],
+  "cols": [
+   [
+    "要点",
+    "Key point"
+   ]
+  ],
+  "rows": [
+   [
+    "原料",
+    "Raw material",
+    "teal"
+   ],
+   [
+    "载体",
+    "Carrier",
+    "navy"
+   ],
+   [
+    "每天喝多少",
+    "Daily intake",
+    "violet"
+   ],
+   [
+    "金标准",
+    "Gold standard",
+    "wine"
+   ]
+  ],
+  "recalls": [
+   {
+    "match": "这是水 是作为原料的过程",
+    "hold": 2.0,
+    "set": {
+     "0,0": "生化反应"
+    }
+   },
+   {
+    "match": "它基本的物质都是水",
+    "hold": 2.6,
+    "set": {
+     "1,0": "运输"
+    }
+   },
+   {
+    "match": "那么2.6升和2.1升",
+    "hold": 4.36,
+    "set": {
+     "2,0": "2.6L/2.1L"
+    }
+   },
+   {
+    "match": "所以总的来说",
+    "offset": 1.2,
+    "hold": 8.89,
+    "set": {
+     "3,0": "小便颜色"
+    }
+   }
+  ]
+ },
+ "bubbles": [
+  {
+   "match": "比如说我们体内的淋巴液",
+   "hold": 8.1,
+   "items": [
+    [
+     "淋巴液",
+     "Lymph"
+    ],
+    [
+     "脑脊液",
+     "CSF"
+    ],
+    [
+     "肠液",
+     "Gut juice"
+    ],
+    [
+     "胃液",
+     "Gastric"
+    ],
+    [
+     "血液",
+     "Blood"
+    ]
+   ],
+   "steps": [
+    "比如说我们体内的淋巴液",
+    {
+     "match": "比如说我们体内的淋巴液",
+     "offset": 1.2
+    },
+    "肠液 胃液",
+    {
+     "match": "肠液 胃液",
+     "offset": 0.9
+    },
+    {
+     "match": "肠液 胃液",
+     "offset": 1.8
+    }
+   ]
+  },
+  {
+   "match": "比如说天很热",
+   "hold": 10.8,
+   "items": [
+    [
+     "天热",
+     "Heat"
+    ],
+    [
+     "运动",
+     "Exercise"
+    ],
+    [
+     "桑拿",
+     "Sauna"
+    ]
+   ],
+   "steps": [
+    "比如说天很热",
+    {
+     "match": "比如说天很热",
+     "offset": 2.0
+    },
+    "或者是蒸桑拿"
+   ]
+  }
+ ],
+ "punch": [
+  {
+   "match": "都会效率下降",
+   "text": "效率下降",
+   "style": "red",
+   "hold": 1.5
+  }
+ ],
+ "evidence": [
+  {
+   "match": "我们有没有喝下足够的水呢",
+   "hold": 3.52,
+   "org": "NHMRC  Australia",
+   "heading": "Nutrient Reference Values — Water",
+   "lines": [
+    {
+     "text": "Adequate Intake (AI), adults"
+    },
+    {
+     "text": "Fluids (drinks, incl. water)"
+    },
+    {
+     "text": "Men      2.6 L / day",
+     "key": true
+    },
+    {
+     "text": "Women    2.1 L / day",
+     "key": true
+    },
+    {
+     "text": "Total water incl. food: 3.4 L / 2.8 L"
+    }
+   ],
+   "source": "eatforhealth.gov.au  nutrient reference values",
+   "offset": 1.2
+  }
+ ],
+ "calc": [
+  {
+   "match": "一个成年男性一天",
+   "hold": 6.52,
+   "cats": [
+    [
+     "男",
+     "Men",
+     "navy",
+     "drop"
+    ],
+    [
+     "女",
+     "Women",
+     "wine",
+     "drop"
+    ]
+   ],
+   "counters": [
+    {
+     "label": "男",
+     "value": "2.6",
+     "unit": "L / day",
+     "match": "一个成年男性一天"
+    },
+    {
+     "label": "女",
+     "value": "2.1",
+     "unit": "L / day",
+     "match": "一个成年女性这个数字是2.1"
+    }
+   ],
+   "note": "NHMRC adequate intake · fluids"
+  }
+ ],
+ "sidetag": [
+  {
+   "match": "就是你可以一直把它带在手边",
+   "hold": 3.4,
+   "zh": "带在手边",
+   "en": "Keep it at hand",
+   "tint": "violet",
+   "side": "left"
+  }
+ ],
+ "swatches": [
+  {
+   "match": "理想情况下",
+   "hold": 17.3,
+   "title_zh": "小便颜色 · 金标准",
+   "title_en": "Urine colour chart",
+   "swatches": [
+    {
+     "rgb": [
+      246,
+      244,
+      232
+     ],
+     "label": "透明"
+    },
+    {
+     "rgb": [
+      243,
+      234,
+      170
+     ],
+     "label": "淡黄"
+    },
+    {
+     "rgb": [
+      236,
+      214,
+      96
+     ],
+     "label": "黄"
+    },
+    {
+     "rgb": [
+      222,
+      178,
+      40
+     ],
+     "label": "深黄"
+    },
+    {
+     "rgb": [
+      196,
+      134,
+      20
+     ],
+     "label": "琥珀"
+    },
+    {
+     "rgb": [
+      160,
+      96,
+      12
+     ],
+     "label": "深琥珀"
+    }
+   ],
+   "steps": [
+    {
+     "match": "理想情况下",
+     "lit": [
+      0,
+      3
+     ],
+     "bracket": {
+      "from": 0,
+      "to": 3,
+      "text": "喝够了",
+      "color": "gold"
+     },
+     "note": "没有颜色或淡淡的黄 · 没有很强的气味"
+    },
+    {
+     "match": "颜色比较重 发黄",
+     "lit": [
+      3,
+      6
+     ],
+     "bracket": {
+      "from": 3,
+      "to": 6,
+      "text": "该喝水了",
+      "color": "red"
+     },
+     "note": "颜色重 · 发黄 · 气味重：今天喝够了吗"
+    }
+   ]
+  }
+ ]
+}
