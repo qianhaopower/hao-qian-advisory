@@ -184,23 +184,17 @@ def _falloff(size, cx, cy, rx, ry, strength):
     return m.point(lambda v: int((255 - v) * strength))
 
 
-_CURVE = [v if v < 165 else int(165 + (v - 165) * 0.72) for v in range(256)] * 3
-
-
-def grade_face(img: Image.Image, wall=0.62, vignette=0.22, face=None) -> Image.Image:
-    """v4 (2026-10-31, after Hao: v3 看着灰暗). Measured against 小Lin's face shots: her frames sit at
-    mean luma ≈100–110 but contrast (std) ≈70–76 and skin saturation ≈65; our v3 had the same mean
-    luma yet contrast 63 / skin sat 44 → grey.  Hao's accepted Ep34 look: luma 120, sat 47, skin sat 88.
-    So: mild highlight roll-off (>165 ×0.72, wall 190→183 before fall-off), a GENTLE fall-off only at
-    the far edges, then saturation ×1.5, contrast ×1.10, brightness ×1.03.  No per-pixel key."""
-    w, h = img.size
-    out = img.point(_CURVE)
-    cx, cy = int(w * FACE_CX), int(h * FACE_CY)
-    fall = _falloff((w, h), cx, cy, int(w * 0.62), int(h * 0.40), 0.34)
-    out = Image.composite(Image.new("RGB", (w, h), (0, 0, 0)), out, fall)
-    out = ImageEnhance.Color(out).enhance(1.5)
-    out = ImageEnhance.Contrast(out).enhance(1.10)
-    return ImageEnhance.Brightness(out).enhance(1.03)
+def grade_face(img: Image.Image, wall=1.0, vignette=0.0, face=None) -> Image.Image:
+    """v5 (2026-10-31, Hao: 原片不用改都挺好看 — the phone picture IS the look).
+    No wall key, no curve, no fall-off.  Only the "natural" family Hao accepted since Ep34, measured
+    against the accepted Ep34 master (luma 120, sat 47, skin sat 88, R−B 16) — ours keeps the phone's
+    brightness (luma ≈155, wall ≈220) and matches its warmth and skin saturation:
+    warm tint R×1.02 / B×0.98 → saturation ×1.45 → contrast ×1.04 → brightness ×1.04."""
+    R, G, B = img.split()
+    out = Image.merge("RGB", (R.point(lambda v: min(255, int(v * 1.02))), G, B.point(lambda v: min(255, int(v * 0.98)))))
+    out = ImageEnhance.Color(out).enhance(1.45)
+    out = ImageEnhance.Contrast(out).enhance(1.04)
+    return ImageEnhance.Brightness(out).enhance(1.04)
 
 
 def face_frame(src: Image.Image, zoom=1.0, face_y=FACE_CY, grade=True) -> Image.Image:
