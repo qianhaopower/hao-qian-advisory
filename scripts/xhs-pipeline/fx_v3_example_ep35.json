@@ -1,0 +1,289 @@
+{
+ "source": "source_ready.mp4",
+ "out": "final_v3.mp4",
+ "workers": 4,
+ "audio": {
+  "file": "source_ready.mp4",
+  "offset": 0.0
+ },
+ "bgm": {
+  "file": "~/Movies/FI-videos/assets/bed_meditation_loop.mp3",
+  "under_db": 18.0
+ },
+ "zoom_in": 1.18,
+ "zoom_min_gap": 2.4,
+ "wall": 0.62,
+ "caption_y": 0.8,
+ "pillar": {
+  "zh": "营养智慧",
+  "en": "Nutrition Intelligence"
+ },
+ "title": {
+  "dur": 3.0,
+  "lines": [
+   [
+    "点盘芹菜补纤维?",
+    "white"
+   ],
+   [
+    "你补的可能不是那种",
+    "gold"
+   ]
+  ]
+ },
+ "endcard": {
+  "file": "~/Movies/FI-videos/assets/inserts/fb_next.png",
+  "hold": 6.0
+ },
+ "chapters": [
+  {
+   "match": "纤维主要有两种",
+   "zh": "两种纤维",
+   "en": "Two kinds of fibre",
+   "hold": 1.2
+  },
+  {
+   "match": "所以说如果你要想补充膳食纤维",
+   "zh": "怎么补",
+   "en": "How to get it",
+   "hold": 1.2
+  }
+ ],
+ "sidetag": [
+  {
+   "match": "他说那就点芹菜吧",
+   "hold": 7.0,
+   "zh": "芹菜",
+   "en": "Celery",
+   "tint": "olive",
+   "side": "left",
+   "file": "~/Movies/FI-videos/assets/real/ep35-fiber/photo_celery.jpg"
+  }
+ ],
+ "punch": [
+  {
+   "match": "纤维的丝状的纤维给弄混了",
+   "offset": 3.0,
+   "text": "弄混了",
+   "style": "red",
+   "hold": 1.5
+  }
+ ],
+ "trio": [
+  {
+   "match": "一种是可溶性的",
+   "hold": 4.2,
+   "labels": [
+    [
+     "可溶性",
+     "Soluble"
+    ],
+    [
+     "不可溶性",
+     "Insoluble"
+    ]
+   ],
+   "steps": [
+    "一种是可溶性的",
+    "一种是不可溶性的"
+   ]
+  }
+ ],
+ "phone": [
+  {
+   "match": "不可溶性的膳食纤维很多",
+   "hold": 7.6,
+   "file": "~/Movies/FI-videos/assets/real/ep35-fiber/bhc_mobile.png",
+   "y": 1900,
+   "scroll": 22
+  }
+ ],
+ "matrix": {
+  "title": [
+   "膳食纤维 · 两种",
+   "Two kinds of fibre"
+  ],
+  "cols": [
+   [
+    "要点",
+    "Key point"
+   ]
+  ],
+  "rows": [
+   [
+    "不可溶性",
+    "Insoluble",
+    "teal"
+   ],
+   [
+    "可溶性",
+    "Soluble",
+    "violet"
+   ],
+   [
+    "遇水",
+    "With water",
+    "navy"
+   ],
+   [
+    "好处",
+    "Benefit",
+    "wine"
+   ]
+  ],
+  "recalls": [
+   {
+    "match": "我们吃完芹菜吃完白菜以后觉得",
+    "hold": 2.4,
+    "set": {
+     "0,0": "芹菜丝"
+    }
+   },
+   {
+    "match": "它实际上是溶解掉的",
+    "hold": 2.6,
+    "set": {
+     "1,0": "果胶 豆类",
+     "2,0": "果冻"
+    }
+   },
+   {
+    "match": "它们很开心",
+    "hold": 4.1,
+    "set": {
+     "3,0": "控糖 喂菌"
+    }
+   }
+  ]
+ },
+ "collage": [
+  {
+   "match": "最典型的就是苹果里的果胶",
+   "hold": 7.1,
+   "photos": [
+    "~/Movies/FI-videos/assets/real/ep35-fiber/photo_apple.jpg",
+    "~/Movies/FI-videos/assets/real/ep35-fiber/photo_grains.jpg"
+   ],
+   "steps": [
+    "最典型的就是苹果里的果胶",
+    "豆子里的一些膳食"
+   ]
+  }
+ ],
+ "screens": [
+  {
+   "match": "我们把可溶性的膳食纤维吃到",
+   "hold": 8.45,
+   "file": "~/Movies/FI-videos/assets/real/ep35-fiber/bhc_types.png",
+   "view": [
+    0.0,
+    0.62
+   ],
+   "focus": [
+    0.07,
+    0.268,
+    0.62,
+    0.312
+   ],
+   "push": 1.6,
+   "step": 1.4
+  },
+  {
+   "match": "就可以阻止我们过快地吸收糖分",
+   "hold": 8.1,
+   "file": "~/Movies/FI-videos/assets/real/ep35-fiber/ejcn_abstract.png",
+   "view": [
+    0.0,
+    0.75
+   ],
+   "focus": [
+    0.01,
+    0.385,
+    0.62,
+    0.425
+   ],
+   "push": 1.6,
+   "step": 1.4
+  },
+  {
+   "match": "像芹菜白菜这些",
+   "hold": 4.05,
+   "file": "~/Movies/FI-videos/assets/real/ep35-fiber/fdc_celery.png",
+   "view": [
+    0.13,
+    0.62
+   ],
+   "focus": [
+    0.02,
+    0.535,
+    0.3,
+    0.556
+   ],
+   "push": 1.7,
+   "step": 1.2
+  }
+ ],
+ "bubbles": [
+  {
+   "match": "会附着到我们消化道",
+   "hold": 5.0,
+   "items": [
+    [
+     "胃壁",
+     "Stomach wall"
+    ],
+    [
+     "肠壁",
+     "Gut wall"
+    ]
+   ],
+   "steps": [
+    "会附着到我们消化道",
+    "比如说胃壁肠壁上"
+   ]
+  },
+  {
+   "match": "肠道微生物是影响",
+   "hold": 7.0,
+   "items": [
+    [
+     "情绪",
+     "Mood"
+    ],
+    [
+     "免疫",
+     "Immunity"
+    ],
+    [
+     "认知",
+     "Cognition"
+    ]
+   ],
+   "steps": [
+    {
+     "match": "肠道微生物是影响",
+     "offset": 0.8
+    },
+    {
+     "match": "肠道微生物是影响",
+     "offset": 2.2
+    },
+    {
+     "match": "肠道微生物是影响",
+     "offset": 3.8
+    }
+   ]
+  }
+ ],
+ "fan": [
+  {
+   "match": "比如像苹果呀",
+   "hold": 3.95,
+   "photos": [
+    "~/Movies/FI-videos/assets/real/ep35-fiber/photo_apple.jpg",
+    "~/Movies/FI-videos/assets/real/ep35-fiber/photo_grains.jpg",
+    "~/Movies/FI-videos/assets/real/ep35-fiber/photo_celery.jpg"
+   ]
+  }
+ ]
+}

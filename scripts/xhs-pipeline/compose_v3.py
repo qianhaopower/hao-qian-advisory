@@ -200,6 +200,37 @@ for ov in FX.get("punch", []):
     overlays.append((a, a + float(ov.get("hold", 1.4)), "punch", dict(spec=ov)))
     sfx.append((a, "thud" if ov.get("style") == "red" else "ding", -20 if ov.get("style") == "red" else -26))
 
+# --- real assets (real_assets.py folder): page/document screenshots, phone views, photos ---
+def _img(p):
+    return Image.open(os.path.expanduser(p)).convert("RGB")
+
+for s_ in FX.get("screens", []):          # {"match","file","hold","view":[y0,y1] frac of the image, "focus":[x0,y0,x1,y1] frac, "push":1.6, "step":1.2}
+    a = t_of(s_)
+    if a is None or not os.path.exists(os.path.expanduser(s_["file"])): print(f"!! screen skipped {s_}"); continue
+    add_scene(a, float(s_.get("hold", 4.0)), "screen", dict(img=_img(s_["file"]), spec=s_))
+    if s_.get("focus"): sfx.append((a + float(s_.get("step", 1.2)), "pop", -26))
+
+for ph in FX.get("phone", []):            # {"match","file","hold","y":px offset into the mobile capture, "scroll":px/s}
+    a = t_of(ph)
+    if a is None or not os.path.exists(os.path.expanduser(ph["file"])): print(f"!! phone skipped {ph}"); continue
+    add_scene(a, float(ph.get("hold", 4.0)), "phone", dict(img=_img(ph["file"]), spec=ph))
+
+for cg in FX.get("collage", []):          # {"match","hold","photos":[files],"steps":[...]}
+    a = t_of(cg)
+    if a is None: continue
+    st = steps_of(cg); photos = [p for p in cg["photos"] if os.path.exists(os.path.expanduser(p))]
+    st = (st + [(st[-1] if st else a) + 0.7 * (i + 1) for i in range(len(photos) - len(st))])[:len(photos)]
+    add_scene(a, float(cg.get("hold", 5.0)), "collage", dict(photos=[_img(p) for p in photos], steps=st))
+    for t in st[1:]: sfx.append((t, "pop", -26))
+
+for fn in FX.get("fan", []):              # on-face: {"match","hold","photos":[files]}
+    a = t_of(fn)
+    if a is None: continue
+    photos = [p for p in fn["photos"] if os.path.exists(os.path.expanduser(p))]
+    st = [a + 0.45 * i for i in range(len(photos))]
+    overlays.append((a, a + float(fn.get("hold", 5.0)), "fan", dict(photos=[_img(p) for p in photos], steps=st)))
+    for t in st: sfx.append((t, "pop", -26))
+
 cardrows = []                                   # drawn over whatever is on screen (footage or face)
 for cr in FX.get("cardrow", []):
     a = t_of(cr)
@@ -421,6 +452,75 @@ def draw_evidence(spec, t, a):
     return fr
 
 
+def _sheet(img, spec):
+    """Page capture as a paper sheet: optional vertical view window, fitted to 920 px wide, border + shadow."""
+    w, h = img.size
+    v = spec.get("view")
+    if v: img = img.crop((0, int(h * v[0]), w, int(h * v[1])))
+    r = 920 / img.width; im = img.resize((920, int(img.height * r)), Image.LANCZOS)
+    if im.height > 1300: im = im.crop((0, 0, 920, 1300))
+    sheet = Image.new("RGBA", (im.width + 24, im.height + 24), (255, 255, 253, 255))
+    sheet.paste(im, (12, 12)); ImageDraw.Draw(sheet).rectangle([0, 0, sheet.width - 1, sheet.height - 1], outline=(214, 208, 196, 255), width=2)
+    return sheet, r, (int(h * v[0]) if v else 0)
+
+
+def draw_screen(p, t, a):
+    """Her evidence shot: the real page on the desk (tilted), then a hard two-step push into the focus
+    region with a red mark (ring lands 0.5 s after the push)."""
+    spec = p["spec"]; step = float(spec.get("step", 1.2)); push = float(spec.get("push", 1.6))
+    focus = spec.get("focus")
+    def build(state):
+        sheet, r, y_off = _sheet(p["img"], spec)
+        fr = PAPERG.copy()
+        if focus:
+            W0, H0 = p["img"].size
+            fx0, fy0, fx1, fy1 = (focus[0] * W0 * r + 12, (focus[1] * H0 - y_off) * r + 12, focus[2] * W0 * r + 12, (focus[3] * H0 - y_off) * r + 12)
+        if state == 0:
+            sh = P.shadow(sheet, 22, (0, 14), 90).rotate(2.0, resample=Image.BICUBIC, expand=True)
+            fr.alpha_composite(sh, ((W - sh.width) // 2, int(H * 0.42) - sh.height // 2))
+        else:
+            big = sheet.resize((int(sheet.width * push), int(sheet.height * push)), Image.LANCZOS)
+            cx, cy = ((fx0 + fx1) / 2 * push, (fy0 + fy1) / 2 * push) if focus else (big.width / 2, big.height / 2)
+            if state == 2 and focus:
+                d = ImageDraw.Draw(big)
+                d.rounded_rectangle([fx0 * push - 16, fy0 * push - 12, fx1 * push + 16, fy1 * push + 12], 14, outline=RED + (255,), width=6)
+            sh = P.shadow(big, 22, (0, 14), 90)
+            fr.alpha_composite(sh, (int(W / 2 - cx) - 22 * 3, int(H * 0.42 - cy) - 22 * 3))
+        return fr
+    state = 0 if t - a < step else (2 if t - a >= step + 0.5 else 1)
+    return cached(("screen", a, state), lambda: build(state)).copy()
+
+
+def draw_phone(p, t, a, feed):
+    spec = p["spec"]; img = p["img"]
+    size = (470, 960); bez = 14; sw, sh = size[0] - 2 * bez, size[1] - 2 * bez
+    body = cached(("phonebody", a), lambda: P.rounded(size, 64, (12, 12, 14, 255), stroke=(120, 120, 128, 255), stroke_w=3))
+    scale = sw / img.width
+    y = int(float(spec.get("y", 0)) + float(spec.get("scroll", 0)) * (t - a))
+    y = max(0, min(img.height - int(sh / scale), y))
+    scr = img.crop((0, y, img.width, y + int(sh / scale))).resize((sw, sh), Image.LANCZOS)
+    ph = body.copy(); ph.paste(scr, (bez, bez), P.rounded((sw, sh), 52, (255, 255, 255, 255)))
+    ImageDraw.Draw(ph).rounded_rectangle([size[0] // 2 - 60, bez + 12, size[0] // 2 + 60, bez + 44], 16, fill=(12, 12, 14, 255))
+    fr = GROUND.copy()
+    P.paste(fr, P.pip_rect(feed, (440, 900), 40), 0.27, 0.46)
+    P.paste(fr, P.shadow(ph, 26, (0, 22), 170), 0.73, 0.46)
+    return fr
+
+
+def draw_collage(p, t, a):
+    fr = PAPERG.copy()
+    slots = [(0.27, 0.36, -4), (0.74, 0.33, 3), (0.26, 0.70, 2), (0.73, 0.72, -3)]
+    for i, (im, ts) in enumerate(zip(p["photos"], p["steps"])):
+        if ts > t: continue
+        def mk(im=im, ang=slots[i % 4][2]):
+            pic = im.copy(); pic.thumbnail((430, 430), Image.LANCZOS)
+            pol = Image.new("RGBA", (pic.width + 36, pic.height + 36), (250, 248, 244, 255)); pol.paste(pic, (18, 18))
+            return P.shadow(pol.rotate(ang, expand=True, resample=Image.BICUBIC), 18, (0, 14), 120)
+        pol = cached(("collage", a, i), mk); x, y, _ = slots[i % 4]
+        paste_scaled(fr, pol, int(x * W), int(y * H), pop(min(1.0, (t - ts) / 0.2)))
+    return fr
+
+
 def pop(k):
     k = max(0.0, min(1.0, k))
     return 0.92 + 0.08 * (1 - (1 - k) ** 3) + 0.03 * math.sin(k * math.pi)
@@ -493,13 +593,20 @@ def render(t, feed, state):
             frame = draw_swatches(p["spec"], t, p["steps"])
         elif kind == "evidence":
             frame = draw_evidence(p["spec"], t, a)
-        if kind not in ("chapter", "calc"):
+        elif kind == "screen":
+            frame = draw_screen(p, t, a)
+        elif kind == "phone":
+            frame = draw_phone(p, t, a, feed)
+        elif kind == "collage":
+            frame = draw_collage(p, t, a)
+        if kind not in ("chapter", "calc", "phone"):
             frame.alpha_composite(PIP_RING, (PIP_C[0] - PIP_D // 2 - 6, PIP_C[1] - PIP_D // 2 - 6))
             frame.alpha_composite(pip_layer(feed), (PIP_C[0] - PIP_D // 2, PIP_C[1] - PIP_D // 2))
     if sc is None and state.get("reader"):
         state["reader"].close(); state["reader"] = None; state["key"] = None
 
     # --- on-speaker overlays ---
+    cap_y = CAP_Y
     if sc is None:
         if t < title_dur:
             ty = int(H * 0.035)
@@ -528,12 +635,28 @@ def render(t, feed, state):
                 s = p["spec"]
                 def mk(s=s):
                     lb = P.label_block(s["zh"], s.get("en", ""), 52 if len(s["zh"]) <= 3 else 40, 16, width=270)
-                    pnl = P.tint_panel((300, lb.height + 120), P.TINTS[s.get("tint", "violet")], 26); P.corner_brackets(pnl, 12, 22)
-                    pnl.alpha_composite(lb, ((300 - lb.width) // 2, 60)); return P.shadow(pnl, 20, (0, 14), 150)
+                    pic = None
+                    if s.get("file") and os.path.exists(os.path.expanduser(s["file"])):
+                        pic = P.fit(Image.open(os.path.expanduser(s["file"])).convert("RGB"), (240, 300), radius=14)
+                    pnl = P.tint_panel((300, lb.height + 120 + (pic.height + 24 if pic else 0)), P.TINTS[s.get("tint", "violet")], 26); P.corner_brackets(pnl, 12, 22)
+                    pnl.alpha_composite(lb, ((300 - lb.width) // 2, 60))
+                    if pic: pnl.alpha_composite(pic, ((300 - pic.width) // 2, lb.height + 96))
+                    return P.shadow(pnl, 20, (0, 14), 150)
                 tag = cached(("sidetag", a), mk)
                 k = min(1.0, (t - a) / 0.25); ease = 1 - (1 - k) ** 3
                 cx = int(W * (0.16 if s.get("side", "left") == "left" else 0.84)); off = int((1 - ease) * 320) * (-1 if s.get("side", "left") == "left" else 1)
                 frame.alpha_composite(tag, (cx + off - tag.width // 2, CHEST_Y - tag.height // 2))
+            elif kind == "fan":
+                slots = [(0.30, 0.80, -7), (0.72, 0.78, 5), (0.50, 0.91, -2)]
+                for i, (im, ts) in enumerate(zip(p["photos"], p["steps"])):
+                    if ts > t: continue
+                    def mkf(im=im, ang=slots[i % 3][2]):
+                        pic = im.copy(); pic.thumbnail((500, 360), Image.LANCZOS)
+                        pol = Image.new("RGBA", (pic.width + 24, pic.height + 24), (250, 248, 244, 255)); pol.paste(pic, (12, 12))
+                        return P.shadow(pol.rotate(ang, expand=True, resample=Image.BICUBIC), 18, (0, 14), 150)
+                    pol = cached(("fan", a, i), mkf); x, y, _ = slots[i % 3]
+                    paste_scaled(frame, pol, int(x * W), int(y * H), pop(min(1.0, (t - ts) / 0.2)))
+                cap_y = 0.60
             elif kind == "punch":
                 s = p["spec"]
                 def mkp(s=s):
@@ -556,7 +679,7 @@ def render(t, feed, state):
         frame.alpha_composite(TAG, (40, 60))
     cap = next((l for a, b, l in cap_layers if a <= t < b), None)
     if cap is not None and (sc is None or sc[2] != "chapter"):
-        frame.alpha_composite(cap, (0, int(H * CAP_Y)))
+        frame.alpha_composite(cap, (0, int(H * cap_y)))
     return frame
 
 
@@ -608,12 +731,26 @@ def main():
     open("work/concat.txt", "w").write("".join(f"file '{os.path.abspath(p)}'\n" for p in parts))
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "work/concat.txt", "-c", "copy", "work/video_silent.mp4"], check=True)
     au = FX["audio"]
-    ins, fc, mixes = ["-ss", f"{float(au.get('offset', 0.0)):.3f}", "-i", os.path.expanduser(au["file"])], [], ["[0:a]"]
+    ins, fc, mixes = ["-ss", f"{float(au.get('offset', 0.0)):.3f}", "-i", os.path.expanduser(au["file"])], [], ["[v0]"]
+    _total = DUR + float((FX.get("endcard") or {}).get("hold", 0.0))
+    fc.append(f"[0:a]apad=whole_dur={_total:.2f}[v0]")
     for (t, name, db) in sorted(sfx):
         fp = os.path.join(SFX_DIR, name + ".wav")
         if t < 0 or not os.path.exists(fp): continue
         ins += ["-i", fp]; ms = int(t * 1000)
         fc.append(f"[{len(mixes)}:a]adelay={ms}|{ms},volume={db}dB[s{len(mixes)}]"); mixes.append(f"[s{len(mixes)}]")
+    bgm = FX.get("bgm")
+    if bgm and os.path.exists(os.path.expanduser(bgm["file"])):
+        def lufs(path):
+            out = subprocess.run(["ffmpeg", "-nostats", "-i", path, "-vn", "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr
+            i = out.rfind("Integrated loudness"); seg = out[i:i + 200]
+            return float(seg.split("I:")[1].split("LUFS")[0])
+        v_l, b_l = lufs(os.path.expanduser(au["file"])), lufs(os.path.expanduser(bgm["file"]))
+        gain = v_l - float(bgm.get("under_db", 18.0)) - b_l
+        total = DUR + float((FX.get("endcard") or {}).get("hold", 0.0))
+        ins += ["-stream_loop", "-1", "-i", os.path.expanduser(bgm["file"])]
+        fc.append(f"[{len(mixes)}:a]atrim=0:{total:.2f},volume={gain:.1f}dB,afade=t=in:d=1.0,afade=t=out:st={max(0, total - 2.5):.2f}:d=2.5[bgm]"); mixes.append("[bgm]")
+        print(f"bgm: voice {v_l:.1f} LUFS, bed {b_l:.1f} LUFS -> {gain:+.1f} dB ({bgm.get('under_db', 18)} dB under)")
     fc.append("".join(mixes) + f"amix=inputs={len(mixes)}:normalize=0:duration=first,alimiter=limit=0.95[a]")
     subprocess.run(["ffmpeg", "-v", "error", "-y", *ins, "-filter_complex", ";".join(fc), "-map", "[a]", "-c:a", "aac", "-b:a", "192k", "work/audio_v3.m4a"], check=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "work/video_silent.mp4", "-i", "work/audio_v3.m4a", "-map", "0:v:0", "-map", "1:a:0", "-c", "copy",

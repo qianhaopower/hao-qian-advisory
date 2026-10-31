@@ -123,3 +123,27 @@ Hao 截了小Lin 免税 / HYROX 两集的 16 张图："为什么我们做不出�
 → `compose_v3.py --stills` 看关键帧 → `compose_v3.py` 全片（4 进程，约一刻钟）→ 封面 / 正文 / 归档照旧。想手动拖时间线的那集再出 CapCut 草稿。
 
 Ep34 v3 = `~/Movies/FI-videos/water-v3/`（fx_v3.json 另存为 `scripts/xhs-pipeline/fx_v3_example.json`）。
+
+## 8. 备真图 `scripts/xhs-pipeline/real_assets.py`（2026-10-31，Hao：「以后不用素材库里的东西，都去真图」）
+
+她的"质感"一半来自真东西：真网页、真文件、真产品照。所以 v3 流程在写 fx json 之前多一步 **备真图**：
+
+```
+real_assets.py shot  URL out.png [--h 7000] [--mobile]   # 无头 Chrome 截网页（桌面 1280 宽 / 手机 430 宽）
+real_assets.py pdf   FILE|URL prefix --page N            # PDF 某页转 PNG（pdftoppm）
+real_assets.py image URL out.jpg --license "…"           # 有授权的照片（Wikimedia Commons: Special:FilePath/<File>）
+real_assets.py html  card.html out.png                   # 我们自己写的 HTML 数据卡（真数字 + 来源行；不仿别人的页面）
+real_assets.py crop  in out x0 y0 x1 y1                  # 从长截图里切出相关段落
+```
+
+每集一个文件夹 `~/Movies/FI-videos/assets/real/<ep>/`，`manifest.json` 记来源 URL、标题、抓取日期、授权。
+合成器里对应的零件：`screens`（真页面放桌面、1.4 s 后硬推进 focus 区、红框）、`phone`（手机壳里放手机版截图、可慢滚）、
+`collage` / `fan`（真照片拍立得）、`sidetag.file`（侧卡带图）。
+
+已知边界：PubMed 对无头浏览器做人机校验（截到的是 Checking your browser），换 nature.com / PMC / 出版社页；
+eatforhealth.gov.au 对 urllib 超时，用 curl 下 PDF 再本地转；Chrome 的 `#:~:text=` 文本片段在无头模式下不滚动，
+所以用长截图 + crop 定位段落。
+
+Ep35 纤维 = 第一集全真图：Better Health Channel（桌面段落 + 手机版）、EJCN 2021 β-葡聚糖荟萃分析（nature.com）、
+USDA FoodData Central 芹菜/苹果/燕麦、NHMRC 纤维 NRV 第 47 页（存档备用）、Commons 的苹果（CC0）/ 芹菜（NCI 公版）/ 谷物（USDA 公版）。
+下一步让 Hao 自己拍苹果、芹菜、燕麦的照片替换 Commons 图——自己的真照片 > 别人的真照片。
