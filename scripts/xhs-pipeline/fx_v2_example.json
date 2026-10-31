@@ -1,0 +1,119 @@
+{
+  "source": "source_ready.mp4",
+  "out": "final_v2.mp4",
+  "workers": 4,
+  "audio": {"file": "~/Movies/FI-videos/archive/ep34-water/ep34-water-master-posted.mov", "offset": 0.048},
+  "zoom_base": 1.08, "zoom_in": 1.30, "zoom_min_gap": 1.8, "face_y": 0.33,
+  "pillar": {"zh": "营养智慧", "en": "Nutrition Intelligence"},
+  "title": {"dur": 3.0, "lines": [["蛋白质算到克", "white"], ["最基本的却没喝够", "gold"]]},
+  "endcard": {"file": "~/Movies/FI-videos/assets/inserts/wt_next.png", "hold": 6.0},
+
+  "cap_colors": [
+    {"match": "这种营养物质就是水", "color": "gold"},
+    {"match": "它既是原料", "color": "gold"},
+    {"match": "想象水是一把小推车", "color": "gold"},
+    {"match": "就是看自己小便的颜色", "color": "gold"},
+    {"match": "都会效率下降", "color": "red"}
+  ],
+  "punch": [
+    {"match": "这种营养物质就是水", "text": "水", "style": "gold", "hold": 1.3},
+    {"match": "都会效率下降", "text": "效率下降", "style": "red", "hold": 1.5},
+    {"match": "就是看自己小便的颜色", "text": "看颜色", "style": "gold", "hold": 1.4}
+  ],
+
+  "chapters": [
+    {"match": "水是一种非常重要的营养物质", "zh": "水 · 也是营养", "en": "Water is a nutrient", "hold": 1.4},
+    {"match": "我们有没有喝下足够的水呢", "zh": "喝够了吗", "en": "Are you drinking enough", "hold": 1.4},
+    {"match": "喝够足够水的金标准", "zh": "金标准", "en": "The gold standard", "hold": 1.4},
+    {"match": "所以总的来说", "zh": "总结", "en": "In short", "hold": 1.2}
+  ],
+
+  "anchor": {
+    "title_zh": "水 · 一种营养物质", "title_en": "Water as a nutrient",
+    "rows": [
+      {"zh": "原料", "en": "Raw material", "value": "原料"},
+      {"zh": "载体", "en": "Carrier", "value": "载体"},
+      {"zh": "每天喝多少", "en": "Daily intake", "value": "2.6 L / 2.1 L"},
+      {"zh": "金标准", "en": "Gold standard", "value": "小便颜色"}
+    ],
+    "recalls": [
+      {"match": "是因为它有两方面的功能", "hold": 6.4, "set": {"1": "hint", "2": "hint"}},
+      {"match": "它既是原料又是载体", "hold": 3.0, "set": {"1": "lit", "2": "lit"}},
+      {"match": "这是水 是作为原料的过程", "hold": 2.6, "set": {"1": "done"}},
+      {"match": "它基本的物质都是水", "hold": 2.2, "set": {"2": "done"}},
+      {"match": "这些数字可能每天很难计算", "hold": 4.3, "set": {"3": "lit"}},
+      {"match": "就是看自己小便的颜色", "hold": 2.6, "set": {"4": "lit"}},
+      {"match": "不光要注意怎么吃", "hold": 0.0, "set": {"3": "done", "4": "done"}},
+      {"match": "尤其是对水这种", "hold": 6.4, "set": {}}
+    ]
+  },
+
+  "held": [
+    {"match": "同时纤维素", "zh": "纤维素 · 维生素", "en": "Fibre  Vitamins", "side": "right", "hold": 2.4},
+    {"match": "比如说蛋白质的水解这个过程", "zh": "蛋白质水解", "en": "Protein hydrolysis", "side": "left", "hold": 2.4},
+    {"match": "比如说我们体内的淋巴液", "zh": "淋巴液 · 脑脊液", "en": "Lymph  CSF", "side": "right", "hold": 2.8},
+    {"match": "当然最主要的是血液", "zh": "血液", "en": "Blood", "side": "left", "hold": 2.6},
+    {"match": "就是买一个比较大的杯子", "zh": "一个大杯子", "en": "One big bottle", "side": "right", "hold": 2.8},
+    {"match": "就是你可以一直把它带在手边", "zh": "带在手边", "en": "Keep it at hand", "side": "left", "hold": 2.6},
+    {"match": "比如说天很热", "zh": "天热 · 运动", "en": "Heat  Exercise", "side": "right", "hold": 3.2}
+  ],
+
+  "footage": [
+    {"match": "把自己的蛋白质摄入精确到克", "file": "~/Movies/FI-videos/assets/broll/47888.mp4", "hold": 2.8},
+    {"match": "这种营养物质就是水", "file": "~/Movies/FI-videos/assets/broll/23624.mp4", "hold": 2.5},
+    {"match": "水都会变成我们身体的一部分", "file": "~/Movies/FI-videos/assets/broll/5634.mp4", "hold": 2.6},
+    {"match": "比如说淀粉的水解过程也是类似", "file": "~/Movies/FI-videos/assets/broll/12579.mp4", "hold": 2.8},
+    {"match": "这些运输的过程都会效率下降", "file": "~/Movies/FI-videos/assets/broll/40778.mp4", "hold": 3.6},
+    {"match": "你早上把它灌满", "file": "~/Movies/FI-videos/assets/broll/48694.mp4", "hold": 2.3},
+    {"match": "不管你是开车出去", "file": "~/Movies/FI-videos/assets/broll/21394.mp4", "hold": 3.8},
+    {"match": "你可能就会不自然地喝一口", "file": "~/Movies/FI-videos/assets/broll/26097.mp4", "hold": 2.0},
+    {"match": "当然这个2.6升", "file": "~/Movies/FI-videos/assets/broll/44439.mp4", "hold": 3.4},
+    {"match": "或者是蒸桑拿", "file": "~/Movies/FI-videos/assets/broll/21396.mp4", "hold": 2.0},
+    {"match": "不光要注意怎么吃", "file": "~/Movies/FI-videos/assets/broll/21341.mp4", "hold": 3.3}
+  ],
+
+  "animations": [
+    {"match": "你就可以想象水是一把小推车", "offset": -0.8, "file": "~/Movies/FI-videos/assets/inserts/wt_cart.mp4", "hold": 7.9}
+  ],
+
+  "evidence": [
+    {"match": "按照澳大利亚的标准", "hold": 1.6,
+     "org": "NHMRC  Australia", "heading": "Nutrient Reference Values — Water",
+     "lines": [
+       {"text": "Adequate Intake (AI), adults"},
+       {"text": "Fluids (drinks, incl. water)"},
+       {"text": "Men      2.6 L / day", "key": true},
+       {"text": "Women    2.1 L / day", "key": true},
+       {"text": "Total water incl. food: 3.4 L / 2.8 L"}
+     ],
+     "source": "eatforhealth.gov.au  nutrient reference values"}
+  ],
+
+  "datacards": [
+    {"match": "一个成年男性一天", "hold": 6.4, "kind": "intake",
+     "steps": [{"match": "一个成年男性一天"}, {"match": "一个成年女性这个数字是2.1"}],
+     "title_zh": "一天该喝多少水", "title_en": "Adequate fluid intake  adults",
+     "items": [{"label": "男", "value": "2.6 L", "sub": "每天 · 含饮料和汤"}, {"label": "女", "value": "2.1 L", "sub": "每天 · 含饮料和汤"}],
+     "note": "澳大利亚膳食指南 · 成年人", "source": "NHMRC nutrient reference values"},
+    {"match": "理想情况下", "hold": 6.0, "kind": "swatches",
+     "steps": [{"match": "理想情况下"}, {"match": "同时也没有很强的气味"}],
+     "title_zh": "小便颜色 · 金标准", "title_en": "Urine colour chart",
+     "swatches": [
+       {"rgb": [246, 244, 232], "label": "透明"}, {"rgb": [243, 234, 170], "label": "淡黄"}, {"rgb": [236, 214, 96], "label": "黄"},
+       {"rgb": [222, 178, 40], "label": "深黄"}, {"rgb": [196, 134, 20], "label": "琥珀"}, {"rgb": [160, 96, 12], "label": "深琥珀"}
+     ],
+     "lit_steps": [[0, 2], [0, 2]],
+     "brackets": [{"from": 0, "to": 2, "text": "喝够了", "color": "gold", "step": 0}],
+     "note": "没有颜色或淡淡的黄 · 没有很强的气味"},
+    {"match": "颜色比较重 发黄", "hold": 4.2, "kind": "swatches",
+     "steps": [{"match": "颜色比较重 发黄"}, {"match": "同时气味比较严重"}],
+     "title_zh": "小便颜色 · 金标准", "title_en": "Urine colour chart",
+     "swatches": [
+       {"rgb": [246, 244, 232], "label": "透明"}, {"rgb": [243, 234, 170], "label": "淡黄"}, {"rgb": [236, 214, 96], "label": "黄"},
+       {"rgb": [222, 178, 40], "label": "深黄"}, {"rgb": [196, 134, 20], "label": "琥珀"}, {"rgb": [160, 96, 12], "label": "深琥珀"}
+     ],
+     "lit_steps": [[3, 6], [3, 6]],
+     "brackets": [{"from": 3, "to": 6, "text": "该喝水了", "color": "red", "step": 0}],
+     "note": "颜色重 · 发黄 · 气味重：问问自己今天喝够了吗"}
+  ]
+}
