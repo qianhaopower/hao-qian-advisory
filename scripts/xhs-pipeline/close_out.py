@@ -29,13 +29,21 @@ assert os.path.exists(EXPORT), EXPORT
 os.makedirs(ARC, exist_ok=True); os.makedirs(f"public/videos/{A.slug}", exist_ok=True)
 
 # 1 ---------------------------------------------------------------- captions.vtt + transcript
-J = json.load(open(f"{HOME}/Movies/CapCut/User Data/Projects/com.lveditor.draft/{A.draft}/draft_content.json"))
-texts = {m["id"]: m for m in J["materials"]["texts"]}; segs = []
-for tr in J["tracks"]:
-    if tr.get("name") == "captions":
-        for s in tr["segments"]:
-            a = s["target_timerange"]["start"] / 1e6; b = a + s["target_timerange"]["duration"] / 1e6
-            segs.append((a, b, json.loads(texts[s["material_id"]]["content"])["text"]))
+_draft = f"{HOME}/Movies/CapCut/User Data/Projects/com.lveditor.draft/{A.draft}/draft_content.json"
+segs = []
+if os.path.exists(_draft):
+    J = json.load(open(_draft))
+    texts = {m["id"]: m for m in J["materials"]["texts"]}
+    for tr in J["tracks"]:
+        if tr.get("name") == "captions":
+            for s in tr["segments"]:
+                a = s["target_timerange"]["start"] / 1e6; b = a + s["target_timerange"]["duration"] / 1e6
+                segs.append((a, b, json.loads(texts[s["material_id"]]["content"])["text"]))
+else:
+    # v3 direct render (compose_v3, since 2026-10-31): no CapCut draft — captions.json IS the caption track
+    # (compose_v3 draws captions at their captions.json times; the title overlays the first seconds, no shift).
+    for c in json.load(open(f"{E}/captions.json")):
+        segs.append((float(c["start"]), float(c["end"]), c["text"]))
 segs.sort()
 def ts(t): return f"{int(t // 3600):02d}:{int(t % 3600 // 60):02d}:{t % 60:06.3f}"
 with open(f"public/videos/{A.slug}/captions.vtt", "w") as f:
@@ -62,7 +70,7 @@ def cp(src, dst):
 cp(RAW, f"{ARC}/{A.ep}-raw-{A.raw}"); cp(EXPORT, f"{ARC}/{A.ep}-master-posted.mov")
 cp(f"{HOME}/Downloads/{A.slug}.mp4", f"{ARC}/{A.ep}-site-1080p.mp4")
 cp(f"content-src/video-scripts/{A.posting}", f"{ARC}/{A.ep}-posting.md")
-for f in ("edl.json", "fx.json", "captions.json", "transcript.txt", "work/fix.json", "work/caption_edits.json", "work/tokens.json"):
+for f in ("edl.json", "fx.json", "fx_v3.json", "captions.json", "transcript.txt", "work/fix.json", "work/caption_edits.json", "work/tokens.json"):
     cp(f"{E}/{f}", f"{ARC}/{os.path.basename(f)}")
 print("3. archive:", sorted(os.listdir(ARC)), flush=True)
 
