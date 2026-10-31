@@ -323,22 +323,34 @@ def overlays_at(t): return [(a, b, k, p) for a, b, k, p in overlays if a <= t < 
 
 
 # ---------- zoom: two steps, gated ------------------------------------------------------------------
+# Rule (Hao, 2026-10-31, "一会儿一大一小太频繁"): 小Lin steps framing 3–7×/min of film with a median
+# gap of 5–16 s; our 2.4 s gap gave 12/min of face time.  So: a step needs ≥ zoom_min_gap (8 s) since
+# the last one, ≥ zoom_settle (3 s) after the face comes back from a graphic world, never within 1.5 s
+# of a scene boundary, never while something sits beside him; every return to the face lands wide.
 Z0, Z1 = 1.0, float(FX.get("zoom_in", 1.18))
-MIN_GAP, GUARD = float(FX.get("zoom_min_gap", 2.4)), 1.5
+MIN_GAP, GUARD, SETTLE = float(FX.get("zoom_min_gap", 8.0)), 1.5, float(FX.get("zoom_settle", 3.0))
 bounds = [x for a, b, _, _ in scenes for x in (a, b)]
+returns = [b for _, b, _, _ in scenes]
 busy = [(a, b) for a, b, k, _ in overlays if k != "punch"]
 switches, last = [], -9.0
 for c in CAPS:
     s = c["start"]
     if s - last < MIN_GAP: continue
     if any(abs(s - x) < GUARD for x in bounds): continue
+    if any(0 <= s - r < SETTLE for r in returns): continue
     if any(a - 0.3 <= s < b + 0.3 for a, b in busy): continue
     switches.append(s); last = s
+_face_time = DUR - sum(b - a for a, b, _, _ in scenes)
+print(f"zoom: {len(switches)} framing steps = {len(switches) / DUR * 60:.1f}/min of film, {len(switches) / max(1, _face_time) * 60:.1f}/min of face time "
+      f"(小Lin 3–7/min of film); min gap {MIN_GAP}s")
+if len(switches) / DUR * 60 > float(FX.get("zoom_max_per_min", 5.0)):
+    print("lint: framing steps above zoom_max_per_min — raise zoom_min_gap")
 
 
 def zoom_at(t):
     if any(a <= t < b for a, b in busy): return Z0
-    return Z1 if sum(1 for s in switches if s <= t) % 2 == 1 else Z0
+    since = max([r for r in returns if r <= t], default=-1.0)
+    return Z1 if sum(1 for s in switches if since <= s <= t) % 2 == 1 else Z0
 
 
 # ---------- static layers ------------------------------------------------------------------------

@@ -176,3 +176,22 @@ Hao 看完 Ep35 真图版：① 说话的画面灰暗；② 手机、网页这�
 结果：亮度 155、对比 85、饱和 47、脸亮 173 / 脸饱 79、墙 211、R−B 23。墙保持手机原片的亮度。
 "脸和墨色卡亮度拉近以减少闪"的想法到此为止：Hao 的眼睛优先，闪的问题靠分组（少回脸）解决，不靠压暗他的脸。
 对比表：`~/Downloads/FI-调色对比表.png`、`FI-调色v5对比.png`。
+
+## 10. 景别切换频率 + 按这套剪一集的步骤（2026-10-31 定稿，给下一条小红书视频用）
+
+**景别规则（Hao：一会儿一大一小太频繁）。** 量了她三部：同场景内的硬切（≈远近景切换）每分钟 3.2 / 5.9 / 7.0 次，间隔中位数 5–16 s；
+我们 Ep35 之前是每分钟 8.1 次（按脸上时间 12.3 次），间隔中位数 5 s。现在 `compose_v3`：两次切换至少隔 **8 s**（`zoom_min_gap`），
+从图形世界回到脸后 **3 s 内不切**（`zoom_settle`）且每次回来都落在**远景 1.0**，场景边界 ±1.5 s 不切，身旁有东西时锁远景；
+超过每分钟 5 次打 lint（`zoom_max_per_min`）。渲染时打印 `zoom: N framing steps = x/min`，目标 3–5/min。
+一大一小是抓注意力用的，不是节拍器。
+
+**按这套剪一集（新视频来了照抄）：**
+
+1. 原片进 `~/Movies/FI-videos/<slug>/`：`cut_by_edl.py` 去废话 → `post_cut.py`（人声链 HP80 + 压缩 + −14 LUFS）→ `source_ready.mp4`；`build_captions.py` → `captions.json`（照旧，含 CAPTION GATE）。
+2. **备真图**：读脚本列出要证明的句子 → `real_assets.py shot/pdf/image/html` 进 `~/Movies/FI-videos/assets/real/<ep>/`（真网页、真论文、真数据页、有授权或自己拍的照片；PubMed 挡无头浏览器用出版社页）；能让 Hao 自己拍的实物先让他拍。
+3. 写 `fx_v3.json`（抄 `scripts/xhs-pipeline/fx_v3_example_ep35.json`）：title / pillar / endcard / bgm；chapters；matrix（整集一张，3–5 次召回）；
+   图形成组：screens（真页面 ≥6 s）、phone、collage、footage；脸上：trio / twin / bubbles / sidetag / fan / punch / cardrow，全在胸口带。
+   字幕一行白色，不配色。
+4. `compose_v3.py fx_v3.json --stills t1,t2,…` 看关键帧（脸色对照表、卡片不进脸框、停留够读）；看 `hold:` / `lint:` / `zoom:` 三类输出。
+5. `compose_v3.py fx_v3.json` 全片（4 进程约一刻钟）→ 同时间点对比图 → 放 `~/Downloads` 给 Hao。
+6. 封面 / 正文 / 发布 / 归档照 `docs/XHS_FORMAT_REFERENCE.md` 的法。脸的调色 = `fx_parts.grade_face` v5，不许再压暗。

@@ -551,3 +551,8 @@ redo only the sound.
 
 - COMPRESS RULE RETIRED (Hao 2026-09-25): he posts the CapCut export as-is (~500 MB is fine, XHS allows 20 GB). No 上传版 any more; the archive keeps raw + master (= what was posted) + site-1080p. The old rule for the record:
 - COMPRESS RULE (Hao 2026-09-05): every CapCut export is compressed by the agent WITHOUT being asked — the moment a new FI-*.mov lands in Downloads, produce <题>-上传版.mp4 (crf22, ~80MB) and hand that name over; the raw export is never what goes to the phone.
+
+## 2026-10-31 · v3 剪法（小Lin说 零件 + 真图）
+
+从 Ep35 纤维起，FI 的剪法改为 `compose_v3.py`（不经 CapCut）：规则、零件库和逐集步骤见 `docs/XHS_GRAPHICS_V2_PLAN.md` §6–§10。
+本文件的封面法、正文法、归档法不变。
