@@ -722,3 +722,30 @@ Desk ops note: first fully self-driven multi-note sweep. New mechanics
 recorded: CGEvent mouse clicks (SE click unreliable), horizontal wheel
 for the share-sheet tool row, narrow window (≈780pt) = known layout,
 share→Data Analysis executed by desk. Window resize is acceptable.
+
+## Sweep — 2026-10-31 (desk-driven; data at 10-31 03:00)
+
+Four unswept notes (all post-10-24, the new longer/graphics era):
+
+| Note | Posted | 曝光 | CTR | Views | 2s退出 | 5s% | Avg watch | 全片完播 | 互动率 | 赞/藏/评/转 | 涨粉 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 水 (Ep34 蛋白质算到克,水没喝够) | 10-24 | — | — | ~170 | 31.0% | 44.8% | **101s** | 6.2% | 8.7% | 11/4/0/0 | 3 |
+| 纤维 (Ep35 芹菜补纤维?) | 10-26 | 626 | 5.7% | 142 | 37.7% | 48.1% | 65.3s | 13.1% | 10.6% | 8/5/2/0 | 3 |
+| 食欲 (Ep36 食欲是旋钮) | 10-27 | — | — | 206 | 31.2% | 49.3% | **198.5s** | 8.6% | 5.3% | 8/1/2/0 | 2 |
+| 酸痛 (Ep37 练到瘫三天) | 10-29 | 1067 | 9.0% | 208 | 29.5% | 46.3% | 49.7s | 5.6% | 8.3% | 10/5/2/1 | 1 |
+
+Readings:
+1. **Average watch time has changed species**: 49.7 / 65.3 / 101 / 198.5s
+   vs the old era's 20–35s. The longer graphics-style notes hold people
+   several minutes; fans watch 93–148s. 内容深度 now rates 较好 across
+   the board.
+2. **The trade: smaller pools.** 曝光 626–1067 vs 1500–1900 for the
+   mid-October shorts; views settle 142–208. Same deep-watch/low-pool
+   shape as 慢性病 — the long-note channel distributes differently.
+   Too early to judge: BDNF-style slow burns possible; re-check in days.
+3. Follower efficiency holds: +9 across ~720 views ≈ 12.5/1000.
+4. CTR mixed: 酸痛 9.0% fine; 纤维 5.7% weak (question-wordy title).
+   Comments still thin (≈1 real each after halving).
+
+Pending: 慢性病 Traffic-Analysis source verification (连播 hypothesis);
+LinkedIn Ep. 22 analytics still never captured.
