@@ -677,7 +677,7 @@ def render(t, feed, state):
     cap_y = CAP_Y
     if sc is None:
         if t < title_dur:
-            ty = int(H * 0.035)
+            ty = int(H * float(FX.get("title_y", 0.035)))   # fx "title_y": fraction of H for the cover title block (Hao 2026-10-31: lower, around the waist, from Ep39 on)
             for l in title_layers: frame.alpha_composite(l, (0, ty)); ty += l.height - 10
         for a, b, kind, p in ovs:
             if kind == "trio":
