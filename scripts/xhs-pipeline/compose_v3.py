@@ -240,7 +240,56 @@ for cr in FX.get("cardrow", []):
     cardrows.append((a, a + float(cr.get("hold", 6.0)), dict(cards=cards, steps=st, y=float(cr.get("y", 0.58)))))
     for t in st: sfx.append((t, "pop", -25))
 
+def _chars(*txt):
+    return sum(len(str(t)) for t in txt if t)
+
+
+def min_hold(kind, p):
+    """Seconds a thing must stay: a floor per kind + reading time for the text it carries
+    (≈0.09 s per CJK character, ≈0.035 s per Latin character), measured from its LAST reveal step."""
+    if kind == "footage": return 2.5
+    if kind == "chapter": return 1.2
+    if kind == "screen": return 6.0 if p["spec"].get("focus") else 4.5          # real pages are text-heavy
+    if kind == "phone": return 6.0
+    if kind == "matrix":
+        n_vals = sum(1 for v in p["state"].values() if v)
+        return 5.0 if n_vals <= 1 else 3.5                                    # first showing vs a recall
+    if kind == "evidence": return 4.5
+    if kind == "swatches": return 6.0
+    if kind == "calc": return 2.2 * len(p["spec"]["counters"]) + 1.5
+    if kind == "collage": return 1.6
+    return 2.0
+
+
+def overlay_min_after_last(kind, p):
+    if kind == "trio": return 2.0
+    if kind == "bubbles": return 1.6
+    if kind == "twin": return 2.2
+    if kind == "fan": return 1.8
+    if kind == "sidetag": return 3.0 + 0.09 * _chars(p["spec"].get("zh")) + (2.0 if p["spec"].get("file") else 0)
+    return 0.0
+
+
+# scenes: extend to the minimum (into the following face run), never into the next scene
 scenes.sort(key=lambda s: s[0])
+for i, (a, b, k, p) in enumerate(scenes):
+    need = a + min_hold(k, p)
+    if k == "collage": need = (p["steps"][-1] if p["steps"] else a) + 1.6 * max(1, len(p["steps"]))
+    if b < need:
+        nxt = scenes[i + 1][0] if i + 1 < len(scenes) else DUR
+        nb = min(need, nxt)
+        if nb > b + 0.05: print(f"hold: {k} {a:.1f}s extended {b - a:.1f} → {nb - a:.1f}s (reading time)")
+        if nb < need - 0.05: print(f"lint: {k} {a:.1f}s wants {need - a:.1f}s, next scene at {nxt:.1f}s allows {nb - a:.1f}s")
+        scenes[i] = (a, nb, k, p)
+for i, (a, b, k, p) in enumerate(overlays):
+    last = (p.get("steps") or [a])[-1]
+    need = last + overlay_min_after_last(k, p)
+    if b < need:
+        print(f"hold: overlay {k} {a:.1f}s extended {b - a:.1f} → {need - a:.1f}s"); overlays[i] = (a, need, k, p)
+for i, (a, b, p) in enumerate(cardrows):
+    need = p["steps"][-1] + 2.0
+    if b < need: print(f"hold: cardrow {a:.1f}s extended to {need - a:.1f}s"); cardrows[i] = (a, need, p)
+
 for i in range(len(scenes) - 1):
     a, b, k, p = scenes[i]; a2 = scenes[i + 1][0]
     if a2 < b - 1e-6:
@@ -295,13 +344,14 @@ def zoom_at(t):
 # ---------- static layers ------------------------------------------------------------------------
 GROUND = P.ground_dots().convert("RGBA")
 PAPERG = P.ground_paper().convert("RGBA")
-PIP_D = int(FX.get("pip_diameter", 260))
+PIP_D = int(FX.get("pip_diameter", 280))
 PIP_C = (W - 56 - PIP_D // 2, 64 + PIP_D // 2)
 _pm = Image.new("L", (PIP_D * 4, PIP_D * 4), 0); ImageDraw.Draw(_pm).ellipse([0, 0, PIP_D * 4 - 1, PIP_D * 4 - 1], fill=255)
 PIP_MASK = _pm.resize((PIP_D, PIP_D), Image.LANCZOS)
-_ring = Image.new("RGBA", (PIP_D + 12, PIP_D + 12), (0, 0, 0, 0))
-ImageDraw.Draw(_ring).ellipse([2, 2, PIP_D + 9, PIP_D + 9], outline=(255, 255, 255, 255), width=4)
-PIP_RING = P.shadow(_ring, 12, (0, 5), 80)
+PIP_RING_W = 5
+_ring = Image.new("RGBA", (PIP_D + 2 * PIP_RING_W + 2, PIP_D + 2 * PIP_RING_W + 2), (0, 0, 0, 0))
+ImageDraw.Draw(_ring).ellipse([1, 1, _ring.width - 2, _ring.height - 2], outline=(255, 255, 255, 255), width=PIP_RING_W)
+PIP_RING = P.shadow(_ring, 12, (0, 5), 80)          # padded symmetrically → paste by its own centre
 
 TAG = None
 if FX.get("pillar"):
@@ -560,10 +610,17 @@ def speaker_frame(feed, z):
 
 
 def pip_layer(feed):
-    side = int(0.42 * FW); fx0 = FW // 2 - side // 2; fy0 = int(P.FACE_CY * FH) - int(side * 0.46)
+    """Whole head with headroom (Hao: v3 cut the hair off), same grade as the big frame."""
+    side = int(0.60 * FW); fx0 = FW // 2 - side // 2; fy0 = int(P.FACE_CY * FH) - int(side * 0.50)
+    fy0 = max(0, fy0)
     sq = feed.crop((fx0, fy0, fx0 + side, fy0 + side)).resize((PIP_D, PIP_D), Image.LANCZOS)
-    sq = P.grade_face(sq, wall=0.72, vignette=0).convert("RGBA"); sq.putalpha(PIP_MASK)
+    sq = P.grade_face(sq).convert("RGBA"); sq.putalpha(PIP_MASK)
     return sq
+
+
+def paste_pip(frame, feed):
+    frame.alpha_composite(PIP_RING, (PIP_C[0] - PIP_RING.width // 2, PIP_C[1] - PIP_RING.height // 2))
+    frame.alpha_composite(pip_layer(feed), (PIP_C[0] - PIP_D // 2, PIP_C[1] - PIP_D // 2))
 
 
 def render(t, feed, state):
@@ -600,8 +657,7 @@ def render(t, feed, state):
         elif kind == "collage":
             frame = draw_collage(p, t, a)
         if kind not in ("chapter", "calc", "phone"):
-            frame.alpha_composite(PIP_RING, (PIP_C[0] - PIP_D // 2 - 6, PIP_C[1] - PIP_D // 2 - 6))
-            frame.alpha_composite(pip_layer(feed), (PIP_C[0] - PIP_D // 2, PIP_C[1] - PIP_D // 2))
+            paste_pip(frame, feed)
     if sc is None and state.get("reader"):
         state["reader"].close(); state["reader"] = None; state["key"] = None
 

@@ -134,14 +134,14 @@
   "recalls": [
    {
     "match": "我们吃完芹菜吃完白菜以后觉得",
-    "hold": 2.4,
+    "hold": 5.0,
     "set": {
      "0,0": "芹菜丝"
     }
    },
    {
     "match": "它实际上是溶解掉的",
-    "hold": 2.6,
+    "hold": 3.6,
     "set": {
      "1,0": "果胶 豆类",
      "2,0": "果冻"
@@ -207,7 +207,7 @@
   },
   {
    "match": "像芹菜白菜这些",
-   "hold": 4.05,
+   "hold": 5.8,
    "file": "~/Movies/FI-videos/assets/real/ep35-fiber/fdc_celery.png",
    "view": [
     0.13,
@@ -226,7 +226,7 @@
  "bubbles": [
   {
    "match": "会附着到我们消化道",
-   "hold": 5.0,
+   "hold": 6.2,
    "items": [
     [
      "胃壁",
@@ -278,7 +278,7 @@
  "fan": [
   {
    "match": "比如像苹果呀",
-   "hold": 3.95,
+   "hold": 5.5,
    "photos": [
     "~/Movies/FI-videos/assets/real/ep35-fiber/photo_apple.jpg",
     "~/Movies/FI-videos/assets/real/ep35-fiber/photo_grains.jpg",
