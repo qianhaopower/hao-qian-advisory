@@ -377,6 +377,33 @@ Headroom ≤ 8%: white space above the head thin, eyes near upper-quarter line. 
   营养智慧 Nutrition · 运动智慧 Dynamic · 睡眠智慧 Sleep. Multi-pillar specials use 七种智慧.
 - Floaters 9.5 brush. Emoji retired. Nothing invented outside the FD atlas.
 
+## CAPTION ALIGNMENT + KARAOKE LAW (2026-11-01, Hao — Ep39 认知解离: 「黄字效果非常好,完全对上。以后我们的字幕都用这种,尤其是对齐」)
+
+Every FI film from Ep39 on carries **word karaoke captions**: one white line, and ONLY the word being spoken is gold
+(`#F5C518`, same stroke) — not a progressive fill, not the whole line. The gold must be on the word that is actually
+coming out of his mouth, to tens of milliseconds; a wrong word lit is worse than no karaoke (Hao, on the first sample).
+
+How the timing is made (the chain is law — no step may be skipped or replaced by "even spacing"):
+1. `kara_words.py` — mlx-whisper (large-v3-turbo, `word_timestamps=True`) over `work/audio.wav` → `work/mlx_words.json`.
+   Its word starts come from DTW on cross-attention: ±50–130 ms and early-biased. whisper.cpp's `-dtw` does not work
+   with our quantised ggml (every `t_dtw` = −1) and its `-ml 1` tokens drift up to 0.5 s in dense speech — neither is a source.
+2. `kara_align.py captions.json work/audio.wav work/mlx_words.json --retime` — per caption line: caption chars ↔ whisper chars
+   (difflib) → rough times → monotonic DP snap onto the audio's own syllable onsets (300–3400 Hz envelope rising through
+   45 % of each nucleus peak; Mandarin = one syllable per character). ~70 % of characters land on an onset, the rest keep
+   the whisper time. Output `work/kara_chars.json` (`"<start>|<line>": [[char, t0, t1], …]`).
+3. `--retime` also fixes the caption windows: a line whose first syllable was spoken before its window opened starts at
+   that syllable (−0.05 s), and the previous line ends there → `work/captions_kara.json`. Ep39 measured the old
+   `build_captions` starts LATE on 143 of 246 lines (median 0.48 s, p90 1.09 s, max 1.95 s — 「你要认识到」 was spoken
+   1.5 s before its caption). So the re-timed file is the caption track, karaoke or not.
+4. `compose_v3` reads `work/captions_kara.json` and `work/kara_chars.json` by default when they exist (fx `captions` /
+   `kara_chars` override; `caption_karaoke: "word"` is the default when the chars file exists, `false` turns it off, `"fill"`
+   is the rejected progressive style — never ship it). Words = jieba segmentation of the caption line.
+5. Re-timing moves every `match` anchor, so after step 3 run `--stills` once and close any `short face run < 1.2 s` the
+   shift opened (extend the preceding scene's hold to touch the next scene — Ep39 needed five), and re-check `!! no caption
+   matches`: a match that spanned a caption's line break must be re-pointed at the first line.
+6. QA: frame-step one dense sentence (e.g. 「我现在要完蛋了」) and confirm each word turns gold on its own syllable
+   onset; a 20 s `--range` sample to Hao before the full render on any episode where the audio chain changed.
+
 ## FLASH GATE (2026-10-13, Ep27 — Hao: 14–16 秒之间我的脸闪了一下,做一个最小时长的 gate)
 
 A sliver of the face between two inserts, or a very short insert, reads as a flicker. `to_capcut.py` refuses the

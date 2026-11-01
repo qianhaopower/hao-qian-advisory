@@ -31,7 +31,12 @@ FXP = next((a for a in sys.argv[1:] if a.endswith(".json")), "fx_v3.json")
 FX = json.load(open(FXP))
 if FX.get("lang") == "en":
     P.set_lang("en")       # English episode: Latin heavy face everywhere, captions may keep two lines
-CAPS = json.load(open(FX.get("captions", "captions.json")))   # fx "captions": e.g. work/captions_kara.json (re-timed by kara_align.py --retime)
+# CAPTION ALIGNMENT LAW (Hao 2026-11-01): captions come from work/captions_kara.json (starts re-timed to the spoken
+# first syllable by kara_align.py --retime) whenever it exists; fx "captions" overrides. Plain captions.json only
+# when the alignment step has not been run — and then it is said loudly.
+_capf = FX.get("captions", "work/captions_kara.json" if os.path.exists("work/captions_kara.json") else "captions.json")
+if _capf == "captions.json": print("!! CAPTION ALIGNMENT LAW: work/captions_kara.json missing — run kara_words.py + kara_align.py --retime")
+CAPS = json.load(open(_capf)); print(f"captions: {_capf}")
 SRC = FX.get("source", "source_ready.mp4")
 
 W, H, FPS = P.W, P.H, 30
@@ -89,8 +94,9 @@ for c in CAPS:
 # Karaoke (Hao 2026-11-01): fx "caption_karaoke": "word" — ONLY the word being spoken is gold (not a progressive fill),
 # and it must be the word actually being said: per-character times come from work/kara_chars.json (kara_align.py:
 # mlx-whisper word DTW + audio syllable onsets), words from jieba; "fill" keeps the earlier progressive variant.
-KARAOKE = FX.get("caption_karaoke", False)
-KARAOKE = "fill" if KARAOKE is True else KARAOKE
+KARAOKE = FX.get("caption_karaoke", "word" if os.path.exists(FX.get("kara_chars", "work/kara_chars.json")) else False)
+KARAOKE = "fill" if KARAOKE is True else KARAOKE   # Hao 2026-11-01: word karaoke is the house caption style from Ep39 on
+if KARAOKE: print(f"captions: karaoke={KARAOKE}")
 KARA_GOLD = (245, 197, 24)
 KARA_CHARS = {}
 if KARAOKE:

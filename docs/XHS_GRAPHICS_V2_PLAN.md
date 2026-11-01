@@ -118,7 +118,7 @@ Hao 截了小Lin 免税 / HYROX 两集的 16 张图："为什么我们做不出�
 **v3 合成器的规则**（compose_v3.py 自带 lint，渲染前会打印违规）：脸段 ≥5 s；图形成组（组内只换图形，小头像不断）；
 场景边界 ±1.5 s 内不换景别，有东西在身旁时锁 1.0；字幕一行、白色、**0.72H**（2026-11-01 起：0.80H 在手机上压到小红书底部的账号/正文，Hao 让上移），多行字幕按行拆开按字数分时；
 胸口带以 0.60H 为中心（`CHEST_Y`），双卡/气泡下沿 ≤0.71H，不碰字幕；算账 calc 的行从 0.33H 起，合计行也在字幕之上。
-**逐字变黄 `"caption_karaoke": true`**（2026-11-01，Hao 的要求：说到哪个字哪个字变黄）：已说过的字金色、未说的白色，字时按一句话的时长平均分；`--range a,b` 可先出一段样片。
+**逐字变黄 = 家法**（2026-11-01，Hao：「黄字效果非常好，完全对上，以后都用这种」）：只有正在说的那个词是金色（jieba 分词），不是累积填色；字的时间来自 `kara_words.py`（mlx-whisper 逐字 DTW）+ `kara_align.py --retime`（吸到音频音节起音，并按真实开口重定字幕起止）。`compose_v3` 在 `work/kara_chars.json` / `work/captions_kara.json` 存在时默认启用。全文见 `docs/XHS_FORMAT_REFERENCE.md` § CAPTION ALIGNMENT + KARAOKE LAW。`--range a,b` 可先出一段样片。
 卡片的中文标签过宽时自动换行/缩字（`label_block(width=)`，Ep39 双卡「我有一个想法:我完蛋了」出框后加的）。
 
 **v3 流程（不走 CapCut）**：原片 → `cut_by_edl.py` → `build_captions.py` → 写 `fx_v3.json`（章节 / 矩阵 / 气泡 / 卡片行 … 挂在哪句话上）
@@ -193,11 +193,12 @@ Hao 看完 Ep35 真图版：① 说话的画面灰暗；② 手机、网页这�
 **按这套剪一集（新视频来了照抄）：**
 
 1. 原片进 `~/Movies/FI-videos/<slug>/`：`cut_by_edl.py` 去废话 → `post_cut.py`（人声链 HP80 + 压缩 + −14 LUFS）→ `source_ready.mp4`；`build_captions.py` → `captions.json`（照旧，含 CAPTION GATE）。
+   **然后对齐（家法，不许跳）**：`/usr/bin/python3 kara_words.py` → `kara_align.py captions.json work/audio.wav work/mlx_words.json --retime` → `work/captions_kara.json` + `work/kara_chars.json`；字幕起止以这个为准，`compose_v3` 自动读。
 2. **备真图**：读脚本列出要证明的句子 → `real_assets.py shot/pdf/image/html` 进 `~/Movies/FI-videos/assets/real/<ep>/`（真网页、真论文、真数据页、有授权或自己拍的照片；PubMed 挡无头浏览器用出版社页）；能让 Hao 自己拍的实物先让他拍。
 3. 写 `fx_v3.json`（抄 `scripts/xhs-pipeline/fx_v3_example_ep35.json`）：title / pillar / endcard / bgm；chapters；matrix（整集一张，3–5 次召回）；
    图形成组：screens（真页面 ≥6 s）、phone、collage、footage；脸上：trio / twin / bubbles / sidetag / fan / punch / cardrow，全在胸口带。
-   字幕一行白色，不配色。
-4. `compose_v3.py fx_v3.json --stills t1,t2,…` 看关键帧（脸色对照表、卡片不进脸框、停留够读）；看 `hold:` / `lint:` / `zoom:` 三类输出。
+   字幕一行白色，只有正在说的词变金（逐字变黄家法，默认开）。
+4. `compose_v3.py fx_v3.json --stills t1,t2,…` 看关键帧（脸色对照表、卡片不进脸框、停留够读）；看 `hold:` / `lint:` / `zoom:` 三类输出。重定字幕后锚点会前移，`short face run < 1.2 s` 的缝要把前一个场景的 hold 延到相接；`!! no caption matches` 的 match 若跨了字幕换行，改指第一行。
 5. `compose_v3.py fx_v3.json` 全片（4 进程约一刻钟）→ 同时间点对比图 → 放 `~/Downloads` 给 Hao。
 6. 封面 / 正文 / 发布 / 归档照 `docs/XHS_FORMAT_REFERENCE.md` 的法。脸的调色 = `fx_parts.grade_face` v5，不许再压暗。
 
