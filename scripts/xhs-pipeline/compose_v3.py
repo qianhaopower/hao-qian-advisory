@@ -17,6 +17,8 @@ What changed from compose_v2 after Hao's verdict on Ep34 v2 ("跳来跳去、闪
 Usage (inside the episode work dir, venv-jy python):
   python compose_v3.py fx_v3.json                      # full render (4 workers)
   python compose_v3.py fx_v3.json --stills 12.5,40,96  # QA frames -> work/still_<t>.png
+  (run with /usr/bin/python3: it has PIL + numpy; Homebrew python3 lacks numpy and workers die mid-render, 2026-11-01)
+  python compose_v3.py fx_v3.json --range 60,90       # A/B sample of one span -> work/sample_60_90.mp4
   python compose_v3.py fx_v3.json --chunk i/n          # internal (worker)
 """
 import json, math, os, subprocess, sys
@@ -27,6 +29,8 @@ from PIL import Image, ImageDraw, ImageFilter, ImageEnhance  # noqa: E402
 
 FXP = next((a for a in sys.argv[1:] if a.endswith(".json")), "fx_v3.json")
 FX = json.load(open(FXP))
+if FX.get("lang") == "en":
+    P.set_lang("en")       # English episode: Latin heavy face everywhere, captions may keep two lines
 CAPS = json.load(open("captions.json"))
 SRC = FX.get("source", "source_ready.mp4")
 
@@ -67,11 +71,14 @@ def t_of(spec):
 
 
 # ---------- captions: one line each, white, fixed ------------------------------------------------
-CAP_Y = float(FX.get("caption_y", 0.80))
+CAP_Y = float(FX.get("caption_y", 0.72))
 one_line = []
 for c in CAPS:
     lines = [l for l in c["text"].split("\n") if l.strip()]
     a, b = c["start"], c["end"]
+    if P.LANG == "en":
+        # CAPTION SENTENCE LAW (WT line): a wrapped English caption stays one caption, drawn as stacked lines
+        one_line.append((a, b, "\n".join(lines))); continue
     tot = sum(len(l) for l in lines) or 1
     t = a
     for l in lines:
@@ -79,17 +86,49 @@ for c in CAPS:
         one_line.append((t, t + d, l)); t += d
 
 
-def cap_layer(text):
+KARAOKE = bool(FX.get("caption_karaoke", False))   # Hao 2026-11-01: the word being spoken turns gold (progressive fill)
+KARA_GOLD = (245, 197, 24)
+
+
+def cap_layer(text, lit=0):
+    """One caption line; with lit>0 the first `lit` characters are drawn gold (spoken so far)."""
     size = 62
-    while P.text_w(text, P.cjk(size), 0.02) > W - 140 and size > 40:
+    rows = text.split("\n")
+    while max(P.text_w(r, P.cjk(size), 0.02) for r in rows) > W - 140 and size > 40:
         size -= 2
-    layer = Image.new("RGBA", (W, 110), (0, 0, 0, 0))
-    P.draw_text(layer, (W / 2, 10), text, P.cjk(size), WHITE + (255,), spacing=0.02, anchor="ma",
-                stroke=max(3, size // 14))
+    layer = Image.new("RGBA", (W, 110 * len(rows)), (0, 0, 0, 0))
+    f = P.cjk(size); st = max(3, size // 14)
+    if len(rows) > 1:                       # English two-liner: stacked, centred, same shear
+        for i, r in enumerate(rows):
+            P.draw_text(layer, (W / 2, 10 + i * int(size * 1.25)), r, f, WHITE + (255,), spacing=0.02, anchor="ma", stroke=st)
+    elif lit <= 0:
+        P.draw_text(layer, (W / 2, 10), text, f, WHITE + (255,), spacing=0.02, anchor="ma", stroke=st)
+    else:
+        tw = P.text_w(text, f, 0.02); x = W / 2 - tw / 2
+        P.draw_text(layer, (x, 10), text, f, WHITE + (255,), spacing=0.02, anchor="la", stroke=st)
+        gold = Image.new("RGBA", (W, 110), (0, 0, 0, 0))
+        P.draw_text(gold, (x, 10), text, f, KARA_GOLD + (255,), spacing=0.02, anchor="la", stroke=st)
+        cut = int(x + P.text_w(text[:lit], f, 0.02) + 2)
+        layer.paste(gold.crop((0, 0, cut, 110)), (0, 0))
     return layer.transform(layer.size, Image.AFFINE, (1, 0.14, -0.14 * 60, 0, 1, 0), Image.BICUBIC)
 
 
 cap_layers = [(a, b, cap_layer(txt)) for a, b, txt in one_line]
+_kara_cache = {}
+
+
+def cap_at(t):
+    """The caption layer for time t; in karaoke mode the characters spoken so far are gold.
+    Character timing = even spacing across the line (speech onset → end, less a 0.12 s tail)."""
+    for (a, b, txt), (_, _, plain) in zip(one_line, cap_layers):
+        if a <= t < b:
+            if not KARAOKE: return plain
+            n = len(txt); span = max(0.2, b - a - 0.12)
+            lit = min(n, int((t - a) / span * n) + 1)
+            key = (a, lit)
+            if key not in _kara_cache: _kara_cache[key] = cap_layer(txt, lit)
+            return _kara_cache[key]
+    return None
 
 
 # ---------- timeline -----------------------------------------------------------------------------
@@ -114,7 +153,9 @@ def steps_of(spec, default_gap=0.9):
 for ch in FX.get("chapters", []):
     a = t_of(ch)
     if a is None: continue
-    zh = P.brush(int(ch.get("size", 160)))
+    _cs = int(ch.get("size", 160))
+    while P.text_w(ch["zh"], P.brush(_cs), 0.04) > W - 120 and _cs > 56: _cs -= 6    # English chapter titles are long
+    zh = P.brush(_cs)
     layer = Image.new("RGBA", (W, 420), (0, 0, 0, 0))
     P.draw_text(layer, (W / 2, 20), ch["zh"], zh, (245, 197, 24, 255), spacing=0.04, anchor="ma", stroke=3, stroke_fill=GOLD_DARK + (255,))
     P.smallcaps(layer, (W / 2, 20 + zh.size * 1.25 + 24), ch["en"], 34, (235, 230, 220, 255), tracking=0.2)
@@ -407,8 +448,8 @@ def trio_layers(labels):
     return L, R, C
 
 
-BUBBLE_SLOTS = [(0.21, 0.23, 250), (0.80, 0.19, 230), (0.16, 0.46, 220), (0.84, 0.42, 240), (0.25, 0.70, 300), (0.76, 0.68, 280), (0.50, 0.14, 180)]
-CHEST_Y = int(H * 0.645)
+BUBBLE_SLOTS = [(0.21, 0.23, 250), (0.80, 0.19, 230), (0.16, 0.46, 220), (0.84, 0.42, 240), (0.25, 0.62, 300), (0.76, 0.60, 280), (0.50, 0.14, 180)]
+CHEST_Y = int(H * 0.60)   # chest band; captions sit at 0.72H since Ep39 (Hao: the 0.80 line collided with the 小红书 UI), so overlays end above 0.71H
 
 
 def matrix_layer(state, lit):
@@ -420,7 +461,8 @@ def matrix_layer(state, lit):
     lx = 320; span = (cw - lx - 60) // len(cols); colx = [lx + 30 + i * span + span // 2 for i in range(len(cols))]
     for i, (zh, en) in enumerate(cols):
         lb = P.label_block(zh, en, 44, 16); cardim.alpha_composite(lb, (int(colx[i] - lb.width / 2), 40))
-    tl = P.label_block(m["title"][0], m["title"][1], 40, 16); cardim.alpha_composite(tl, (40, 44))
+    tl = P.label_block(m["title"][0], m["title"][1], 40, 16, width=lx - 70 if P.LANG == "en" else None)   # English titles wrap ("A thought\nis not a fact") inside the label column
+    cardim.alpha_composite(tl, (40, 44 if tl.height <= 60 else 24))
     d.line([(40, 140), (cw - 40, 140)], fill=(255, 255, 255, 70), width=2)
     rh = 190
     for r, (zh, en, tint) in enumerate(rows):
@@ -438,7 +480,10 @@ def matrix_layer(state, lit):
                 panel.alpha_composite(disc, (int(cx - 48), rh // 2 - 48))
             else:
                 hot = f"{r},{c}" in lit
-                fc = P.flip_counter(v, (46 if len(v) > 5 else 54, 68), fill=GOLD if hot else WHITE)
+                if P.LANG == "en":          # words, not digits: a label, not split-flap cells
+                    fc = P.label_block(v, "", 34, 14, fill=GOLD if hot else WHITE, width=span - 24)
+                else:
+                    fc = P.flip_counter(v, (46 if len(v) > 5 else 54, 68), fill=GOLD if hot else WHITE)
                 panel.alpha_composite(fc, (int(cx - fc.width / 2), rh // 2 - fc.height // 2))
         cardim.alpha_composite(panel, (30, y))
     return P.shadow(cardim, 26, (0, 20), 170)
@@ -698,7 +743,7 @@ def render(t, feed, state):
                 for i, ((zh, en, tint, icon), ts) in enumerate(zip(p["cards"], p["steps"])):
                     if ts <= t:
                         cl = cached(("twin", a, i), lambda zh=zh, en=en, tint=tint, icon=icon: P.card((cw, ch), zh, en, P.TINTS[tint], ICONS.get(icon)))
-                        paste_scaled(frame, cl, x0 + i * (cw + gap) + cw // 2, CHEST_Y + 30, pop(min(1.0, (t - ts) / 0.2)))
+                        paste_scaled(frame, cl, x0 + i * (cw + gap) + cw // 2, CHEST_Y, pop(min(1.0, (t - ts) / 0.2)))
             elif kind == "sidetag":
                 s = p["spec"]
                 def mk(s=s):
@@ -730,7 +775,9 @@ def render(t, feed, state):
                 def mkp(s=s):
                     l = Image.new("RGBA", (W, 200), (0, 0, 0, 0))
                     red = s.get("style") == "red"
-                    P.draw_text(l, (W / 2, 10), s["text"], P.cjk(120) if red else P.brush(136), ((240, 26, 20, 255) if red else (245, 197, 24, 255)),
+                    ps = 120 if red else 136
+                    while P.text_w(s["text"], P.cjk(ps) if red else P.brush(ps), 0.04) > W - 80 and ps > 56: ps -= 6
+                    P.draw_text(l, (W / 2, 10), s["text"], P.cjk(ps) if red else P.brush(ps), ((240, 26, 20, 255) if red else (245, 197, 24, 255)),
                                 spacing=0.04, anchor="ma", stroke=6 if red else 5, stroke_fill=((255, 240, 236, 255) if red else GOLD_DARK + (255,)))
                     return l
                 l = cached(("punch", a), mkp); k = min(1.0, (t - a) / 0.18)
@@ -745,7 +792,7 @@ def render(t, feed, state):
                     paste_scaled(frame, cl, x0 + i * (cw + gap) + cw // 2, int(H * p["y"]), pop(min(1.0, (t - ts) / 0.2)))
     if TAG is not None and (sc is None or sc[2] != "chapter") and t >= title_dur:
         frame.alpha_composite(TAG, (40, 60))
-    cap = next((l for a, b, l in cap_layers if a <= t < b), None)
+    cap = cap_at(t)
     if cap is not None and (sc is None or sc[2] != "chapter"):
         frame.alpha_composite(cap, (0, int(H * cap_y)))
     return frame
@@ -783,10 +830,31 @@ def stills(times):
         fr.convert("RGB").save(f"work/still_{t:.1f}.png"); print("still", t)
 
 
+def sample(a, b):
+    """Render only [a,b) of the film (video + the film's audio slice) → work/sample_<a>_<b>.mp4 — for A/B tests."""
+    os.makedirs("work", exist_ok=True)
+    f0, f1 = int(a * FPS), int(b * FPS); out = f"work/sample_{a:.0f}_{b:.0f}_silent.mp4"
+    dec = decode_at(f0 / FPS, f1 - f0)
+    enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+                            "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p", "-g", "60", out], stdin=subprocess.PIPE)
+    state, fb = {}, FW * FH * 3
+    for fi in range(f0, f1):
+        buf = dec.stdout.read(fb)
+        if len(buf) < fb: break
+        enc.stdin.write(render(fi / FPS, Image.frombytes("RGB", (FW, FH), buf), state).convert("RGB").tobytes())
+    if state.get("reader"): state["reader"].close()
+    enc.stdin.close(); enc.wait(); dec.wait()
+    au = os.path.expanduser(FX.get("audio", {}).get("file", SRC)); off = float(FX.get("audio", {}).get("offset", 0.0))
+    final = f"work/sample_{a:.0f}_{b:.0f}.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", out, "-ss", f"{a + off:.3f}", "-t", f"{b - a:.3f}", "-i", au,
+                    "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-shortest", final], check=True)
+    print("sample ->", final)
+
+
 def main():
     os.makedirs("work", exist_ok=True)
     nw = int(FX.get("workers", 4))
-    procs = [subprocess.Popen([sys.executable, "-I", os.path.abspath(__file__), FXP, "--chunk", f"{i}/{nw}"]) for i in range(nw)]
+    procs = [subprocess.Popen([sys.executable, os.path.abspath(__file__), FXP, "--chunk", f"{i}/{nw}"]) for i in range(nw)]
     for p in procs: p.wait()
     if any(p.returncode for p in procs): sys.exit("!! a worker failed")
     parts = [f"work/chunk_{i}.mp4" for i in range(nw)]
@@ -831,5 +899,7 @@ if __name__ == "__main__":
         i, n = (int(x) for x in sys.argv[sys.argv.index("--chunk") + 1].split("/")); run_chunk(i, n)
     elif "--stills" in sys.argv:
         stills([float(x) for x in sys.argv[sys.argv.index("--stills") + 1].split(",")])
+    elif "--range" in sys.argv:
+        a, b = (float(x) for x in sys.argv[sys.argv.index("--range") + 1].split(",")); sample(a, b)
     else:
         main()

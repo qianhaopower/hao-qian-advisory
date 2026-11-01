@@ -36,6 +36,15 @@ FONTS = os.path.expanduser("~/Video Studio/work/fonts")
 F_HEAVY = os.path.join(FONTS, "SourceHanSansSC-Heavy.otf")
 F_BRUSH = os.path.join(FONTS, "LXGWWenKai-Medium.ttf")
 F_MONO = os.path.expanduser("~/Documents/hao-qian-advisory/src/assets/og/plex-mono-500.ttf")
+F_LATIN_HEAVY = os.path.join(FONTS, "Poppins-Bold.ttf")   # English episodes (WT line, 2026-11-01)
+LANG = "zh"
+
+
+def set_lang(lang: str):
+    """'en' = an English-spoken episode (the Working Theory remake of an FI film): every CJK slot renders in
+    Poppins Bold with no letter-spacing, the small-caps English sublines are simply left empty by the fx file."""
+    global LANG
+    LANG = lang
 
 TOK = {
     "ink": (18, 18, 22), "ink2": (30, 30, 36), "rim": (255, 255, 255),
@@ -61,13 +70,19 @@ def font(path: str, size: int):
     return ImageFont.truetype(path, size)
 
 
-def cjk(size): return font(F_HEAVY, size)
+def cjk(size): return font(F_LATIN_HEAVY if LANG == "en" else F_HEAVY, size)
 def latin(size): return font(F_MONO, size)
-def brush(size): return font(F_BRUSH, size)
+def brush(size): return font(F_LATIN_HEAVY if LANG == "en" else F_BRUSH, size)
+
+
+def _sp(f, spacing):
+    """CJK tracking (0.02–0.08 em) is dropped for the Latin heavy face; small caps keep their tracking."""
+    return 0.0 if (LANG == "en" and getattr(f, "path", "") == F_LATIN_HEAVY) else spacing
 
 
 def text_w(txt, f, spacing=0.0):
     d = ImageDraw.Draw(Image.new("L", (1, 1)))
+    spacing = _sp(f, spacing)
     if not spacing:
         return d.textlength(txt, font=f)
     return sum(d.textlength(c, font=f) for c in txt) + spacing * f.size * (len(txt) - 1)
@@ -76,6 +91,7 @@ def text_w(txt, f, spacing=0.0):
 def draw_text(layer, xy, txt, f, fill, spacing=0.0, anchor="la", stroke=0, stroke_fill=(0, 0, 0, 220)):
     """Letter-spaced text. anchor 'la' | 'ma' (centre x) | 'ra'."""
     d = ImageDraw.Draw(layer)
+    spacing = _sp(f, spacing)
     w = text_w(txt, f, spacing)
     x, y = xy
     if anchor[0] == "m": x -= w / 2
@@ -243,14 +259,20 @@ def pip_rect(src: Image.Image, size=(440, 640), radius=30) -> Image.Image:
 def label_block(zh, en, zh_size=56, en_size=20, fill=TOK["white"], en_fill=None, width=None) -> Image.Image:
     """CJK word with its small-caps English underneath — the unit every card/bubble uses."""
     en_fill = en_fill or TOK["muted"]
+    zlines = [l for l in zh.split("\n") if l] or [zh]
+    # a caller-fixed width shrinks the CJK until the longest line fits (Ep39: a twin card's label ran off the card)
+    if width:
+        while zh_size > 22 and max(text_w(l, cjk(zh_size), 0.06) for l in zlines) > width - 24: zh_size -= 2
     fz = cjk(zh_size); fe = latin(en_size)
-    wz = text_w(zh, fz, 0.06); we = text_w(en.upper(), fe, 0.16) if en else 0
+    wz = max(text_w(l, fz, 0.06) for l in zlines); we = text_w(en.upper(), fe, 0.16) if en else 0
     w = int(width or max(wz, we) + 8)
-    h = int(zh_size * 1.15 + (en_size * 1.5 if en else 0))
+    lh = zh_size * (1.22 if LANG == "en" else 1.15)       # Latin descenders (g, y, p) need the extra room
+    h = int(lh * len(zlines) + (en_size * 1.5 if en else 0) + (zh_size * 0.18 if LANG == "en" else 0))
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    draw_text(im, (w / 2, 0), zh, fz, fill + (255,), spacing=0.06, anchor="ma")
+    for i, l in enumerate(zlines):
+        draw_text(im, (w / 2, i * lh), l, fz, fill + (255,), spacing=0.06, anchor="ma")
     if en:
-        smallcaps(im, (w / 2, zh_size * 1.18), en, en_size, en_fill + (255,))
+        smallcaps(im, (w / 2, lh * (len(zlines) - 1) + zh_size * 1.18), en, en_size, en_fill + (255,))
     return im
 
 
@@ -277,7 +299,7 @@ def bubble(d, zh, en, tint) -> Image.Image:
     g = g.resize((d, d), Image.LANCZOS)
     ImageDraw.Draw(g).ellipse([1, 1, d - 2, d - 2], outline=(255, 255, 255, 70), width=2)
     zs = int(d * 0.19) if len(zh) <= 3 else int(d * 0.15)
-    lb = label_block(zh, en, zs, max(14, int(d * 0.06)))
+    lb = label_block(zh, en, zs, max(14, int(d * 0.06)), width=int(d * 0.84) if LANG == "en" else None)
     g.alpha_composite(lb, ((d - lb.width) // 2, (d - lb.height) // 2 - int(d * 0.02)))
     o = ornament(int(d * 0.42))
     g.alpha_composite(o, ((d - o.width) // 2, int(d * 0.17)))
@@ -295,7 +317,7 @@ def card(size, zh, en, tint, icon=None, radius=22) -> Image.Image:
     """Held / category card: tint panel, corner brackets, label on top, optional line icon below."""
     p = tint_panel(size, tint, radius)
     corner_brackets(p)
-    lb = label_block(zh, en, int(size[0] * 0.19), max(14, int(size[0] * 0.065)))
+    lb = label_block(zh, en, int(size[0] * 0.19), max(14, int(size[0] * 0.065)), width=size[0] - 24)
     p.alpha_composite(lb, ((size[0] - lb.width) // 2, int(size[1] * 0.12)))
     if icon is not None:
         ic = icon(int(size[0] * 0.46))
