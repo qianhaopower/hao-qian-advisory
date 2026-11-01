@@ -198,3 +198,9 @@ Hao 看完 Ep35 真图版：① 说话的画面灰暗；② 手机、网页这�
 4. `compose_v3.py fx_v3.json --stills t1,t2,…` 看关键帧（脸色对照表、卡片不进脸框、停留够读）；看 `hold:` / `lint:` / `zoom:` 三类输出。
 5. `compose_v3.py fx_v3.json` 全片（4 进程约一刻钟）→ 同时间点对比图 → 放 `~/Downloads` 给 Hao。
 6. 封面 / 正文 / 发布 / 归档照 `docs/XHS_FORMAT_REFERENCE.md` 的法。脸的调色 = `fx_parts.grade_face` v5，不许再压暗。
+
+## 11. English mode（2026-11-01，WT 线把 FI 的片子用英文重录时用）
+
+`fx_v3.json` 里加 `"lang": "en"`，`compose_v3` 调 `fx_parts.set_lang("en")`：所有中文槽位（标题、章节卡、卡片、气泡、矩阵、侧标、punch、字幕）改用 Poppins Bold（`~/Video Studio/work/fonts/Poppins-Bold.ttf`），去掉中文字距；英文小字副行留空（fx 里 `"en": ""`）；字幕按句子法保留两行（不再按行拆成两条）；章节卡 / punch 过宽时自动缩字号；矩阵格子用文字标签而不是翻牌格；矩阵标题可用 `\n` 在左列里折行。中文渲染不受影响（Ep39 第 170 秒逐像素一致）。
+
+LinkedIn 版的差别：pillar 写 `Working Theory · Mind & Emotion`；片尾用 WT 的提问尾卡（ink 底，不用纸白，免得片尾一跳亮）；不放下一条预告；文案不抄口播；配乐署名照旧（bed_meditation_loop = Meditation Impromptu ×4，Kevin MacLeod CC-BY）。第一条：Ep. 23 Cognitive Defusion（`~/Movies/WT-videos/defusion-en/`）。
