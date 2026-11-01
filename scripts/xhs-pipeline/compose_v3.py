@@ -31,7 +31,7 @@ FXP = next((a for a in sys.argv[1:] if a.endswith(".json")), "fx_v3.json")
 FX = json.load(open(FXP))
 if FX.get("lang") == "en":
     P.set_lang("en")       # English episode: Latin heavy face everywhere, captions may keep two lines
-CAPS = json.load(open("captions.json"))
+CAPS = json.load(open(FX.get("captions", "captions.json")))   # fx "captions": e.g. work/captions_kara.json (re-timed by kara_align.py --retime)
 SRC = FX.get("source", "source_ready.mp4")
 
 W, H, FPS = P.W, P.H, 30
@@ -86,43 +86,92 @@ for c in CAPS:
         one_line.append((t, t + d, l)); t += d
 
 
-KARAOKE = bool(FX.get("caption_karaoke", False))   # Hao 2026-11-01: the word being spoken turns gold (progressive fill)
+# Karaoke (Hao 2026-11-01): fx "caption_karaoke": "word" — ONLY the word being spoken is gold (not a progressive fill),
+# and it must be the word actually being said: per-character times come from work/kara_chars.json (kara_align.py:
+# mlx-whisper word DTW + audio syllable onsets), words from jieba; "fill" keeps the earlier progressive variant.
+KARAOKE = FX.get("caption_karaoke", False)
+KARAOKE = "fill" if KARAOKE is True else KARAOKE
 KARA_GOLD = (245, 197, 24)
+KARA_CHARS = {}
+if KARAOKE:
+    kp = FX.get("kara_chars", "work/kara_chars.json")
+    if os.path.exists(kp): KARA_CHARS = json.load(open(kp))
+    else: print(f"!! karaoke on but {kp} missing — falling back to even spacing")
+    try:
+        import jieba; jieba.setLogLevel(60)
+        def segment(text): return list(jieba.cut(text))
+    except ImportError:
+        print("!! jieba missing — karaoke per character"); segment = lambda text: list(text)
 
 
-def cap_layer(text, lit=0):
-    """One caption line; with lit>0 the first `lit` characters are drawn gold (spoken so far)."""
+def cap_layer(text, lit=0, span=None):
+    """One caption line. lit>0: the first `lit` characters gold (fill mode); span=(p,q): only text[p:q] gold (word mode)."""
     size = 62
-    rows = text.split("\n")
-    while max(P.text_w(r, P.cjk(size), 0.02) for r in rows) > W - 140 and size > 40:
+    while P.text_w(text, P.cjk(size), 0.02) > W - 140 and size > 40:
         size -= 2
-    layer = Image.new("RGBA", (W, 110 * len(rows)), (0, 0, 0, 0))
+    layer = Image.new("RGBA", (W, 110), (0, 0, 0, 0))
     f = P.cjk(size); st = max(3, size // 14)
-    if len(rows) > 1:                       # English two-liner: stacked, centred, same shear
-        for i, r in enumerate(rows):
-            P.draw_text(layer, (W / 2, 10 + i * int(size * 1.25)), r, f, WHITE + (255,), spacing=0.02, anchor="ma", stroke=st)
-    elif lit <= 0:
+    if lit <= 0 and span is None:
         P.draw_text(layer, (W / 2, 10), text, f, WHITE + (255,), spacing=0.02, anchor="ma", stroke=st)
     else:
         tw = P.text_w(text, f, 0.02); x = W / 2 - tw / 2
         P.draw_text(layer, (x, 10), text, f, WHITE + (255,), spacing=0.02, anchor="la", stroke=st)
         gold = Image.new("RGBA", (W, 110), (0, 0, 0, 0))
         P.draw_text(gold, (x, 10), text, f, KARA_GOLD + (255,), spacing=0.02, anchor="la", stroke=st)
-        cut = int(x + P.text_w(text[:lit], f, 0.02) + 2)
-        layer.paste(gold.crop((0, 0, cut, 110)), (0, 0))
+        if span is None: x0, x1 = 0, int(x + P.text_w(text[:lit], f, 0.02) + 2)
+        else:
+            p, q = span
+            x0 = int(x + P.text_w(text[:p], f, 0.02) - st) if p > 0 else 0
+            x1 = int(x + P.text_w(text[:q], f, 0.02) + 2)
+        layer.paste(gold.crop((x0, 0, x1, 110)), (x0, 0))
     return layer.transform(layer.size, Image.AFFINE, (1, 0.14, -0.14 * 60, 0, 1, 0), Image.BICUBIC)
 
 
 cap_layers = [(a, b, cap_layer(txt)) for a, b, txt in one_line]
 _kara_cache = {}
+_word_cache = {}
+
+
+def word_spans(txt):
+    """[(p, q)] character spans of the jieba words of a line (whitespace/punctuation are their own 1-char spans)."""
+    if txt not in _word_cache:
+        spans, p = [], 0
+        for w in segment(txt):
+            spans.append((p, p + len(w))); p += len(w)
+        _word_cache[txt] = spans
+    return _word_cache[txt]
+
+
+def char_times(a, b, txt):
+    """Per-character [t0, t1] for a line: aligned times where we have them, even spacing otherwise."""
+    rec = KARA_CHARS.get(f"{a:.3f}|{txt}")
+    n = len(txt); out = [None] * n
+    if rec:
+        k = 0
+        for i, c in enumerate(txt):
+            if k < len(rec) and rec[k][0] == c and "\u4e00" <= c <= "\u9fff":
+                out[i] = (rec[k][1], rec[k][2]); k += 1
+    span = max(0.2, b - a - 0.12)
+    for i in range(n):
+        if out[i] is None: out[i] = (a + span * i / n, a + span * (i + 1) / n)
+    return out
 
 
 def cap_at(t):
-    """The caption layer for time t; in karaoke mode the characters spoken so far are gold.
-    Character timing = even spacing across the line (speech onset → end, less a 0.12 s tail)."""
+    """The caption layer for time t. word mode: the jieba word containing the character being spoken is gold;
+    fill mode: everything spoken so far is gold (even spacing)."""
     for (a, b, txt), (_, _, plain) in zip(one_line, cap_layers):
         if a <= t < b:
             if not KARAOKE: return plain
+            if KARAOKE == "word":
+                ct = char_times(a, b, txt)
+                idx = next((i for i in range(len(txt) - 1, -1, -1) if ct[i][0] <= t), None)
+                if idx is None: return plain
+                sp = next(((p, q) for p, q in word_spans(txt) if p <= idx < q), (idx, idx + 1))
+                if not txt[sp[0]:sp[1]].strip(): return plain
+                key = (a, "w", sp)
+                if key not in _kara_cache: _kara_cache[key] = cap_layer(txt, span=sp)
+                return _kara_cache[key]
             n = len(txt); span = max(0.2, b - a - 0.12)
             lit = min(n, int((t - a) / span * n) + 1)
             key = (a, lit)
