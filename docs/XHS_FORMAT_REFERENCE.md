@@ -172,6 +172,16 @@ Frame 1 is the cover, and a blink there ships as the thumbnail. Before handing o
 - if speech starts too early for that, take the open-eyes frame from within the first ~0.5 s of `source_ready.mp4`, crop it to the film's reframe (scale × `reframe_scale`, shifted by `reframe_y`), and set it as fx `face_frame` with `hold` 0.2 (Ep32 v4 precedent). It is a real frame from the film, so the COVER CONTENT LAW holds; the grade is baked as usual.
 Note it in the delivery table ("封面帧:0.35 s 睁眼帧").
 
+### COVER TITLE AT THE WAIST (2026-11-01, Hao — Ep38 零食 cover cut off on the phone)
+The 小红书 profile grid shows the cover as a 3:4 crop of the 9:16 frame: the top and bottom ~12.5 % of
+the frame are gone. A title block at the top of the frame (old `title_y` 0.035) loses its first line
+there ("第一口 80% 的爽" with the 零食别买大包装 line missing). So the cover title sits at the waist:
+`compose_v3` default `title_y` 0.56 (both lines land between the chest and the belt in the 3:4 crop;
+CapCut path: same place). Check the 3:4 crop of frame 1 in the 封面对比 pair, not only the full frame.
+Repair for an already-posted film (Ep38 precedent): render frame 0 with `--stills 0.0` from an fx copy
+with `title_y` 0.56, prepend it as a 0.1 s head (stream-copy concat), and rebuild the audio with
+`adelay=100` so A/V stay aligned (a plain concat left the audio 49 ms late); nothing else changes.
+
 ### COVER COLOUR LAW (2026-10-12, after three episodes of 「封面惨白」 — Hao: 加上规则,省得再犯)
 
 The cover must look like a frame OF the film, not a paler cousin of it. Three things went wrong in a row
