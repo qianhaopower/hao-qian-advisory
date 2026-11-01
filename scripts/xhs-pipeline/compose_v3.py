@@ -495,15 +495,15 @@ def calc_layer(spec, shown, tot_on):
     n = len(cats); cw, ch = 280, 360; gap = 48; x0 = (W - (n * cw + (n - 1) * gap)) // 2
     for i, (zh, en, tint, icon) in enumerate(cats):
         P.paste(fr, P.card((cw, ch), zh, en, P.TINTS[tint], ICONS.get(icon), 22), x0 + i * (cw + gap) + cw // 2, 0.22)
-    x_left, y = 70, int(H * 0.44)
+    x_left, y = 70, int(H * 0.33)   # rows from 0.33H, shadow padding overlapped: three rows + total end above the 0.72H caption line
     for c in spec["counters"][:shown]:
-        row = P._counter_row(c["label"], c["value"], c.get("unit", ""), big=True); fr.alpha_composite(row, (x_left, y)); y += row.height + 30
+        row = P._counter_row(c["label"], c["value"], c.get("unit", ""), big=True); fr.alpha_composite(row, (x_left, y)); y += row.height - 40
     tot = spec.get("total")
     if tot and tot_on:
         y += 30; P.arrow(fr, (x_left + 60, y - 36), (x_left + 60, y + 4))
         fr.alpha_composite(P._counter_row(tot["label"], tot["value"], tot.get("unit", ""), gold=True), (x_left, y + 10))
     if spec.get("note"):
-        P.smallcaps(fr, (x_left, int(H * 0.62)), spec["note"], 18, GREY + (255,), anchor="la")
+        P.smallcaps(fr, (x_left, int(H * 0.075)), spec["note"], 18, GREY + (255,), anchor="la")   # under the pillar tag, above the cats
     return fr
 
 
