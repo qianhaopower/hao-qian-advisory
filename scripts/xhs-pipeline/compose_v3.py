@@ -502,8 +502,9 @@ def calc_layer(spec, shown, tot_on):
     if tot and tot_on:
         y += 30; P.arrow(fr, (x_left + 60, y - 36), (x_left + 60, y + 4))
         fr.alpha_composite(P._counter_row(tot["label"], tot["value"], tot.get("unit", ""), gold=True), (x_left, y + 10))
-    if spec.get("note"):
-        P.smallcaps(fr, (x_left, int(H * 0.075)), spec["note"], 18, GREY + (255,), anchor="la")   # under the pillar tag, above the cats
+    if spec.get("note"):   # under the pillar tag, above the cats; CJK notes take the CJK face (smallcaps' Latin font draws boxes)
+        if spec["note"].isascii(): P.smallcaps(fr, (x_left, int(H * 0.075)), spec["note"], 18, GREY + (255,), anchor="la")
+        else: P.draw_text(fr, (x_left, int(H * 0.072)), spec["note"], P.cjk(24), GREY + (255,), anchor="la")
     return fr
 
 
