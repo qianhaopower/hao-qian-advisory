@@ -873,8 +873,9 @@ def render(t, feed, state):
         frame.alpha_composite(TAG, (40, 60))
     cap = cap_at(t)
     # Hao 2026-11-02 (Ep40): captions stay on top of EVERYTHING, chapter cards included — a black card must not swallow the line.
-    # Hao 2026-11-02 (Ep. 23 cover): the cover carries the title only, no caption under it ("封面字太多") — fx "caption_under_title": true restores it
-    if cap is not None and not (t < title_dur and not FX.get("caption_under_title", False)):
+    # Hao 2026-11-02 (Ep. 23 cover): FRAME 1 (the thumbnail) carries the title only, no caption under it ("封面字太多");
+    # from frame 2 the captions run as usual under the title ("前两句字幕还是得搁上") — fx "caption_under_title": true keeps it on frame 1 too
+    if cap is not None and not (t < 1.0 / FPS and not FX.get("caption_under_title", False)):
         frame.alpha_composite(cap, (0, int(H * cap_y)))
     return frame
 
