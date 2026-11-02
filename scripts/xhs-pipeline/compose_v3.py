@@ -324,6 +324,10 @@ for s_ in FX.get("screens", []):          # {"match","file","hold","view":[y0,y1
     if a is None or not os.path.exists(os.path.expanduser(s_["file"])): print(f"!! screen skipped {s_}"); continue
     add_scene(a, float(s_.get("hold", 4.0)), "screen", dict(img=_img(s_["file"]), spec=s_))
     if s_.get("focus"): sfx.append((a + float(s_.get("step", 1.2)), "pop", -26))
+    # Ep41 lesson: the sheet is 944 px wide; a push that makes it wider than the frame clips the line starts off the left
+    # edge whatever the focus box says — keep push ≤ W/944 (≈1.14) for a full-width page, or crop the page narrower.
+    if 944 * float(s_.get("push", 1.6)) > W + 8:
+        print(f"lint: screen {a:.1f}s push {s_.get('push', 1.6)} makes the page {int(944 * float(s_.get('push', 1.6)))} px wide > frame {W}: left/right edges will clip — use push ≤ {W / 944:.2f} or a narrower crop")
 
 for ph in FX.get("phone", []):            # {"match","file","hold","y":px offset into the mobile capture, "scroll":px/s}
     a = t_of(ph)
