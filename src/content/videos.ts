@@ -739,6 +739,8 @@ export const EPISODES: VideoEpisode[] = [
     ],
     linkedinCaption:
       "I've been through two rounds of layoffs in big tech. I wasn't impacted either time, but I remember the lady crying on the sofa.\n\nMicrosoft is cutting again, and the same chain of thoughts runs in a lot of heads this week: I lost my job → no job soon → mortgage → tuition → my life is miserable. Lightning fast. And we believe it.\n\nTherapists teach one small technique for exactly that moment. It's called cognitive defusion, and the whole thing lives in two sentences:\n\n\"I am doomed.\"\n\"I notice I have a thought that I am doomed.\"\n\nSame words. The second one leaves a gap, and in the gap you can check whether the thought is a fact. For most of the colleagues I saw laid off, it wasn't: they found jobs, often better ones.\n\nThree minutes, with the two moments I catch myself doing it: a layoff email, and my kid's homework.\n\nWhat's the thought your brain hands you on a bad day?\n\nhttps://haoqian.co/videos/cognitive-defusion\n\n#WorkingTheory #Leadership\n\nMusic: Kevin MacLeod (incompetech.com)",
+    linkedinPublishedUrl:
+      "https://www.linkedin.com/posts/hao-qian-9ab0b04b_workingtheory-leadership-ugcPost-7522960382462763008-3kW-/",
     linkedinTags: ["WorkingTheory", "Leadership"],
   },
   /* ------------------------------------------------------------------ */

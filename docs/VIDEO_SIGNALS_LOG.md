@@ -20,7 +20,7 @@
 | 20 | AI as My Emotion Filter | 2026-09-28 | ✅ 2026-09-28 | posted by Hao (URL not yet recorded) |
 | 21 | My Keyboard Is a Decoration | 2026-09-30 | ✅ 2026-09-30 | posted by Hao (URL not yet recorded) |
 | 22 | I Pushed Harder. It Got Worse. | 2026-10-04 | ✅ 2026-10-04 | URL not recorded |
-| 23 | The Day You Get Laid Off (cognitive defusion, English remake of FI Ep39) | 2026-11-02 | ✅ 2026-11-02 | URL not recorded |
+| 23 | The Day You Get Laid Off (cognitive defusion, English remake of FI Ep39) | 2026-11-02 | ✅ 2026-11-02 | ugcPost 7522960382462763008 |
 
 Rule: Hao tells the cutting room when a post goes live (the session cannot
 read LinkedIn — it is login-walled); the row flips and the post URL lands
@@ -754,7 +754,8 @@ LinkedIn Ep. 22 analytics still never captured.
 
 ## Ep. 23 — The Day You Get Laid Off
 
-Posted to LinkedIn 2026-11-02 (evening). English remake of the 小红书 Ep39 认知解离 film,
+Posted to LinkedIn 2026-11-02 (evening): https://www.linkedin.com/posts/hao-qian-9ab0b04b_workingtheory-leadership-ugcPost-7522960382462763008-3kW-/
+English remake of the 小红书 Ep39 认知解离 film,
 spoken freely (not the script), 5:26 take → 3:20 + end card; first WT episode in the 小红书 v3
 graphics language (compose_v3 English mode, word karaoke). Hao's decision the same day: 小红书 and
 LinkedIn share one look from now on, language the only difference, for a trial period.
