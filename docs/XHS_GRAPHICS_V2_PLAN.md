@@ -207,3 +207,5 @@ Hao 看完 Ep35 真图版：① 说话的画面灰暗；② 手机、网页这�
 `fx_v3.json` 里加 `"lang": "en"`，`compose_v3` 调 `fx_parts.set_lang("en")`：所有中文槽位（标题、章节卡、卡片、气泡、矩阵、侧标、punch、字幕）改用 Poppins Bold（`~/Video Studio/work/fonts/Poppins-Bold.ttf`），去掉中文字距；英文小字副行留空（fx 里 `"en": ""`）；字幕按句子法保留两行（不再按行拆成两条）；章节卡 / punch 过宽时自动缩字号；矩阵格子用文字标签而不是翻牌格；矩阵标题可用 `\n` 在左列里折行。中文渲染不受影响（Ep39 第 170 秒逐像素一致）。
 
 LinkedIn 版的差别：pillar 写 `Working Theory · Mind & Emotion`；片尾用 WT 的提问尾卡（ink 底，不用纸白，免得片尾一跳亮）；不放下一条预告；文案不抄口播；配乐署名照旧（bed_meditation_loop = Meditation Impromptu ×4，Kevin MacLeod CC-BY）。第一条：Ep. 23 Cognitive Defusion（`~/Movies/WT-videos/defusion-en/`）。
+
+**英文集的字幕链（2026-11-02，Ep. 23 第一次跑通）：** `cut_by_edl.py`（FI 的切法，留每句最后一遍）→ 人声链 → `source_ready.mp4` → `/usr/bin/python3` mlx-whisper（`language="en"`，`word_timestamps`）→ `scripts/video-pipeline/blocks_to_captions_en.py BLOCKS.txt work/mlx_words.json captions.json`（BLOCKS = 他实际说的句子，`|` 换行，一句一条）→ `scripts/video-pipeline/kara_align_en.py captions.json work/audio.wav work/mlx_words.json --retime`（单位是词，不是字：词首对齐音频起音 ±120 ms，输出同格式的 `work/kara_chars.json` + `work/captions_kara.json`）→ `compose_v3`（`lang: en` 下 karaoke 按空格分词，两行字幕的金字落在自己那一行）。效果文件照中文那集逐条翻，锚点改成英文字幕里的短语。
