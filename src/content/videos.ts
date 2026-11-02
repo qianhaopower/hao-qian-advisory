@@ -712,7 +712,7 @@ export const EPISODES: VideoEpisode[] = [
     series: "working-theory",
     sequence: 23,
     title: "The Day You Get Laid Off",
-    status: "published",
+    status: "draft",
     publishedAt: "2026-11-02",
     language: "en",
     durationSeconds: 205,
