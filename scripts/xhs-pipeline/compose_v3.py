@@ -103,21 +103,40 @@ if KARAOKE:
     kp = FX.get("kara_chars", "work/kara_chars.json")
     if os.path.exists(kp): KARA_CHARS = json.load(open(kp))
     else: print(f"!! karaoke on but {kp} missing — falling back to even spacing")
-    try:
-        import jieba; jieba.setLogLevel(60)
-        def segment(text): return list(jieba.cut(text))
-    except ImportError:
-        print("!! jieba missing — karaoke per character"); segment = lambda text: list(text)
+    if P.LANG == "en":
+        import re as _re
+        def segment(text): return _re.findall(r"\S+|\s+", text)      # English: whitespace words (kara_align_en.py)
+    else:
+        try:
+            import jieba; jieba.setLogLevel(60)
+            def segment(text): return list(jieba.cut(text))
+        except ImportError:
+            print("!! jieba missing — karaoke per character"); segment = lambda text: list(text)
 
 
 def cap_layer(text, lit=0, span=None):
     """One caption line. lit>0: the first `lit` characters gold (fill mode); span=(p,q): only text[p:q] gold (word mode)."""
     size = 62
-    while P.text_w(text, P.cjk(size), 0.02) > W - 140 and size > 40:
+    rows = text.split("\n")
+    while max(P.text_w(r, P.cjk(size), 0.02) for r in rows) > W - 140 and size > 40:
         size -= 2
-    layer = Image.new("RGBA", (W, 110), (0, 0, 0, 0))
+    layer = Image.new("RGBA", (W, 110 * len(rows)), (0, 0, 0, 0))
     f = P.cjk(size); st = max(3, size // 14)
-    if lit <= 0 and span is None:
+    if len(rows) > 1:                       # English two-liner (sentence law): stacked rows, gold word on its row
+        rh = int(size * 1.25); off = 0
+        for i, r in enumerate(rows):
+            y = 10 + i * rh
+            P.draw_text(layer, (W / 2, y), r, f, WHITE + (255,), spacing=0.02, anchor="ma", stroke=st)
+            if span is not None and off <= span[0] < off + len(r):
+                p, q = span[0] - off, min(span[1], off + len(r)) - off
+                tw = P.text_w(r, f, 0.02); x = W / 2 - tw / 2
+                gold = Image.new("RGBA", (W, rh + 20), (0, 0, 0, 0))
+                P.draw_text(gold, (x, 10), r, f, KARA_GOLD + (255,), spacing=0.02, anchor="la", stroke=st)
+                x0 = int(x + P.text_w(r[:p], f, 0.02) - st) if p > 0 else 0
+                x1 = int(x + P.text_w(r[:q], f, 0.02) + 2)
+                layer.paste(gold.crop((x0, 0, x1, rh + 20)), (x0, y - 10))
+            off += len(r) + 1
+    elif lit <= 0 and span is None:
         P.draw_text(layer, (W / 2, 10), text, f, WHITE + (255,), spacing=0.02, anchor="ma", stroke=st)
     else:
         tw = P.text_w(text, f, 0.02); x = W / 2 - tw / 2
@@ -155,7 +174,7 @@ def char_times(a, b, txt):
     if rec:
         k = 0
         for i, c in enumerate(txt):
-            if k < len(rec) and rec[k][0] == c and "\u4e00" <= c <= "\u9fff":
+            if k < len(rec) and rec[k][0] == c and (("\u4e00" <= c <= "\u9fff") or (P.LANG == "en" and not c.isspace())):
                 out[i] = (rec[k][1], rec[k][2]); k += 1
     span = max(0.2, b - a - 0.12)
     for i in range(n):
