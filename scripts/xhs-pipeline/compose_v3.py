@@ -868,7 +868,7 @@ def render(t, feed, state):
     if TAG is not None and (sc is None or sc[2] != "chapter") and t >= title_dur:
         frame.alpha_composite(TAG, (40, 60))
     cap = cap_at(t)
-    if cap is not None and (sc is None or sc[2] != "chapter"):
+    if cap is not None:   # Hao 2026-11-02 (Ep40): captions stay on top of EVERYTHING, chapter cards included — a black card must not swallow the line
         frame.alpha_composite(cap, (0, int(H * cap_y)))
     return frame
 

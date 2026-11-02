@@ -401,7 +401,8 @@ How the timing is made (the chain is law — no step may be skipped or replaced 
 5. Re-timing moves every `match` anchor, so after step 3 run `--stills` once and close any `short face run < 1.2 s` the
    shift opened (extend the preceding scene's hold to touch the next scene — Ep39 needed five), and re-check `!! no caption
    matches`: a match that spanned a caption's line break must be re-pointed at the first line.
-6. QA: frame-step one dense sentence (e.g. 「我现在要完蛋了」) and confirm each word turns gold on its own syllable
+6. **Captions are the top layer, always** (Hao 2026-11-02, Ep40): a full-black chapter card used to hide the caption for its 3 s — the line stays visible over chapter cards, screens, footage and every graphic. Ep40 shipped with the old behaviour; Ep41 on uses the fix.
+7. QA: frame-step one dense sentence (e.g. 「我现在要完蛋了」) and confirm each word turns gold on its own syllable
    onset; a 20 s `--range` sample to Hao before the full render on any episode where the audio chain changed.
 
 ## FLASH GATE (2026-10-13, Ep27 — Hao: 14–16 秒之间我的脸闪了一下,做一个最小时长的 gate)
