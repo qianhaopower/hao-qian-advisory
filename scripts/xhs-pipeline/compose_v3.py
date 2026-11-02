@@ -872,7 +872,9 @@ def render(t, feed, state):
     if TAG is not None and (sc is None or sc[2] != "chapter") and t >= title_dur:
         frame.alpha_composite(TAG, (40, 60))
     cap = cap_at(t)
-    if cap is not None:   # Hao 2026-11-02 (Ep40): captions stay on top of EVERYTHING, chapter cards included — a black card must not swallow the line
+    # Hao 2026-11-02 (Ep40): captions stay on top of EVERYTHING, chapter cards included — a black card must not swallow the line.
+    # Hao 2026-11-02 (Ep. 23 cover): the cover carries the title only, no caption under it ("封面字太多") — fx "caption_under_title": true restores it
+    if cap is not None and not (t < title_dur and not FX.get("caption_under_title", False)):
         frame.alpha_composite(cap, (0, int(H * cap_y)))
     return frame
 
