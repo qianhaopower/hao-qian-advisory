@@ -19,12 +19,13 @@ It does NOT write the videos.ts entry (that needs a human summary) and does not 
 import argparse, glob, json, os, shutil, subprocess, sys
 
 ap = argparse.ArgumentParser()
-for a in ("--draft", "--dir", "--ep", "--slug", "--raw", "--posting"): ap.add_argument(a, required=True)
+for a in ("--draft", "--dir", "--ep", "--slug", "--posting"): ap.add_argument(a, required=True)
+ap.add_argument("--raw", required=True, nargs="+", help="one or more phone originals in ~/Downloads (Ep39: the take + the 预告 clip)")
 ap.add_argument("--export")
 A = ap.parse_args()
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))); os.chdir(REPO)
 HOME = os.path.expanduser("~"); E = f"{HOME}/Movies/FI-videos/{A.dir}"; ARC = f"{HOME}/Movies/FI-videos/archive/{A.ep}"
-EXPORT = os.path.expanduser(A.export or f"~/Downloads/{A.draft}.mov"); RAW = f"{HOME}/Downloads/{A.raw}"
+EXPORT = os.path.expanduser(A.export or f"~/Downloads/{A.draft}.mov"); RAWS = [f"{HOME}/Downloads/{r}" for r in A.raw]
 assert os.path.exists(EXPORT), EXPORT
 os.makedirs(ARC, exist_ok=True); os.makedirs(f"public/videos/{A.slug}", exist_ok=True)
 
@@ -42,7 +43,9 @@ if os.path.exists(_draft):
 else:
     # v3 direct render (compose_v3, since 2026-10-31): no CapCut draft — captions.json IS the caption track
     # (compose_v3 draws captions at their captions.json times; the title overlays the first seconds, no shift).
-    for c in json.load(open(f"{E}/captions.json")):
+    # since 2026-11-01 (CAPTION ALIGNMENT LAW) the caption track is work/captions_kara.json when it exists
+    _capf = f"{E}/work/captions_kara.json" if os.path.exists(f"{E}/work/captions_kara.json") else f"{E}/captions.json"
+    for c in json.load(open(_capf)):
         segs.append((float(c["start"]), float(c["end"]), c["text"]))
 segs.sort()
 def ts(t): return f"{int(t // 3600):02d}:{int(t % 3600 // 60):02d}:{t % 60:06.3f}"
@@ -67,10 +70,11 @@ shutil.copy(f"{HOME}/Downloads/{A.slug}-poster.jpg", f"public/videos/{A.slug}/po
 # 3 ---------------------------------------------------------------- archive by copy
 def cp(src, dst):
     if os.path.exists(src) and not (os.path.exists(dst) and os.path.getsize(dst) == os.path.getsize(src)): shutil.copy(src, dst)
-cp(RAW, f"{ARC}/{A.ep}-raw-{A.raw}"); cp(EXPORT, f"{ARC}/{A.ep}-master-posted.mov")
+for r, name in zip(RAWS, A.raw): cp(r, f"{ARC}/{A.ep}-raw-{name}")
+cp(EXPORT, f"{ARC}/{A.ep}-master-posted" + os.path.splitext(EXPORT)[1])
 cp(f"{HOME}/Downloads/{A.slug}.mp4", f"{ARC}/{A.ep}-site-1080p.mp4")
 cp(f"content-src/video-scripts/{A.posting}", f"{ARC}/{A.ep}-posting.md")
-for f in ("edl.json", "fx.json", "fx_v3.json", "captions.json", "transcript.txt", "work/fix.json", "work/caption_edits.json", "work/tokens.json"):
+for f in ("edl.json", "fx.json", "fx_v3.json", "captions.json", "transcript.txt", "work/fix.json", "work/caption_edits.json", "work/tokens.json", "work/captions_kara.json", "work/kara_chars.json", "work/mlx_words.json"):
     cp(f"{E}/{f}", f"{ARC}/{os.path.basename(f)}")
 print("3. archive:", sorted(os.listdir(ARC)), flush=True)
 

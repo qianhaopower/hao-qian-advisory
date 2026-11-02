@@ -885,9 +885,13 @@ def run_chunk(i, n):
     enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
                             "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p", "-g", "60", out], stdin=subprocess.PIPE)
     state, fb = {}, FW * FH * 3
+    cover_t = FX.get("cover_src_t")   # COVER EYES LAW: frame 0 may take the speaker feed from an open-eyes moment nearby
     for fi in range(f0, f1):
         buf = dec.stdout.read(fb)
         if len(buf) < fb: break
+        if fi == 0 and cover_t is not None:
+            buf = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{float(cover_t):.4f}", "-i", SRC, "-vf", f"scale={FW}:{FH}", "-frames:v", "1",
+                                  "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout[:fb] or buf
         frame = render(fi / FPS, Image.frombytes("RGB", (FW, FH), buf), state)
         enc.stdin.write(frame.convert("RGB").tobytes())
         if (fi - f0) % 300 == 0: print(f"chunk {i}: {fi - f0}/{f1 - f0}", flush=True)
@@ -899,7 +903,8 @@ def run_chunk(i, n):
 def stills(times):
     os.makedirs("work", exist_ok=True)
     for t in times:
-        buf = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.4f}", "-i", SRC, "-vf", f"scale={FW}:{FH}", "-frames:v", "1",
+        st = float(FX["cover_src_t"]) if (t == 0.0 and FX.get("cover_src_t") is not None) else t
+        buf = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{st:.4f}", "-i", SRC, "-vf", f"scale={FW}:{FH}", "-frames:v", "1",
                               "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout[:FW * FH * 3]
         fr = render(t, Image.frombytes("RGB", (FW, FH), buf), {})
         fr.convert("RGB").save(f"work/still_{t:.1f}.png"); print("still", t)
