@@ -182,6 +182,13 @@ Repair for an already-posted film (Ep38 precedent): render frame 0 with `--still
 with `title_y` 0.56, prepend it as a 0.1 s head (stream-copy concat), and rebuild the audio with
 `adelay=100` so A/V stay aligned (a plain concat left the audio 49 ms late); nothing else changes.
 
+### COVER TITLE WEIGHT (2026-11-04, Hao — Ep40 睡眠 cover: 「黄字好像变细了,不是很清晰」)
+The v3 renders drew the gold cover line in the brush face (LXGW WenKai Medium, stroke 5) — thin and soft next to the
+CapCut-era covers (Source Han Heavy with a thick ink stroke). From Ep42 both cover lines are Source Han Heavy: gold 128 px
+with a 9 px ink stroke, white 96 px with a 7 px ink stroke (`compose_v3`; fx `"title": {"face": "brush"}` restores the
+old brush look only on purpose). Ep40 and Ep41 ship as rendered. Check the cover title on the phone-size 封面对比 pair:
+it must read as heavy as the Ep37 练到瘫 cover.
+
 ### COVER COLOUR LAW (2026-10-12, after three episodes of 「封面惨白」 — Hao: 加上规则,省得再犯)
 
 The cover must look like a frame OF the film, not a paler cousin of it. Three things went wrong in a row

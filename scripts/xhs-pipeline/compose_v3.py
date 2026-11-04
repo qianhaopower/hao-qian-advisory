@@ -495,13 +495,20 @@ if FX.get("pillar"):
 title_layers, title_dur = [], 0.0
 if FX.get("title"):
     title_dur = float(FX["title"].get("dur", 3.0))
+    # Hao 2026-11-04 (Ep40 cover): the v3 gold line in the brush face (LXGW WenKai Medium, stroke 5) reads thin and soft
+    # next to the CapCut-era covers (Source Han Heavy, thick ink stroke). From Ep42 the cover title is Heavy for both lines,
+    # gold 128 / white 96, ink stroke 9 / 7 — fx "title_face": "brush" brings the old look back on purpose.
+    brushy = FX["title"].get("face") == "brush"
     for txt, col in FX["title"]["lines"]:
-        size = 132 if col == "gold" else 92
-        while P.text_w(txt, P.brush(size) if col == "gold" else P.cjk(size), 0.03) > W - 90 and size > 60: size -= 4
-        f = P.brush(size) if col == "gold" else P.cjk(size)
-        l = Image.new("RGBA", (W, int(size * 1.35)), (0, 0, 0, 0))
-        P.draw_text(l, (W / 2, 6), txt, f, ((245, 197, 24, 255) if col == "gold" else WHITE + (255,)), spacing=0.03, anchor="ma",
-                    stroke=5 if col == "gold" else 4, stroke_fill=(GOLD_DARK if col == "gold" else INK) + (255,))
+        size = (132 if brushy else 128) if col == "gold" else 92 if brushy else 96
+        face = (lambda z: P.brush(z)) if (col == "gold" and brushy) else (lambda z: P.cjk(z))
+        while P.text_w(txt, face(size), 0.03) > W - 90 and size > 60: size -= 4
+        f = face(size)
+        l = Image.new("RGBA", (W, int(size * 1.4)), (0, 0, 0, 0))
+        if brushy: st, sf = (5 if col == "gold" else 4), (GOLD_DARK if col == "gold" else INK)
+        else: st, sf = (9 if col == "gold" else 7), INK
+        P.draw_text(l, (W / 2, 10), txt, f, ((245, 197, 24, 255) if col == "gold" else WHITE + (255,)), spacing=0.03, anchor="ma",
+                    stroke=st, stroke_fill=sf + (255,))
         title_layers.append(l)
 
 _cache = {}
