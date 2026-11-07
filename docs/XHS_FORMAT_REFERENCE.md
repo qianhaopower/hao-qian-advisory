@@ -238,6 +238,22 @@ comment instead, once per episode.
 4. Publish: striking one-line title + tags only. Batch-record 3,
    publish ~1/day.
 
+### The posting click-path (from Hao's Loom of the Ep41 post, 2026-11-07 — the steps a future agent would replay)
+Web, Chrome, `creator.xiaohongshu.com` (rednote 创作服务平台), already logged in as 不内耗的人生:
+1. 发布笔记 → 上传视频: the file from `~/Downloads` (the exact upload file named in the posting .md). Wait for the
+   upload bar; 设置封面 defaults to frame 1 — leave it (our cover IS frame 1).
+2. 标题: copy the `## 标题` line from the posting .md; paste. ≤ 20 字.
+3. 正文: copy the `## 正文` block from the .md (U+3000 lines keep the paragraphs); paste. Each `#tag` opens a topic
+   popup — pick the matching 话题 so the tag turns into a link (he clicks the first suggestion each time).
+4. 内容设置: 添加地点 (skip), 原创声明 toggle ON → confirm the 「笔记完成原创声明」 dialog (tick + 声明原创);
+   自主声明 / 可见范围 / 定时发布 left at defaults (publish now, 公开).
+5. 发布 → 「发布成功」; the 笔记管理 grid then shows the new note first.
+6. 置顶评论: not in the web flow — posted from the phone app on the note after publishing (置顶 from the comment's menu).
+Automation: this is a plain click/type sequence except step 1 — a browser extension cannot set a file input from disk,
+so the file picker needs desktop control (computer use) or a drag-and-drop from Finder; everything else is doable with
+Claude in Chrome. Neither tool is enabled in the desk session as of 2026-11-07; Hao would turn them on in the Claude
+desktop app first. Until then the agent hands over the .md link + file path and Hao clicks.
+
 ## 10. Integrity rules
 
 - We clone geometry, motion, typography logic, pacing, structure —

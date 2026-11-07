@@ -95,6 +95,8 @@ const EDGES: [string, string][] = [
   ["video:fi-soreness", "book:friends-intelligence"],
   ["video:fi-snack-portions", "book:friends-intelligence"],
   ["video:fi-cognitive-defusion", "book:friends-intelligence"],
+  ["video:fi-sleep-appetite", "book:friends-intelligence"],
+  ["video:fi-dare-to-be-happy", "book:friends-intelligence"],
 ];
 
 function resolve(id: string): ConnectionRef | null {
