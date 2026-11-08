@@ -784,7 +784,8 @@ def render(t, feed, state):
         elif kind == "matrix":
             frame = GROUND.copy()
             card = cached(("matrix", tuple(sorted(p["state"].items())), tuple(p["lit"])), lambda: matrix_layer(p["state"], p["lit"]))
-            paste_scaled(frame, card, W // 2, int(H * 0.52), pop(min(1.0, (t - a) / 0.2)))
+            # fx "matrix_y" / "matrix_scale": a 5-row anchor card (plan6 五个开关) otherwise runs into the 0.72H caption line
+            paste_scaled(frame, card, W // 2, int(H * float(FX.get("matrix_y", 0.52))), pop(min(1.0, (t - a) / 0.2)) * float(FX.get("matrix_scale", 1.0)))
         elif kind == "calc":
             shown = sum(1 for s in p["steps"] if s <= t + 1e-6); tot_on = p["tstep"] is not None and p["tstep"] <= t + 1e-6
             frame = cached(("calc", a, shown, tot_on), lambda: calc_layer(p["spec"], shown, tot_on)).copy()
