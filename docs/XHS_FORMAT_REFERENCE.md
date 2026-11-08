@@ -483,6 +483,13 @@ draft when any insert is under 1.5 s or any face gap between consecutive inserts
   for the exercise) stays: pass its start time in `--skip`. Restarts, repeated sentences and a wrong
   claim go in `--cut a-b`. Look at the gap list with the words around it before cutting; never trim
   blind.
+  OPENING, zero tolerance (Hao 2026-11-08, Ep42 v2: 「前几秒怎么那么怪……人动了一下……前三五秒那块空的
+  还是比较多」): the film starts 0.25 s before the first word — the settling shuffle after he presses
+  record never reaches the film (trim_gaps `--lead`, default on); inside the first 8 s every gap ≥ 0.6 s
+  is shortened (`--head 8 --head-min 0.6`); and a soft preamble (「最近……」「今天……」「我下面……」) is
+  not a hook — when the first concrete sentence can stand alone, open on it (Ep42: 「央行连续加息，大家
+  压力都暴大」). The cover title runs 3 s over whatever is there, so a scene that would start under it
+  takes an `offset` past 3.0 — frame 1 is always his face.
 - FACT CHECK LAW (Hao 2026-11-08, Ep42 opening: 「今年已经加了三次息了」 — the RBA had hiked five
   times in 2026, Feb/Mar/May/Sep/Nov 3, cash rate 4.85 %): every number and news claim in his
   opening is checked against a primary/news source before the render. Wrong = cut the clause (the

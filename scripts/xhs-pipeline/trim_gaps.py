@@ -11,6 +11,12 @@ with --skip t1,t2 (the film time where that gap starts, ±0.3 s). Writes the new
 → kara_align --retime) so captions and karaoke are rebuilt on the new timeline.
 
   python3 trim_gaps.py work/edl.json work/mlx_words.json [--min 1.2] [--keep 0.5] [--cut 207.5-212.2] [--skip 70.0,73.8] [--out work/edl.json]
+                       [--lead 0.25] [--head 8 --head-min 0.6]
+
+OPENING (Hao 2026-11-08, Ep42 v2 「前几秒怎么那么怪」: he settled in the frame for 2 s, then two holes after 「接连不断」
+and 「比如说」): the first seconds get no tolerance. --lead trims the film start to --lead seconds before the first word
+(a tired take's settling shuffle is gone), and inside the first --head seconds (default 8: the opening sentence and the one after it) every gap >= --head-min is shortened
+to --keep. Pass --lead -1 to leave the start alone (a performed silent opening).
 """
 import json, os, sys
 
@@ -20,6 +26,7 @@ def arg(name, default):
 def main():
     edlp, wordsp = sys.argv[1], sys.argv[2]
     MIN, KEEP = float(arg("--min", 1.2)), float(arg("--keep", 0.5))
+    LEAD, HEAD, HEAD_MIN = float(arg("--lead", 0.25)), float(arg("--head", 8.0)), float(arg("--head-min", 0.6))
     out = arg("--out", edlp)
     extra = [tuple(float(x) for x in r.split("-")) for r in arg("--cut", "").split(",") if r]
     skip = [float(x) for x in arg("--skip", "").split(",") if x]
@@ -27,9 +34,12 @@ def main():
     words = [(w[0], float(w[1]), float(w[2])) for w in json.load(open(wordsp))]
     # film-time removals
     cuts = []
+    if LEAD >= 0 and words and words[0][1] - LEAD > 0.05:
+        cuts.append((0.0, words[0][1] - LEAD, f"lead-in {words[0][1]:.2f}s before {words[0][0]!r}"))
     for i in range(1, len(words)):
         g0, g1 = words[i - 1][2], words[i][1]
-        if g1 - g0 >= MIN:
+        thr = HEAD_MIN if g0 < HEAD else MIN
+        if g1 - g0 >= thr:
             if any(abs(g0 - sk) <= 0.3 for sk in skip):
                 print(f"keep pause {g1 - g0:.2f}s at {g0:.2f} (performance)"); continue
             mid = (g0 + g1) / 2; half = KEEP / 2
