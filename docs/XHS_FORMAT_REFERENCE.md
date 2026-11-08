@@ -446,7 +446,15 @@ draft when any insert is under 1.5 s or any face gap between consecutive inserts
   contra scene, Ep11's face-to-face clip) — he reads it as the edit running out of
   material, not as a callback. One asset, one slot; if a beat needs a callback,
   make a different asset for it.
-- Grammar: ~3s each, ~1 per 22s, 0.3s alpha fade in/out, bottom 28% of
+- B-ROLL FLOOR (Hao 2026-11-08, Ep42 视觉 v1 — 7 clips in 3:54 read as 「好像没有加什么 B-roll」, in a
+  knowledge-leaning batch): real footage is not optional when an episode leans on diagrams and
+  pages. Floor = 3 clips per minute of film (one every ~20 s) and no stretch longer than 45 s without
+  one, performance beats excepted (fx "no_footage" spans). Measured basis: Ep39–41 ran 2.1–3.5/min.
+  SHOW THE VERB: when he says 走/跑/世界在倒退, the viewer sees someone walking, someone running, the
+  world going past first-person — not a card. Ancestors = fire + silhouettes + a predator, never a
+  modern cauldron (Ep42: 「你弄一个锅,那怎么可能是祖先的」). compose_v3 prints `footage: n = x/min`
+  and lints `B-ROLL FLOOR` / `no footage between`; a render that lints is not finished.
+- Grammar: ~3s each, ≥3 per min (see floor), 0.3s alpha fade in/out, bottom 28% of
   text-bearing images left empty, toplines/punches auto-suppressed during
   inserts, inserts ≥ hold+0.5s apart (overlap guard drops with a warning).
 - Landscape sources: centre-crop 405:720 → 1080×1920 bake into assets/inserts/.
@@ -467,6 +475,19 @@ draft when any insert is under 1.5 s or any face gap between consecutive inserts
   睡眠、关系、饮食 (endcard_<pillar>_cta.png). Text only, never spoken, never 关注.
 
 ## Process law (for the agent)
+- PAUSE TRIM LAW (Hao 2026-11-08 — tired late takes leave 1.5–4 s holes: 「明显中间间隔比较长的那种停顿
+  还是减一下」): after the first cut chain + kara_words.py, run `trim_gaps.py work/edl.json
+  work/mlx_words.json` — every silence ≥ 1.2 s between words is shortened to 0.5 s (cut from the
+  middle of the pause, no syllable touched) — then re-run the chain + kara_align on the new timeline.
+  A pause that IS the performance (breathing in/holding/out, holding a smile, listening, eyes closed
+  for the exercise) stays: pass its start time in `--skip`. Restarts, repeated sentences and a wrong
+  claim go in `--cut a-b`. Look at the gap list with the words around it before cutting; never trim
+  blind.
+- FACT CHECK LAW (Hao 2026-11-08, Ep42 opening: 「今年已经加了三次息了」 — the RBA had hiked five
+  times in 2026, Feb/Mar/May/Sep/Nov 3, cash rate 4.85 %): every number and news claim in his
+  opening is checked against a primary/news source before the render. Wrong = cut the clause (the
+  sentence still flows) and let a real page (ABC/RBA screenshot via real_assets.py) carry the right
+  number on screen; never a correction card, never an on-screen footnote (corrections policy).
 - After every scripted patch: grep the file for the new symbols BEFORE
   claiming it landed (a silent .replace() no-op shipped an unfixed v8).
 - NEVER run two `fetch_life_broll.py` passes at once: both rewrite index.json and

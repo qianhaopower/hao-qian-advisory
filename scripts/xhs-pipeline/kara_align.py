@@ -176,8 +176,12 @@ def main():
             wc = [(c, t) for c, t in wchars if a - 2.5 <= t <= b + 0.5 and len(c) == 1 and "\u4e00" <= c <= "\u9fff"]
             s_w = "".join(c for c, _ in wc); first = None
             need = 2 if len(cjk) >= 3 else 1
-            for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, cjk, s_w, autojunk=False).get_opcodes():
-                if tag == "equal" and i1 == 0 and i2 - i1 >= need: first = wc[j1][1]; break
+            # every place the line's opening syllables occur in the window; take the one nearest the line's own
+            # start that lies after the previous line's first syllable (Ep46: two lines both opening 一种叫… — the
+            # second used to grab the first's words and start 3 s early)
+            prev = next((f for f in reversed(firsts) if f is not None), -1.0)
+            cands = [wc[j][1] for j in range(len(wc) - need + 1) if s_w[j:j + need] == cjk[:need] and wc[j][1] > prev + 0.3]
+            if cands: first = min(cands, key=lambda t: abs(t - a))
             firsts.append(first)
         moved = 0
         for i in range(1, len(flat)):

@@ -435,6 +435,24 @@ for a, b in groups:
     if b - a < 4.0: print(f"lint: short graphic group {a:.1f}-{b:.1f} ({b - a:.1f}s)")
 print(f"timeline: {len(scenes)} scenes in {len(groups)} groups, {len(overlays)} overlays, {len(cardrows)} card rows, "
       f"{len(one_line)} captions, {DUR:.1f}s")
+# --- lint: B-roll density (Hao 2026-11-08, switch1 v1 「好像没有加什么 B-roll」: 7 clips in 3:54 read as none) ---
+# Real footage — people walking/running, the world going past, a fire, a face — is what a knowledge episode still
+# needs between its diagrams and pages. Floor: footage_per_min (3) clips per minute of film and no stretch longer than
+# footage_max_gap (45 s) without one. Hao's performance beats (an exercise shown on camera) may be excluded by listing
+# them in fx "no_footage": [[a, b], ...] (film seconds), so the gap lint does not nag there.
+_foot = sorted((a, b) for a, b, k, _ in scenes if k == "footage")
+_fpm = float(FX.get("footage_per_min", 3.0)); _fgap = float(FX.get("footage_max_gap", 45.0))
+print(f"footage: {len(_foot)} clips = {len(_foot) / DUR * 60:.1f}/min (floor {_fpm:g}/min)")
+if len(_foot) / DUR * 60 < _fpm - 1e-6:
+    print(f"lint: B-ROLL FLOOR — {len(_foot)} footage clips in {DUR:.0f}s; need ≥ {int(math.ceil(_fpm * DUR / 60))}")
+_nof = [tuple(x) for x in FX.get("no_footage", [])]
+_last = 0.0
+for a, b in _foot + [(DUR, DUR)]:
+    _ga, _gb = _last, a
+    for x, y in _nof:                               # subtract performance stretches
+        if x <= _gb and y >= _ga: _gb = min(_gb, x) if _ga < x else _ga
+    if _gb - _ga > _fgap: print(f"lint: no footage between {_ga:.0f}s and {a:.0f}s ({a - _last:.0f}s > {_fgap:g}s)")
+    _last = b
 
 
 def scene_at(t): return next(((a, b, k, p) for a, b, k, p in scenes if a <= t < b), None)
