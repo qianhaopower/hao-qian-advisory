@@ -68,7 +68,9 @@ HaoQian.co 不是一个个人主页，不是一个 Resume，也不是一个 Coac
 
 ### Home
 
-**现行(2026-09-21):** 一句话 **A book, a piano, and balloons on the street.** + 星图;下面一排三张同尺寸的图(The book · At the piano · On the street),一行 "On weekdays"(带团队,工作的事去 LinkedIn,留下来的想法是 Working Theory),然后才是所有房间的目录。不花:没有新颜色、没有动画、没有按钮。
+**现行(2026-11-09):** 一句话不变(**A book, a piano, and balloons on the street.** + 星图);三张卡改为 The book · On camera(Friends Intelligence 视频线,图 = 最新一集海报,自动) · On the street;卡下一条 "Latest"(全站最新 4 集,从数据算);"On weekdays" 一行同时指向 Working Theory 文章与视频;目录顺序 Videos → Books → Balloons → Writing → Projects → Garden → Talks → About。顶栏瘦身到 6 个(Books · Videos · Writing · Balloons · About · Search),Projects / Talks / Garden 房间保留,只从顶栏退到首页目录。原因:博文 7 月已完结,钢琴停在 1 集,而 FI 视频线每周 2–3 集 —— 首页要推活着的架子。
+
+**2026-09-21 版:** 一句话 **A book, a piano, and balloons on the street.** + 星图;下面一排三张同尺寸的图(The book · At the piano · On the street),一行 "On weekdays"(带团队,工作的事去 LinkedIn,留下来的想法是 Working Theory),然后才是所有房间的目录。不花:没有新颜色、没有动画、没有按钮。
 
 原始设定(2026-07)：一句话 **Turning ideas into systems.**
 

@@ -25,51 +25,33 @@ export type SectionEntry = {
   blurb: string;
 };
 
-/* Header navigation — order mirrors the shelf order of the library. */
+/* Header navigation — six doors (trimmed 2026-11-09: Projects, Talks and
+ * the Garden keep their rooms and their place in the home index, but the top
+ * bar only carries the shelves that are alive). */
 export const NAV: { href: string; label: string }[] = [
   { href: "/books", label: "Books" },
-  { href: "/writing", label: "Writing" },
   { href: "/videos", label: "Videos" },
-  { href: "/projects", label: "Projects" },
-  { href: "/talks", label: "Talks" },
+  { href: "/writing", label: "Writing" },
   { href: "/balloons", label: "Balloons" },
-  { href: "/garden", label: "Garden" },
   { href: "/about", label: "About" },
   { href: "/search", label: "Search" },
 ];
 
-/* Home index — every room of the library, with honest counts. */
+/* Home index — every room of the library, with honest counts. Order since
+ * 2026-11-09: the living shelves first, the quiet rooms after. */
 export const HOME_INDEX: SectionEntry[] = [
-  {
-    href: "/books",
-    label: "Books",
-    meta: "2 published · 1 underway",
-    blurb: "Friends Intelligence, Fish Fun, and the book the essays are becoming.",
-  },
-  {
-    href: "/writing",
-    label: "Writing",
-    meta: "Working Theory · 52 essays",
-    blurb: "An essay series on AI, engineering, systems and leadership.",
-  },
   {
     href: "/videos",
     label: "Videos",
     /* meta is computed live on the home page from published episodes */
-    meta: "2 series",
-    blurb: "Working Theory in English, Friends Intelligence in Chinese, and one series at the piano — published here first.",
+    meta: "3 series",
+    blurb: "Friends Intelligence in Chinese, Working Theory in English, and one film at the piano — published here first.",
   },
   {
-    href: "/projects",
-    label: "Projects",
-    meta: "8 kept",
-    blurb: "Software worth keeping, with the thinking behind it.",
-  },
-  {
-    href: "/talks",
-    label: "Talks",
-    meta: "collecting",
-    blurb: "Public thinking — conferences, meetups, podcasts, recordings.",
+    href: "/books",
+    label: "Books",
+    meta: "2 published · 1 planned",
+    blurb: "Friends Intelligence, Fish Fun, and the book the essays may one day become.",
   },
   {
     href: "/balloons",
@@ -78,10 +60,28 @@ export const HOME_INDEX: SectionEntry[] = [
     blurb: "Little Wow Balloons — real balloon art, twisted by hand, kept for good.",
   },
   {
+    href: "/writing",
+    label: "Writing",
+    meta: "Working Theory · 52 essays · Jan–Jul 2026",
+    blurb: "The numbered essay series on AI, engineering, systems and leadership — complete, and kept in full.",
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+    meta: "8 kept",
+    blurb: "Software worth keeping, with the thinking behind it.",
+  },
+  {
     href: "/garden",
     label: "Digital Garden",
-    meta: "3 ideas growing",
+    meta: "4 ideas · resting",
     blurb: "Numbered ideas, tended over years, never finished.",
+  },
+  {
+    href: "/talks",
+    label: "Talks",
+    meta: "collecting",
+    blurb: "Public thinking — conferences, meetups, podcasts, recordings.",
   },
   {
     href: "/about",

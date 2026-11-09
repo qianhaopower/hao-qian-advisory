@@ -4,12 +4,24 @@ import { Constellation } from "@/components/site/Constellation";
 import { HOME_INDEX, SITE } from "@/content/site";
 import { BOOKS } from "@/content/books";
 import { getStarData } from "@/lib/constellation";
-import { videosIndexMeta } from "@/lib/videos";
+import {
+  getLatestEpisodes,
+  getPublishedEpisodesBySeries,
+  getSeries,
+  videosIndexMeta,
+} from "@/lib/videos";
+import { VIDEO_SERIES } from "@/content/videos";
+import { formatDate } from "@/lib/essays";
 
 /* The home page (Hao, 2026-09-21): the flagship is a book, a piano and
  * balloons on the street; work is what LinkedIn is for. Masthead + sky,
  * one band of three, one line about weekdays, then every room. Quiet on
- * purpose — no new colour, no motion, nothing to click but the work. */
+ * purpose — no new colour, no motion, nothing to click but the work.
+ *
+ * 2026-11-09: the middle card became the book's video line (Friends
+ * Intelligence on 小红书 — the shelf that actually grows every week; the
+ * piano film stays on /videos), and a "Latest" strip under the three cards
+ * shows the newest episodes across every series, computed from the data. */
 type Flagship = {
   href: string;
   label: string;
@@ -21,6 +33,11 @@ type Flagship = {
 export default function HomePage() {
   const stars = getStarData();
   const book = BOOKS.find((b) => b.slug === "friends-intelligence")!;
+
+  const fi = VIDEO_SERIES["friends-intelligence"];
+  const fiEpisodes = getPublishedEpisodesBySeries("friends-intelligence");
+  const fiLatest = fiEpisodes[0];
+  const latest = getLatestEpisodes(4);
 
   const flagships: Flagship[] = [
     {
@@ -35,14 +52,16 @@ export default function HomePage() {
       },
     },
     {
-      href: "/videos/piano-passacaglia",
-      label: "At the piano",
-      title: "Passacaglia",
-      line: "Handel–Halvorsen on the upright at home — one unbroken take, and one interruption.",
+      href: "/videos#friends-intelligence",
+      label: "On camera",
+      title: fi.name,
+      line: `The book's seven intelligences, spoken in Chinese — ${fiEpisodes.length} short films so far, published here first and on 小红书 as 「${fi.platformHandle}」.`,
       img: {
-        src: "/home/at-the-piano.jpg",
-        alt: "Hao at the upright piano at home",
-        fit: "object-cover",
+        src: fiLatest?.poster ?? "/videos/fi-sleep-daylight/poster.jpg",
+        alt: fiLatest
+          ? `${fiLatest.title} — the latest Friends Intelligence film`
+          : "Friends Intelligence on camera",
+        fit: "object-cover object-[50%_40%]",
       },
     },
     {
@@ -105,6 +124,54 @@ export default function HomePage() {
           ))}
         </section>
 
+        {/* Latest — the newest films across every series, straight from the data */}
+        {latest.length > 0 && (
+          <section className="mt-14 grid grid-cols-1 gap-x-12 gap-y-5 border-t border-line pt-6 min-[900px]:grid-cols-[220px_1fr]">
+            <div>
+              <div className="meta">Latest</div>
+              <Link
+                href="/videos"
+                className="mt-2 block text-[13.5px] text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+              >
+                All episodes →
+              </Link>
+            </div>
+            <ul className="grid grid-cols-2 gap-x-5 gap-y-6 min-[700px]:grid-cols-4">
+              {latest.map((e) => {
+                const series = getSeries(e);
+                return (
+                  <li key={e.slug}>
+                    <Link
+                      href={`/videos/${e.slug}`}
+                      lang={series.language}
+                      className="group block"
+                    >
+                      {e.poster && (
+                        <div className="aspect-[4/5] overflow-hidden rounded-[2px] border border-line bg-surface transition-colors duration-[250ms] group-hover:border-faint">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={e.poster}
+                            alt={`${e.title} — poster`}
+                            className="block h-full w-full object-cover object-[50%_40%]"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                      <div className="meta mt-3 !text-[10.5px]" lang="en">
+                        {series.name} · Ep. {e.sequence}
+                        {e.publishedAt ? ` · ${formatDate(e.publishedAt)}` : ""}
+                      </div>
+                      <div className="mt-1 font-serif text-[16px] leading-[1.3] transition-colors duration-[250ms] group-hover:text-accent">
+                        {e.title}
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
         {/* Work, in one line */}
         <section className="mt-14 grid grid-cols-1 gap-x-12 gap-y-3 border-t border-line pt-6 min-[900px]:grid-cols-[220px_1fr]">
           <div className="meta">On weekdays</div>
@@ -117,12 +184,19 @@ export default function HomePage() {
             >
               on LinkedIn
             </a>
-            . The ideas that survive are kept here as{" "}
+            . The theories that survived the work are kept here as{" "}
             <Link
               href="/writing"
               className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
             >
               Working Theory
+            </Link>
+            {" "}— fifty-two essays, and now the{" "}
+            <Link
+              href="/videos#working-theory"
+              className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+            >
+              films
             </Link>
             .
           </p>

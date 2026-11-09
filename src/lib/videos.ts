@@ -50,6 +50,34 @@ export function getLiveSeries(): VideoSeries[] {
   );
 }
 
+/** The newest published episodes across every series — for the home page. */
+export function getLatestEpisodes(n = 4): VideoEpisode[] {
+  return [...getPublishedEpisodes()]
+    .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""))
+    .slice(0, n);
+}
+
+/** Published episodes of one series grouped by topic (book pillar / essay series),
+ * groups ordered by size, episodes latest first. Episodes without a topic fall
+ * into one unlabelled group at the end. */
+export function groupEpisodesByTopic(
+  id: VideoSeriesId
+): { topic: string | undefined; episodes: VideoEpisode[] }[] {
+  const groups = new Map<string | undefined, VideoEpisode[]>();
+  for (const e of getPublishedEpisodesBySeries(id)) {
+    const list = groups.get(e.topic) ?? [];
+    list.push(e);
+    groups.set(e.topic, list);
+  }
+  return [...groups.entries()]
+    .map(([topic, episodes]) => ({ topic, episodes }))
+    .sort((a, b) => {
+      if (a.topic === undefined) return 1;
+      if (b.topic === undefined) return -1;
+      return b.episodes.length - a.episodes.length;
+    });
+}
+
 /** The home-index meta line — computed, so the count is always honest. */
 export function videosIndexMeta(): string {
   const live = getLiveSeries();

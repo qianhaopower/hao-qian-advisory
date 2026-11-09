@@ -269,10 +269,10 @@ export const BOOKS: Book[] = [
   {
     slug: "working-theory",
     title: "Working Theory",
-    kicker: "Book · In progress",
+    kicker: "Book · Planned",
     status: "in-progress",
-    coverLabel: "manuscript open",
-    oneLiner: "The book the essay series is quietly becoming.",
+    coverLabel: "to be compiled",
+    oneLiner: "The book the essay series may one day become — fifty-two theories, waiting to be compiled.",
     facts: ["Compiled from the series", "One theory at a time"],
     sections: [
       {

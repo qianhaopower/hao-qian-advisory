@@ -21,7 +21,7 @@ export default function BooksPage() {
     <SiteShell current="/books">
       <Container>
         <section className="pt-16 min-[900px]:pt-20">
-          <Kicker>Books · 2 published · 1 underway</Kicker>
+          <Kicker>Books · 2 published · 1 planned</Kicker>
           <PageTitle>The shelf so far.</PageTitle>
           <Lede>
             Books are the slowest, most permanent thing I make. Each one has a

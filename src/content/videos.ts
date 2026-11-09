@@ -88,8 +88,8 @@ export const VIDEO_SERIES: Record<VideoSeriesId, VideoSeries> = {
 
 /** Display order on /videos and the home index. */
 export const VIDEO_SERIES_ORDER: VideoSeriesId[] = [
-  "working-theory",
   "friends-intelligence",
+  "working-theory",
   "piano",
 ];
 

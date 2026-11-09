@@ -33,12 +33,13 @@ export default function WritingPage() {
     <SiteShell current="/writing">
       <Container>
         <section className="pt-16 min-[900px]:pt-20">
-          <Kicker>Working Theory · № 1–52 · roughly two a week since Jan 2026</Kicker>
+          <Kicker>Working Theory · № 1–52 · Jan–Jul 2026 · complete</Kicker>
           <PageTitle>One theory at a time.</PageTitle>
           <Lede>
             A numbered essay series on AI, engineering, systems thinking and
-            leadership — serialised on LinkedIn, but this library is where
-            every theory lives in full.
+            leadership — fifty-two theories serialised on LinkedIn through the
+            first half of 2026, kept here in full. The series continues on
+            camera, in the Working Theory videos.
           </Lede>
           <div className="mt-7">
             <RandomTheory slugs={essays.map((e) => e.slug)} />

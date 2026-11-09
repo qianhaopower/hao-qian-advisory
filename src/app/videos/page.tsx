@@ -12,6 +12,7 @@ import type { VideoEpisode, VideoSeries } from "@/content/videos";
 import {
   getPublishedEpisodes,
   getPublishedEpisodesBySeries,
+  groupEpisodesByTopic,
   getLiveSeries,
   formatDuration,
 } from "@/lib/videos";
@@ -23,59 +24,59 @@ const pianoLive = getLiveSeries().some((s) => s.id === "piano");
 
 export const metadata: Metadata = {
   title: "Videos",
-  description: `Two series, spoken: Working Theory in English, Friends Intelligence in Chinese — one idea per episode, published here first.${
-    pianoLive ? " And one without words: Hao at the piano." : ""
-  }`,
+  description: `Short films, published here first: Friends Intelligence in Chinese, Working Theory in English${
+    pianoLive ? ", and one series without words — Hao at the piano" : ""
+  }.`,
 };
 
-function EpisodeRow({ e, series }: { e: VideoEpisode; series: VideoSeries }) {
+/* 2026-11-09: shelves became poster grids (the Chinese line passed forty
+ * episodes — a row per episode no longer read as a shelf), grouped by the
+ * episode's topic: the book's pillar for Friends Intelligence, the theory
+ * for Working Theory. Groups are computed from the data; nothing hand-sorted. */
+function EpisodeCard({ e, series }: { e: VideoEpisode; series: VideoSeries }) {
   return (
-    <Link
-      href={`/videos/${e.slug}`}
-      lang={series.language}
-      className="group grid grid-cols-1 gap-x-8 gap-y-3 border-b border-hairline py-7 transition-colors duration-[250ms] hover:bg-surface min-[700px]:grid-cols-[140px_1fr]"
-    >
-      {e.poster ? (
-        <div className="overflow-hidden rounded-[2px] border border-line max-[699px]:max-w-[180px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={e.poster}
-            alt={`${e.title} — poster`}
-            className="block w-full"
-            loading="lazy"
-          />
+    <li>
+      <Link
+        href={`/videos/${e.slug}`}
+        lang={series.language}
+        className="group block"
+      >
+        <div className="aspect-[4/5] overflow-hidden rounded-[2px] border border-line bg-surface transition-colors duration-[250ms] group-hover:border-faint">
+          {e.poster && (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={e.poster}
+              alt={`${e.title} — poster`}
+              className="block h-full w-full object-cover object-[50%_40%]"
+              loading="lazy"
+            />
+          )}
         </div>
-      ) : (
-        <div className="hidden min-[700px]:block" />
-      )}
-      <div>
-        <div className="meta !text-[11px]" lang="en">
+        <div className="meta mt-3 !text-[10.5px]" lang="en">
           Ep. {e.sequence}
           {e.publishedAt ? ` · ${formatDate(e.publishedAt)}` : ""}
           {e.durationSeconds ? ` · ${formatDuration(e.durationSeconds)}` : ""}
-          {e.topic ? ` · ${e.topic}` : ""}
         </div>
-        <div className="mt-2 font-serif text-[24px] leading-[1.3] group-hover:text-accent min-[900px]:text-[26px]">
+        <div className="mt-1 font-serif text-[17px] leading-[1.3] transition-colors duration-[250ms] group-hover:text-accent">
           {e.title}
         </div>
         {e.titleEn && (
           <div
             lang="en"
-            className="mt-1 font-serif text-[15px] italic leading-[1.5] text-faint"
+            className="mt-0.5 font-serif text-[13px] italic leading-[1.45] text-faint"
           >
             {e.titleEn}
           </div>
         )}
-        <p className="mt-2 max-w-[560px] text-[14.5px] leading-[1.65] text-ink-2">
-          {e.summary}
-        </p>
-      </div>
-    </Link>
+      </Link>
+    </li>
   );
 }
 
 function SeriesShelf({ series }: { series: VideoSeries }) {
   const episodes = getPublishedEpisodesBySeries(series.id);
+  const groups = groupEpisodesByTopic(series.id);
+  const grouped = groups.length > 1;
   return (
     <section id={series.id} className="mt-16 scroll-mt-10 min-[900px]:mt-20">
       <div className="grid grid-cols-1 gap-x-12 gap-y-4 border-t border-ink pt-6 min-[900px]:grid-cols-[220px_1fr]">
@@ -124,11 +125,30 @@ function SeriesShelf({ series }: { series: VideoSeries }) {
         </div>
       </div>
 
-      <div className="mt-8 border-t border-line">
-        {episodes.map((e) => (
-          <EpisodeRow key={e.slug} e={e} series={series} />
-        ))}
-      </div>
+      {groups.map((g, i) => (
+        <div
+          key={g.topic ?? "untitled"}
+          className={grouped ? (i === 0 ? "mt-10" : "mt-12") : "mt-8"}
+        >
+          {grouped && (
+            <div className="meta flex items-baseline gap-x-4 border-t border-line pt-4 !text-[11px]">
+              <span lang={series.language}>{g.topic ?? "Other"}</span>
+              <span className="text-faint">
+                {g.episodes.length} episode{g.episodes.length === 1 ? "" : "s"}
+              </span>
+            </div>
+          )}
+          <ul
+            className={`grid grid-cols-2 gap-x-5 gap-y-8 min-[700px]:grid-cols-3 min-[900px]:grid-cols-4 ${
+              grouped ? "mt-6" : "border-t border-line pt-8"
+            }`}
+          >
+            {g.episodes.map((e) => (
+              <EpisodeCard key={e.slug} e={e} series={series} />
+            ))}
+          </ul>
+        </div>
+      ))}
     </section>
   );
 }
@@ -150,12 +170,13 @@ export default function VideosPage() {
           </Kicker>
           <PageTitle>The ideas, spoken.</PageTitle>
           <Lede>
-            Two series in two languages — Working Theory in English, Friends
-            Intelligence in Chinese. One idea per episode, face to camera.
-            Every episode lives here first, with its captions and transcript;
-            LinkedIn and 小红书 are where it travels.
+            Short films, one idea each. Friends Intelligence in Chinese — the
+            book, one everyday practice at a time; Working Theory in English —
+            the theories, face to camera.
             {pianoLive &&
-              " And one series without words: at the piano, one unbroken take per film."}
+              " And one series without words: at the piano, one unbroken take per film."}{" "}
+            Every episode lives here first, with its captions and transcript;
+            小红书 and LinkedIn are where it travels.
           </Lede>
           {live.length > 1 && (
             <div className="meta mt-8 flex flex-wrap gap-x-6 gap-y-2 !text-[11px]">
