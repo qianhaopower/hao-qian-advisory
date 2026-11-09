@@ -762,3 +762,29 @@ LinkedIn share one look from now on, language the only difference, for a trial p
 
 | Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Notes |
 |---|---|---|---|---|---|---|---|
+| 2026-11-09 (desk sweep, Chrome) | 7d | **11,520** | — | — | — | — | 26 reactions · 2 comments · 1 repost |
+
+**Day-7 reading (sweep 2026-11-09, desk-driven via Chrome window capture):**
+
+- **This is the breakout.** 11,520 impressions = **14× the previous record**
+  (Reorg, 792) and ~40–70× the old baseline (170–340). Creator analytics:
+  7-day impressions 11,049, **+572% vs prior 7 days**.
+- **Shape**: cumulative curve hit ~9.5K within the first ~2 days (Nov 3–4),
+  then kept adding ~150–300/day through Nov 9 — still alive at day 7.
+- **Engagement is thin relative to reach** (26/2/1 on 11.5K ≈ 0.25%):
+  the distribution ran on watch/topic (Microsoft layoffs week + the
+  first-person opening), not on a comment flywheel. One repost did real
+  work. Next breakout: design the comment prompt harder (the closing
+  question got 2 comments).
+- **Who it reached (7-day audience)**: Senior 46% · Greater Melbourne 34% ·
+  Software Development 31% · 10,001+-employee companies 24% · job title
+  Software Engineer 19% · Atlassian 14%. This is exactly the
+  coaching-market audience the line exists for.
+- Followers at sweep: **2,838**.
+- Confirms the two standing laws at once: viewer-pain door (layoff fear,
+  first-person eyewitness) + the 11-02 decision to ship the 小红书 v3
+  look on LinkedIn unchanged.
+
+Pending: per-video watch stats (post-level video analytics pane not
+reachable this sweep); 慢性病 Traffic-Analysis verification; LinkedIn
+Ep. 22 analytics still never captured.

@@ -742,6 +742,14 @@ export const EPISODES: VideoEpisode[] = [
     linkedinPublishedUrl:
       "https://www.linkedin.com/posts/hao-qian-9ab0b04b_workingtheory-leadership-ugcPost-7522960382462763008-3kW-/",
     linkedinTags: ["WorkingTheory", "Leadership"],
+    signals: {
+      recordedAt: "2026-11-09",
+      reach: 11520,
+      responses: 3,
+      inbound:
+        "Audience reached: 46% senior, 31% software development, 24% 10,001+-employee companies — the coaching-market reader.",
+      note: "Breakout: 14× the previous episode record (792). 26 reactions · 2 comments · 1 repost; ~9.5K of it in the first two days, still climbing at day 7.",
+    },
   },
   /* ------------------------------------------------------------------ */
   /* Friends Intelligence · 中文 · 小红书                                 */
