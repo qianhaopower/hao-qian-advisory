@@ -762,7 +762,26 @@ LinkedIn share one look from now on, language the only difference, for a trial p
 
 | Snapshot | Age | Impressions | Reached | Video views | Watch total | Avg watch | Notes |
 |---|---|---|---|---|---|---|---|
-| 2026-11-09 (desk sweep, Chrome) | 7d | **11,520** | — | — | — | — | 26 reactions · 2 comments · 1 repost |
+| 2026-11-09 (desk sweep + Hao's PDF 20:36) | 7d | **11,523** | **8,176** | **5,235** | **1d 14h** | **26s** | 39 engagements: 26 reactions · 2 comments · 1 repost · **10 saves** · 0 sends |
+
+**PDF additions (post-level, 2026-11-09 20:36):**
+- **In-network 8% / out-of-network 92%** — the previous best (Reorg) was
+  37% out-of-network. This ran almost entirely on the algorithm, not his
+  graph. True distribution breakout.
+- **It reached the people it's about**: post-level demographics differ
+  from the account picture — Greater **Seattle** 20%, **Microsoft 20%**,
+  company size 10,001+ 54%, Software Development 36%, Senior 40%.
+  The layoff video found the people being laid off.
+- **Avg watch 26s** across 5,235 views (video 3:28) — the 20-second wall
+  is broken **at scale**, vs the old 14–18s baseline at 200 impressions.
+  View rate 5,235/11,523 = 45%. Total watch time ≈ 38 hours.
+- **10 saves** (invisible on the post footer) — highest-intent signal,
+  people keeping the technique.
+- **Profile effects**: 47 profile viewers from the post, **5 recruiters,
+  5 Microsoft employees** among them; +5 followers from the post.
+  Conversion is the weak link: 5 followers / 8,176 reached ≈ 0.06%
+  (the XHS line converts ~1.2% of viewers). No profile-level CTA exists
+  yet — that's the next lever, not the content.
 
 **Day-7 reading (sweep 2026-11-09, desk-driven via Chrome window capture):**
 
