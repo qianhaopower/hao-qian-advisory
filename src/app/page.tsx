@@ -12,7 +12,8 @@ import {
 } from "@/lib/videos";
 import { VIDEO_SERIES } from "@/content/videos";
 import { formatDate } from "@/lib/essays";
-import { todayIndexMeta } from "@/lib/today";
+import { getDeck, todayIndexMeta } from "@/lib/today";
+import { CardBack } from "@/components/today/ActionCard";
 
 /* The home page (Hao, 2026-09-21): the flagship is a book, a piano and
  * balloons on the street; work is what LinkedIn is for. Masthead + sky,
@@ -39,6 +40,7 @@ export default function HomePage() {
   const fiEpisodes = getPublishedEpisodesBySeries("friends-intelligence");
   const fiLatest = fiEpisodes[0];
   const latest = getLatestEpisodes(4);
+  const deckSize = getDeck().length;
 
   const flagships: Flagship[] = [
     {
@@ -124,6 +126,33 @@ export default function HomePage() {
             </Link>
           ))}
         </section>
+
+        {/* Today — the deck's door on the front page (2026-11-11) */}
+        {deckSize > 0 && (
+          <section className="mt-14 grid grid-cols-1 gap-x-12 gap-y-4 border-t border-line pt-6 min-[900px]:grid-cols-[220px_1fr]">
+            <div className="meta">Today</div>
+            <Link href="/today" className="group flex items-center gap-5">
+              <div className="w-[58px] flex-none -rotate-[4deg]">
+                <CardBack />
+              </div>
+              <div>
+                <div
+                  lang="zh-Hans"
+                  className="zh-display text-[22px] leading-[1.25] transition-colors duration-[250ms] group-hover:text-accent min-[900px]:text-[24px]"
+                >
+                  今天只做一件事
+                </div>
+                <p className="mt-1 max-w-[600px] font-serif text-[17px] leading-[1.5] text-ink-2 min-[900px]:text-[19px]">
+                  One small thing a day, on a card — {deckSize} cards drawn
+                  from the Friends Intelligence films, in Chinese and English.{" "}
+                  <span className="text-accent transition-colors duration-[250ms] group-hover:text-accent-deep">
+                    Turn over today’s →
+                  </span>
+                </p>
+              </div>
+            </Link>
+          </section>
+        )}
 
         {/* Latest — the newest films across every series, straight from the data */}
         {latest.length > 0 && (

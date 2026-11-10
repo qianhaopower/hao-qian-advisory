@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/writing",
     "/videos",
     "/today",
+    "/today/en",
     "/projects",
     "/talks",
     "/balloons",

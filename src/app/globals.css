@@ -3,7 +3,7 @@
 /*
  * HaoQian.co Design Foundations v1.0 — "A library, not a website."
  * Source of truth: claude.ai/design project 072c5a47 (Design System.dc.html)
- * Light-first; dark mode is specced but ships in a later pass.
+ * Light-first; the dark theme below follows the system setting (2026-11-11).
  */
 :root {
   --paper: #fbfaf7;
@@ -19,6 +19,33 @@
   --connect: oklch(0.5 0.07 160);
   --connect-deep: oklch(0.42 0.08 160);
   --selection: oklch(0.9 0.03 245);
+}
+
+/*
+ * Dark theme (2026-11-11 — Hao: "现在晚上看着还挺亮的"). Follows the browser /
+ * system setting; there is no switch. Only the library wears it: the rule
+ * needs the site shell (.library) on the page, so the legacy business sites
+ * and the archived advisory page keep their own colours. Warm near-black
+ * paper and clear ink — never grey murk. Cards, covers, posters and photos
+ * are printed objects and stay exactly as they are.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:has(.library) {
+    color-scheme: dark;
+    --paper: #171613;
+    --surface: #211f1b;
+    --line: #37342e;
+    --hairline: #2a2823;
+    --ink: #efebe3;
+    --ink-2: #bdb7ab;
+    --ink-faint: #8f897d;
+    --border-btn: #4d493f;
+    --accent: oklch(0.76 0.09 245);
+    --accent-deep: oklch(0.84 0.08 245);
+    --connect: oklch(0.76 0.09 160);
+    --connect-deep: oklch(0.84 0.08 160);
+    --selection: oklch(0.38 0.06 245);
+  }
 }
 
 @theme inline {
@@ -103,6 +130,24 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   .card-flip-inner.is-animated {
     transition: transform 0.6s ease;
+  }
+}
+
+/* /today: the eight-day show — the page turns to night for the fireworks. */
+.today-night {
+  background: rgba(13, 15, 30, 0.94);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .today-night {
+    animation: night-in 0.5s ease backwards;
+  }
+  @keyframes night-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 

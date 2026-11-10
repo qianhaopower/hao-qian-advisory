@@ -25,12 +25,14 @@ export type SectionEntry = {
   blurb: string;
 };
 
-/* Header navigation — six doors (trimmed 2026-11-09: Projects, Talks and
- * the Garden keep their rooms and their place in the home index, but the top
- * bar only carries the shelves that are alive). */
+/* Header navigation — seven doors (trimmed to six 2026-11-09: Projects, Talks
+ * and the Garden keep their rooms and their place in the home index, but the
+ * top bar only carries the shelves that are alive; Today joined 2026-11-11 —
+ * Hao: from the front page there was nothing to click). */
 export const NAV: { href: string; label: string }[] = [
   { href: "/books", label: "Books" },
   { href: "/videos", label: "Videos" },
+  { href: "/today", label: "Today" },
   { href: "/writing", label: "Writing" },
   { href: "/balloons", label: "Balloons" },
   { href: "/about", label: "About" },

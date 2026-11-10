@@ -49,9 +49,25 @@ export type TodayCard = {
   why: string;
   /** The moment to do it — a short sticker on the card. Optional. */
   when?: string;
-  /** English gloss for readers of the library. */
-  en: string;
+  /** The same card in English — the /today/en edition. */
+  en: CardText;
 };
+
+export type Lang = "zh" | "en";
+
+/** The words on one face of a card, in one language. */
+export type CardText = {
+  do: string;
+  why: string;
+  when?: string;
+};
+
+/** The card's words in the language being shown. */
+export function cardText(card: TodayCard, lang: Lang): CardText {
+  return lang === "en"
+    ? card.en
+    : { do: card.do, why: card.why, when: card.when };
+}
 
 /** A card joined to its published episode — what pages and the client receive. */
 export type DeckCard = TodayCard & {
@@ -97,10 +113,22 @@ export function cardForDay(cards: DeckCard[], day: number): DeckCard | null {
 }
 
 const WEEKDAYS = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+const WEEKDAYS_EN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MONTHS_EN = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
 
-/** "11月10日 · 周二" */
-export function dateLabel(key: string): string {
+/** "11月10日 · 周二" / "Tue · 10 Nov" */
+export function dateLabel(key: string, lang: Lang = "zh"): string {
   const [y, m, d] = key.split("-").map(Number);
   const wd = new Date(y, m - 1, d).getDay();
-  return `${m}月${d}日 · ${WEEKDAYS[wd]}`;
+  return lang === "en"
+    ? `${WEEKDAYS_EN[wd]} · ${d} ${MONTHS_EN[m - 1]}`
+    : `${m}月${d}日 · ${WEEKDAYS[wd]}`;
+}
+
+/** Where the deck lives in each language. */
+export function deckPath(lang: Lang): string {
+  return lang === "en" ? "/today/en" : "/today";
 }

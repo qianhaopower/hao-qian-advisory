@@ -106,9 +106,9 @@ export function HiddenPiano() {
             key={n.key}
             className={`flex flex-col items-center justify-end rounded-[2px] border font-mono text-[9px] uppercase transition-colors duration-100 ${
               n.black
-                ? "h-8 w-5 -mx-0.5 z-10 border-ink bg-ink text-paper"
-                : "h-11 w-6 border-btnline bg-paper text-faint"
-            } ${active === n.key ? "!bg-accent !text-paper !border-accent" : ""}`}
+                ? "h-8 w-5 -mx-0.5 z-10 border-[#1F1D1A] bg-[#1F1D1A] text-[#FBFAF7]"
+                : "h-11 w-6 border-[#C9C4B8] bg-[#FBFAF7] text-[#8A857A]"
+            } ${active === n.key ? "!bg-accent !text-[#FBFAF7] !border-accent" : ""}`}
           >
             <span className="mb-1">{n.key}</span>
           </div>

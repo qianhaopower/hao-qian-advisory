@@ -304,6 +304,13 @@ export function Constellation({ data }: { data: StarData }) {
         const p = c.getContext("2d");
         if (!p) return;
         const ls = p as CanvasRenderingContext2D & { letterSpacing?: string };
+        /* the poster is printed on paper whatever theme the page wears */
+        const col = {
+          ink: "#1F1D1A",
+          faint: "#8A857A",
+          accent: "oklch(0.5 0.07 245)",
+          connect: "oklch(0.5 0.07 160)",
+        };
         p.fillStyle = "#FBFAF7";
         p.fillRect(0, 0, W, H);
 

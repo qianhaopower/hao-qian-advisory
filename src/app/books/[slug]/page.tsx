@@ -138,7 +138,7 @@ export default async function BookPage({
               <div className="mt-7 flex flex-wrap items-center gap-5">
                 <a
                   href={book.buy.href}
-                  className="inline-flex items-center rounded-[2px] bg-ink px-6 py-3 text-[14px] font-medium text-paper transition-colors duration-[250ms] hover:bg-[#3A362F]"
+                  className="inline-flex items-center rounded-[2px] bg-ink px-6 py-3 text-[14px] font-medium text-paper transition-colors duration-[250ms] hover:bg-ink-2"
                 >
                   {book.buy.label} ↗
                 </a>

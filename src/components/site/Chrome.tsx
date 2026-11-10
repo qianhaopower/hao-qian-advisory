@@ -95,7 +95,7 @@ export function SiteShell({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col bg-paper text-ink">
+    <div className="library flex min-h-screen flex-col bg-paper text-ink">
       <SiteHeader current={current} />
       <main className="fade-up flex-1">{children}</main>
       <SiteFooter />

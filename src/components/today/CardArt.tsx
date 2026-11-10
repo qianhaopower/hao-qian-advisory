@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { PillarId } from "@/lib/today-deck";
+import type { Lang, PillarId } from "@/lib/today-deck";
 
 /*
  * The drawings on the /today cards — one small cartoon per episode, in one
@@ -12,8 +12,9 @@ import type { PillarId } from "@/lib/today-deck";
  *    (x > 250, y > 194) clear too.
  *  - Literal hex colours only, and no CSS classes: the share image redraws
  *    the drawing outside the page, where the site's tokens do not exist.
- *  - <text> only through Zh / Num, never inside a transformed group: the
- *    share image lifts the lettering out and sets it again in canvas.
+ *  - <text> only through Label (words, in both languages) or Num (figures),
+ *    never inside a transformed group: the share image lifts the lettering
+ *    out and sets it again in canvas.
  *  - Draw what the episode is about. No decoration for its own sake.
  */
 
@@ -358,6 +359,43 @@ function Num({
   );
 }
 
+/** Lettering inside a drawing, in the language of the card being shown. */
+function Label({
+  lang,
+  x,
+  y,
+  s = 16,
+  a = "middle",
+  fill = INK,
+  zh,
+  en,
+  es,
+  ey,
+}: {
+  lang: Lang;
+  x: number;
+  y: number;
+  s?: number;
+  a?: "start" | "middle" | "end";
+  fill?: string;
+  zh: string;
+  en: string;
+  /** size of the English lettering (Latin runs wider than Chinese) */
+  es?: number;
+  /** baseline of the English lettering, when it must sit differently */
+  ey?: number;
+}) {
+  return lang === "en" ? (
+    <Num x={x} y={ey ?? y} s={es ?? s} a={a} fill={fill}>
+      {en}
+    </Num>
+  ) : (
+    <Zh x={x} y={y} s={s} a={a} fill={fill}>
+      {zh}
+    </Zh>
+  );
+}
+
 function Apple({ dx = 0 }: { dx?: number }) {
   return (
     <g transform={`translate(${dx} 0)`}>
@@ -374,7 +412,7 @@ function Apple({ dx = 0 }: { dx?: number }) {
 
 /* ── The scenes, by episode slug ───────────────────────────────────────── */
 
-const SCENES: Record<string, () => ReactNode> = {
+const SCENES: Record<string, (lang: Lang) => ReactNode> = {
   /* 睡眠 */
   "fi-sleep-daylight": () => (
     <>
@@ -478,7 +516,7 @@ const SCENES: Record<string, () => ReactNode> = {
   ),
 
   /* 关系 */
-  "fi-couple-20min": () => (
+  "fi-couple-20min": (lang) => (
     <>
       <Ground />
       <rect x={40} y={96} width={200} height={84} rx={20} fill="#E7B7D6" />
@@ -492,9 +530,7 @@ const SCENES: Record<string, () => ReactNode> = {
       <Num x={306} y={104} s={34}>
         20
       </Num>
-      <Zh x={306} y={122} s={12}>
-        分钟
-      </Zh>
+      <Label lang={lang} x={306} y={122} s={12} zh="分钟" en="min" es={12} />
     </>
   ),
 
@@ -557,7 +593,7 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-contra": () => (
+  "fi-contra": (lang) => (
     <>
       <Ground />
       <Buddy x={70} y={156} r={30} fill={CREAM} eyes="wide" look={3} mouth="flat" />
@@ -575,9 +611,7 @@ const SCENES: Record<string, () => ReactNode> = {
       />
       <Eyes x={290} y={126} k="grumpy" gap={24} />
       <Mouth x={290} y={136} k="frown" w={16} />
-      <Zh x={290} y={62} s={18}>
-        问题
-      </Zh>
+      <Label lang={lang} x={290} y={62} s={18} zh="问题" en="the problem" es={14} />
     </>
   ),
 
@@ -663,13 +697,11 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-sugar-names": () => (
+  "fi-sugar-names": (lang) => (
     <>
       <Ground />
       <rect x={50} y={56} width={120} height={150} rx={10} fill={PAPER} />
-      <Zh x={110} y={84} s={15}>
-        配料表
-      </Zh>
+      <Label lang={lang} x={110} y={84} s={15} zh="配料表" en="INGREDIENTS" es={11} />
       <path
         d="M66 100h88M66 116h70M66 132h56M66 148h40M66 164h46M66 180h60"
         stroke={GREY}
@@ -685,9 +717,7 @@ const SCENES: Record<string, () => ReactNode> = {
       <Num x={300} y={124} s={80}>
         23
       </Num>
-      <Zh x={300} y={152} s={18}>
-        个化名
-      </Zh>
+      <Label lang={lang} x={300} y={152} s={18} zh="个化名" en="aliases" es={18} />
     </>
   ),
 
@@ -784,7 +814,7 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-also-sugar": () => (
+  "fi-also-sugar": (lang) => (
     <>
       <Ground />
       <Apple />
@@ -795,9 +825,7 @@ const SCENES: Record<string, () => ReactNode> = {
       <Eyes x={272} y={128} k="wide" gap={24} look={-3} />
       <path d="M266 144h12" />
       <rect x={240} y={158} width={64} height={28} fill={PAPER} />
-      <Zh x={272} y={178} s={15}>
-        0蔗糖
-      </Zh>
+      <Label lang={lang} x={272} y={178} s={15} zh="0蔗糖" en="0 sugar" es={13} />
       <rect x={316} y={130} width={20} height={20} rx={4} fill={PAPER} strokeWidth={2.5} />
       <rect x={326} y={98} width={20} height={20} rx={4} fill={PAPER} strokeWidth={2.5} />
     </>
@@ -867,7 +895,7 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-belly-fat": () => (
+  "fi-belly-fat": (lang) => (
     <>
       <Ground />
       <path d="M128 200v12M168 200v12" strokeWidth={5} />
@@ -879,9 +907,7 @@ const SCENES: Record<string, () => ReactNode> = {
       <path d="M128 154q20 20 40 0z" fill={RED} />
       <circle cx={148} cy={186} r={3} fill={INK} stroke="none" />
       <Bubble x={226} y={84} w={116} h={60} tx={206} ty={160} />
-      <Zh x={284} y={123} s={24}>
-        我饿！
-      </Zh>
+      <Label lang={lang} x={284} y={123} s={24} zh="我饿！" en="Feed me!" es={20} />
       <circle cx={56} cy={188} r={20} fill="#C89B6A" />
       <g fill={COCOA} stroke="none">
         <circle cx={50} cy={182} r={3} />
@@ -892,7 +918,7 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-carbs-five-words": () => (
+  "fi-carbs-five-words": (lang) => (
     <>
       <Ground />
       <path
@@ -911,9 +937,7 @@ const SCENES: Record<string, () => ReactNode> = {
         <Face x={252} y={126} eyes="dot" mouth="smile" gap={14} blush={false} mw={12} />
       </g>
       <Disc x={318} y={76} r={26} />
-      <Zh x={318} y={85} s={26}>
-        慢
-      </Zh>
+      <Label lang={lang} x={318} y={85} s={26} zh="慢" en="slow" es={18} ey={82} />
     </>
   ),
 
@@ -950,7 +974,7 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-fries-story": () => (
+  "fi-fries-story": (lang) => (
     <>
       <Ground />
       <Apple dx={-10} />
@@ -969,34 +993,26 @@ const SCENES: Record<string, () => ReactNode> = {
       <Num x={292} y={60} s={24}>
         15g
       </Num>
-      <Zh x={330} y={59} s={17}>
-        油
-      </Zh>
+      <Label lang={lang} x={330} y={59} s={17} zh="油" en="oil" es={17} />
     </>
   ),
 
-  "fi-obesity-disease": () => (
+  "fi-obesity-disease": (lang) => (
     <>
       <Ground />
       <Buddy x={136} y={134} r={62} fill={CREAM} eyes="happy" mouth="smile" fy={-30} />
       <path d="M76 152q60 22 120 0v16q-60 22-120 0z" fill={SUN} />
       <path d="M96 162v8M116 167v8M136 169v8M156 167v8M176 162v8" strokeWidth={2} />
       <path d="M196 152l22-8v16l-22 8z" fill={PAPER} />
-      <Zh x={252} y={96} s={19} a="start">
-        男
-      </Zh>
+      <Label lang={lang} x={252} y={96} s={19} a="start" zh="男" en="M" es={19} />
       <Num x={280} y={98} s={38} a="start">
         90
       </Num>
-      <Zh x={252} y={142} s={19} a="start">
-        女
-      </Zh>
+      <Label lang={lang} x={252} y={142} s={19} a="start" zh="女" en="F" es={19} />
       <Num x={280} y={144} s={38} a="start">
         85
       </Num>
-      <Zh x={296} y={172} s={13}>
-        厘米以下
-      </Zh>
+      <Label lang={lang} x={296} y={172} s={13} zh="厘米以下" en="cm or under" es={12} />
     </>
   ),
 
@@ -1057,7 +1073,7 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-appetite-dial": () => (
+  "fi-appetite-dial": (lang) => (
     <>
       <Ground />
       <path d="M98 194h64l10 20H88z" fill={GREY} />
@@ -1079,13 +1095,11 @@ const SCENES: Record<string, () => ReactNode> = {
       <path d="M278 176v16M298 176v16" strokeWidth={5} />
       <ellipse cx={288} cy={140} rx={32} ry={40} fill={PAPER} />
       <Face x={288} y={134} eyes="happy" mouth="grin" gap={20} bw={21} br={5} mw={18} />
-      <Zh x={288} y={84} s={15}>
-        蛋白质
-      </Zh>
+      <Label lang={lang} x={288} y={84} s={15} zh="蛋白质" en="protein" es={15} />
     </>
   ),
 
-  "fi-snack-portions": () => (
+  "fi-snack-portions": (lang) => (
     <>
       <Ground />
       <path
@@ -1093,9 +1107,7 @@ const SCENES: Record<string, () => ReactNode> = {
         fill={CORAL}
       />
       <path d="M50 162h96v30H50z" fill={PAPER} strokeWidth={2.5} />
-      <Zh x={98} y={183} s={16}>
-        大包装
-      </Zh>
+      <Label lang={lang} x={98} y={183} s={16} zh="大包装" en="BIG PACK" es={12} ey={182} />
       <Eyes x={98} y={120} k="grumpy" gap={28} />
       <Mouth x={98} y={132} k="frown" w={24} />
       <Cross x={152} y={58} />
@@ -1105,9 +1117,7 @@ const SCENES: Record<string, () => ReactNode> = {
       />
       <Face x={264} y={164} eyes="happy" mouth="smile" gap={26} bw={21} br={5} mw={22} />
       <Bubble x={204} y={50} w={132} h={50} tx={262} ty={122} />
-      <Zh x={246} y={84} s={18}>
-        第一口
-      </Zh>
+      <Label lang={lang} x={246} y={84} s={18} zh="第一口" en="1st bite" es={14} />
       <Num x={304} y={85} s={26} fill="#B4530A">
         80%
       </Num>
@@ -1117,7 +1127,7 @@ const SCENES: Record<string, () => ReactNode> = {
   ),
 
   /* 运动 */
-  "fi-bdnf": () => (
+  "fi-bdnf": (lang) => (
     <>
       <Ground />
       <path d="M140 176l-18 32h-12M176 176l16 32h14" strokeWidth={5} />
@@ -1139,14 +1149,12 @@ const SCENES: Record<string, () => ReactNode> = {
       <Num x={300} y={91} s={19}>
         BDNF
       </Num>
-      <Zh x={300} y={140} s={14}>
-        大脑的肥料
-      </Zh>
+      <Label lang={lang} x={300} y={140} s={14} zh="大脑的肥料" en="brain fertiliser" es={12} />
       <Spark x={254} y={44} r={7} />
     </>
   ),
 
-  "fi-muscle-fibres": () => (
+  "fi-muscle-fibres": (lang) => (
     <>
       <Ground />
       <path d="M168 190l-18 12h-16M200 190l18 12h16" strokeWidth={5} />
@@ -1169,16 +1177,12 @@ const SCENES: Record<string, () => ReactNode> = {
       <Num x={56} y={150} s={26}>
         ×10
       </Num>
-      <Zh x={56} y={168} s={14}>
-        深蹲
-      </Zh>
+      <Label lang={lang} x={56} y={168} s={14} zh="深蹲" en="squats" es={12} />
       <Disc x={312} y={150} r={32} />
       <Num x={312} y={150} s={26}>
         ×10
       </Num>
-      <Zh x={312} y={168} s={14}>
-        弯举
-      </Zh>
+      <Label lang={lang} x={312} y={168} s={14} zh="弯举" en="curls" es={12} />
     </>
   ),
 
@@ -1204,7 +1208,7 @@ const SCENES: Record<string, () => ReactNode> = {
     </>
   ),
 
-  "fi-fitness-word": () => (
+  "fi-fitness-word": (lang) => (
     <>
       <path d="M150 48L226 103 197 193H103L74 103z" fill={PAPER} />
       <path
@@ -1213,21 +1217,11 @@ const SCENES: Record<string, () => ReactNode> = {
       />
       <path d="M150 56L211 108 164 147 117 173 85 107z" fill={GOLD} fillOpacity={0.85} />
       <circle cx={164} cy={147} r={7} fill={RED} strokeWidth={2.5} />
-      <Zh x={166} y={50} s={14} a="start">
-        力量
-      </Zh>
-      <Zh x={234} y={96} s={14} a="start">
-        耐力
-      </Zh>
-      <Zh x={206} y={212} s={14}>
-        柔韧
-      </Zh>
-      <Zh x={94} y={212} s={14}>
-        灵活
-      </Zh>
-      <Zh x={66} y={96} s={14} a="end">
-        爆发
-      </Zh>
+      <Label lang={lang} x={166} y={50} s={14} a="start" zh="力量" en="strength" es={12} />
+      <Label lang={lang} x={234} y={96} s={14} a="start" zh="耐力" en="endurance" es={12} />
+      <Label lang={lang} x={206} y={212} s={14} zh="柔韧" en="flexibility" es={12} />
+      <Label lang={lang} x={94} y={212} s={14} zh="灵活" en="mobility" es={12} />
+      <Label lang={lang} x={66} y={96} s={14} a="end" zh="爆发" en="power" es={12} />
       <path d="M272 152c-28 10-56 10-90 0" strokeDasharray="3 8" />
       <path d="M194 146l-13 5 9 10" />
       <Buddy x={308} y={152} r={32} fill={SAGE} eyes="wide" look={-3} mouth="o" />
@@ -1257,7 +1251,7 @@ const SCENES: Record<string, () => ReactNode> = {
   ),
 
   /* 情绪 */
-  "fi-cognitive-defusion": () => (
+  "fi-cognitive-defusion": (lang) => (
     <>
       <Ground />
       <path d="M136 152c10-4 16-10 20-18" strokeWidth={5} />
@@ -1267,18 +1261,14 @@ const SCENES: Record<string, () => ReactNode> = {
       <path d="M254 142l8 12 8-12z" fill={STORM} />
       <ellipse cx={262} cy={84} rx={62} ry={60} fill={STORM} />
       <path d="M220 62c6-12 16-20 28-22" stroke={PAPER} strokeWidth={4} />
-      <Zh x={264} y={86} s={24}>
-        完蛋了
-      </Zh>
+      <Label lang={lang} x={264} y={86} s={24} zh="完蛋了" en="I’m doomed" es={18} />
       <path d="M240 104l-4 10M264 104l-4 10M288 104l-4 10" stroke={BLUE} strokeWidth={2.5} />
       <rect x={176} y={160} width={70} height={26} rx={4} fill={SUN} />
-      <Zh x={211} y={178} s={14}>
-        一个想法
-      </Zh>
+      <Label lang={lang} x={211} y={178} s={14} zh="一个想法" en="a thought" es={12} ey={177} />
     </>
   ),
 
-  "fi-dare-to-be-happy": () => (
+  "fi-dare-to-be-happy": (lang) => (
     <>
       <Ground />
       <path d="M98 204v10M142 204v10" strokeWidth={5} />
@@ -1296,12 +1286,8 @@ const SCENES: Record<string, () => ReactNode> = {
         strokeWidth={2.5}
       />
       <Bubble x={212} y={36} w={138} h={84} tx={206} ty={140} />
-      <Zh x={281} y={72} s={24}>
-        我做得
-      </Zh>
-      <Zh x={281} y={102} s={24}>
-        很好！
-      </Zh>
+      <Label lang={lang} x={281} y={72} s={24} zh="我做得" en="I did" es={22} />
+      <Label lang={lang} x={281} y={102} s={24} zh="很好！" en="that well!" es={22} />
       <Spark x={52} y={62} r={11} />
       <Spark x={300} y={168} />
       <Spark x={250} y={184} r={6} />
@@ -1310,7 +1296,7 @@ const SCENES: Record<string, () => ReactNode> = {
 };
 
 /* A card whose own drawing has not been made yet borrows its pillar's. */
-const FALLBACK: Record<PillarId, () => ReactNode> = {
+const FALLBACK: Record<PillarId, (lang: Lang) => ReactNode> = {
   sleep: () => (
     <>
       <Ground />
@@ -1367,11 +1353,14 @@ export function CardArt({
   slug,
   pillar,
   label,
+  lang = "zh",
 }: {
   slug: string;
   pillar: PillarId;
   /** Short description for screen readers. */
   label: string;
+  /** Language of the lettering inside the drawing. */
+  lang?: Lang;
 }) {
   const scene = SCENES[slug] ?? FALLBACK[pillar];
   return (
@@ -1387,7 +1376,7 @@ export function CardArt({
       strokeLinejoin="round"
       style={{ display: "block", width: "100%", height: "auto" }}
     >
-      {scene()}
+      {scene(lang)}
     </svg>
   );
 }

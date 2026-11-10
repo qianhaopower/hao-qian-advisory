@@ -1,9 +1,11 @@
-import { PILLARS, type DeckCard } from "@/lib/today-deck";
+import { PILLARS, cardText, type DeckCard, type Lang } from "@/lib/today-deck";
 
 /*
- * The card as a 1080 × 1440 picture (3:4 — what 小红书 and a phone album
- * like), drawn client-side on a canvas. Same idea as the constellation
- * poster: the page's own fonts, no server, no upload.
+ * The card as a picture, drawn client-side on a canvas. Same idea as the
+ * constellation poster: the page's own fonts, no server, no upload.
+ *
+ *   中文     1080 × 1440 (3:4 — what 小红书 and a phone album like)
+ *   English  1080 × 1350 (4:5 — the tallest picture LinkedIn shows uncropped)
  *
  * The drawing is the card's live <svg>: its shapes are rasterised as an image,
  * and its lettering is lifted out and set again with the page fonts (an SVG
@@ -11,7 +13,6 @@ import { PILLARS, type DeckCard } from "@/lib/today-deck";
  */
 
 const W = 1080;
-const H = 1440;
 const M = 64;
 const INK = "#1F1D1A";
 const ART_W = W - M * 2;
@@ -43,7 +44,7 @@ function roundRect(
 const NO_LINE_START = "，。、；：！？）」』”’%";
 
 /** Greedy wrap for Chinese: break anywhere, but never start a line with punctuation. */
-function wrap(ctx: CanvasRenderingContext2D, text: string, maxW: number): string[] {
+function wrapZh(ctx: CanvasRenderingContext2D, text: string, maxW: number): string[] {
   const lines: string[] = [];
   let line = "";
   for (const ch of text) {
@@ -52,6 +53,23 @@ function wrap(ctx: CanvasRenderingContext2D, text: string, maxW: number): string
       line = ch;
     } else {
       line += ch;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+/** Greedy wrap for English: break at spaces. */
+function wrapEn(ctx: CanvasRenderingContext2D, text: string, maxW: number): string[] {
+  const lines: string[] = [];
+  let line = "";
+  for (const word of text.split(" ")) {
+    const next = line ? `${line} ${word}` : word;
+    if (ctx.measureText(next).width > maxW && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = next;
     }
   }
   if (line) lines.push(line);
@@ -102,26 +120,38 @@ function rasterise(art: SVGSVGElement, w: number, h: number): Promise<HTMLImageE
   });
 }
 
+function track(ctx: CanvasRenderingContext2D, px: number) {
+  try {
+    (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = `${px}px`;
+  } catch {
+    /* older browsers: no tracking */
+  }
+}
+
 export async function renderShareImage(
   card: DeckCard,
   art: SVGSVGElement,
-  handle: string
+  handle: string,
+  lang: Lang = "zh"
 ): Promise<Blob> {
+  const en = lang === "en";
+  const H = en ? 1350 : 1440;
   const p = PILLARS[card.pillar];
+  const t = cardText(card, lang);
   const zh = fontVar("--font-noto-serif-sc", '"Songti SC", serif');
-  const num = fontVar("--font-newsreader", "Georgia, serif");
+  const serif = fontVar("--font-newsreader", "Georgia, serif");
   const mono = fontVar("--font-plex-mono", "monospace");
   const sans = fontVar("--font-instrument", '"PingFang SC", sans-serif');
   const lettering = liftLettering(art);
 
   /* make sure every glyph this card needs has actually arrived */
-  const all = [card.do, card.why, card.when ?? "", p.zh, handle, "今天只做一件事第集"]
+  const all = [t.do, t.why, t.when ?? "", p.zh, handle, "今天只做一件事第集"]
     .concat(lettering.map((l) => l.text))
     .join("");
   try {
     await Promise.all([
       document.fonts.load(`900 80px ${zh}`, all),
-      document.fonts.load(`600 60px ${num}`, "0123456789"),
+      document.fonts.load(`600 60px ${serif}`, all),
       document.fonts.load(`500 26px ${mono}`, "HAOQIAN.CO/TODAY"),
       document.fonts.ready,
     ]);
@@ -142,10 +172,17 @@ export async function renderShareImage(
   /* masthead */
   ctx.fillStyle = INK;
   ctx.textAlign = "left";
-  ctx.font = `900 38px ${zh}`;
-  ctx.fillText("今天只做一件事", M, 108);
-  const tag = `${p.zh} № ${card.noLabel}`;
-  ctx.font = `900 30px ${zh}`;
+  if (en) {
+    ctx.font = `500 30px ${mono}`;
+    track(ctx, 5);
+    ctx.fillText("ONE THING TODAY", M, 105);
+    track(ctx, 0);
+  } else {
+    ctx.font = `900 38px ${zh}`;
+    ctx.fillText("今天只做一件事", M, 108);
+  }
+  const tag = en ? `${p.en} № ${card.noLabel}` : `${p.zh} № ${card.noLabel}`;
+  ctx.font = en ? `600 30px ${serif}` : `900 30px ${zh}`;
   const tagW = ctx.measureText(tag).width + 48;
   roundRect(ctx, W - M - tagW, 66, tagW, 56, 28);
   ctx.lineWidth = 4;
@@ -177,9 +214,9 @@ export async function renderShareImage(
   ctx.stroke();
 
   /* the moment to do it */
-  if (card.when) {
-    ctx.font = `900 34px ${zh}`;
-    const w = ctx.measureText(card.when).width + 56;
+  if (t.when) {
+    ctx.font = en ? `600 34px ${serif}` : `900 34px ${zh}`;
+    const w = ctx.measureText(t.when).width + 56;
     const x = M + ART_W - w - 24;
     const y = ART_Y + ART_H - 64 - 24;
     roundRect(ctx, x, y, w, 64, 32);
@@ -189,39 +226,62 @@ export async function renderShareImage(
     ctx.stroke();
     ctx.fillStyle = INK;
     ctx.textAlign = "center";
-    ctx.fillText(card.when, x + w / 2, y + 45);
+    ctx.fillText(t.when, x + w / 2, y + 45);
   }
 
-  /* the one thing */
+  /* the one thing, then why */
   ctx.fillStyle = INK;
   ctx.textAlign = "left";
-  ctx.font = `900 88px ${zh}`;
-  let y = ART_Y + ART_H + 128;
-  for (const line of card.do.split("\n")) {
-    ctx.fillText(line, M, y);
-    y += 112;
-  }
-
-  /* why */
-  ctx.font = `400 38px ${sans}`;
-  y -= 112 - 78;
-  for (const line of wrap(ctx, card.why, ART_W).slice(0, 3)) {
-    ctx.fillText(line, M, y);
-    y += 58;
+  let y = ART_Y + ART_H;
+  if (en) {
+    /* shrink until the action sets in three lines or fewer */
+    let size = 80;
+    let lines: string[] = [];
+    for (; size >= 56; size -= 4) {
+      ctx.font = `600 ${size}px ${serif}`;
+      lines = wrapEn(ctx, t.do, ART_W);
+      if (lines.length <= (size > 68 ? 2 : 3)) break;
+    }
+    y += size + 34;
+    for (const line of lines) {
+      ctx.fillText(line, M, y);
+      y += Math.round(size * 1.14);
+    }
+    ctx.font = `400 34px ${sans}`;
+    y += 50 - Math.round(size * 1.14) + 34;
+    const room = Math.max(1, Math.floor((H - 132 - y) / 50) + 1);
+    for (const line of wrapEn(ctx, t.why, ART_W).slice(0, room)) {
+      ctx.fillText(line, M, y);
+      y += 50;
+    }
+  } else {
+    ctx.font = `900 88px ${zh}`;
+    y += 128;
+    for (const line of t.do.split("\n")) {
+      ctx.fillText(line, M, y);
+      y += 112;
+    }
+    ctx.font = `400 38px ${sans}`;
+    y -= 112 - 78;
+    for (const line of wrapZh(ctx, t.why, ART_W).slice(0, 3)) {
+      ctx.fillText(line, M, y);
+      y += 58;
+    }
   }
 
   /* colophon */
   ctx.fillRect(M, H - 112, ART_W, 3);
-  ctx.font = `900 30px ${zh}`;
-  ctx.fillText(`${handle} · 第 ${card.no} 集`, M, H - 58);
+  if (en) {
+    ctx.font = `600 30px ${serif}`;
+    ctx.fillText(`Friends Intelligence · Ep. ${card.no}`, M, H - 58);
+  } else {
+    ctx.font = `900 30px ${zh}`;
+    ctx.fillText(`${handle} · 第 ${card.no} 集`, M, H - 58);
+  }
   ctx.textAlign = "right";
   ctx.font = `500 26px ${mono}`;
-  try {
-    (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "3px";
-  } catch {
-    /* older browsers: no tracking */
-  }
-  ctx.fillText("HAOQIAN.CO/TODAY", W - M, H - 58);
+  track(ctx, 3);
+  ctx.fillText(`HAOQIAN.CO/TODAY${en ? "/EN" : ""}`, W - M, H - 58);
 
   return new Promise((resolve, reject) => {
     canvas.toBlob(
