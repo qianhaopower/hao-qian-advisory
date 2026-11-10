@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/books",
     "/writing",
     "/videos",
+    "/today",
     "/projects",
     "/talks",
     "/balloons",

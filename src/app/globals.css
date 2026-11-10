@@ -71,6 +71,41 @@ body {
   color: var(--ink-faint);
 }
 
+/* Chinese display voice — the /today cards (Noto Serif SC Black). */
+.zh-display {
+  font-family: var(--font-noto-serif-sc), "Songti SC", "Noto Serif CJK SC",
+    "Source Han Serif SC", serif;
+  font-weight: 900;
+}
+
+/* /today: turning the day's card over. A toy, so it gets its own beat;
+   under reduced motion the card simply changes face. */
+.card-flip {
+  perspective: 1400px;
+}
+.card-flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+}
+.card-flip-inner.is-back {
+  transform: rotateY(180deg);
+}
+.card-flip-face,
+.card-flip-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card-flip-inner.is-animated {
+    transition: transform 0.6s ease;
+  }
+}
+
 /* Long-form reading: serif 19/1.72, 640px measure */
 .prose-read {
   /* @theme is inline, so the serif stack is repeated here verbatim */

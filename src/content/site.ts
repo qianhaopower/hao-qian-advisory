@@ -48,6 +48,13 @@ export const HOME_INDEX: SectionEntry[] = [
     blurb: "Friends Intelligence in Chinese, Working Theory in English, and one film at the piano — published here first.",
   },
   {
+    href: "/today",
+    label: "One thing today",
+    /* meta is computed live on the home page from the deck */
+    meta: "one card a day",
+    blurb: "今天只做一件事 — every Friends Intelligence episode leaves one small action, printed as a card.",
+  },
+  {
     href: "/books",
     label: "Books",
     meta: "2 published · 1 planned",

@@ -17,10 +17,14 @@ import {
   formatDuration,
 } from "@/lib/videos";
 import { formatDate } from "@/lib/essays";
+import { getDeck } from "@/lib/today";
 
 /* The piano line joins the page copy only once it has a published film —
  * same honesty rule as the shelves. */
 const pianoLive = getLiveSeries().some((s) => s.id === "piano");
+
+/* The /today deck — linked from the Friends Intelligence shelf once it has cards. */
+const deckSize = getDeck().length;
 
 export const metadata: Metadata = {
   title: "Videos",
@@ -110,6 +114,14 @@ function SeriesShelf({ series }: { series: VideoSeries }) {
                 className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
               >
                 {series.origin.label} →
+              </Link>
+            )}
+            {series.id === "friends-intelligence" && deckSize > 0 && (
+              <Link
+                href="/today"
+                className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
+              >
+                One thing today · <span lang="zh-Hans">今天只做一件事</span> →
               </Link>
             )}
             {series.platformUrl && (

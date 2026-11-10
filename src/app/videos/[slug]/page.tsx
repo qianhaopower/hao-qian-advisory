@@ -23,6 +23,8 @@ import {
   SITE_URL,
 } from "@/lib/videos";
 import { formatDate } from "@/lib/essays";
+import { getCardForEpisode } from "@/lib/today";
+import { ActionCard } from "@/components/today/ActionCard";
 
 /* Drafts build too, so an episode can be previewed at its future URL —
  * but they are noindex and appear in no listing. */
@@ -150,6 +152,9 @@ export default async function EpisodePage({
   const series = getSeries(episode);
   const { earlier, later } = getNeighbours(episode);
   const canonical = episodeCanonicalUrl(episode);
+  /* the one action this episode leaves — its card in the /today deck */
+  const card =
+    episode.status === "published" ? getCardForEpisode(episode.slug) : undefined;
 
   /* VideoObject structured data — published episodes only, real fields only */
   const jsonLd =
@@ -256,6 +261,32 @@ export default async function EpisodePage({
                 ))}
               </ul>
             </div>
+          )}
+
+          {card && (
+            <Link
+              href={`/today?card=${card.episode}`}
+              className="group mt-10 grid grid-cols-[132px_1fr] items-center gap-x-6 rounded-[2px] border border-line p-5 transition-colors duration-[250ms] hover:border-faint min-[700px]:grid-cols-[168px_1fr] min-[700px]:gap-x-8"
+            >
+              <ActionCard card={card} variant="mini" />
+              <div>
+                <div className="meta !text-[11px]" lang="en">
+                  One thing today
+                </div>
+                <div className="zh-display mt-2 text-[20px] leading-[1.3] min-[700px]:text-[23px]">
+                  这一集留下的一件事
+                </div>
+                <p className="mt-2 text-[14.5px] leading-[1.65] text-ink-2">
+                  {card.why}
+                </p>
+                <div
+                  className="mt-3 text-[13.5px] text-accent transition-colors duration-[250ms] group-hover:text-accent-deep"
+                  lang="en"
+                >
+                  Open the card · 今天只做一件事 →
+                </div>
+              </div>
+            </Link>
           )}
 
           {episode.supportingVisuals &&

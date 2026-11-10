@@ -12,6 +12,7 @@ import {
 } from "@/lib/videos";
 import { VIDEO_SERIES } from "@/content/videos";
 import { formatDate } from "@/lib/essays";
+import { todayIndexMeta } from "@/lib/today";
 
 /* The home page (Hao, 2026-09-21): the flagship is a book, a piano and
  * balloons on the street; work is what LinkedIn is for. Masthead + sky,
@@ -211,7 +212,11 @@ export default function HomePage() {
               className="group grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 border-b border-hairline py-5 transition-colors duration-[250ms] hover:bg-surface min-[900px]:grid-cols-[220px_1fr_auto] min-[900px]:py-6"
             >
               <span className="meta order-2 col-span-2 min-[900px]:order-none min-[900px]:col-span-1">
-                {entry.href === "/videos" ? videosIndexMeta() : entry.meta}
+                {entry.href === "/videos"
+                  ? videosIndexMeta()
+                  : entry.href === "/today"
+                    ? todayIndexMeta()
+                    : entry.meta}
               </span>
               <span className="font-serif text-[26px] leading-[1.25] min-[900px]:text-[28px]">
                 {entry.label}

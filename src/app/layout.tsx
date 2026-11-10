@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Newsreader, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
+import {
+  Newsreader,
+  Instrument_Sans,
+  IBM_Plex_Mono,
+  Noto_Serif_SC,
+} from "next/font/google";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -19,6 +24,16 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+});
+
+/* Chinese display face for the /today cards (2026-11): Noto Serif SC Black.
+ * Not preloaded — the browser fetches only the unicode-range slices a page
+ * actually uses, so pages without Chinese display type pay nothing. */
+const notoSerifSC = Noto_Serif_SC({
+  variable: "--font-noto-serif-sc",
+  weight: ["900"],
+  preload: false,
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -50,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${newsreader.variable} ${instrumentSans.variable} ${plexMono.variable} antialiased`}
+        className={`${newsreader.variable} ${instrumentSans.variable} ${plexMono.variable} ${notoSerifSC.variable} antialiased`}
       >
         {children}
       </body>
