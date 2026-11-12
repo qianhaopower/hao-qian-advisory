@@ -1293,6 +1293,41 @@ const SCENES: Record<string, (lang: Lang) => ReactNode> = {
       <Spark x={250} y={184} r={6} />
     </>
   ),
+
+  "fi-stress-switch-vision": (lang) => (
+    <>
+      <Ground />
+      <path d="M92 214l76-116h32l76 116z" fill={CREAM} />
+      <path d="M184 120v12M184 150v16M184 184v16" strokeWidth={4} />
+      <circle cx={58} cy={118} r={22} fill={LEAF} />
+      <path d="M58 140v34" strokeWidth={5} />
+      <circle cx={310} cy={118} r={22} fill={LEAF} />
+      <path d="M310 140v34" strokeWidth={5} />
+      <Buddy x={184} y={168} r={34} eyes="wide" />
+      <path d="M126 62h-34M100 52l-10 10 10 10" strokeWidth={4} />
+      <path d="M242 62h34M268 52l10 10-10 10" strokeWidth={4} />
+      <Label lang={lang} x={184} y={70} s={22} zh="往前走" en="walk on" es={18} />
+    </>
+  ),
+
+  "fi-stress-switch-eyes": (lang) => (
+    <>
+      <Ground />
+      <rect x={30} y={120} width={40} height={94} rx={3} fill={WOOD} />
+      <circle cx={62} cy={168} r={3} fill={INK} stroke="none" />
+      <rect x={296} y={110} width={46} height={46} rx={3} fill={SKY} />
+      <path d="M319 110v46M296 133h46" strokeWidth={2} />
+      <path d="M184 22v16" strokeWidth={3} />
+      <path d="M158 60l26-20 26 20z" fill={SUN} />
+      <circle cx={184} cy={150} r={56} fill={PAPER} />
+      <circle cx={152} cy={162} r={9} fill={BLUSH} stroke="none" />
+      <circle cx={216} cy={162} r={9} fill={BLUSH} stroke="none" />
+      <path d="M150 132q12-10 24 0M194 132q12-10 24 0" strokeWidth={3} />
+      <path d="M154 152q10 8 20 0M194 152q10 8 20 0" strokeWidth={3.5} />
+      <path d="M170 178q14 10 28 0" strokeWidth={3.5} />
+      <Label lang={lang} x={92} y={82} s={20} zh="松开眉头" en="soften the brow" es={14} />
+    </>
+  ),
 };
 
 /* A card whose own drawing has not been made yet borrows its pillar's. */

@@ -442,4 +442,28 @@ export const TODAY_CARDS: TodayCard[] = [
       when: "When praised",
     },
   },
+  {
+    episode: "fi-stress-switch-vision",
+    pillar: "emotion",
+    do: "出去走一走。\n走不了，就眼睛\n左看右看十几次。",
+    why: "世界在后退的画面，会让杏仁核安静下来。几百万年来，往前走就是在脱险。",
+    when: "压力上来时",
+    en: {
+      do: "Go for a walk. Can’t? Look left, right, left, right — a dozen times.",
+      why: "A world sliding backward tells the amygdala to stand down. For millions of years, moving forward meant getting out of danger.",
+      when: "When stress rises",
+    },
+  },
+  {
+    episode: "fi-stress-switch-eyes",
+    pillar: "emotion",
+    do: "闭眼，松开眉头，\n再慢慢睁开。",
+    why: "眉头紧锁和情绪是一回事；松开眼周的肌肉，压力值跟着降。再看一眼余光里的门、窗、灯。",
+    when: "紧张的时候",
+    en: {
+      do: "Close your eyes, soften your brow, open them slowly.",
+      why: "A knotted brow and a tense mind are one thing; let the muscles around the eyes go and stress follows. Then notice the door, the window, the lamp at the edge of your sight.",
+      when: "When you tense up",
+    },
+  },
 ];
