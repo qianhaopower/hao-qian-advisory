@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { track } from "@/lib/analytics";
 
 export type SearchRecord = {
   kind: "Theory" | "Book" | "Project" | "Idea" | "Video" | "Balloons";
@@ -40,6 +41,14 @@ export function SearchClient({ records }: { records: SearchRecord[] }) {
       .slice(0, 30)
       .map((x) => x.r);
   }, [q, records]);
+
+  /* tell the counter what was looked for — once the typing has stopped */
+  useEffect(() => {
+    const term = q.trim().toLowerCase();
+    if (term.length < 2) return;
+    const timer = setTimeout(() => track("search", { search_term: term }), 1500);
+    return () => clearTimeout(timer);
+  }, [q]);
 
   return (
     <div className="max-w-[640px]">

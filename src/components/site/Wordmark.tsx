@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { SITE } from "@/content/site";
+import { track } from "@/lib/analytics";
 
 /*
  * The wordmark — with a secret. Five quick clicks and the balloon studio
@@ -31,6 +32,7 @@ export function Wordmark() {
   const release = () => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setToast(true);
+    track("egg", { egg_name: "wordmark-balloons" });
     setTimeout(() => setToast(false), 2600);
     if (reduced) return;
     const batch: Balloon[] = Array.from({ length: 14 }, () => ({

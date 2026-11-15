@@ -8,6 +8,7 @@ import {
   Note,
 } from "@/components/site/Chrome";
 import { Connections } from "@/components/site/Connections";
+import { TrackedVideo } from "@/components/site/TrackedVideo";
 import type { VideoEpisode } from "@/content/videos";
 import {
   getAllEpisodes,
@@ -91,7 +92,8 @@ function VideoBlock({ episode }: { episode: VideoEpisode }) {
   if (isFileVideo(episode.videoUrl)) {
     return (
       <div className={frame}>
-        <video
+        <TrackedVideo
+          ga={{ slug: episode.slug, series: episode.series, title: episode.title }}
           className={`${ratio} w-full rounded-[2px] border border-line bg-surface object-contain`}
           controls
           playsInline
@@ -112,7 +114,7 @@ function VideoBlock({ episode }: { episode: VideoEpisode }) {
               default
             />
           )}
-        </video>
+        </TrackedVideo>
       </div>
     );
   }

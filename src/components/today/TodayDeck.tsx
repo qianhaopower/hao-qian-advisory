@@ -24,6 +24,7 @@ import {
 } from "@/components/site/BalloonDrift";
 import { renderShareImage } from "@/lib/today-share";
 import { buzz, playFireworks } from "@/lib/fireworks";
+import { track } from "@/lib/analytics";
 
 /*
  * 今天只做一件事 / One thing today — the stage and the deck.
@@ -32,6 +33,11 @@ import { buzz, playFireworks } from "@/lib/fireworks";
  * What the visitor did lives only in their own browser (localStorage): no
  * accounts, no server, and no counts of anybody else. The card on the stage
  * is whatever ?card= names, so every card has a link of its own.
+ *
+ * Since 2026-11-15 the library's counter (lib/analytics) hears four anonymous
+ * things from this room — a card turned, a card done, a picture saved, the
+ * big show reached — so Hao can tell which cards get used. Nothing it counts
+ * is ever shown here.
  *
  * The reward (2026-11-11, Hao: "点了以后要给大家一个巨大的惊喜"): every tick
  * sets off fireworks from the button, and every eighth DAY with something
@@ -315,6 +321,7 @@ export function TodayDeck({
   function bigShow(day: number, peek: boolean) {
     stopShow.current?.();
     setShow({ day, peek });
+    if (!peek) track("today_show", { edition: lang });
     buzz([15, 40, 15]);
     if (calm()) return;
     stopShow.current = playFireworks("finale", undefined, () => {
@@ -333,6 +340,7 @@ export function TodayDeck({
   function turnOver() {
     setAnimated(true);
     writeSaved({ ...saved, seen: today });
+    track("today_flip", { slug: todayCard?.episode, edition: lang });
   }
 
   function open(slug: string) {
@@ -356,6 +364,7 @@ export function TodayDeck({
     const firstToday = !daysDone.has(today);
     const days = daysDone.size + (firstToday ? 1 : 0);
     writeSaved({ ...saved, done: [...saved.done, [shown.episode, today]] });
+    track("today_done", { slug: shown.episode, edition: lang });
     if (firstToday && days % SHOW_EVERY === 0) {
       bigShow(days, false);
       return;
@@ -378,6 +387,7 @@ export function TodayDeck({
     if (!shown) return;
     const art = stage.current?.querySelector<SVGSVGElement>("svg[data-card-art]");
     if (!art) return;
+    track("today_share", { slug: shown.episode, edition: lang });
     setSaving(true);
     try {
       const blob = await renderShareImage(shown, art, handle, lang);

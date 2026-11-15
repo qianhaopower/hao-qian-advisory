@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { track } from "@/lib/analytics";
 
 /*
  * The About page is in tune. Home row = white keys, the row above = black
@@ -74,6 +75,8 @@ export function HiddenPiano() {
       o2.stop(now + 1.6);
     };
 
+    let found = false; // the counter hears about the piano once per visit
+
     const onKey = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
       const target = e.target as HTMLElement;
@@ -81,6 +84,10 @@ export function HiddenPiano() {
       const note = NOTES.find((n) => n.key === e.key.toLowerCase());
       if (!note) return;
       play(note.freq);
+      if (!found) {
+        found = true;
+        track("egg", { egg_name: "hidden-piano" });
+      }
       setVisible(true);
       setActive(note.key);
       setTimeout(() => setActive((k) => (k === note.key ? null : k)), 180);

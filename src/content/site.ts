@@ -16,6 +16,10 @@ export const SITE = {
   github: "https://github.com/qianhaopower",
   amazonAuthor: "https://www.amazon.com/author/haoqian",
   goodreads: "https://www.goodreads.com/author/show/71572056.Hao_Qian",
+  /* Google Analytics 4 Measurement ID ("G-XXXXXXXXXX"). Empty = the library
+   * counts nothing: no script loads and the footer line stays away. The one
+   * place the ID lives — see src/lib/analytics.ts. */
+  gaId: "",
 };
 
 export type SectionEntry = {

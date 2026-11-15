@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteShell, Container, Kicker } from "@/components/site/Chrome";
 import { Connections } from "@/components/site/Connections";
 import { FishSwim } from "@/components/site/FishSwim";
+import { TrackedVideo } from "@/components/site/TrackedVideo";
 import { BOOKS, getBook } from "@/content/books";
 import { getEssays } from "@/lib/essays";
 import { SITE_URL } from "@/lib/videos";
@@ -138,6 +139,10 @@ export default async function BookPage({
               <div className="mt-7 flex flex-wrap items-center gap-5">
                 <a
                   href={book.buy.href}
+                  data-ga="buy_click"
+                  data-ga-slug={book.slug}
+                  data-ga-label={book.buy.label}
+                  data-ga-link-url={book.buy.href}
                   className="inline-flex items-center rounded-[2px] bg-ink px-6 py-3 text-[14px] font-medium text-paper transition-colors duration-[250ms] hover:bg-ink-2"
                 >
                   {book.buy.label} ↗
@@ -145,6 +150,10 @@ export default async function BookPage({
                 {book.buy.alt && (
                   <a
                     href={book.buy.alt.href}
+                    data-ga="buy_click"
+                    data-ga-slug={book.slug}
+                    data-ga-label={book.buy.alt.label}
+                    data-ga-link-url={book.buy.alt.href}
                     className="text-[13.5px] text-ink-2 transition-colors duration-[250ms] hover:text-accent"
                   >
                     {book.buy.alt.label} ↗
@@ -258,7 +267,8 @@ export default async function BookPage({
                 {book.video.heading}
               </h2>
               <figure>
-                <video
+                <TrackedVideo
+                  ga={{ slug: book.slug, series: "book", title: book.video.heading }}
                   className="block aspect-[9/16] w-full max-w-[400px] rounded-[2px] border border-line bg-surface object-contain"
                   controls
                   playsInline
@@ -266,7 +276,7 @@ export default async function BookPage({
                   poster={book.video.poster}
                 >
                   <source src={book.video.src} type="video/mp4" />
-                </video>
+                </TrackedVideo>
                 <figcaption className="mt-3 max-w-[400px] text-[13.5px] leading-[1.6] text-ink-2">
                   {book.video.caption}
                 </figcaption>
@@ -290,6 +300,10 @@ export default async function BookPage({
                   {ed.href ? (
                     <a
                       href={ed.href}
+                      data-ga="buy_click"
+                      data-ga-slug={book.slug}
+                      data-ga-label={ed.label}
+                      data-ga-link-url={ed.href}
                       className="text-accent transition-colors duration-[250ms] hover:text-accent-deep"
                     >
                       {ed.label} →

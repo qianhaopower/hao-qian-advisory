@@ -6,6 +6,8 @@ import {
   Noto_Serif_SC,
 } from "next/font/google";
 import "./globals.css";
+import { SITE } from "@/content/site";
+import { Analytics } from "@/components/site/Analytics";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -68,6 +70,9 @@ export default function RootLayout({
         className={`${newsreader.variable} ${instrumentSans.variable} ${plexMono.variable} ${notoSerifSC.variable} antialiased`}
       >
         {children}
+        {/* the visitor counter — nothing loads while SITE.gaId is empty */}
+        {SITE.gaId && <script async src="/visits.js" />}
+        <Analytics />
       </body>
     </html>
   );

@@ -71,6 +71,16 @@ From Ep39 every FI film carries word-karaoke captions: one white line, only the 
 
 One caption = one sentence or one clause. A long one wraps INSIDE the caption (2–3 balanced lines), never gets cut into two captions at a character count — no half-sentences, no comma dangling at the end of a caption with the rest in the next one, no orphan last word. Hao rejected Ep. 21 v3 for this and has seen the same on the 小红书 line ("一句话还是得是一句话，不能一句话断成两截"). WT enforces it in `scripts/video-pipeline/captions_from_blocks.py` + `to_capcut_wt.py` (asserts); the FI generator (`scripts/xhs-pipeline/to_capcut.py`) must split long captions into lines inside one caption, falling back to a second caption only at a clause boundary.
 
+## Visitor counter — Google Analytics 4 (since 2026-11-15)
+
+Hao's ask: a fun-project counter — who came, from where, what they looked at. The Measurement ID lives in ONE place, `SITE.gaId` (`src/content/site.ts`); empty = nothing loads and the footer line ("Visits are counted with Google Analytics", his chosen alternative to a cookie banner) stays away.
+
+- **Loader** = `/visits.js` (route `src/app/visits.js/route.ts`, body from `visitsScript` in `src/lib/analytics.ts`), loaded by the root layout and by the static `/friendsintelligence` landing. It runs only on `haoqian.co` / `www.haoqian.co` (never localhost or preview builds) and never on a device that opened a page with `?me=1` (`localStorage` `ga-off`; `?me=0` undoes it; the two hostnames keep separate flags). Client business sites redirect to static HTML that does not load it — they are not counted.
+- **Page views, scrolls, outbound clicks** come from GA's Enhanced Measurement (history-change page views cover App Router navigation) — no code.
+- **Custom events** go through `track()` (`src/lib/analytics.ts`, silent when the counter is absent): `video_start` / `video_progress` (25/50/75 of the film actually played) / `video_complete` from `TrackedVideo.tsx` (use it instead of a bare `<video>`); `buy_click` on book buy/edition links; `today_flip` / `today_done` / `today_share` / `today_show`; `search` (debounced `search_term`); `egg` (`egg_name`: `wordmark-balloons`, `hidden-piano`, `constellation-poster`, `random-theory`). In server components mark a link with `data-ga="event"` + `data-ga-<param>` attributes — `Analytics.tsx` sends it on click.
+- **Parameters registered as custom dimensions in GA**: `slug`, `series`, `edition`, `label`, `egg_name`, `video_percent`. A new parameter is invisible in reports until Hao registers it (Admin → Custom definitions) — reuse these six where possible.
+- **Never on a page**: nothing the counter collects is displayed — /today's "no counts of anybody else" still holds for what visitors see. World Cup Fighter keeps its own `/api/track`.
+
 ## Conventions
 
 - Counts and claims on pages must stay honest — empty sections say so plainly ("Empty · deliberately"), never fake fullness.

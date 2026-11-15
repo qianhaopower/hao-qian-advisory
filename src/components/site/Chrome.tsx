@@ -82,6 +82,11 @@ export function SiteFooter() {
             </a>
           )}
         </div>
+        {SITE.gaId && (
+          <p className="meta basis-full !text-[10.5px]">
+            Visits are counted with Google Analytics
+          </p>
+        )}
       </Container>
     </footer>
   );

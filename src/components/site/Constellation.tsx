@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { StarData } from "@/lib/constellation";
+import { track } from "@/lib/analytics";
 
 /*
  * The library as a constellation — ink on paper, not stars on night.
@@ -388,6 +389,7 @@ export function Constellation({ data }: { data: StarData }) {
           a.href = url;
           a.download = "haoqian-co-constellation.png";
           a.click();
+          track("egg", { egg_name: "constellation-poster" });
           setTimeout(() => URL.revokeObjectURL(url), 4000);
         }, "image/png");
       })();
