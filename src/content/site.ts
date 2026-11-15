@@ -19,7 +19,7 @@ export const SITE = {
   /* Google Analytics 4 Measurement ID ("G-XXXXXXXXXX"). Empty = the library
    * counts nothing: no script loads and the footer line stays away. The one
    * place the ID lives — see src/lib/analytics.ts. */
-  gaId: "",
+  gaId: "G-KC6Z93B9G2",
 };
 
 export type SectionEntry = {
