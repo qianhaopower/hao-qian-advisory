@@ -389,7 +389,7 @@ export function Constellation({ data }: { data: StarData }) {
           a.href = url;
           a.download = "haoqian-co-constellation.png";
           a.click();
-          track("egg", { egg_name: "constellation-poster" });
+          track("egg_constellation_poster");
           setTimeout(() => URL.revokeObjectURL(url), 4000);
         }, "image/png");
       })();

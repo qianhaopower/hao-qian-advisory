@@ -32,7 +32,7 @@ export function Wordmark() {
   const release = () => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setToast(true);
-    track("egg", { egg_name: "wordmark-balloons" });
+    track("egg_wordmark_balloons");
     setTimeout(() => setToast(false), 2600);
     if (reduced) return;
     const batch: Balloon[] = Array.from({ length: 14 }, () => ({

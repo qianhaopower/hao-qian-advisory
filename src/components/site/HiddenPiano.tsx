@@ -86,7 +86,7 @@ export function HiddenPiano() {
       play(note.freq);
       if (!found) {
         found = true;
-        track("egg", { egg_name: "hidden-piano" });
+        track("egg_hidden_piano");
       }
       setVisible(true);
       setActive(note.key);

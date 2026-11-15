@@ -28,10 +28,21 @@ declare global {
   }
 }
 
-/** Send one event. Silent when the counter is not loaded; never throws. */
+/**
+ * Send one event. Silent when the counter is not loaded; never throws.
+ *
+ * Hao registers no custom dimensions in GA (his call, 2026-11-15), so an
+ * event has to read in the stock reports as it is: put what matters in the
+ * event NAME, let the page it came from say where, and name the work with
+ * `slug` — it is mirrored into `content_id`, which GA shows as its built-in
+ * "Content ID" dimension. (`search_term` is built in the same way.)
+ */
 export function track(event: string, params: Params = {}): void {
   if (typeof window === "undefined") return;
   try {
+    if (params.slug && !params.content_id) {
+      params = { ...params, content_id: params.slug };
+    }
     window.gtag?.("event", event, params);
   } catch {
     /* counting must never break the page */

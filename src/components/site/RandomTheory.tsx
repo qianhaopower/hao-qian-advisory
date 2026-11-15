@@ -14,7 +14,7 @@ export function RandomTheory({
     <button
       onClick={() => {
         const slug = slugs[Math.floor(Math.random() * slugs.length)];
-        track("egg", { egg_name: "random-theory" });
+        track("egg_random_theory");
         window.location.href = `/writing/${slug}`;
       }}
       className="inline-flex items-baseline gap-2 rounded-[2px] border border-btnline px-4 py-2 font-mono text-[12px] uppercase tracking-[0.12em] text-ink-2 transition-colors duration-[250ms] hover:border-ink hover:text-ink"

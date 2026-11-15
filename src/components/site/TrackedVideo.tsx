@@ -8,13 +8,15 @@ import { track } from "@/lib/analytics";
  * GA's own video tracking only understands YouTube embeds, so the library's
  * self-hosted films report here:
  *
- *   video_start     the first play
- *   video_progress  25 / 50 / 75 — the share of the film actually PLAYED
- *                   (the browser's `played` ranges), so dragging the scrubber
- *                   to the end does not count as watching
- *   video_complete  the film reached its end
+ *   video_start        the first play
+ *   video_25 / 50 / 75 that share of the film actually PLAYED (the browser's
+ *                      `played` ranges), so dragging the scrubber to the end
+ *                      does not count as watching
+ *   video_complete     the film reached its end
  *
- * Each fires once per page view.
+ * Each fires once per page view. The mark is in the event's NAME and the film
+ * is the page the event came from, so GA's stock reports read as they are —
+ * Hao registers no custom dimensions (his call, 2026-11-15).
  */
 
 const MARKS = [25, 50, 75];
@@ -58,7 +60,7 @@ export function TrackedVideo({ ga, children, ...props }: Props) {
         const v = e.currentTarget;
         const pct = playedPercent(v);
         for (const m of MARKS) {
-          if (pct >= m) once(`p${m}`, "video_progress", v, m);
+          if (pct >= m) once(`p${m}`, `video_${m}`, v, m);
         }
       }}
       onEnded={(e) => once("end", "video_complete", e.currentTarget, 100)}
