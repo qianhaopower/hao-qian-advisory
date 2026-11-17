@@ -2,7 +2,7 @@
  * 平安牌 — /pingan. A printed object (a works-site safety board), so it wears
  * its own colours and cartoon letter, not the library's tokens.
  *
- * Everything is measured in --u. The sign is drawn 100u wide and about 188u
+ * Everything is measured in --u. The sign is drawn 100u wide and about 190u
  * tall, and --u is the largest unit that fits BOTH the phone's width and its
  * height — so the whole sign sits on one screen with nothing to scroll.
  */
@@ -205,6 +205,7 @@ body:has(.page) {
 
 /* swings from the nail */
 .swing {
+  position: relative;
   transform-origin: 50% calc(var(--u) * 1.4);
 }
 
@@ -217,7 +218,7 @@ body:has(.page) {
 .sign {
   display: block;
   width: 100%;
-  height: calc(var(--u) * 50);
+  height: calc(var(--u) * 51.5);
   padding: 0;
   border: 0;
   background: none;
@@ -285,16 +286,18 @@ body:has(.page) {
   margin-top: calc(var(--u) * 0.3);
 }
 
+/* the band: the verdict on the left, the thumbprint pad on the right */
 .band {
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
   align-self: stretch;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  gap: calc(var(--u) * 1);
+  height: calc(var(--u) * 17.4);
   margin-top: auto;
-  padding: calc(var(--u) * 1) 0 calc(var(--u) * 1.5);
+  padding: 0 calc(var(--u) * 1.6) 0 calc(var(--u) * 1.8);
   border-top: calc(var(--u) * 0.9) solid var(--ink);
   background: var(--green);
   text-align: center;
@@ -304,30 +307,70 @@ body:has(.page) {
   color: var(--cream);
 }
 
-.state {
+.words {
   position: relative;
-  font-size: calc(var(--u) * 8.6);
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.state {
+  font-size: calc(var(--u) * 6.8);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+/* how the sign is turned, in small print for anyone who reads */
+.how {
+  margin-top: calc(var(--u) * 0.6);
+  font-size: calc(var(--u) * 2.9);
   letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0.88;
 }
 
-/* how the sign is turned, printed on the sign itself */
-.how {
+/* The thumbprint pad — the thing that says "finger here, and keep it there"
+   without a word: a raised round button, a print in red ink (按手印), a ring. */
+.pad {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: calc(var(--u) * 1);
-  margin-top: calc(var(--u) * 0.5);
-  font-size: calc(var(--u) * 3.3);
-  letter-spacing: 0.06em;
-}
-.ring {
   flex: none;
-  width: calc(var(--u) * 3.8);
-  height: calc(var(--u) * 3.8);
+  width: calc(var(--u) * 13.4);
+  height: calc(var(--u) * 13.4);
+  margin-bottom: calc(var(--u) * 0.7);
+  border: calc(var(--u) * 0.8) solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+  color: var(--news);
 }
-.ringGo {
-  stroke-dasharray: 44;
-  stroke-dashoffset: 12;
+.bandOut .pad {
+  color: var(--green-deep);
+}
+.pad svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.padGo,
+.padDemo {
+  stroke-dasharray: 128.8;
+  stroke-dashoffset: 128.8;
+}
+.padGo {
+  transition: stroke-dashoffset 0.18s ease;
+}
+
+/* the hand that shows how; it only exists while the phone is untaught, and
+   only moves when motion is welcome */
+.hand {
+  position: absolute;
+  z-index: 4;
+  left: calc(var(--u) * 26.2);
+  top: calc(var(--u) * 47);
+  width: calc(var(--u) * 13);
+  height: calc(var(--u) * 16.9);
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* the hold meter: the band fills left to right for as long as the hold takes,
@@ -348,7 +391,8 @@ body:has(.page) {
   transition: transform var(--hold, 2000ms) linear;
 }
 
-/* under a finger the sign sinks onto its shadow, like a button */
+/* under a finger the sign sinks onto its shadow, like a button — and so does
+   the pad, while its ring fills */
 .pressing {
   transform: translateY(calc(var(--u) * 0.9));
 }
@@ -605,17 +649,94 @@ button.status {
   .face {
     transition: box-shadow 0.1s ease;
   }
-  .ringGo {
-    animation: ring-go 2.6s linear infinite;
+  .pad {
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
   }
-  @keyframes ring-go {
-    from {
-      stroke-dashoffset: 44;
+
+  /* The showing loop, six seconds: the pad nods, the hand comes in, presses
+     for two seconds while the ring fills, lets go. The two signs take turns
+     (--demo-delay). Three animations on one clock. */
+  .untaught .hand {
+    animation: demo-hand 6s ease-in-out var(--demo-delay, 0s) infinite;
+  }
+  .untaught .pad {
+    animation: demo-pad 6s ease-in-out var(--demo-delay, 0s) infinite;
+  }
+  .untaught .padDemo {
+    animation: demo-ring 6s linear var(--demo-delay, 0s) infinite;
+  }
+  @keyframes demo-hand {
+    0%,
+    12% {
+      opacity: 0;
+      transform: translate(calc(var(--u) * 2.4), calc(var(--u) * 5)) rotate(8deg);
     }
-    77%,
-    to {
+    20% {
+      opacity: 1;
+      transform: translate(calc(var(--u) * 0.6), calc(var(--u) * 1.6)) rotate(4deg);
+    }
+    26%,
+    62% {
+      opacity: 1;
+      transform: translate(0, 0) scale(0.94);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(calc(var(--u) * 0.6), calc(var(--u) * 1.6)) rotate(4deg);
+    }
+    78%,
+    100% {
+      opacity: 0;
+      transform: translate(calc(var(--u) * 2.4), calc(var(--u) * 5)) rotate(8deg);
+    }
+  }
+  @keyframes demo-pad {
+    0%,
+    4%,
+    12%,
+    24% {
+      transform: none;
+      box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+    }
+    8% {
+      transform: scale(1.1);
+      box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+    }
+    27%,
+    62% {
+      transform: translateY(calc(var(--u) * 0.7));
+      box-shadow: 0 calc(var(--u) * 0.3) 0 var(--ink);
+    }
+    66%,
+    100% {
+      transform: none;
+      box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+    }
+  }
+  @keyframes demo-ring {
+    0%,
+    26% {
+      stroke-dashoffset: 128.8;
+    }
+    60%,
+    64% {
       stroke-dashoffset: 0;
     }
+    66%,
+    100% {
+      stroke-dashoffset: 128.8;
+    }
+  }
+
+  /* a real finger takes over from the demonstration */
+  .pressing + .hand {
+    animation: none;
+  }
+  .pressing .pad,
+  .pressing .padDemo {
+    animation: none;
   }
   .bubble {
     animation: pop 0.28s ease backwards;
@@ -658,9 +779,13 @@ button.status {
     }
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  /* the meter still has to take as long as the hold: it is information */
-  .pressing .meter {
-    transition: transform var(--hold, 2000ms) linear;
-  }
+/* the pad under a real finger: pressed in, ring filling for the whole hold.
+   After the motion block so it wins over the demonstration. */
+.pressing .pad {
+  transform: translateY(calc(var(--u) * 0.7));
+  box-shadow: 0 calc(var(--u) * 0.3) 0 var(--ink);
+}
+.pressing .padGo {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--hold, 2000ms) linear;
 }

@@ -22,6 +22,7 @@ import {
   LET_GO,
   MILESTONES,
   OUT_LINES,
+  PAD_TAP,
   PINGAN_START,
   SAFE_LINES,
   STATUS,
@@ -39,10 +40,15 @@ import s from "./PinganSign.module.css";
  *   tap a sign        it swings and says something
  *   hold it 2 seconds it really turns over — and that is good news (喜报)
  *
- * The hold has to be obvious the moment a finger lands (Hao: 三秒不明显): the
- * sign says so in print ("按住两秒 · 翻牌", beside a little ring that keeps
- * filling), it sinks like a pressed button, and its band fills left to right
- * for exactly as long as the hold takes.
+ * Nobody should have to read to know the sign wants holding (Hao, twice the
+ * same day: 不用读任何文字就想按一下). A long press is a hidden gesture, so it
+ * gets a signifier everyone already knows: a round thumbprint pad on each
+ * sign — 按手印, and the phone's fingerprint sensor, both mean "put your
+ * finger here and keep it there". Until this phone has turned a sign once, a
+ * cartoon hand keeps showing how: it presses the pad, the ring round the pad
+ * fills, it lets go. Under a real finger the sign sinks like a button, the
+ * ring fills and the band fills left to right for exactly as long as the hold
+ * takes; letting go early says so.
  *
  * Each phone keeps its own sign (localStorage, `pingan:v1`): no server, no
  * accounts, nothing about either of them in the repo. The news reaches the
@@ -60,6 +66,8 @@ type Saved = {
   since?: string;
   /** the run of quiet days that ended at the last turn */
   record?: number;
+  /** this phone has turned a sign once: the showing hand can stop */
+  taught?: boolean;
 };
 
 const KEY = "pingan:v1";
@@ -112,6 +120,7 @@ function parseSaved(raw: string): Saved {
         w: isDay(v.w) ? v.w : undefined,
         since: isDay(v.since) ? v.since : undefined,
         record: Number.isFinite(v.record) ? Math.max(0, Math.floor(v.record)) : undefined,
+        taught: v.taught === true ? true : undefined,
       };
     }
   } catch {
@@ -221,22 +230,56 @@ function Mug({ who, out }: { who: Who; out: boolean }) {
   );
 }
 
-/** The little ring beside "按住两秒": it keeps filling, the way a hold does. */
-function HoldRing() {
+/**
+ * The thumbprint pad: where the finger goes. A raised round button with a
+ * print in ink and a ring that fills for as long as the hold takes.
+ */
+function Pad() {
   return (
-    <svg viewBox="0 0 20 20" className={s.ring} aria-hidden="true">
-      <circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" strokeWidth="3.2" opacity="0.28" />
-      <circle
-        className={s.ringGo}
-        cx="10"
-        cy="10"
-        r="7"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3.2"
-        strokeLinecap="round"
-        transform="rotate(-90 10 10)"
-      />
+    <span className={s.pad} data-pad="">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="20.5" fill="none" stroke="currentColor" strokeWidth="4" opacity="0.16" />
+        {/* two rings on purpose: one the demonstration fills, one a real finger
+            fills — so a real hold always starts from empty, never from wherever
+            the demonstration happened to be */}
+        {[s.padDemo, s.padGo].map((ring) => (
+          <circle
+            key={ring}
+            className={ring}
+            cx="24"
+            cy="24"
+            r="20.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="4"
+            strokeLinecap="round"
+            transform="rotate(-90 24 24)"
+          />
+        ))}
+        <g fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+          <path d="M12 29 v-4 a12 12 0 0 1 24 0 v3" strokeDasharray="27 4 100" />
+          <path d="M16 32.5 v-7.5 a8 8 0 0 1 16 0 v6" strokeDasharray="100" />
+          <path d="M20 35 v-10 a4 4 0 0 1 8 0 v8" strokeDasharray="14 3.5 100" />
+          <path d="M24 25.5 v10.5" />
+        </g>
+      </svg>
+    </span>
+  );
+}
+
+/** The hand that shows how, until this phone has done it once. */
+function DemoHand() {
+  return (
+    <svg viewBox="0 0 40 52" className={s.hand} aria-hidden="true">
+      <g stroke={INK} strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill={SKIN}>
+        <rect x="3.5" y="27" width="9.5" height="15" rx="4.75" transform="rotate(-28 8 34)" />
+        <rect x="9" y="22" width="26" height="26" rx="9" />
+        <rect x="14" y="2.5" width="11" height="30" rx="5.5" />
+      </g>
+      {/* the finger grows out of the palm: no seam */}
+      <rect x="15.5" y="20.3" width="8" height="14" fill={SKIN} />
+      <rect x="12.4" y="23.6" width="14.2" height="10.8" fill={SKIN} />
+      <path d="M30 23.5 v6" stroke={INK} strokeWidth="2.6" strokeLinecap="round" fill="none" />
     </svg>
   );
 }
@@ -260,13 +303,21 @@ export function PinganSign() {
 
   const root = useRef<HTMLElement>(null);
   const hangs = useRef<Record<Who, HTMLDivElement | null>>({ h: null, w: null });
-  const press = useRef<{ who: Who; at: number; x: number; y: number; done: boolean } | null>(null);
+  const press = useRef<{
+    who: Who;
+    at: number;
+    x: number;
+    y: number;
+    onPad: boolean;
+    done: boolean;
+  } | null>(null);
   const holdTimers = useRef<number[]>([]);
   const bubbleTimer = useRef(0);
   const lastLine = useRef<Record<Who, number>>({ h: -1, w: -1 });
   const stopShow = useRef<(() => void) | null>(null);
 
   const out = PEOPLE.filter((k) => saved[k]);
+  const taught = !!saved.taught || out.length > 0;
   const streak = today ? streakOf(saved, today) : null;
   const digits = streak === null ? ["·"] : String(streak).split("");
   const stamp = MILESTONES.find(([n]) => n === streak)?.[1];
@@ -340,7 +391,7 @@ export function PinganSign() {
     setAnimated(true);
     if (cur[who]) {
       /* back at work: the count starts again once nobody is out */
-      const next: Saved = { ...cur, [who]: undefined };
+      const next: Saved = { ...cur, [who]: undefined, taught: true };
       if (!next.h && !next.w) next.since = now;
       writeSaved(next);
       say(who, BACK_AT_WORK, 3200);
@@ -351,7 +402,7 @@ export function PinganSign() {
       return;
     }
     const record = cur.h || cur.w ? (cur.record ?? 0) : streakOf(cur, now);
-    writeSaved({ ...cur, [who]: now, record });
+    writeSaved({ ...cur, [who]: now, record, taught: true });
     window.clearTimeout(bubbleTimer.current);
     setBubble(null);
     buzz([20, 60, 20, 60, 40]);
@@ -372,7 +423,14 @@ export function PinganSign() {
       /* the hold still works without capture */
     }
     clearHold();
-    const mine = { who, at: performance.now(), x: e.clientX, y: e.clientY, done: false };
+    const mine = {
+      who,
+      at: performance.now(),
+      x: e.clientX,
+      y: e.clientY,
+      onPad: !!(e.target as Element).closest?.("[data-pad]"),
+      done: false,
+    };
     press.current = mine;
     setPressing(who);
     buzz(8);
@@ -405,8 +463,9 @@ export function PinganSign() {
       setBubble(null);
       return;
     }
-    if (performance.now() - p.at < TAP_MS) talk(who);
-    else say(who, LET_GO);
+    if (performance.now() - p.at >= TAP_MS) say(who, LET_GO);
+    else if (p.onPad && !saved[who]) say(who, PAD_TAP);
+    else talk(who);
   }
 
   async function saveNews() {
@@ -487,7 +546,11 @@ export function PinganSign() {
           {PEOPLE.map((who) => {
             const isOut = !!saved[who];
             return (
-              <div key={who} className={s.hang}>
+              <div
+                key={who}
+                className={`${s.hang} ${taught ? "" : s.untaught}`}
+                style={{ "--demo-delay": who === "h" ? "0.6s" : "3.6s" } as React.CSSProperties}
+              >
                 {bubble?.who === who && (
                   <div key={bubble.n} className={s.bubble} role="status">
                     {bubble.text}
@@ -531,11 +594,11 @@ export function PinganSign() {
                         <Mug who={who} out={false} />
                         <span className={s.band}>
                           <span className={s.meter} />
-                          <span className={s.state}>没被裁</span>
-                          <span className={s.how}>
-                            <HoldRing />
-                            {HOW_OUT}
+                          <span className={s.words}>
+                            <span className={s.state}>没被裁</span>
+                            <span className={s.how}>{HOW_OUT}</span>
                           </span>
+                          <Pad />
                         </span>
                       </span>
                       <span className={`${s.face} ${s.back}`}>
@@ -543,15 +606,16 @@ export function PinganSign() {
                         <Mug who={who} out />
                         <span className={`${s.band} ${s.bandOut}`}>
                           <span className={s.meter} />
-                          <span className={s.state}>被裁了</span>
-                          <span className={s.how}>
-                            <HoldRing />
-                            {HOW_BACK}
+                          <span className={s.words}>
+                            <span className={s.state}>被裁了</span>
+                            <span className={s.how}>{HOW_BACK}</span>
                           </span>
+                          <Pad />
                         </span>
                       </span>
                     </span>
                   </button>
+                  {!taught && <DemoHand />}
                 </div>
               </div>
             );

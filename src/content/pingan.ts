@@ -62,9 +62,12 @@ export const HOLD_BACK = ["找到下家了？", "真的？", "恭喜！"];
 
 export const LET_GO = `没按满${HOLD_ZH}，不算数`;
 
-/** Printed on each sign, under its verdict: the sign says how it is turned. */
-export const HOW_OUT = `按住${HOLD_ZH} · 翻牌`;
-export const HOW_BACK = `按住${HOLD_ZH} · 再就业`;
+/** Printed small on each sign, under its verdict — for anyone who does read. */
+export const HOW_OUT = `按住${HOLD_ZH}翻牌`;
+export const HOW_BACK = `按住${HOLD_ZH}再就业`;
+
+/** A quick tap on the thumbprint pad itself: so close. */
+export const PAD_TAP = "按住，别松手";
 export const BACK_AT_WORK = "再就业成功！";
 
 /** The line under the two signs. */
