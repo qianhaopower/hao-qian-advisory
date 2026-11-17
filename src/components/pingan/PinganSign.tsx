@@ -12,7 +12,11 @@ import { recordLine, renderGoodNews } from "@/lib/pingan-share";
 import {
   BACK_AT_WORK,
   HOLD_BACK,
+  HOLD_MS,
   HOLD_OUT,
+  HOLD_ZH,
+  HOW_BACK,
+  HOW_OUT,
   JI,
   LEAN,
   LET_GO,
@@ -33,7 +37,12 @@ import s from "./PinganSign.module.css";
  * over two hanging signs, one each.
  *
  *   tap a sign        it swings and says something
- *   hold it 3 seconds it really turns over — and that is good news (喜报)
+ *   hold it 2 seconds it really turns over — and that is good news (喜报)
+ *
+ * The hold has to be obvious the moment a finger lands (Hao: 三秒不明显): the
+ * sign says so in print ("按住两秒 · 翻牌", beside a little ring that keeps
+ * filling), it sinks like a pressed button, and its band fills left to right
+ * for exactly as long as the hold takes.
  *
  * Each phone keeps its own sign (localStorage, `pingan:v1`): no server, no
  * accounts, nothing about either of them in the repo. The news reaches the
@@ -55,8 +64,7 @@ type Saved = {
 
 const KEY = "pingan:v1";
 const PEOPLE: Who[] = ["h", "w"];
-const HOLD_MS = 3000;
-const TAP_MS = 300;
+const TAP_MS = 250;
 const WEEKDAYS = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 
 const listeners = new Set<() => void>();
@@ -213,6 +221,26 @@ function Mug({ who, out }: { who: Who; out: boolean }) {
   );
 }
 
+/** The little ring beside "按住两秒": it keeps filling, the way a hold does. */
+function HoldRing() {
+  return (
+    <svg viewBox="0 0 20 20" className={s.ring} aria-hidden="true">
+      <circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" strokeWidth="3.2" opacity="0.28" />
+      <circle
+        className={s.ringGo}
+        cx="10"
+        cy="10"
+        r="7"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3.2"
+        strokeLinecap="round"
+        transform="rotate(-90 10 10)"
+      />
+    </svg>
+  );
+}
+
 /* ── the sign ────────────────────────────────────────────────────────── */
 
 export function PinganSign() {
@@ -221,7 +249,8 @@ export function PinganSign() {
   const saved = useMemo(() => parseSaved(savedRaw), [savedRaw]);
 
   const [bubble, setBubble] = useState<{ who: Who; text: string; n: number } | null>(null);
-  const [holding, setHolding] = useState<Who | null>(null);
+  /* a finger is on this sign: it sinks and its band starts to fill */
+  const [pressing, setPressing] = useState<Who | null>(null);
   const [animated, setAnimated] = useState(false);
   const [news, setNews] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -287,7 +316,6 @@ export function PinganSign() {
     lastLine.current[who] = i;
     say(who, pool[i]);
     swing(who);
-    buzz(8);
   }
 
   function openNews() {
@@ -346,19 +374,20 @@ export function PinganSign() {
     clearHold();
     const mine = { who, at: performance.now(), x: e.clientX, y: e.clientY, done: false };
     press.current = mine;
+    setPressing(who);
+    buzz(8);
     const lines = saved[who] ? HOLD_BACK : HOLD_OUT;
     const step = (HOLD_MS - TAP_MS) / lines.length;
     holdTimers.current = [
       ...lines.map((line, i) =>
         window.setTimeout(() => {
-          if (i === 0) setHolding(who);
-          else buzz(10);
+          if (i > 0) buzz(10);
           say(who, line, HOLD_MS);
         }, TAP_MS + i * step)
       ),
       window.setTimeout(() => {
         mine.done = true;
-        setHolding(null);
+        setPressing(null);
         turn(who, mine);
       }, HOLD_MS),
     ];
@@ -369,7 +398,7 @@ export function PinganSign() {
     if (!p || p.who !== who) return;
     press.current = null;
     clearHold();
-    setHolding(null);
+    setPressing(null);
     if (p.done) return;
     if (cancelled) {
       window.clearTimeout(bubbleTimer.current);
@@ -482,8 +511,9 @@ export function PinganSign() {
                   </svg>
                   <button
                     type="button"
-                    className={`${s.sign} ${holding === who ? s.holding : ""}`}
-                    aria-label={`${WHO[who]}：${isOut ? "被裁了" : "没被裁"}。轻点问一句，按住三秒翻牌`}
+                    className={`${s.sign} ${pressing === who ? s.pressing : ""}`}
+                    style={{ "--hold": `${HOLD_MS}ms` } as React.CSSProperties}
+                    aria-label={`${WHO[who]}：${isOut ? "被裁了" : "没被裁"}。轻点问一句，按住${HOLD_ZH}翻牌`}
                     onPointerDown={(e) => down(who, e)}
                     onPointerUp={() => up(who, false)}
                     onPointerCancel={() => up(who, true)}
@@ -497,16 +527,28 @@ export function PinganSign() {
                       className={`${s.inner} ${animated ? s.animated : ""} ${isOut ? s.flipped : ""}`}
                     >
                       <span className={s.face}>
-                        <span className={s.fill} />
                         <span className={s.name}>{WHO[who]}</span>
                         <Mug who={who} out={false} />
-                        <span className={s.band}>没被裁</span>
+                        <span className={s.band}>
+                          <span className={s.meter} />
+                          <span className={s.state}>没被裁</span>
+                          <span className={s.how}>
+                            <HoldRing />
+                            {HOW_OUT}
+                          </span>
+                        </span>
                       </span>
                       <span className={`${s.face} ${s.back}`}>
-                        <span className={`${s.fill} ${s.fillBack}`} />
                         <span className={s.name}>{WHO[who]}</span>
                         <Mug who={who} out />
-                        <span className={`${s.band} ${s.bandOut}`}>被裁了</span>
+                        <span className={`${s.band} ${s.bandOut}`}>
+                          <span className={s.meter} />
+                          <span className={s.state}>被裁了</span>
+                          <span className={s.how}>
+                            <HoldRing />
+                            {HOW_BACK}
+                          </span>
+                        </span>
                       </span>
                     </span>
                   </button>
@@ -523,7 +565,6 @@ export function PinganSign() {
         ) : (
           <div className={s.status}>{status}</div>
         )}
-        <p className={s.hint}>轻点：问一句 · 按住三秒：真翻牌</p>
 
         <section className={s.almanac} aria-label="今日黄历">
           <div className={s.almHead}>

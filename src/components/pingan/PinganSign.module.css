@@ -2,7 +2,7 @@
  * 平安牌 — /pingan. A printed object (a works-site safety board), so it wears
  * its own colours and cartoon letter, not the library's tokens.
  *
- * Everything is measured in --u. The sign is drawn 100u wide and about 189u
+ * Everything is measured in --u. The sign is drawn 100u wide and about 188u
  * tall, and --u is the largest unit that fits BOTH the phone's width and its
  * height — so the whole sign sits on one screen with nothing to scroll.
  */
@@ -217,7 +217,7 @@ body:has(.page) {
 .sign {
   display: block;
   width: 100%;
-  height: calc(var(--u) * 46);
+  height: calc(var(--u) * 50);
   padding: 0;
   border: 0;
   background: none;
@@ -289,12 +289,14 @@ body:has(.page) {
   position: relative;
   z-index: 1;
   align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
   margin-top: auto;
-  padding: calc(var(--u) * 1.2) 0 calc(var(--u) * 1.5);
+  padding: calc(var(--u) * 1) 0 calc(var(--u) * 1.5);
   border-top: calc(var(--u) * 0.9) solid var(--ink);
   background: var(--green);
-  font-size: calc(var(--u) * 8.6);
-  letter-spacing: 0.04em;
   text-align: center;
 }
 .bandOut {
@@ -302,21 +304,56 @@ body:has(.page) {
   color: var(--cream);
 }
 
-/* the hold meter: colour rises from the band to the top over three seconds */
-.fill {
+.state {
+  position: relative;
+  font-size: calc(var(--u) * 8.6);
+  letter-spacing: 0.04em;
+}
+
+/* how the sign is turned, printed on the sign itself */
+.how {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 1);
+  margin-top: calc(var(--u) * 0.5);
+  font-size: calc(var(--u) * 3.3);
+  letter-spacing: 0.06em;
+}
+.ring {
+  flex: none;
+  width: calc(var(--u) * 3.8);
+  height: calc(var(--u) * 3.8);
+}
+.ringGo {
+  stroke-dasharray: 44;
+  stroke-dashoffset: 12;
+}
+
+/* the hold meter: the band fills left to right for as long as the hold takes,
+   in the colour the sign is about to show */
+.meter {
   position: absolute;
-  inset: 0 0 calc(var(--u) * 13) 0;
-  background: rgba(240, 72, 62, 0.38);
-  transform: scaleY(0);
-  transform-origin: 50% 100%;
-  transition: transform 0.15s ease;
+  inset: 0;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.18s ease;
 }
-.fillBack {
-  background: rgba(61, 190, 108, 0.4);
+.bandOut .meter {
+  background: var(--green-deep);
 }
-.holding .fill {
-  transform: scaleY(1);
-  transition: transform 2.7s linear;
+.pressing .meter {
+  transform: scaleX(1);
+  transition: transform var(--hold, 2000ms) linear;
+}
+
+/* under a finger the sign sinks onto its shadow, like a button */
+.pressing {
+  transform: translateY(calc(var(--u) * 0.9));
+}
+.pressing .face {
+  box-shadow: 0 calc(var(--u) * 0.3) 0 var(--ink);
 }
 
 .bubble {
@@ -369,17 +406,10 @@ button.status {
   box-shadow: 0 calc(var(--u) * 0.9) 0 var(--ink);
 }
 
-.hint {
-  margin-top: calc(var(--u) * 2);
-  font-size: calc(var(--u) * 3.2);
-  letter-spacing: 0.08em;
-  opacity: 0.78;
-}
-
 .almanac {
   box-sizing: border-box;
   width: 100%;
-  margin-top: calc(var(--u) * 2.4);
+  margin-top: calc(var(--u) * 3.2);
   padding: calc(var(--u) * 2.4) calc(var(--u) * 4) calc(var(--u) * 2.8);
   border: calc(var(--u) * 0.8) solid var(--ink);
   border-radius: calc(var(--u) * 4);
@@ -569,6 +599,24 @@ button.status {
   .animated {
     transition: transform 0.6s cubic-bezier(0.3, 1.3, 0.5, 1);
   }
+  .sign {
+    transition: transform 0.1s ease;
+  }
+  .face {
+    transition: box-shadow 0.1s ease;
+  }
+  .ringGo {
+    animation: ring-go 2.6s linear infinite;
+  }
+  @keyframes ring-go {
+    from {
+      stroke-dashoffset: 44;
+    }
+    77%,
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
   .bubble {
     animation: pop 0.28s ease backwards;
   }
@@ -611,7 +659,8 @@ button.status {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .holding .fill {
-    transition: none;
+  /* the meter still has to take as long as the hold: it is information */
+  .pressing .meter {
+    transition: transform var(--hold, 2000ms) linear;
   }
 }

@@ -16,6 +16,14 @@ export const PINGAN_START = "2026-11-18";
 
 export type Who = "h" | "w";
 
+/**
+ * How long a sign must be held before it turns over — and how the page says
+ * so. Two seconds (Hao, 2026-11-18: three was too long and nobody could tell
+ * the sign wanted holding). Change the pair together.
+ */
+export const HOLD_MS = 2000;
+export const HOLD_ZH = "两秒";
+
 export const WHO: Record<Who, string> = { h: "老公", w: "老婆" };
 
 /** A tap on a sign that still reads 没被裁. */
@@ -45,14 +53,18 @@ export const OUT_LINES = [
   "简历已更新",
   "气球摊筹备中",
   "现在是全职家属",
-  "按住三秒：再就业",
+  `按住${HOLD_ZH}：再就业`,
 ];
 
-/** What the sign says while it is being held, one line a second. */
+/** What the sign says while it is being held, one line after another. */
 export const HOLD_OUT = ["真的假的？", "别闹", "……好吧"];
 export const HOLD_BACK = ["找到下家了？", "真的？", "恭喜！"];
 
-export const LET_GO = "松手了，不算数";
+export const LET_GO = `没按满${HOLD_ZH}，不算数`;
+
+/** Printed on each sign, under its verdict: the sign says how it is turned. */
+export const HOW_OUT = `按住${HOLD_ZH} · 翻牌`;
+export const HOW_BACK = `按住${HOLD_ZH} · 再就业`;
 export const BACK_AT_WORK = "再就业成功！";
 
 /** The line under the two signs. */
