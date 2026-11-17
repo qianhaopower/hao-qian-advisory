@@ -1,0 +1,617 @@
+/*
+ * 平安牌 — /pingan. A printed object (a works-site safety board), so it wears
+ * its own colours and cartoon letter, not the library's tokens.
+ *
+ * Everything is measured in --u. The sign is drawn 100u wide and about 189u
+ * tall, and --u is the largest unit that fits BOTH the phone's width and its
+ * height — so the whole sign sits on one screen with nothing to scroll.
+ */
+.page {
+  --u: min(1vw, 4.4px, calc(100vh / 192));
+  --ink: #1f1d1a;
+  --yellow: #ffd84d;
+  --cream: #fff8e7;
+  --green: #3dbe6c;
+  --green-deep: #15803d;
+  --red: #f0483e;
+  --news: #d9281e;
+  --skin: #ffd9b8;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: hidden;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--font-zcool), "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  line-height: 1.15;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+@supports (height: 100dvh) {
+  .page {
+    --u: min(1vw, 4.4px, calc(100dvh / 192));
+    min-height: 100dvh;
+  }
+}
+
+/* the yellow runs to the edges of the phone, rubber-band included */
+body:has(.page) {
+  background: #ffd84d;
+}
+
+/* black-and-yellow hazard tape, top and bottom */
+.stripe {
+  flex: none;
+  align-self: stretch;
+  height: calc(var(--u) * 3);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--ink) 0 calc(var(--u) * 2.4),
+    var(--yellow) calc(var(--u) * 2.4) calc(var(--u) * 4.8)
+  );
+}
+
+.col {
+  box-sizing: border-box;
+  width: calc(var(--u) * 100);
+  padding: calc(var(--u) * 3) calc(var(--u) * 5) calc(var(--u) * 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── the board ─────────────────────────────────────────────── */
+
+.board {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(var(--u) * 3.6) calc(var(--u) * 4) calc(var(--u) * 3.2);
+  background: var(--cream);
+  border: calc(var(--u) * 0.9) solid var(--ink);
+  border-radius: calc(var(--u) * 5);
+  box-shadow: 0 calc(var(--u) * 1.4) 0 var(--ink);
+  text-align: center;
+}
+
+.screw {
+  position: absolute;
+  width: calc(var(--u) * 2.2);
+  height: calc(var(--u) * 2.2);
+  border: calc(var(--u) * 0.5) solid var(--ink);
+  border-radius: 50%;
+  background: #d8d0bd;
+}
+.screw:nth-of-type(1) {
+  top: calc(var(--u) * 2);
+  left: calc(var(--u) * 2);
+}
+.screw:nth-of-type(2) {
+  top: calc(var(--u) * 2);
+  right: calc(var(--u) * 2);
+}
+.screw:nth-of-type(3) {
+  bottom: calc(var(--u) * 2);
+  left: calc(var(--u) * 2);
+}
+.screw:nth-of-type(4) {
+  bottom: calc(var(--u) * 2);
+  right: calc(var(--u) * 2);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.4em 1.1em 0.45em;
+  border-radius: 99px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: calc(var(--u) * 3.7);
+  letter-spacing: 0.14em;
+}
+
+.lead {
+  margin-top: calc(var(--u) * 2);
+  font-size: calc(var(--u) * 7.4);
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: calc(var(--u) * 1.4);
+  margin-top: calc(var(--u) * 1.6);
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 15);
+  height: calc(var(--u) * 20);
+  border-radius: calc(var(--u) * 2.6);
+  background: var(--ink);
+  color: var(--yellow);
+  font-size: calc(var(--u) * 16);
+  line-height: 1;
+}
+.tileSmall {
+  width: calc(var(--u) * 12);
+  font-size: calc(var(--u) * 13.5);
+}
+
+.unit {
+  padding: 0 0 calc(var(--u) * 1.4) calc(var(--u) * 0.6);
+  font-size: calc(var(--u) * 9);
+}
+
+.verdict {
+  margin-top: calc(var(--u) * 1.4);
+  color: var(--green-deep);
+  font-size: calc(var(--u) * 13);
+  letter-spacing: 0.05em;
+}
+.verdictOut {
+  color: var(--red);
+}
+
+.since {
+  margin-top: calc(var(--u) * 1.5);
+  font-family: var(--font-plex-mono), "PingFang SC", monospace;
+  font-size: calc(var(--u) * 2.9);
+  letter-spacing: 0.1em;
+  opacity: 0.72;
+}
+
+/* the milestone seal: four characters, two over two */
+.stamp {
+  position: absolute;
+  top: calc(var(--u) * 9);
+  right: calc(var(--u) * 5);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 0.1em;
+  padding: calc(var(--u) * 1) calc(var(--u) * 1.2);
+  border: calc(var(--u) * 0.7) solid var(--red);
+  border-radius: calc(var(--u) * 1.6);
+  color: var(--red);
+  font-size: calc(var(--u) * 4.6);
+  line-height: 1.1;
+  transform: rotate(12deg);
+}
+
+/* ── the two hanging signs ─────────────────────────────────── */
+
+.signs {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 calc(var(--u) * 1);
+  margin-top: calc(var(--u) * 0.6);
+}
+
+.hang {
+  position: relative;
+  width: calc(var(--u) * 42);
+}
+
+/* swings from the nail */
+.swing {
+  transform-origin: 50% calc(var(--u) * 1.4);
+}
+
+.strings {
+  display: block;
+  width: 100%;
+  height: calc(var(--u) * 7);
+}
+
+.sign {
+  display: block;
+  width: 100%;
+  height: calc(var(--u) * 46);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  perspective: calc(var(--u) * 260);
+  /* a still finger holds; a moving one may scroll the page */
+  touch-action: pan-y;
+}
+.sign:focus-visible {
+  outline: calc(var(--u) * 0.8) dashed var(--ink);
+  outline-offset: calc(var(--u) * 1.4);
+  border-radius: calc(var(--u) * 4.4);
+}
+
+.inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background: var(--cream);
+  border: calc(var(--u) * 0.9) solid var(--ink);
+  border-radius: calc(var(--u) * 4.4);
+  box-shadow: 0 calc(var(--u) * 1.2) 0 var(--ink);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.back {
+  background: #fff0c2;
+  transform: rotateY(180deg);
+}
+
+.name {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(var(--u) * 2);
+  padding: 0.25em 1em 0.3em;
+  border-radius: 99px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: calc(var(--u) * 4.6);
+  letter-spacing: 0.1em;
+}
+
+.mug {
+  position: relative;
+  z-index: 1;
+  width: calc(var(--u) * 22);
+  height: calc(var(--u) * 22);
+  margin-top: calc(var(--u) * 0.3);
+}
+
+.band {
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  margin-top: auto;
+  padding: calc(var(--u) * 1.2) 0 calc(var(--u) * 1.5);
+  border-top: calc(var(--u) * 0.9) solid var(--ink);
+  background: var(--green);
+  font-size: calc(var(--u) * 8.6);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.bandOut {
+  background: var(--red);
+  color: var(--cream);
+}
+
+/* the hold meter: colour rises from the band to the top over three seconds */
+.fill {
+  position: absolute;
+  inset: 0 0 calc(var(--u) * 13) 0;
+  background: rgba(240, 72, 62, 0.38);
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 0.15s ease;
+}
+.fillBack {
+  background: rgba(61, 190, 108, 0.4);
+}
+.holding .fill {
+  transform: scaleY(1);
+  transition: transform 2.7s linear;
+}
+
+.bubble {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: calc(100% - var(--u) * 6.4);
+  box-sizing: border-box;
+  width: max-content;
+  max-width: calc(var(--u) * 46);
+  padding: calc(var(--u) * 1.6) calc(var(--u) * 2.8) calc(var(--u) * 1.9);
+  border: calc(var(--u) * 0.8) solid var(--ink);
+  border-radius: calc(var(--u) * 4);
+  background: #fff;
+  box-shadow: 0 calc(var(--u) * 0.9) 0 var(--ink);
+  font-size: calc(var(--u) * 4.5);
+  line-height: 1.25;
+  text-align: center;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--u) * -2);
+  width: calc(var(--u) * 2.6);
+  height: calc(var(--u) * 2.6);
+  border-right: calc(var(--u) * 0.8) solid var(--ink);
+  border-bottom: calc(var(--u) * 0.8) solid var(--ink);
+  background: #fff;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ── under the signs ───────────────────────────────────────── */
+
+.status {
+  margin-top: calc(var(--u) * 3.2);
+  padding: calc(var(--u) * 1.5) calc(var(--u) * 4) calc(var(--u) * 1.8);
+  border: calc(var(--u) * 0.8) solid var(--ink);
+  border-radius: 99px;
+  background: var(--cream);
+  color: inherit;
+  font: inherit;
+  font-size: calc(var(--u) * 4.3);
+  text-align: center;
+}
+button.status {
+  cursor: pointer;
+  box-shadow: 0 calc(var(--u) * 0.9) 0 var(--ink);
+}
+
+.hint {
+  margin-top: calc(var(--u) * 2);
+  font-size: calc(var(--u) * 3.2);
+  letter-spacing: 0.08em;
+  opacity: 0.78;
+}
+
+.almanac {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: calc(var(--u) * 2.4);
+  padding: calc(var(--u) * 2.4) calc(var(--u) * 4) calc(var(--u) * 2.8);
+  border: calc(var(--u) * 0.8) solid var(--ink);
+  border-radius: calc(var(--u) * 4);
+  background: var(--cream);
+  box-shadow: 0 calc(var(--u) * 1.2) 0 var(--ink);
+}
+
+.almHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: calc(var(--u) * 4.6);
+}
+.almDate {
+  font-size: calc(var(--u) * 3.2);
+  opacity: 0.72;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 2.4);
+  margin-top: calc(var(--u) * 1.7);
+  font-size: calc(var(--u) * 4.7);
+  text-align: left;
+}
+.yi,
+.ji {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 6.4);
+  height: calc(var(--u) * 6.4);
+  border: calc(var(--u) * 0.7) solid var(--ink);
+  border-radius: 50%;
+  font-size: calc(var(--u) * 3.8);
+  line-height: 1;
+}
+.yi {
+  background: var(--green);
+}
+.ji {
+  background: var(--red);
+  color: var(--cream);
+}
+
+.slogan {
+  margin-top: calc(var(--u) * 2.8);
+  font-size: calc(var(--u) * 3.4);
+  letter-spacing: 0.16em;
+}
+
+/* ── 喜报 ──────────────────────────────────────────────────── */
+
+.news {
+  position: fixed;
+  inset: 0;
+  /* under the balloons (40) and the fireworks (70) */
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--news);
+  color: var(--cream);
+  text-align: center;
+}
+
+.poster {
+  position: relative;
+  box-sizing: border-box;
+  width: calc(var(--u) * 88);
+  padding: calc(var(--u) * 7) calc(var(--u) * 4) calc(var(--u) * 6);
+  border: calc(var(--u) * 1) solid var(--yellow);
+  border-radius: calc(var(--u) * 4);
+}
+.poster::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--u) * 1.4);
+  border: calc(var(--u) * 0.35) solid var(--yellow);
+  border-radius: calc(var(--u) * 2.6);
+  pointer-events: none;
+}
+
+.newsTitle {
+  color: var(--yellow);
+  font-size: calc(var(--u) * 34);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-indent: 0.08em;
+}
+.newsLine {
+  margin-top: calc(var(--u) * 3);
+  font-size: calc(var(--u) * 6.4);
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+}
+.newsWho {
+  margin-top: calc(var(--u) * 2);
+  color: var(--yellow);
+  font-size: calc(var(--u) * 15);
+  line-height: 1.12;
+}
+.newsDid {
+  font-size: calc(var(--u) * 15);
+  line-height: 1.12;
+}
+.newsRule {
+  width: calc(var(--u) * 16);
+  height: calc(var(--u) * 0.6);
+  margin: calc(var(--u) * 4) auto calc(var(--u) * 3.4);
+  background: var(--yellow);
+}
+.newsRecord {
+  font-size: calc(var(--u) * 4.4);
+}
+.newsLean {
+  margin-top: calc(var(--u) * 2);
+  color: var(--yellow);
+  font-size: calc(var(--u) * 5.4);
+  line-height: 1.32;
+}
+.newsDate {
+  margin-top: calc(var(--u) * 4);
+  font-size: calc(var(--u) * 3.2);
+  letter-spacing: 0.12em;
+  opacity: 0.85;
+}
+
+.newsBtns {
+  display: flex;
+  gap: calc(var(--u) * 3);
+  margin-top: calc(var(--u) * 5);
+}
+.btn {
+  padding: calc(var(--u) * 2) calc(var(--u) * 5.4) calc(var(--u) * 2.3);
+  border: calc(var(--u) * 0.8) solid var(--ink);
+  border-radius: 99px;
+  background: var(--cream);
+  box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+  color: var(--ink);
+  font: inherit;
+  font-size: calc(var(--u) * 5);
+  cursor: pointer;
+}
+.btnGold {
+  background: var(--yellow);
+}
+.btn:disabled {
+  opacity: 0.6;
+}
+
+/* the drawn picture, for browsers with no share sheet: long-press to keep.
+   Sits above the fireworks (70). */
+.picture {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--u) * 4);
+  background: var(--cream);
+}
+.pictureImg {
+  display: block;
+  width: calc(var(--u) * 78);
+  height: auto;
+  border: calc(var(--u) * 0.9) solid var(--ink);
+  border-radius: calc(var(--u) * 3);
+  box-shadow: 0 calc(var(--u) * 1.4) 0 var(--ink);
+  /* the one thing on the page a long press is meant for */
+  user-select: auto;
+  -webkit-user-select: auto;
+  -webkit-touch-callout: default;
+}
+.pictureHint {
+  font-size: calc(var(--u) * 4.4);
+  letter-spacing: 0.08em;
+}
+
+/* ── motion: all of it stands still when the phone asks ───── */
+
+@media (prefers-reduced-motion: no-preference) {
+  .animated {
+    transition: transform 0.6s cubic-bezier(0.3, 1.3, 0.5, 1);
+  }
+  .bubble {
+    animation: pop 0.28s ease backwards;
+  }
+  .news {
+    animation: news-in 0.3s ease backwards;
+  }
+  .poster {
+    animation: poster-in 0.5s cubic-bezier(0.3, 1.4, 0.5, 1) backwards;
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20%) scale(0.5);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.07);
+    }
+    to {
+      transform: translateX(-50%) scale(1);
+    }
+  }
+  @keyframes news-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes poster-in {
+    from {
+      opacity: 0;
+      transform: scale(0.6) rotate(-6deg);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .holding .fill {
+    transition: none;
+  }
+}
