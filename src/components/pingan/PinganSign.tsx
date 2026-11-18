@@ -294,7 +294,6 @@ export function PinganSign() {
   const [bubble, setBubble] = useState<{ who: Who; text: string; n: number } | null>(null);
   /* a finger is on this sign: it sinks and its band starts to fill */
   const [pressing, setPressing] = useState<Who | null>(null);
-  const [animated, setAnimated] = useState(false);
   const [news, setNews] = useState(false);
   const [saving, setSaving] = useState(false);
   /* the drawn 喜报, shown to long-press where there is no share sheet */
@@ -303,6 +302,7 @@ export function PinganSign() {
 
   const root = useRef<HTMLElement>(null);
   const hangs = useRef<Record<Who, HTMLDivElement | null>>({ h: null, w: null });
+  const inners = useRef<Record<Who, HTMLSpanElement | null>>({ h: null, w: null });
   const press = useRef<{
     who: Who;
     at: number;
@@ -385,29 +385,64 @@ export function PinganSign() {
     setNews(false);
   }
 
+  /*
+   * Turning a sign over, flat. It squeezes shut edge-on, changes its face
+   * while it is a line, and opens again — the width only ever runs 1 → 0 → 1.
+   * No 3D, no second face waiting on the back: the first version was a
+   * two-faced card on rotateY(180deg), and on Hao's phone the turned sign
+   * read mirrored (左右相反). Nothing here can be seen from behind.
+   */
+  function flipSign(who: Who, commit: () => void) {
+    const el = inners.current[who];
+    if (!el || typeof el.animate !== "function" || calm()) {
+      commit();
+      return;
+    }
+    const shut = el.animate([{ transform: "scaleX(1)" }, { transform: "scaleX(0)" }], {
+      duration: 190,
+      easing: "ease-in",
+      fill: "forwards",
+    });
+    shut.onfinish = () => {
+      commit();
+      el.animate(
+        [
+          { transform: "scaleX(0)" },
+          { transform: "scaleX(1.07)", offset: 0.7 },
+          { transform: "scaleX(1)" },
+        ],
+        { duration: 330, easing: "ease-out" }
+      );
+      shut.cancel();
+    };
+  }
+
   function turn(who: Who, at: { x: number; y: number }) {
     const cur = parseSaved(readSaved());
     const now = dateKey(new Date());
-    setAnimated(true);
     if (cur[who]) {
       /* back at work: the count starts again once nobody is out */
       const next: Saved = { ...cur, [who]: undefined, taught: true };
       if (!next.h && !next.w) next.since = now;
-      writeSaved(next);
-      say(who, BACK_AT_WORK, 3200);
       buzz([15, 40, 15]);
-      if (calm()) return;
-      playFireworks("burst", at);
-      releaseBalloons(7);
+      flipSign(who, () => {
+        writeSaved(next);
+        say(who, BACK_AT_WORK, 3200);
+        if (calm()) return;
+        playFireworks("burst", at);
+        releaseBalloons(7);
+      });
       return;
     }
     const record = cur.h || cur.w ? (cur.record ?? 0) : streakOf(cur, now);
-    writeSaved({ ...cur, [who]: now, record, taught: true });
     window.clearTimeout(bubbleTimer.current);
     setBubble(null);
     buzz([20, 60, 20, 60, 40]);
-    /* let the sign finish turning over, then break the news */
-    window.setTimeout(openNews, calm() ? 0 : 750);
+    flipSign(who, () => {
+      writeSaved({ ...cur, [who]: now, record, taught: true });
+      /* let the turned sign be read for a moment, then break the news */
+      window.setTimeout(openNews, calm() ? 0 : 800);
+    });
   }
 
   function clearHold() {
@@ -586,29 +621,21 @@ export function PinganSign() {
                       if (e.detail === 0) talk(who);
                     }}
                   >
+                    {/* one face at a time, never a hidden back: see flipSign */}
                     <span
-                      className={`${s.inner} ${animated ? s.animated : ""} ${isOut ? s.flipped : ""}`}
+                      ref={(el) => {
+                        inners.current[who] = el;
+                      }}
+                      className={s.inner}
                     >
-                      <span className={s.face}>
+                      <span className={`${s.face} ${isOut ? s.back : ""}`}>
                         <span className={s.name}>{WHO[who]}</span>
-                        <Mug who={who} out={false} />
-                        <span className={s.band}>
+                        <Mug who={who} out={isOut} />
+                        <span className={`${s.band} ${isOut ? s.bandOut : ""}`}>
                           <span className={s.meter} />
                           <span className={s.words}>
-                            <span className={s.state}>没被裁</span>
-                            <span className={s.how}>{HOW_OUT}</span>
-                          </span>
-                          <Pad />
-                        </span>
-                      </span>
-                      <span className={`${s.face} ${s.back}`}>
-                        <span className={s.name}>{WHO[who]}</span>
-                        <Mug who={who} out />
-                        <span className={`${s.band} ${s.bandOut}`}>
-                          <span className={s.meter} />
-                          <span className={s.words}>
-                            <span className={s.state}>被裁了</span>
-                            <span className={s.how}>{HOW_BACK}</span>
+                            <span className={s.state}>{isOut ? "被裁了" : "没被裁"}</span>
+                            <span className={s.how}>{isOut ? HOW_BACK : HOW_OUT}</span>
                           </span>
                           <Pad />
                         </span>
