@@ -517,10 +517,51 @@ button.status {
   color: var(--cream);
 }
 
+/* the last line: the slogan, with the build this phone shows on the left and
+   a button on the right that fetches the newest one */
+.foot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(var(--u) * 6);
+  margin-top: calc(var(--u) * 1.6);
+}
 .slogan {
-  margin-top: calc(var(--u) * 2.8);
   font-size: calc(var(--u) * 3.4);
   letter-spacing: 0.16em;
+}
+.build {
+  position: absolute;
+  left: calc(var(--u) * 0.6);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: calc(var(--u) * 2.4);
+  letter-spacing: 0.06em;
+  opacity: 0.5;
+}
+.refresh {
+  position: absolute;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 6);
+  height: calc(var(--u) * 6);
+  padding: 0;
+  border: calc(var(--u) * 0.6) solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  box-shadow: 0 calc(var(--u) * 0.6) 0 var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+}
+.refresh svg {
+  width: 68%;
+  height: 68%;
+}
+.refresh:active {
+  transform: translateY(calc(var(--u) * 0.5));
+  box-shadow: 0 calc(var(--u) * 0.1) 0 var(--ink);
 }
 
 /* ── 喜报 ──────────────────────────────────────────────────── */

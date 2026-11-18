@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import {
   BalloonSky,
   balloonLife,
@@ -8,6 +8,7 @@ import {
   type Balloon,
 } from "@/components/site/BalloonDrift";
 import { buzz, playFireworks } from "@/lib/fireworks";
+import { PINGAN_VERSION, freshen, reloadFresh } from "@/lib/pingan-fresh";
 import { recordLine, renderGoodNews } from "@/lib/pingan-share";
 import {
   BACK_AT_WORK,
@@ -397,6 +398,21 @@ export function PinganSign() {
   const deniedTimer = useRef(0);
   const lastLine = useRef<Partial<Record<Who, number>>>({});
   const stopShow = useRef<(() => void) | null>(null);
+
+  /* An old copy replaces itself: on opening, and whenever the page comes back
+     to the front (WeChat keeps it alive behind the chat for a long time). */
+  useEffect(() => {
+    const wake = () => {
+      if (document.visibilityState === "visible") void freshen();
+    };
+    wake();
+    document.addEventListener("visibilitychange", wake);
+    window.addEventListener("pageshow", wake);
+    return () => {
+      document.removeEventListener("visibilitychange", wake);
+      window.removeEventListener("pageshow", wake);
+    };
+  }, []);
 
   const out = outOf(saved);
   const isOut = (who: Who) => isWorker(who) && !!saved[who];
@@ -821,7 +837,30 @@ export function PinganSign() {
           </div>
         </section>
 
-        <p className={s.slogan}>高高兴兴上班去 · 平平安安没被裁</p>
+        <div className={s.foot}>
+          {/* which build this phone is showing — for "is it the new one?" */}
+          <span className={s.build}>{PINGAN_VERSION.slice(0, 4)}</span>
+          <p className={s.slogan}>高高兴兴上班去 · 平平安安没被裁</p>
+          <button
+            type="button"
+            className={s.refresh}
+            aria-label="刷新到最新版"
+            onClick={() => reloadFresh()}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <g
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M19 12a7 7 0 1 1-2.3-5.2" />
+                <path d="M19.4 3.4v4.8h-4.8" />
+              </g>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div className={s.stripe} aria-hidden="true" />
