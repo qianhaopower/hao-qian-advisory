@@ -212,6 +212,15 @@ The cover must look like a frame OF the film, not a paler cousin of it. Three th
 5. **Props.** A big coloured prop (green ball) shifts the phone's white balance and the eye's read; prefer
    a frame where the prop is small or the cast is neutralised before step 2.
 
+- COVER EYES GATE (Hao 2026-11-18, Ep45 呼吸 went out with a blink on frame 1 although the desk had "checked by
+  eye": 「别让我光闭眼，封面别让我踩那些闭眼的」): the cover is MEASURED, never eyeballed. `cover_eyes.py`
+  (Apple Vision landmarks → eye aspect ratio; open ≥ 0.20, pick ≥ 0.23 on two consecutive samples) runs inside
+  compose_v3: before rendering it checks frame 0 / `cover_src_t`, and when the eyes are shut it sets `cover_src_t`
+  to the first open-eyes moment in the first 2.8 s and writes it back into the fx file; after rendering it checks
+  frame 0 of the final film and refuses the hand-over (exit 1) when shut. No open moment in the window → the
+  render stops (`cover_eyes_override: true` is the only way past, and it goes in the hand-over note). The site
+  poster takes the same pick on the posted file. A hand-over line reads «cover gate: frame 0 OPEN (EAR x/y)».
+
 ## 8. Post text
 
 Title = one striking sentence (the claim, with a full stop). The

@@ -1328,6 +1328,34 @@ const SCENES: Record<string, (lang: Lang) => ReactNode> = {
       <Label lang={lang} x={92} y={82} s={20} zh="松开眉头" en="soften the brow" es={14} />
     </>
   ),
+
+  "fi-stress-switch-face": (lang) => (
+    <>
+      <Ground />
+      <Buddy x={122} y={150} r={46} eyes="dot" mouth="flat" fill={PERI} />
+      <path d="M174 128h32M198 118l12 10-12 10" strokeWidth={4} />
+      <Buddy x={262} y={150} r={46} eyes="happy" mouth="grin" />
+      <path d="M232 112q-10-2-16 4M292 112q10-2 16 4" strokeWidth={3} />
+      <Spark x={318} y={70} />
+      <Spark x={212} y={66} r={7} />
+      <Label lang={lang} x={262} y={44} s={20} zh="笑几秒" en="hold a smile" es={15} />
+    </>
+  ),
+
+  "fi-stress-switch-breath": (lang) => (
+    <>
+      <Ground />
+      <Buddy x={120} y={150} r={46} eyes="sleepy" mouth="o" />
+      <path d="M176 150c26-30 52-30 78 0" strokeWidth={3} strokeDasharray="6 7" fill="none" />
+      <path d="M254 150c26 30 52 30 78 0" strokeWidth={3} strokeDasharray="6 7" fill="none" />
+      <circle cx={215} cy={150} r={10} fill={SKY} />
+      <circle cx={293} cy={150} r={10} fill={SKY} />
+      <Label lang={lang} x={215} y={116} s={16} zh="吸" en="in" es={13} />
+      <Label lang={lang} x={254} y={184} s={14} zh="憋 2 秒" en="hold 2 s" es={12} />
+      <Label lang={lang} x={293} y={116} s={16} zh="吐" en="out" es={13} />
+      <path d="M96 208c10-6 38-6 48 0" strokeWidth={3} fill="none" />
+    </>
+  ),
 };
 
 /* A card whose own drawing has not been made yet borrows its pillar's. */

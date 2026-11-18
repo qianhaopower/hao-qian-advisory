@@ -466,4 +466,28 @@ export const TODAY_CARDS: TodayCard[] = [
       when: "When you tense up",
     },
   },
+  {
+    episode: "fi-stress-switch-face",
+    pillar: "emotion",
+    do: "强迫自己\n笑几秒钟。",
+    why: "表情不只是情绪的结果，也是原因。19 个国家、3700 多人的实验：笑完，压力真的小一点。",
+    when: "压力上来时",
+    en: {
+      do: "Make yourself smile. Hold it a few seconds.",
+      why: "Expression is not only the result of a feeling, it is also a cause. In a 19-country study of 3,700+ people, a held smile measurably lifted mood.",
+      when: "When stress rises",
+    },
+  },
+  {
+    episode: "fi-stress-switch-breath",
+    pillar: "emotion",
+    do: "慢慢吸，\n憋两秒，\n慢慢吐。",
+    why: "短、浅、急的上胸呼吸是交感神经在踩油门；慢吸慢吐、肚子鼓起来，是在踩刹车。",
+    when: "心跳加快时",
+    en: {
+      do: "Breathe in slowly, hold two seconds, breathe out slowly.",
+      why: "Short, shallow, fast chest breathing is the sympathetic system pressing the gas; slow belly breathing presses the brake.",
+      when: "When your heart races",
+    },
+  },
 ];

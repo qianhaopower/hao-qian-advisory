@@ -966,6 +966,19 @@ def sample(a, b):
 
 def main():
     os.makedirs("work", exist_ok=True)
+    # COVER EYES GATE (Hao 2026-11-18): the cover frame is measured, never eyeballed. Frame 0 (or cover_src_t) must show
+    # open eyes; when it does not, the first open-eyes moment in the first 2.8 s becomes cover_src_t and is written back
+    # into the fx file so the pick is on record. No open moment at all → stop; fx "cover_eyes_override": true renders anyway.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import cover_eyes
+    _ct = float(FX["cover_src_t"]) if FX.get("cover_src_t") is not None else 0.0
+    _ok, _l, _r = cover_eyes.check(SRC, _ct)
+    if _ok: print(f"cover: eyes open at {_ct:.2f}s (EAR {_l:.2f}/{_r:.2f})")
+    else:
+        _p = cover_eyes.pick(SRC)
+        if _p is None and not FX.get("cover_eyes_override"): sys.exit(f"!! COVER EYES GATE: shut at {_ct:.2f}s and no open-eyes moment in the first 2.8 s — reshoot the cover window or set cover_eyes_override")
+        if _p is not None:
+            FX["cover_src_t"] = round(_p[0], 2); json.dump(FX, open(FXP, "w"), ensure_ascii=False, indent=1)
+            print(f"cover: eyes SHUT at {_ct:.2f}s (EAR {_l:.2f}/{_r:.2f}) → cover_src_t {FX['cover_src_t']} (EAR {_p[1]:.2f}/{_p[2]:.2f}), written to {FXP}")
     nw = int(FX.get("workers", 4))
     procs = [subprocess.Popen([sys.executable, os.path.abspath(__file__), FXP, "--chunk", f"{i}/{nw}"]) for i in range(nw)]
     for p in procs: p.wait()
@@ -1005,6 +1018,9 @@ def main():
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "work/video_silent.mp4", "-i", "work/audio_v3.m4a", "-map", "0:v:0", "-map", "1:a:0", "-c", "copy",
                     "-shortest", "-movflags", "+faststart", FX.get("out", "final_v3.mp4")], check=True)
     print(f"{FX.get('out', 'final_v3.mp4')} done ({len(sfx)} sfx hits)")
+    _ok, _l, _r = cover_eyes.check(FX.get("out", "final_v3.mp4"), 0.0)
+    print(f"cover gate: frame 0 {'OPEN' if _ok else 'SHUT'} (EAR {_l:.2f}/{_r:.2f})")
+    if not _ok and not FX.get("cover_eyes_override"): sys.exit("!! COVER EYES GATE FAILED on the final film — do not hand this over")
 
 
 if __name__ == "__main__":
