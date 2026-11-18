@@ -11,67 +11,74 @@ import { buzz, playFireworks } from "@/lib/fireworks";
 import { recordLine, renderGoodNews } from "@/lib/pingan-share";
 import {
   BACK_AT_WORK,
+  CAN_TURN,
   HOLD_BACK,
   HOLD_MS,
   HOLD_OUT,
   HOLD_ZH,
-  HOW_BACK,
-  HOW_OUT,
+  HOW,
   JI,
+  KID_DENIED,
+  KID_STAMP,
   LEAN,
   LET_GO,
   MILESTONES,
+  OUT_EXTRA,
   OUT_LINES,
   PAD_TAP,
+  PEOPLE,
   PINGAN_START,
   SAFE_LINES,
   STATUS,
+  VERDICT,
   WHO,
   YI,
   type Who,
+  type Worker,
 } from "@/content/pingan";
 import s from "./PinganSign.module.css";
 
 /*
  * 平安牌 — the house sign at /pingan (2026-11-18). A joke Hao and his wife made
- * up over breakfast: a works-site safety board ("本家庭已连续 N 天无人被裁")
- * over two hanging signs, one each.
+ * up over breakfast: a works-site safety board ("本大家庭已连续 N 天无人被裁")
+ * over a row of hanging work badges. Two that morning; five by the evening —
+ * 老公, 老婆, two friends who asked to be hung up too (Iris, who is 焦虑到爆炸,
+ * and Ding, who feels no pressure at all), and the kid, who is seven.
  *
- *   tap a sign        it swings and says something
- *   hold it 2 seconds it really turns over — and that is good news (喜报)
+ *   tap a badge        it swings and says something, in character
+ *   hold it 2 seconds  it really turns over — and that is good news (喜报)
+ *   hold the kid's     the request is thrown out (驳回): she is in year one
  *
- * Nobody should have to read to know the sign wants holding (Hao, twice the
+ * Nobody should have to read to know a badge wants holding (Hao, twice the
  * same day: 不用读任何文字就想按一下). A long press is a hidden gesture, so it
  * gets a signifier everyone already knows: a round thumbprint pad on each
- * sign — 按手印, and the phone's fingerprint sensor, both mean "put your
- * finger here and keep it there". Until this phone has turned a sign once, a
- * cartoon hand keeps showing how: it presses the pad, the ring round the pad
- * fills, it lets go. Under a real finger the sign sinks like a button, the
- * ring fills and the band fills left to right for exactly as long as the hold
- * takes; letting go early says so.
+ * badge — 按手印, and the phone's fingerprint sensor, both mean "put your
+ * finger here and keep it there". Until this phone has turned a badge once, a
+ * cartoon hand goes along the row showing how: it presses a pad, the ring
+ * round the pad fills, it lets go. Under a real finger the badge sinks like a
+ * button, the ring fills and the band fills left to right for exactly as long
+ * as the hold takes; letting go early says so.
  *
- * Each phone keeps its own sign (localStorage, `pingan:v1`): no server, no
- * accounts, nothing about either of them in the repo. The news reaches the
- * other phone as a picture: the share sheet where the browser has one, and
+ * Each phone keeps its own badges (localStorage, `pingan:v1`): no server, no
+ * accounts, nothing about any of them in the repo. News reaches the other
+ * phones as a picture: the share sheet where the browser has one, and
  * otherwise the picture itself, to long-press and keep (in-app browsers such
  * as WeChat's have no share sheet and cannot download). The count is honest —
- * days since the sign went up, or since the last one of them went back to work.
+ * days since the sign went up, or since the last of them went back to work.
  */
 
-type Saved = {
-  /** the day each sign was turned over (yyyy-mm-dd); absent = 没被裁 */
-  h?: string;
-  w?: string;
+type Saved = Partial<Record<Worker, string>> & {
+  /* each worker's key holds the day that badge was turned over (yyyy-mm-dd);
+     absent = 没被裁 */
   /** the day the count last started again */
   since?: string;
   /** the run of quiet days that ended at the last turn */
   record?: number;
-  /** this phone has turned a sign once: the showing hand can stop */
+  /** this phone has turned a badge once: the showing hand can stop */
   taught?: boolean;
 };
 
 const KEY = "pingan:v1";
-const PEOPLE: Who[] = ["h", "w"];
 const TAP_MS = 250;
 const WEEKDAYS = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 
@@ -115,16 +122,16 @@ function parseSaved(raw: string): Saved {
   try {
     const v = JSON.parse(raw);
     if (v && typeof v === "object") {
-      return {
-        h: isDay(v.h) ? v.h : undefined,
-        w: isDay(v.w) ? v.w : undefined,
+      const saved: Saved = {
         since: isDay(v.since) ? v.since : undefined,
         record: Number.isFinite(v.record) ? Math.max(0, Math.floor(v.record)) : undefined,
         taught: v.taught === true ? true : undefined,
       };
+      for (const k of CAN_TURN) if (isDay(v[k])) saved[k] = v[k];
+      return saved;
     }
   } catch {
-    /* empty or damaged: both signs read 没被裁 */
+    /* empty or damaged: every badge reads 没被裁 */
   }
   return {};
 }
@@ -144,10 +151,12 @@ function dayNumber(key: string): number {
 
 const dotted = (key: string) => key.split("-").join(".");
 const mod = (n: number, m: number) => ((n % m) + m) % m;
+const isWorker = (who: Who): who is Worker => who !== "kid";
+const outOf = (saved: Saved) => CAN_TURN.filter((k) => saved[k]);
 
-/** Quiet days in a row, today included. Nought while either sign is turned. */
+/** Quiet days in a row, today included. Nought while any badge is turned. */
 function streakOf(saved: Saved, today: string): number {
-  if (saved.h || saved.w) return 0;
+  if (outOf(saved).length > 0) return 0;
   const from = saved.since && saved.since > PINGAN_START ? saved.since : PINGAN_START;
   return Math.max(0, dayNumber(today) - dayNumber(from)) + 1;
 }
@@ -156,39 +165,70 @@ function calm(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-/* ── the two faces: one hand, thick ink, flat fills, a blush ─────────── */
+/* ── the five faces: one hand, thick ink, flat fills, a blush ────────── */
 
 const INK = "#1F1D1A";
 const SKIN = "#FFD9B8";
 const HAIR_W = "#4A3228";
+const HAIR_D = "#3A2A22";
+const BLUSH = "#FF9C8A";
+
+/* Iris is 焦虑到爆炸, so: 爆炸头. A starburst round the top of the head. */
+const BURST = Array.from({ length: 23 }, (_, i) => {
+  const a = ((158 + i * 10.2) * Math.PI) / 180;
+  const r = i % 2 === 0 ? 40 : 31.5;
+  return `${(50 + r * Math.cos(a)).toFixed(1)},${(54 + r * Math.sin(a)).toFixed(1)}`;
+}).join(" ");
 
 function Mug({ who, out }: { who: Who; out: boolean }) {
+  const shades = who === "ding";
+  /* Iris trembles, the kid hops, Ding does not move a muscle */
+  const mood = out ? "" : who === "iris" ? s.jitter : who === "kid" ? s.hop : "";
   return (
-    <svg viewBox="9 8 82 88" className={s.mug} aria-hidden="true">
+    <svg viewBox="9 8 82 88" className={`${s.mug} ${mood}`} aria-hidden="true">
       <g stroke={INK} strokeWidth="4" strokeLinejoin="round" strokeLinecap="round">
+        {/* behind the head */}
         {who === "w" && (
           <path
             d="M19 60 Q14 22 50 22 Q86 22 81 60 L83 88 Q74 94 68 86 L68 58 L32 58 L32 86 Q26 94 17 88 Z"
             fill={HAIR_W}
           />
         )}
-        {who === "h" && (
+        {who === "iris" && <polygon points={BURST} fill={INK} />}
+        {who === "kid" && (
+          <>
+            <circle cx="20" cy="45" r="8" fill={HAIR_D} />
+            <circle cx="80" cy="45" r="8" fill={HAIR_D} />
+          </>
+        )}
+        {(who === "h" || who === "ding") && (
           <>
             <circle cx="21" cy="60" r="6" fill={SKIN} />
             <circle cx="79" cy="60" r="6" fill={SKIN} />
           </>
         )}
+
         <circle cx="50" cy="58" r="29" fill={SKIN} />
-        {who === "h" ? (
-          <path
-            d="M22 53 Q19 25 50 25 Q81 25 78 53 Q72 41 58 40 Q40 39 22 53 Z"
-            fill={INK}
-          />
-        ) : (
-          <path
-            d="M22 55 Q21 26 50 26 Q79 26 78 55 Q66 39 48 43 Q34 45 22 55 Z"
-            fill={HAIR_W}
-          />
+
+        {/* on the head */}
+        {who === "h" && (
+          <path d="M22 53 Q19 25 50 25 Q81 25 78 53 Q72 41 58 40 Q40 39 22 53 Z" fill={INK} />
+        )}
+        {who === "w" && (
+          <path d="M22 55 Q21 26 50 26 Q79 26 78 55 Q66 39 48 43 Q34 45 22 55 Z" fill={HAIR_W} />
+        )}
+        {who === "ding" && (
+          <path d="M21 54 Q18 24 52 24 Q82 25 79 54 Q76 44 66 42 Q48 46 34 39 Q24 44 21 54 Z" fill={HAIR_D} />
+        )}
+        {who === "kid" && (
+          <>
+            <path
+              d="M22 55 Q21 26 50 26 Q79 26 78 55 Q70 44 60 46 Q50 38 40 46 Q30 44 22 55 Z"
+              fill={HAIR_D}
+            />
+            <circle cx="27" cy="50" r="3.4" fill="#F0483E" strokeWidth="2.6" />
+            <circle cx="73" cy="50" r="3.4" fill="#F0483E" strokeWidth="2.6" />
+          </>
         )}
         {who === "w" && !out && (
           <>
@@ -197,32 +237,71 @@ function Mug({ who, out }: { who: Who; out: boolean }) {
           </>
         )}
       </g>
-      <ellipse cx="32" cy="68" rx="6" ry="4" fill="#FF9C8A" />
-      <ellipse cx="68" cy="68" rx="6" ry="4" fill="#FF9C8A" />
-      <g
-        stroke={INK}
-        strokeWidth="4"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-        fill="none"
-      >
-        {out ? (
+
+      {(who !== "iris" || out) && (
+        <>
+          <ellipse cx="32" cy="69" rx={who === "kid" ? 7 : 6} ry="4" fill={BLUSH} />
+          <ellipse cx="68" cy="69" rx={who === "kid" ? 7 : 6} ry="4" fill={BLUSH} />
+        </>
+      )}
+
+      <g stroke={INK} strokeWidth="4" strokeLinejoin="round" strokeLinecap="round" fill="none">
+        {/* the face each of them makes at work */}
+        {!out && (who === "h" || who === "w") && (
           <>
-            {/* laughing: > < and a wide-open mouth, under a graduation cap */}
+            <path d="M34 59 q5 -6 10 0" />
+            <path d="M56 59 q5 -6 10 0" />
+            <path d="M41 71 Q50 80 59 71" />
+          </>
+        )}
+        {!out && who === "iris" && (
+          <>
+            {/* wide eyes, worried brows, a mouth that cannot hold still, sweat */}
+            <circle cx="39" cy="58" r="6.2" fill="#fff" strokeWidth="3.4" />
+            <circle cx="61" cy="58" r="6.2" fill="#fff" strokeWidth="3.4" />
+            <circle cx="40.5" cy="57" r="1.9" fill={INK} strokeWidth="1.6" />
+            <circle cx="59.5" cy="57" r="1.9" fill={INK} strokeWidth="1.6" />
+            <path d="M31 48 l11 -4" strokeWidth="3.4" />
+            <path d="M69 48 l-11 -4" strokeWidth="3.4" />
+            <path d="M40 74 q2.5 -4.5 5 0 t5 0 t5 0 t5 0" strokeWidth="3.4" />
+            <path d="M80 39 q5.5 8.5 0 12 q-5.5 -3.5 0 -12 Z" fill="#7CCBF2" strokeWidth="2.6" />
+          </>
+        )}
+        {shades && (
+          <>
+            {/* shades on, at work or not */}
+            <rect x="28" y="52" width="19" height="12.5" rx="4.5" fill={INK} />
+            <rect x="53" y="52" width="19" height="12.5" rx="4.5" fill={INK} />
+            <path d="M47 56 h6" />
+            <path d="M33 56.5 l4.5 -2.2 M58 56.5 l4.5 -2.2" stroke="#fff" strokeWidth="2.2" />
+            <path d={out ? "M40 72 Q50 82 60 72" : "M42 74 Q52 79 60 72"} />
+          </>
+        )}
+        {who === "kid" && (
+          <>
+            {/* dot eyes and a grin with a front tooth gone: she is seven */}
+            <circle cx="39" cy="59" r="2.6" fill={INK} strokeWidth="2.4" />
+            <circle cx="61" cy="59" r="2.6" fill={INK} strokeWidth="2.4" />
+            <path d="M38 68 Q50 85 62 68 Z" fill="#C2392F" strokeWidth="3.4" />
+            <rect x="44.6" y="69.6" width="5" height="4.6" fill="#fff" stroke="none" />
+          </>
+        )}
+
+        {/* turned over: laughing under a graduation cap */}
+        {out && !shades && (
+          <>
             <path d="M33 54 l9 5 l-9 5" />
             <path d="M67 54 l-9 5 l9 5" />
             <path d="M39 70 Q50 88 61 70 Z" fill="#C2392F" />
+          </>
+        )}
+        {out && (
+          <>
             <path d="M29 28 L29 38 Q50 46 71 38 L71 28 Z" fill="#2F4B8F" />
             <path d="M50 11 L84 23 L50 35 L16 23 Z" fill="#2F4B8F" />
             <path d="M84 23 V42" strokeWidth="8" />
             <path d="M84 23 V42" stroke="#FFC93C" strokeWidth="3.5" />
             <circle cx="84" cy="46" r="4.5" fill="#FFC93C" strokeWidth="3" />
-          </>
-        ) : (
-          <>
-            <path d="M34 59 q5 -6 10 0" />
-            <path d="M56 59 q5 -6 10 0" />
-            <path d="M41 71 Q50 80 59 71" />
           </>
         )}
       </g>
@@ -292,8 +371,10 @@ export function PinganSign() {
   const saved = useMemo(() => parseSaved(savedRaw), [savedRaw]);
 
   const [bubble, setBubble] = useState<{ who: Who; text: string; n: number } | null>(null);
-  /* a finger is on this sign: it sinks and its band starts to fill */
+  /* a finger is on this badge: it sinks and its band starts to fill */
   const [pressing, setPressing] = useState<Who | null>(null);
+  /* the 驳回 stamp on the kid's badge (a key while it shows, 0 otherwise) */
+  const [denied, setDenied] = useState(0);
   const [news, setNews] = useState(false);
   const [saving, setSaving] = useState(false);
   /* the drawn 喜报, shown to long-press where there is no share sheet */
@@ -301,8 +382,8 @@ export function PinganSign() {
   const [balloons, setBalloons] = useState<Balloon[]>([]);
 
   const root = useRef<HTMLElement>(null);
-  const hangs = useRef<Record<Who, HTMLDivElement | null>>({ h: null, w: null });
-  const inners = useRef<Record<Who, HTMLSpanElement | null>>({ h: null, w: null });
+  const hangs = useRef<Partial<Record<Who, HTMLDivElement | null>>>({});
+  const inners = useRef<Partial<Record<Who, HTMLSpanElement | null>>>({});
   const press = useRef<{
     who: Who;
     at: number;
@@ -313,16 +394,29 @@ export function PinganSign() {
   } | null>(null);
   const holdTimers = useRef<number[]>([]);
   const bubbleTimer = useRef(0);
-  const lastLine = useRef<Record<Who, number>>({ h: -1, w: -1 });
+  const deniedTimer = useRef(0);
+  const lastLine = useRef<Partial<Record<Who, number>>>({});
   const stopShow = useRef<(() => void) | null>(null);
 
-  const out = PEOPLE.filter((k) => saved[k]);
+  const out = outOf(saved);
+  const isOut = (who: Who) => isWorker(who) && !!saved[who];
   const taught = !!saved.taught || out.length > 0;
   const streak = today ? streakOf(saved, today) : null;
   const digits = streak === null ? ["·"] : String(streak).split("");
   const stamp = MILESTONES.find(([n]) => n === streak)?.[1];
-  const status =
-    out.length === 2 ? STATUS.both : out.length === 1 ? STATUS[out[0]] : STATUS.none;
+
+  /* how many are out, and whether it is exactly the two of them */
+  const everyone = out.length === CAN_TURN.length;
+  const justFamily = out.length === 2 && !!saved.h && !!saved.w;
+  const status = everyone
+    ? STATUS.all
+    : justFamily
+      ? STATUS.family
+      : out.length > 1
+        ? STATUS.several(out.length)
+        : out.length === 1
+          ? STATUS.one[out[0]]
+          : STATUS.none;
 
   const day = today ? dayNumber(today) : null;
   const yi = day === null ? "" : YI[mod(day, YI.length)];
@@ -330,15 +424,28 @@ export function PinganSign() {
   const [, mm, dd] = today ? today.split("-").map(Number) : [0, 0, 0];
   const weekday = day === null ? "" : WEEKDAYS[mod(day + 4, 7)];
 
-  /* the good news, read off the signs as they stand */
-  const newsFor = out.length === 2 ? "both" : out[0];
+  /* the good news, read off the badges as they hang */
   const turnedOn = out.map((k) => saved[k] as string).sort();
-  const goodNews = newsFor && {
-    subject: newsFor === "both" ? "全家" : `${WHO[newsFor]}同志`,
-    lean: LEAN[newsFor],
-    record: saved.record ?? 0,
-    date: dotted(turnedOn[turnedOn.length - 1]),
-  };
+  const goodNews =
+    out.length > 0
+      ? {
+          subject: everyone
+            ? "全员"
+            : justFamily
+              ? "全家"
+              : out.length === 1
+                ? `${WHO[out[0]]}同志`
+                : out.map((k) => WHO[k]).join("、"),
+          lean:
+            saved.h && saved.w
+              ? LEAN.family
+              : out.length === 1
+                ? LEAN.one[out[0]]
+                : LEAN.several,
+          record: saved.record ?? 0,
+          date: dotted(turnedOn[turnedOn.length - 1]),
+        }
+      : null;
 
   function releaseBalloons(n: number) {
     const batch = makeBalloons(n);
@@ -361,7 +468,7 @@ export function PinganSign() {
   }
 
   function talk(who: Who) {
-    const pool = saved[who] ? OUT_LINES : SAFE_LINES;
+    const pool = isOut(who) ? [...OUT_LINES, ...(OUT_EXTRA[who] ?? [])] : SAFE_LINES[who];
     let i = Math.floor(Math.random() * pool.length);
     if (i === lastLine.current[who]) i = (i + 1) % pool.length;
     lastLine.current[who] = i;
@@ -417,13 +524,27 @@ export function PinganSign() {
     };
   }
 
-  function turn(who: Who, at: { x: number; y: number }) {
+  /* The kid's badge held to the end: the request comes back stamped. */
+  function deny() {
+    buzz([30, 50, 30]);
+    say("kid", KID_DENIED, 3200);
+    window.clearTimeout(deniedTimer.current);
+    setDenied(Date.now());
+    deniedTimer.current = window.setTimeout(() => setDenied(0), 2800);
+    if (calm()) return;
+    hangs.current.kid?.animate(
+      [0, -6, 6, -5, 5, -3, 0].map((x) => ({ transform: `translateX(${x}%)` })),
+      { duration: 480, easing: "ease-out" }
+    );
+  }
+
+  function turn(who: Worker, at: { x: number; y: number }) {
     const cur = parseSaved(readSaved());
     const now = dateKey(new Date());
     if (cur[who]) {
       /* back at work: the count starts again once nobody is out */
       const next: Saved = { ...cur, [who]: undefined, taught: true };
-      if (!next.h && !next.w) next.since = now;
+      if (outOf(next).length === 0) next.since = now;
       buzz([15, 40, 15]);
       flipSign(who, () => {
         writeSaved(next);
@@ -434,7 +555,7 @@ export function PinganSign() {
       });
       return;
     }
-    const record = cur.h || cur.w ? (cur.record ?? 0) : streakOf(cur, now);
+    const record = outOf(cur).length > 0 ? (cur.record ?? 0) : streakOf(cur, now);
     window.clearTimeout(bubbleTimer.current);
     setBubble(null);
     buzz([20, 60, 20, 60, 40]);
@@ -469,7 +590,7 @@ export function PinganSign() {
     press.current = mine;
     setPressing(who);
     buzz(8);
-    const lines = saved[who] ? HOLD_BACK : HOLD_OUT;
+    const lines = isOut(who) ? HOLD_BACK : HOLD_OUT[who];
     const step = (HOLD_MS - TAP_MS) / lines.length;
     holdTimers.current = [
       ...lines.map((line, i) =>
@@ -481,7 +602,8 @@ export function PinganSign() {
       window.setTimeout(() => {
         mine.done = true;
         setPressing(null);
-        turn(who, mine);
+        if (isWorker(who)) turn(who, mine);
+        else deny();
       }, HOLD_MS),
     ];
   }
@@ -499,7 +621,7 @@ export function PinganSign() {
       return;
     }
     if (performance.now() - p.at >= TAP_MS) say(who, LET_GO);
-    else if (p.onPad && !saved[who]) say(who, PAD_TAP);
+    else if (p.onPad && !isOut(who)) say(who, PAD_TAP);
     else talk(who);
   }
 
@@ -545,13 +667,13 @@ export function PinganSign() {
       <div className={s.stripe} aria-hidden="true" />
 
       <div className={s.col}>
-        <section className={s.board} aria-label="家庭平安公告牌">
+        <section className={s.board} aria-label="大家庭平安公告牌">
           <i className={s.screw} aria-hidden="true" />
           <i className={s.screw} aria-hidden="true" />
           <i className={s.screw} aria-hidden="true" />
           <i className={s.screw} aria-hidden="true" />
-          <div className={s.tag}>家庭平安公告牌</div>
-          <h1 className={s.lead}>本家庭已连续</h1>
+          <div className={s.tag}>大家庭平安公告牌</div>
+          <h1 className={s.lead}>本大家庭已连续</h1>
           <div className={s.count}>
             {digits.map((d, i) => (
               <span key={i} className={`${s.tile} ${digits.length > 2 ? s.tileSmall : ""}`}>
@@ -578,40 +700,61 @@ export function PinganSign() {
         </section>
 
         <div className={s.signs}>
+          {/* one bubble for the row: it leans toward whoever is speaking, so
+              the end badges never push it off the screen */}
+          {bubble && (
+            <div
+              key={bubble.n}
+              className={s.bubble}
+              role="status"
+              style={
+                { "--a": PEOPLE.indexOf(bubble.who) / (PEOPLE.length - 1) } as React.CSSProperties
+              }
+            >
+              {bubble.text}
+            </div>
+          )}
           {PEOPLE.map((who) => {
-            const isOut = !!saved[who];
+            const turned = isOut(who);
+            const verdict = who === "kid" ? VERDICT.kid : turned ? VERDICT.out : VERDICT.safe;
+            /* the hand goes along the workers' badges in turn; the kid's 驳回
+               stays a surprise */
+            const showing = !taught && isWorker(who);
             return (
               <div
                 key={who}
-                className={`${s.hang} ${taught ? "" : s.untaught}`}
-                style={{ "--demo-delay": who === "h" ? "0.6s" : "3.6s" } as React.CSSProperties}
+                className={`${s.hang} ${showing ? s.untaught : ""}`}
+                style={
+                  {
+                    "--demo-delay": `${0.5 + CAN_TURN.indexOf(who as Worker) * 3.2}s`,
+                  } as React.CSSProperties
+                }
               >
-                {bubble?.who === who && (
-                  <div key={bubble.n} className={s.bubble} role="status">
-                    {bubble.text}
-                  </div>
-                )}
                 <div
                   ref={(el) => {
                     hangs.current[who] = el;
                   }}
                   className={s.swing}
                 >
-                  <svg viewBox="0 0 100 16.7" className={s.strings} aria-hidden="true">
+                  <svg viewBox="0 0 100 30" className={s.strings} aria-hidden="true">
                     <path
-                      d="M22 17 L50 4 L78 17"
+                      d="M20 31 L50 8 L80 31"
                       fill="none"
                       stroke={INK}
-                      strokeWidth="1.8"
+                      strokeWidth="4.6"
                       strokeLinejoin="round"
                     />
-                    <circle cx="50" cy="4" r="3" fill="#D8D0BD" stroke={INK} strokeWidth="1.6" />
+                    <circle cx="50" cy="8" r="6" fill="#D8D0BD" stroke={INK} strokeWidth="4" />
                   </svg>
                   <button
                     type="button"
                     className={`${s.sign} ${pressing === who ? s.pressing : ""}`}
                     style={{ "--hold": `${HOLD_MS}ms` } as React.CSSProperties}
-                    aria-label={`${WHO[who]}：${isOut ? "被裁了" : "没被裁"}。轻点问一句，按住${HOLD_ZH}翻牌`}
+                    aria-label={
+                      who === "kid"
+                        ? `${WHO[who]}：${verdict}。轻点问一句`
+                        : `${WHO[who]}：${verdict}。轻点问一句，按住${HOLD_ZH}翻牌`
+                    }
                     onPointerDown={(e) => down(who, e)}
                     onPointerUp={() => up(who, false)}
                     onPointerCancel={() => up(who, true)}
@@ -628,26 +771,32 @@ export function PinganSign() {
                       }}
                       className={s.inner}
                     >
-                      <span className={`${s.face} ${isOut ? s.back : ""}`}>
+                      <span className={`${s.face} ${turned ? s.back : ""}`}>
                         <span className={s.name}>{WHO[who]}</span>
-                        <Mug who={who} out={isOut} />
-                        <span className={`${s.band} ${isOut ? s.bandOut : ""}`}>
+                        <Mug who={who} out={turned} />
+                        <span
+                          className={`${s.band} ${turned ? s.bandOut : who === "kid" ? s.bandKid : ""}`}
+                        >
                           <span className={s.meter} />
-                          <span className={s.words}>
-                            <span className={s.state}>{isOut ? "被裁了" : "没被裁"}</span>
-                            <span className={s.how}>{isOut ? HOW_BACK : HOW_OUT}</span>
-                          </span>
+                          <span className={s.state}>{verdict}</span>
                           <Pad />
                         </span>
                       </span>
                     </span>
                   </button>
-                  {!taught && <DemoHand />}
+                  {showing && <DemoHand />}
+                  {who === "kid" && denied > 0 && (
+                    <span key={denied} className={s.denied} aria-hidden="true">
+                      {KID_STAMP}
+                    </span>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
+
+        <p className={s.hint}>{HOW}</p>
 
         {out.length > 0 ? (
           <button type="button" className={s.status} onClick={openNews}>
@@ -682,7 +831,9 @@ export function PinganSign() {
           <div className={s.poster}>
             <div className={s.newsTitle}>喜报</div>
             <div className={s.newsLine}>热烈祝贺</div>
-            <div className={s.newsWho}>{goodNews.subject}</div>
+            <div className={`${s.newsWho} ${goodNews.subject.length > 6 ? s.newsWhoLong : ""}`}>
+              {goodNews.subject}
+            </div>
             <div className={s.newsDid}>光荣毕业</div>
             <div className={s.newsRule} />
             {goodNews.record > 0 && (
@@ -693,7 +844,7 @@ export function PinganSign() {
                 <div key={line}>{line}</div>
               ))}
             </div>
-            <div className={s.newsDate}>{goodNews.date} · 本家庭 宣</div>
+            <div className={s.newsDate}>{goodNews.date} · 本大家庭 宣</div>
           </div>
           <div className={s.newsBtns}>
             <button

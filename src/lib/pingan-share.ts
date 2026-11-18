@@ -8,7 +8,7 @@
  */
 
 export type GoodNews = {
-  /** 老公同志 / 老婆同志 / 全家 */
+  /** 老公同志 / Iris同志 / 老公、Iris / 全家 / 全员 */
   subject: string;
   /** who the family leans on now, one string per line */
   lean: string[];
@@ -80,7 +80,7 @@ export async function renderGoodNews(news: GoodNews, fontFrom: Element): Promise
   const family = face
     ? `${face}, "PingFang SC", sans-serif`
     : '"PingFang SC", "Microsoft YaHei", sans-serif';
-  const footer = `${news.date} · 本家庭 宣`;
+  const footer = `${news.date} · 本大家庭 宣`;
 
   /* the face arrives in unicode-range slices: ask for every glyph we set */
   const all = ["喜报热烈祝贺光荣毕业", news.subject, ...news.lean, recordLine(news.record), footer].join("");

@@ -2,12 +2,12 @@
  * 平安牌 — /pingan. A printed object (a works-site safety board), so it wears
  * its own colours and cartoon letter, not the library's tokens.
  *
- * Everything is measured in --u. The sign is drawn 100u wide and about 190u
+ * Everything is measured in --u. The sign is drawn 100u wide and about 185u
  * tall, and --u is the largest unit that fits BOTH the phone's width and its
  * height — so the whole sign sits on one screen with nothing to scroll.
  */
 .page {
-  --u: min(1vw, 4.4px, calc(100vh / 192));
+  --u: min(1vw, 4.4px, calc(100vh / 187));
   --ink: #1f1d1a;
   --yellow: #ffd84d;
   --cream: #fff8e7;
@@ -36,7 +36,7 @@
 }
 @supports (height: 100dvh) {
   .page {
-    --u: min(1vw, 4.4px, calc(100dvh / 192));
+    --u: min(1vw, 4.4px, calc(100dvh / 187));
     min-height: 100dvh;
   }
 }
@@ -185,22 +185,21 @@ body:has(.page) {
   transform: rotate(12deg);
 }
 
-/* ── the two hanging signs ─────────────────────────────────── */
+/* ── the row of hanging work badges ────────────────────────── */
 
 .signs {
   position: relative;
   z-index: 2;
-  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 calc(var(--u) * 1);
   margin-top: calc(var(--u) * 0.6);
 }
 
+/* five across: narrow, so everything on a badge is stacked */
 .hang {
   position: relative;
-  width: calc(var(--u) * 42);
+  width: calc(var(--u) * 16.8);
 }
 
 /* swings from the nail */
@@ -212,13 +211,13 @@ body:has(.page) {
 .strings {
   display: block;
   width: 100%;
-  height: calc(var(--u) * 7);
+  height: calc(var(--u) * 5.04);
 }
 
 .sign {
   display: block;
   width: 100%;
-  height: calc(var(--u) * 51.5);
+  height: calc(var(--u) * 44);
   padding: 0;
   border: 0;
   background: none;
@@ -229,12 +228,12 @@ body:has(.page) {
   touch-action: pan-y;
 }
 .sign:focus-visible {
-  outline: calc(var(--u) * 0.8) dashed var(--ink);
-  outline-offset: calc(var(--u) * 1.4);
-  border-radius: calc(var(--u) * 4.4);
+  outline: calc(var(--u) * 0.7) dashed var(--ink);
+  outline-offset: calc(var(--u) * 1);
+  border-radius: calc(var(--u) * 3.2);
 }
 
-/* The sign turns over flat (a squeeze, in the component) — no 3D here, and
+/* The badge turns over flat (a squeeze, in the component) — no 3D here, and
    no second face on the back that a phone could show mirrored. */
 .inner {
   position: relative;
@@ -252,11 +251,11 @@ body:has(.page) {
   align-items: center;
   overflow: hidden;
   background: var(--cream);
-  border: calc(var(--u) * 0.9) solid var(--ink);
-  border-radius: calc(var(--u) * 4.4);
-  box-shadow: 0 calc(var(--u) * 1.2) 0 var(--ink);
+  border: calc(var(--u) * 0.8) solid var(--ink);
+  border-radius: calc(var(--u) * 3.2);
+  box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
 }
-/* the turned sign: a warmer card */
+/* the turned badge: a warmer card */
 .back {
   background: #fff0c2;
 }
@@ -264,36 +263,38 @@ body:has(.page) {
 .name {
   position: relative;
   z-index: 1;
-  margin-top: calc(var(--u) * 2);
-  padding: 0.25em 1em 0.3em;
+  margin-top: calc(var(--u) * 1.5);
+  padding: 0.22em 0.7em 0.28em;
   border-radius: 99px;
   background: var(--ink);
   color: var(--cream);
-  font-size: calc(var(--u) * 4.6);
-  letter-spacing: 0.1em;
+  font-size: calc(var(--u) * 3.5);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .mug {
   position: relative;
   z-index: 1;
-  width: calc(var(--u) * 22);
-  height: calc(var(--u) * 22);
+  width: calc(var(--u) * 14.4);
+  height: calc(var(--u) * 14.4);
   margin-top: calc(var(--u) * 0.3);
 }
 
-/* the band: the verdict on the left, the thumbprint pad on the right */
+/* the band: the verdict, and under it the thumbprint pad */
 .band {
   position: relative;
   z-index: 1;
   box-sizing: border-box;
   align-self: stretch;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: calc(var(--u) * 1);
-  height: calc(var(--u) * 17.4);
+  justify-content: center;
+  gap: calc(var(--u) * 0.7);
+  height: calc(var(--u) * 21);
   margin-top: auto;
-  padding: 0 calc(var(--u) * 1.6) 0 calc(var(--u) * 1.8);
-  border-top: calc(var(--u) * 0.9) solid var(--ink);
+  border-top: calc(var(--u) * 0.8) solid var(--ink);
   background: var(--green);
   text-align: center;
 }
@@ -301,27 +302,15 @@ body:has(.page) {
   background: var(--red);
   color: var(--cream);
 }
+/* the kid's: neither green nor red — an iron rice bowl, in gold */
+.bandKid {
+  background: #ffc93c;
+}
 
-.words {
-  position: relative;
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .state {
-  font-size: calc(var(--u) * 6.8);
-  letter-spacing: 0.03em;
+  position: relative;
+  font-size: calc(var(--u) * 4.5);
   white-space: nowrap;
-}
-/* how the sign is turned, in small print for anyone who reads */
-.how {
-  margin-top: calc(var(--u) * 0.6);
-  font-size: calc(var(--u) * 2.9);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  opacity: 0.88;
 }
 
 /* The thumbprint pad — the thing that says "finger here, and keep it there"
@@ -329,13 +318,13 @@ body:has(.page) {
 .pad {
   position: relative;
   flex: none;
-  width: calc(var(--u) * 13.4);
-  height: calc(var(--u) * 13.4);
-  margin-bottom: calc(var(--u) * 0.7);
-  border: calc(var(--u) * 0.8) solid var(--ink);
+  width: calc(var(--u) * 11.4);
+  height: calc(var(--u) * 11.4);
+  margin-bottom: calc(var(--u) * 0.6);
+  border: calc(var(--u) * 0.7) solid var(--ink);
   border-radius: 50%;
   background: var(--cream);
-  box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+  box-shadow: 0 calc(var(--u) * 0.9) 0 var(--ink);
   color: var(--news);
 }
 .bandOut .pad {
@@ -356,20 +345,20 @@ body:has(.page) {
 }
 
 /* the hand that shows how; it only exists while the phone is untaught, and
-   only moves when motion is welcome */
+   only moves when motion is welcome. Its fingertip lands on the pad. */
 .hand {
   position: absolute;
   z-index: 4;
-  left: calc(var(--u) * 26.2);
-  top: calc(var(--u) * 47);
-  width: calc(var(--u) * 13);
-  height: calc(var(--u) * 16.9);
+  left: calc(var(--u) * 3.3);
+  top: calc(var(--u) * 38.7);
+  width: calc(var(--u) * 10.4);
+  height: calc(var(--u) * 13.5);
   opacity: 0;
   pointer-events: none;
 }
 
 /* the hold meter: the band fills left to right for as long as the hold takes,
-   in the colour the sign is about to show */
+   in the colour the badge is about to show */
 .meter {
   position: absolute;
   inset: 0;
@@ -386,23 +375,44 @@ body:has(.page) {
   transition: transform var(--hold, 2000ms) linear;
 }
 
-/* under a finger the sign sinks onto its shadow, like a button — and so does
+/* under a finger the badge sinks onto its shadow, like a button — and so does
    the pad, while its ring fills */
 .pressing {
-  transform: translateY(calc(var(--u) * 0.9));
+  transform: translateY(calc(var(--u) * 0.8));
 }
 .pressing .face {
-  box-shadow: 0 calc(var(--u) * 0.3) 0 var(--ink);
+  box-shadow: 0 calc(var(--u) * 0.2) 0 var(--ink);
 }
 
+/* 驳回 — what comes back when somebody tries to lay off a seven-year-old */
+.denied {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: calc(var(--u) * 20);
+  padding: calc(var(--u) * 0.3) calc(var(--u) * 1.4) calc(var(--u) * 0.6);
+  border: calc(var(--u) * 0.8) solid var(--news);
+  border-radius: calc(var(--u) * 1.4);
+  background: rgba(255, 248, 231, 0.92);
+  color: var(--news);
+  font-size: calc(var(--u) * 6.4);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-14deg);
+}
+
+/* One speech bubble for the whole row. --a runs 0 → 1 along the badges: the
+   bubble slides with it (left-aligned for the first, right-aligned for the
+   last) so it never leaves the screen, and its tail follows. */
 .bubble {
   position: absolute;
   z-index: 5;
-  left: 50%;
-  bottom: calc(100% - var(--u) * 6.4);
+  left: calc(var(--a, 0.5) * 100%);
+  bottom: calc(100% - var(--u) * 3.6);
   box-sizing: border-box;
   width: max-content;
-  max-width: calc(var(--u) * 46);
+  max-width: calc(var(--u) * 56);
   padding: calc(var(--u) * 1.6) calc(var(--u) * 2.8) calc(var(--u) * 1.9);
   border: calc(var(--u) * 0.8) solid var(--ink);
   border-radius: calc(var(--u) * 4);
@@ -412,12 +422,16 @@ body:has(.page) {
   line-height: 1.25;
   text-align: center;
   pointer-events: none;
-  transform: translateX(-50%);
+  transform: translateX(calc(var(--a, 0.5) * -100%));
 }
 .bubble::after {
   content: "";
   position: absolute;
-  left: 50%;
+  left: clamp(
+    calc(var(--u) * 5.5),
+    calc(var(--a, 0.5) * 100%),
+    calc(100% - var(--u) * 5.5)
+  );
   bottom: calc(var(--u) * -2);
   width: calc(var(--u) * 2.6);
   height: calc(var(--u) * 2.6);
@@ -429,8 +443,16 @@ body:has(.page) {
 
 /* ── under the signs ───────────────────────────────────────── */
 
+/* the one line of small print, for anyone who reads */
+.hint {
+  margin-top: calc(var(--u) * 2.4);
+  font-size: calc(var(--u) * 3.1);
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
 .status {
-  margin-top: calc(var(--u) * 3.2);
+  margin-top: calc(var(--u) * 2);
   padding: calc(var(--u) * 1.5) calc(var(--u) * 4) calc(var(--u) * 1.8);
   border: calc(var(--u) * 0.8) solid var(--ink);
   border-radius: 99px;
@@ -553,6 +575,11 @@ button.status {
   font-size: calc(var(--u) * 15);
   line-height: 1.12;
 }
+/* two or three names on one line */
+.newsWhoLong {
+  font-size: calc(var(--u) * 9);
+  line-height: 1.5;
+}
 .newsDid {
   font-size: calc(var(--u) * 15);
   line-height: 1.12;
@@ -647,78 +674,132 @@ button.status {
       box-shadow 0.1s ease;
   }
 
-  /* The showing loop, six seconds: the pad nods, the hand comes in, presses
-     for two seconds while the ring fills, lets go. The two signs take turns
-     (--demo-delay). Three animations on one clock. */
+  /* The showing loop. The hand goes along the workers' badges one at a time
+     (--demo-delay, 3.2 s apart, 12.8 s for the round): it comes in, presses a
+     pad for two seconds while that pad's ring fills, and lets go. Three
+     animations on one clock. */
   .untaught .hand {
-    animation: demo-hand 6s ease-in-out var(--demo-delay, 0s) infinite;
+    animation: demo-hand 12.8s ease-in-out var(--demo-delay, 0s) infinite;
   }
   .untaught .pad {
-    animation: demo-pad 6s ease-in-out var(--demo-delay, 0s) infinite;
+    animation: demo-pad 12.8s ease-in-out var(--demo-delay, 0s) infinite;
   }
   .untaught .padDemo {
-    animation: demo-ring 6s linear var(--demo-delay, 0s) infinite;
+    animation: demo-ring 12.8s linear var(--demo-delay, 0s) infinite;
   }
+  /* each turn fits inside its 3.2 s (25%), so only one hand is out at a time */
   @keyframes demo-hand {
     0%,
-    12% {
+    1.5% {
       opacity: 0;
-      transform: translate(calc(var(--u) * 2.4), calc(var(--u) * 5)) rotate(8deg);
+      transform: translate(calc(var(--u) * 2.2), calc(var(--u) * 4.6)) rotate(8deg);
     }
-    20% {
+    4.5% {
       opacity: 1;
-      transform: translate(calc(var(--u) * 0.6), calc(var(--u) * 1.6)) rotate(4deg);
+      transform: translate(calc(var(--u) * 0.5), calc(var(--u) * 1.4)) rotate(4deg);
     }
-    26%,
-    62% {
+    6.5%,
+    23% {
       opacity: 1;
       transform: translate(0, 0) scale(0.94);
     }
-    70% {
+    25% {
       opacity: 1;
-      transform: translate(calc(var(--u) * 0.6), calc(var(--u) * 1.6)) rotate(4deg);
+      transform: translate(calc(var(--u) * 0.5), calc(var(--u) * 1.4)) rotate(4deg);
     }
-    78%,
+    27.5%,
     100% {
       opacity: 0;
-      transform: translate(calc(var(--u) * 2.4), calc(var(--u) * 5)) rotate(8deg);
+      transform: translate(calc(var(--u) * 2.2), calc(var(--u) * 4.6)) rotate(8deg);
     }
   }
   @keyframes demo-pad {
     0%,
-    4%,
-    12%,
-    24% {
+    6% {
       transform: none;
-      box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+      box-shadow: 0 calc(var(--u) * 0.9) 0 var(--ink);
     }
-    8% {
-      transform: scale(1.1);
-      box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+    7%,
+    23% {
+      transform: translateY(calc(var(--u) * 0.6));
+      box-shadow: 0 calc(var(--u) * 0.2) 0 var(--ink);
     }
-    27%,
-    62% {
-      transform: translateY(calc(var(--u) * 0.7));
-      box-shadow: 0 calc(var(--u) * 0.3) 0 var(--ink);
-    }
-    66%,
+    24.5%,
     100% {
       transform: none;
-      box-shadow: 0 calc(var(--u) * 1) 0 var(--ink);
+      box-shadow: 0 calc(var(--u) * 0.9) 0 var(--ink);
     }
   }
   @keyframes demo-ring {
     0%,
-    26% {
+    6.5% {
       stroke-dashoffset: 128.8;
     }
-    60%,
-    64% {
+    22.5%,
+    24% {
       stroke-dashoffset: 0;
     }
-    66%,
+    24.8%,
     100% {
       stroke-dashoffset: 128.8;
+    }
+  }
+
+  /* in character while at work: Iris trembles, the kid hops */
+  .jitter {
+    animation: jitter 2.6s linear infinite;
+  }
+  @keyframes jitter {
+    0%,
+    52%,
+    100% {
+      transform: none;
+    }
+    56%,
+    64%,
+    72%,
+    80%,
+    88% {
+      transform: translate(calc(var(--u) * -0.35), 0) rotate(-2.5deg);
+    }
+    60%,
+    68%,
+    76%,
+    84%,
+    92% {
+      transform: translate(calc(var(--u) * 0.35), 0) rotate(2.5deg);
+    }
+  }
+  .hop {
+    animation: hop 3.4s ease-in-out infinite;
+  }
+  @keyframes hop {
+    0%,
+    78%,
+    100% {
+      transform: none;
+    }
+    84% {
+      transform: translateY(calc(var(--u) * -1.3));
+    }
+    90% {
+      transform: none;
+    }
+    94% {
+      transform: translateY(calc(var(--u) * -0.6));
+    }
+  }
+  .denied {
+    animation: denied 0.32s cubic-bezier(0.3, 1.5, 0.5, 1) backwards;
+  }
+  @keyframes denied {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(-14deg) scale(2.2);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-14deg) scale(1);
     }
   }
 
@@ -742,14 +823,14 @@ button.status {
   @keyframes pop {
     from {
       opacity: 0;
-      transform: translateX(-50%) translateY(20%) scale(0.5);
+      transform: translateX(calc(var(--a, 0.5) * -100%)) translateY(20%) scale(0.5);
     }
     60% {
       opacity: 1;
-      transform: translateX(-50%) scale(1.07);
+      transform: translateX(calc(var(--a, 0.5) * -100%)) scale(1.07);
     }
     to {
-      transform: translateX(-50%) scale(1);
+      transform: translateX(calc(var(--a, 0.5) * -100%)) scale(1);
     }
   }
   @keyframes news-in {
@@ -774,8 +855,8 @@ button.status {
 /* the pad under a real finger: pressed in, ring filling for the whole hold.
    After the motion block so it wins over the demonstration. */
 .pressing .pad {
-  transform: translateY(calc(var(--u) * 0.7));
-  box-shadow: 0 calc(var(--u) * 0.3) 0 var(--ink);
+  transform: translateY(calc(var(--u) * 0.6));
+  box-shadow: 0 calc(var(--u) * 0.2) 0 var(--ink);
 }
 .pressing .padGo {
   stroke-dashoffset: 0;
