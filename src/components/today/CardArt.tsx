@@ -1356,6 +1356,23 @@ const SCENES: Record<string, (lang: Lang) => ReactNode> = {
       <path d="M96 208c10-6 38-6 48 0" strokeWidth={3} fill="none" />
     </>
   ),
+
+  "fi-stress-switch-senses": (lang) => (
+    <>
+      <Ground />
+      <rect x={22} y={60} width={46} height={154} rx={3} fill={GREY} />
+      <path d="M22 96h46M22 132h46M22 168h46M45 60v154" stroke={PAPER} strokeWidth={2} />
+      <Buddy x={150} y={150} r={44} eyes="happy" mouth="smile" />
+      <path d="M106 150c-10 0-22 4-30 10" strokeWidth={5} />
+      <circle cx={72} cy={162} r={8} fill={PAPER} />
+      <path d="M228 70q14-10 0-20M238 80q26-18 0-40" strokeWidth={3} fill="none" />
+      <path d="M258 46l8-8 8 8-8 8z" fill={SUN} />
+      <circle cx={302} cy={120} r={20} fill={LEAF} />
+      <path d="M302 140v30" strokeWidth={5} />
+      <path d="M268 190q6-10 12 0q6 10 12 0" strokeWidth={3} fill="none" />
+      <Label lang={lang} x={300} y={76} s={18} zh="听·看·摸" en="hear · see · touch" es={12} />
+    </>
+  ),
 };
 
 /* A card whose own drawing has not been made yet borrows its pillar's. */

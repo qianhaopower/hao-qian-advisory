@@ -101,6 +101,7 @@ const EDGES: [string, string][] = [
   ["video:fi-stress-switch-eyes", "book:friends-intelligence"],
   ["video:fi-stress-switch-face", "book:friends-intelligence"],
   ["video:fi-stress-switch-breath", "book:friends-intelligence"],
+  ["video:fi-stress-switch-senses", "book:friends-intelligence"],
 ];
 
 function resolve(id: string): ConnectionRef | null {

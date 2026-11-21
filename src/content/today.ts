@@ -490,4 +490,16 @@ export const TODAY_CARDS: TodayCard[] = [
       when: "When your heart races",
     },
   },
+  {
+    episode: "fi-stress-switch-senses",
+    pillar: "emotion",
+    do: "听一个声音，\n看一样东西，\n摸一下墙。",
+    why: "焦虑是大脑在想过去和未来；五感一开，它就回到这一秒。学名 sensory grounding。",
+    when: "焦虑上来时",
+    en: {
+      do: "Hear one sound, look at one thing, touch the wall.",
+      why: "Anxiety is the brain living in the past and the future; switch the senses on and it comes back to this second. The name is sensory grounding.",
+      when: "When anxiety rises",
+    },
+  },
 ];
