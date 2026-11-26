@@ -916,3 +916,32 @@ Readings:
 Pending: 零食 2s avg-watch glitch (re-check next sweep); Ep47 淀粉 too
 fresh (swept at 0); 慢性病 traffic verification now obsolete-able via
 the new 流量来源 panel (video feed % is visible per note).
+
+### Correction — 2026-11-26 (the 22 AUD boost; desk read the order in the RedNote app)
+
+Hao bought one 薯条/boost order (~22 AUD ≈ 97.80元, goal = 粉丝关注量,
+budget auto-spread; ran after 11-04 given the notes included). Per note:
+
+| Boosted note | 消耗 | 曝光 | 阅读 | 新增关注 |
+|---|---|---|---|---|
+| 反式脂肪 (Ep21, old) | 30.78元 | 543 | 212 | **23** |
+| 认知解离 (Ep39) | 28.21元 | 335 | 189 | 7 |
+| 腹部脂肪 (Ep26, old) | 14.65元 | 342 | 88 | 10 |
+| BDNF爱运动 (Ep24, old) | 14.47元 | 230 | 68 | 8 |
+| fitness (Ep32, old) | 5.87元 | 82 | 33 | 2 |
+| 睡眠垃圾食品 (Ep40) | 3.82元 | 71 | 20 | 3 |
+| **Total** | **97.80元** | 1,603 | 610 | **53** |
+
+Cost ≈ 1.85元/粉 (~0.42 AUD) — decent for cold-start (薯条 typically
+2–5元/粉). The sweep's numbers revise:
+- 30d net +91 = **~53 bought + ~38 organic**. NOT the best month —
+  organic pace actually SLOWED vs October (+62 organic in 24 days).
+  Consistent with the switch-series cooling.
+- 认知解离: 涨粉 16 → **~9 organic** (曝光 ~3,790 organic of 4,125).
+  Still the month's top organic note, but the 9-min special's 13
+  remains the single-note fan record.
+- 睡眠: 5 → ~2 organic. **不敢快乐's +12 was untouched by the boost —
+  the real organic fan champion of November.**
+- The 粉丝来源 skew (首页推荐 52.5%) likely carries the boost traffic.
+Old notes (反式脂肪/腹部脂肪/BDNF) absorbed 41 of the 53 — boost spent
+best on proven covers, same lesson as organic: the catalog works.
