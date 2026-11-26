@@ -1,4 +1,4 @@
-# FI Ep47 · 抗性淀粉 — 小红书发布包(2026-11-22 v1 · 成片 ~/Downloads/FI-抗性淀粉-v1.mp4)
+# FI Ep47 · 抗性淀粉 — 小红书发布包(2026-11-26 定稿 · 成片 ~/Downloads/FI-抗性淀粉-v1.mp4)
 
 Render: `~/Movies/FI-videos/resistant-starch/final_v3.mp4`(v3 直出 + 逐字变黄 + 重定字幕,Heavy 封面字,封面睁眼门槛)· raw IMG_3357 · 真图 assets/real/ep47-resistant-starch(英文维基 Resistant starch、中文维基 丁酸、Healthline「煮熟放凉」页)· 示意图 rs_chain / rs_heatcool / rs_gut · 片尾卡 rs_next(怎么吃三步 + 下一条:一千顿饭)
 柱标 营养智慧;知识向;口播里的「多吃无妨」保留,正文写成「可以多吃一点」。
