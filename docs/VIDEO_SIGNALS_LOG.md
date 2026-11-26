@@ -844,3 +844,28 @@ Readings:
 
 Pending unchanged: per-ep site entries for Ep. 24/25; 慢性病 traffic
 verification; LinkedIn Ep. 22 analytics never captured.
+
+## Addendum — 2026-11-26 (the revival, two old posts; Claude-in-Chrome run 2)
+
+| Post | Posted | Lifetime imp | **Last-28d imp** | Out-of-net | Avg watch | Engagement | 涨粉 |
+|---|---|---|---|---|---|---|---|
+| Ep. 20 AI filter my anger | ~09-26 | 11,070 | **10,079 (91%)** | 98% | **8s** | 0 | 0 |
+| Ep. 8-era Good work doesn't speak | ~08 | 7,298 | **6,804 (93%)** | 96% | **8s** | 4 reactions + 1 save | 0 |
+
+Also dripping in the 28d window: Reorg 2,313 · Stop-building 1,383 ·
+One-hard-meeting 443 · three-layers 420 · meetings 399 (50 posts listed;
+even 3-year-old posts get 3–5). This closes the 35.5K ledger gap: the
+excess was back-catalog impressions, not comment views.
+
+Reading — **revival confirmed, chaining hypothesis REFUTED**: the new
+audience is NOT the defusion crowd (no Seattle/Microsoft concentration —
+company #1 is Atlassian at 2–5%, location #1 NYC at 14%, job titles
+spread thin). This is LinkedIn's vertical video feed spraying his back
+catalog at a broad pool, almost certainly because the 11-02 breakout
+raised his author score. Quality is junk: 8s average watch (vs the
+breakout's 26s), ~zero engagement, 2 profile viewers and 0 followers per
+~10K impressions. Impression inflation, not audience building. The
+durable lesson stands in one line: **old films are inventory, not sunk
+cost — LinkedIn resamples the catalog when the author gets hot**; but
+only a revival with deep watch would be worth acting on. Watch whether
+the spray decays over the next weeks (expected: yes).
