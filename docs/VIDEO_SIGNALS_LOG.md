@@ -869,3 +869,50 @@ durable lesson stands in one line: **old films are inventory, not sunk
 cost — LinkedIn resamples the catalog when the author gets hot**; but
 only a revival with deep watch would be worth acting on. Watch whether
 the spray decays over the next weeks (expected: yes).
+
+## Sweep — 2026-11-26 (小红书, creator.rednote.com via Claude-in-Chrome; export xlsx cross-checked, all 13 notes match)
+
+First sweep since 10-31; covers Ep38–47. Followers **219** (123 at 10-24);
+net +91 in 30 days (+24% MoM) — best month on record. 主页转粉率 8.5%.
+
+| Note | Posted | 曝光 | CTR | Views | 2s退出 | 5s% | Avg watch | 赞/评/藏/转 | 涨粉 |
+|---|---|---|---|---|---|---|---|---|---|
+| 认知解离 Ep39 | 11-02 | **4,125** | **8.7%** | **788** | **18.2%** | **63%** | 32.8s | 27/3/14/6 | **16** |
+| 睡眠垃圾食品 Ep40 | 11-04 | 938 | 5.3% | 314 | 34.5% | 44.2% | 16.5s | 30/0/20/2 | 5 |
+| 不敢快乐 Ep41 | 11-07 | 1,585 | 6.9% | 452 | 35% | 40.8% | 18.1s | 34/4/21/1 | 12 |
+| 往前走 Ep42 | 11-10 | 763 | 6.9% | 147 | 36.6% | 40.9% | **75.1s** | 9/0/3/0 | 1 |
+| 眉头 Ep43 | 11-12 | 596 | 3.3% | 128 | 57.3% | 10.9% | 29.5s | 2/0/3/1 | 1 |
+| 微笑 Ep44 | 11-15 | 697 | 4.0% | 155 | 49.7% | 24.5% | 42.5s | 9/1/3/0 | 1 |
+| 呼吸 Ep45 | 11-18 | 825 | **1.5%** | 147 | 49% | 21.9% | 27.6s | 1/0/1/0 | 0 |
+| 摸墙 Ep46 | 11-21 | 1,231 | 5.4% | 180 | 39.9% | 33.2% | 17.3s | 6/0/7/0 | 1 |
+| (10月尾: 零食 1035/7.5%/248/avg 2s※ · 酸痛 1273/8.6%/223/avg 126s · 食欲 763/9.0%/227 · 纤维 791/5.0%/157) | | | | | | | | | |
+
+Readings:
+1. **认知解离 is the XHS champion too — the formula is cross-platform.**
+   Same film broke out on both platforms (LinkedIn 11.9K / XHS 4,125 曝光,
+   both account records). First note to beat its category median CTR
+   decisively (8.7% vs 6%, top-26%); best-ever 2s exit (18.2%) and 5s
+   retention (63%); single-note 涨粉 record (16, beats the 9-min
+   special's 13); 6 shares; the only note with a MALE majority (54% —
+   layoffs pulled men in; everything else runs 62–82% female).
+2. **情绪大题材 ≫ 速效开关.** The three emotion notes (裁员/不敢快乐/睡眠)
+   earned 33 fans; the five-switch series (Ep42–46) earned 4 total, with
+   weak openings (2s exits 37–57%, 5s% 11–41%) and CTR misses (呼吸 1.5%
+   = account low; covers of tiny-action notes don't pull). 开关 as
+   interludes fine; never five in a row again.
+3. Depth outliers: 酸痛 avg 126s remains the depth king; 往前走 75.1s.
+   零食's avg 2s is a platform data glitch (※), ignore.
+4. **Audience goldmine (first-ever follower profile):** 69% of followers
+   are 35+ (35–44: 33%, >44: 36%), 55% female; 粉丝来源 首页推荐 52.5%.
+   Midlife health-anxiety IS the audience. 认知解离's male skew shows
+   work-fear topics widen the funnel.
+5. Cooling tail: last-7d 曝光 -24% / 观看 -36% (the switch series).
+   Account 30d: 曝光 1.8万 (-27%), avg watch 49s (+27%), 完播 8.8%.
+6. New sweep route locked in: desk writes prompt → Hao pastes into
+   Claude-in-Chrome → agent walks creator.rednote.com + clicks 导出数据
+   → desk cross-checks the xlsx. Replaces the desktop-app window-capture
+   drive for XHS.
+
+Pending: 零食 2s avg-watch glitch (re-check next sweep); Ep47 淀粉 too
+fresh (swept at 0); 慢性病 traffic verification now obsolete-able via
+the new 流量来源 panel (video feed % is visible per note).
