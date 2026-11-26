@@ -945,3 +945,43 @@ Cost ≈ 1.85元/粉 (~0.42 AUD) — decent for cold-start (薯条 typically
 - The 粉丝来源 skew (首页推荐 52.5%) likely carries the boost traffic.
 Old notes (反式脂肪/腹部脂肪/BDNF) absorbed 41 of the 53 — boost spent
 best on proven covers, same lesson as organic: the catalog works.
+
+## Trend reading — 2026-11-26 (both lines, requested by Hao)
+
+**LinkedIn (WT), Aug→Nov:** three eras. Flatline (Aug–Oct: 170–340
+impressions/post, one 792 outlier, 0 fans/post) → first true breakout
+(11-02 defusion: 11.9K, 92% out-of-network, 26s watch at 5K-viewer
+scale) → catalog era (the feed resprayed old films: +17K junk-watch
+impressions). The line has a PROVEN DOOR (first-person fear, eyewitness
+opening) but n=1; repeatability untested because nothing in the mould
+has shipped since. Builder-topic posts (374/205, 79–84% in-network)
+confirm the counter-case. Structural gap: conversion — 8,176 reached →
+5 followed; profile funnel left as-is by Hao's choice. Cadence fell to
+3 posts/Nov.
+
+**小红书 (FI), Sep→Nov:** the craft war is WON — CTR now beats the
+category median (8.7% vs 6%), watch depth 30–126s (内容深度 较好 across
+the board), 13 notes/month cadence holds. The topic war has a clear
+answer: emotion/fear notes (裁员 ~9 organic fans, 不敢快乐 12, 睡眠 ~2+)
+vs quick-switch series 4 fans across five notes. Organic follower pace:
+Sep ~+40 → Oct ~+60 → Nov ~+38 (switch-series dip, not a ceiling).
+曝光 per note still capped 600–1,600 organic (one 3.8K); the pool-renewal
+currency (comments, shares velocity) is the open front. Audience now
+known: 69% aged 35+, 55% female — midlife health anxiety.
+
+**Cross-line:** one film won both platforms — production is unified
+(v3 look), only the door differs per language. Both algorithms resample
+the back catalog when the author heats up (LinkedIn feed spray; boost
+auto-allocation to old notes): films are inventory. Both lines
+bottleneck at CONVERSION, not craft. The cognitive/emotion pillar is
+the confirmed growth engine on both.
+
+**Boost policy (desk recommendation, Hao deciding):** ~20 AUD/month is
+worth running for 2–3 months as 门面工程, not growth engine — at
+~1.85元/粉 it buys ~50 fans/month, pulling the 500-follower credibility
+mark from ~7 months out to ~3, and the budget auto-flowing to proven
+covers is free market research. Rules: goal 粉丝关注量 only; tell the
+desk each order so books stay organic/paid split; KILL CRITERION — if
+粉丝观看占比 (now 4–7%) or new-note fan engagement sinks over two
+months while bought fans stack up, stop buying. The real lever remains
+the topic mix.
