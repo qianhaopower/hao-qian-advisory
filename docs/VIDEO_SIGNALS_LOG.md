@@ -807,3 +807,40 @@ LinkedIn share one look from now on, language the only difference, for a trial p
 Pending: per-video watch stats (post-level video analytics pane not
 reachable this sweep); 慢性病 Traffic-Analysis verification; LinkedIn
 Ep. 22 analytics still never captured.
+
+## Sweep — 2026-11-26 (LinkedIn, run by Claude-in-Chrome on Hao's prompt; desk ledgered)
+
+Three posts since 11-02; nothing posted after 11-15.
+
+| Posted | Post | Impressions | Out-of-network | Reached | Video views | Avg watch | 赞/评/转/藏 | 涨粉 |
+|---|---|---|---|---|---|---|---|---|
+| 11-02 | Ep. 23 cognitive defusion | **11,914** | 90% | 8,399 | 5,367 | 26s | 28/0*/1/10 | 5 |
+| 11-10 | Ep. 24 one thing today (beanbag) | 374 | 21% | 208 | 138 | 17s | 2/0/0/0 | 0 |
+| 11-15 | Ep. 25 adding Google Analytics | 205 | 16% | 116 | 45 | **38s** | 0/0/0/0 | 0 |
+
+Account, 28 days (10-30 – 11-26): impressions 35,519 (+1,630% vs prior),
+95% out-of-network, members reached 21,521. Followers **2,875**
+(2,838 at 11-09; chart's 11-26 point reads "71 new" — likely the 28-day
+cumulative, unverified). Ep. 25 also logged 1 link click to haoqian.co.
+
+Readings:
+1. **The breakout was one wave.** Ep. 23 closed at ~11.9K — only +400
+   after day 7. No durable lift: the next two posts opened at baseline
+   (374 / 205) with 79–84% in-network, i.e. the algorithm never pushed
+   them out. 8,000 strangers passed through and only 5 stayed — a
+   breakout without conversion resets to zero. (Profile CTA still
+   unchanged — Hao's call.)
+2. **Topic door confirmed again, in both directions**: viewer-pain door
+   (layoffs) → 90% out-of-network; builder-share doors (a fun thing I
+   built / a walk-through) → 16–21%. Same law as Reorg vs theory posts.
+3. **Ep. 25's 38s avg watch** is the deepest ever on the WT line (9:42
+   film, 45 viewers) + the only haoqian.co click — walk-throughs hold a
+   tiny audience hard. Niche format: fine as a shelf piece, not a reach
+   play.
+4. Bookkeeping: *Ep. 23 comments now read 0 (were 2 at day 7) —
+   deleted or misread, unresolved. Account-28d impressions (35.5K) far
+   exceed the three posts' sum (~12.5K); the excess is probably
+   comment/contribution impressions on others' posts, unverified.
+
+Pending unchanged: per-ep site entries for Ep. 24/25; 慢性病 traffic
+verification; LinkedIn Ep. 22 analytics never captured.
