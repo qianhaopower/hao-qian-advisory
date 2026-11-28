@@ -502,4 +502,16 @@ export const TODAY_CARDS: TodayCard[] = [
       when: "When anxiety rises",
     },
   },
+  {
+    episode: "fi-resistant-starch",
+    pillar: "nutrition",
+    do: "土豆煮熟，\n放凉再吃。",
+    why: "淀粉加热再冷却会回生成抗性淀粉：消化酶剪不开，它进了大肠喂细菌，产生丁酸。",
+    when: "做主食时",
+    en: {
+      do: "Cook the potatoes, let them cool, then eat them.",
+      why: "Starch that is heated and then cooled turns into resistant starch: enzymes cannot cut it, so it reaches the large gut, feeds the bacteria there and becomes butyrate.",
+      when: "When you cook the staple",
+    },
+  },
 ];

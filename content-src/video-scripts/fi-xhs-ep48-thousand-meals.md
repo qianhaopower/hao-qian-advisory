@@ -1,4 +1,4 @@
-# FI Ep48 · 一千顿饭理论 — 小红书发布包(2026-11-22 草稿 · 成片 ~/Downloads/FI-一千顿饭-v1.mp4)
+# FI Ep48 · 一千顿饭理论 — 小红书发布包(2026-11-28 定稿 · 成片 ~/Downloads/FI-一千顿饭-v1.mp4)
 
 Render: `~/Movies/FI-videos/thousand-meals/final_v3.mp4`(v3 直出 + 逐字变黄 + 重定字幕,Heavy 封面字,封面睁眼门槛)· raw IMG_3358 · 真图 assets/real/ep48-thousand-meals(维基 溜溜球效应、哈佛 健康饮食餐盘 中文页)· 示意图 tm_year / tm_405 / tm_bw · 片尾卡 tm_next
 柱标 营养智慧;减肥心态向,信息过载 → 一千顿饭 → 一顿健康餐长什么样 → 暴饮暴食怎么算(止损)。

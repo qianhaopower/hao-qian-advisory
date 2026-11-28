@@ -1373,6 +1373,29 @@ const SCENES: Record<string, (lang: Lang) => ReactNode> = {
       <Label lang={lang} x={300} y={76} s={18} zh="听·看·摸" en="hear · see · touch" es={12} />
     </>
   ),
+  "fi-resistant-starch": (lang) => (
+    <>
+      <Ground />
+      <path d="M78 104q-8-12 0-24q8-12 0-24M104 104q-8-12 0-24q8-12 0-24M130 104q-8-12 0-24q8-12 0-24" strokeWidth={3} fill="none" />
+      <path d="M44 128h-12M164 128h12" strokeWidth={6} />
+      <path d="M48 116h112v62q0 22-22 22h-68q-22 0-22-22z" fill={GREY} />
+      <path d="M44 116h120" strokeWidth={6} />
+      <path d="M90 212q-8-12 2-22q2 10 8 8q-2-10 6-16q10 14 4 30z" fill={CORAL} />
+      <Label lang={lang} x={104} y={40} s={18} zh="煮熟" en="cook" es={15} />
+      <path d="M180 156h40M208 144l14 12-14 12" strokeWidth={5} fill="none" />
+      <ellipse cx={282} cy={160} rx={56} ry={44} fill={WOOD} />
+      <g fill={COCOA} stroke="none">
+        <circle cx={250} cy={136} r={3} />
+        <circle cx={316} cy={142} r={3} />
+        <circle cx={300} cy={188} r={3} />
+      </g>
+      <Face x={282} y={154} eyes="happy" mouth="smile" gap={26} mw={18} />
+      <g stroke={BLUE} strokeWidth={4}>
+        <path d="M334 60v40M314 70l40 20M314 90l40-20" />
+      </g>
+      <Label lang={lang} x={270} y={86} s={18} zh="放凉" en="cool" es={15} />
+    </>
+  ),
 };
 
 /* A card whose own drawing has not been made yet borrows its pillar's. */
